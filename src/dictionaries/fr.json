@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "title": "Paysagiste Acadien | Aménagement et entretien paysager",
+    "description": "Paysagiste Acadien — services professionnels d'entretien et d'aménagement paysager. Transformez et entretenez vos espaces extérieurs avec professionnalisme, passion et transparence."
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "projects": "Réalisations",
+    "about": "À propos",
+    "contact": "Nous joindre",
+    "careers": "Emplois",
+    "blog": "Blogue",
+    "quote": "Soumission"
+  },
+  "hero": {
+    "titleLead": "Aménagement et entretien",
+    "titleAccent": "paysager",
+    "subtitle": "Qualité, expertise et souci du détail. Nous transformons et entretenons vos espaces extérieurs avec professionnalisme, passion et transparence.",
+    "cta": "Demander une soumission",
+    "ctaSecondary": "Nos services",
+    "imageAlt": "Pelouse dense et fraîchement entretenue bordée d'arbres matures"
+  },
+  "services": {
+    "title": "Nos services",
+    "maintenance": "Entretien",
+    "development": "Aménagement",
+    "items": {
+      "entretien-paysager": "Entretien paysager",
+      "entretien-de-terrain": "Entretien de terrain",
+      "entretien-de-rocaille": "Entretien de rocaille",
+      "services-de-tailles": "Services de tailles",
+      "amenagement-paysager": "Aménagement paysager",
+      "plantation": "Plantation",
+      "tourbe": "Tourbe",
+      "pave-uni": "Pavé uni"
+    }
+  },
+  "about": {
+    "title": "À propos",
+    "body": "Paysagiste Acadien est une jeune entreprise dynamique, animée par la passion du travail bien fait. Notre mission : transformer et entretenir vos espaces extérieurs avec professionnalisme, passion et transparence.",
+    "values": [
+      "Satisfaction du client par une écoute attentive",
+      "Communication transparente à chaque étape",
+      "Service professionnel, courtois et personnalisé",
+      "Précision et passion du travail paysager",
+      "Rapport qualité-prix"
+    ]
+  },
+  "contact": {
+    "title": "Nous joindre",
+    "hoursTitle": "Heures d'ouverture",
+    "hours": {
+      "weekdays": "Lundi – Vendredi : 9 h – 19 h",
+      "saturday": "Samedi : 9 h – 15 h",
+      "sunday": "Dimanche : fermé"
+    },
+    "form": {
+      "name": "Nom",
+      "email": "Courriel",
+      "city": "Municipalité",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "service": "Service souhaité",
+      "startDate": "Date de début du projet",
+      "referral": "Comment nous avez-vous connu ?",
+      "submit": "Envoyer"
+    }
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "companyTitle": "Entreprise",
+    "contactTitle": "Contact",
+    "followUs": "Suivez-nous",
+    "linkedin": "LinkedIn",
+    "quoteEmailLabel": "Demande de soumission"
+  }
+}

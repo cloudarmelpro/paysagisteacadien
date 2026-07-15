@@ -1,0 +1,93 @@
+import Link from "next/link";
+import type { Locale } from "@/lib/i18n";
+import { localizedPath } from "@/lib/i18n";
+import type { Dictionary } from "@/lib/dictionaries";
+import { navLinks, contactSegment, siteConfig } from "@/config/site";
+import { buttonVariants } from "@/components/ui/button";
+import { LanguageSwitcher } from "./language-switcher";
+import { NavLinks } from "./nav-links";
+import { MobileNav } from "./mobile-nav";
+
+/**
+ * En-tête bilingue : barre pleine largeur, marque centrée (wordmark en
+ * majuscules espacées), navigation à gauche, sélecteur de langue + CTA
+ * « Soumission » à droite ; menu hamburger en mobile.
+ */
+export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
+  const items = navLinks.map((link) => ({
+    label: dict.nav[link.key],
+    href: localizedPath(lang, link.segment),
+  }));
+  const contact = {
+    label: dict.nav.contact,
+    href: localizedPath(lang, contactSegment),
+  };
+  const quote = {
+    label: dict.nav.quote,
+    href: localizedPath(lang, contactSegment),
+  };
+
+  return (
+    <header className="sticky top-0 z-50 bg-background">
+      {/* Accessibilité : permet d'atteindre le contenu sans tabuler toute la nav. */}
+      <a
+        href="#main"
+        className="sr-only rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50"
+      >
+        {lang === "fr" ? "Aller au contenu" : "Skip to content"}
+      </a>
+
+      {/*
+        Mobile/tablette : flex (marque à gauche, hamburger à droite).
+        Desktop (lg+) : grille 3 colonnes `1fr auto 1fr` — la marque occupe sa
+        propre colonne, donc elle reste centrée SANS pouvoir chevaucher la nav.
+      */}
+      <div className="relative mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-8 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-12">
+        {/* Navigation — gauche (desktop) */}
+        <nav
+          className="hidden items-center gap-5 lg:flex"
+          aria-label={lang === "fr" ? "Navigation principale" : "Primary"}
+        >
+          <NavLinks items={items} />
+        </nav>
+
+        {/* Marque — centrée (desktop), à gauche (mobile) */}
+        <Link
+          href={localizedPath(lang, "")}
+          aria-label={siteConfig.name}
+          className="cursor-pointer whitespace-nowrap text-sm font-bold uppercase tracking-widest text-foreground transition-opacity duration-200 hover:opacity-70 lg:justify-self-center"
+        >
+          Paysagiste Acadien
+        </Link>
+
+        {/* Actions — droite (desktop) */}
+        <div className="hidden items-center gap-5 lg:flex lg:justify-self-end">
+          <LanguageSwitcher lang={lang} />
+          <Link
+            href={contact.href}
+            className="cursor-pointer whitespace-nowrap text-sm text-foreground/70 transition-colors duration-200 hover:text-foreground"
+          >
+            {contact.label}
+          </Link>
+          <Link href={quote.href} className={buttonVariants()}>
+            {quote.label}
+          </Link>
+        </div>
+
+        {/* Actions — mobile / tablette */}
+        <div className="flex items-center gap-3 lg:hidden">
+          <LanguageSwitcher lang={lang} />
+          <MobileNav
+            items={items}
+            contact={contact}
+            quote={quote}
+            labels={{
+              open: lang === "fr" ? "Ouvrir le menu" : "Open menu",
+              close: lang === "fr" ? "Fermer le menu" : "Close menu",
+            }}
+          />
+        </div>
+      </div>
+    </header>
+  );
+}

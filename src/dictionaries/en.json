@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "title": "Paysagiste Acadien | Landscape design & maintenance",
+    "description": "Paysagiste Acadien — professional landscape design and maintenance services. We transform and maintain your outdoor spaces with professionalism, passion and transparency."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "careers": "Careers",
+    "blog": "Blog",
+    "quote": "Get a quote"
+  },
+  "hero": {
+    "titleLead": "Landscape design and",
+    "titleAccent": "maintenance",
+    "subtitle": "Quality, expertise and attention to detail. We transform and maintain your outdoor spaces with professionalism, passion and transparency.",
+    "cta": "Request a quote",
+    "ctaSecondary": "Our services",
+    "imageAlt": "Lush, freshly maintained lawn bordered by mature trees"
+  },
+  "services": {
+    "title": "Our services",
+    "maintenance": "Maintenance",
+    "development": "Landscaping",
+    "items": {
+      "entretien-paysager": "Landscape maintenance",
+      "entretien-de-terrain": "Grounds maintenance",
+      "entretien-de-rocaille": "Rock garden maintenance",
+      "services-de-tailles": "Pruning & trimming",
+      "amenagement-paysager": "Landscape design",
+      "plantation": "Planting",
+      "tourbe": "Sod",
+      "pave-uni": "Interlock paving"
+    }
+  },
+  "about": {
+    "title": "About",
+    "body": "Paysagiste Acadien is a young, dynamic company driven by a passion for work done right. Our mission: to transform and maintain your outdoor spaces with professionalism, passion and transparency.",
+    "values": [
+      "Client satisfaction through attentive listening",
+      "Transparent communication at every stage",
+      "Professional, courteous and personalized service",
+      "Precision and passion for landscaping",
+      "Quality-to-price value"
+    ]
+  },
+  "contact": {
+    "title": "Contact us",
+    "hoursTitle": "Business hours",
+    "hours": {
+      "weekdays": "Monday – Friday: 9 a.m. – 7 p.m.",
+      "saturday": "Saturday: 9 a.m. – 3 p.m.",
+      "sunday": "Sunday: closed"
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "city": "Municipality",
+      "address": "Address",
+      "phone": "Phone",
+      "service": "Service needed",
+      "startDate": "Project start date",
+      "referral": "How did you hear about us?",
+      "submit": "Send"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "companyTitle": "Company",
+    "contactTitle": "Contact",
+    "followUs": "Follow us",
+    "linkedin": "LinkedIn",
+    "quoteEmailLabel": "Quote requests"
+  }
+}
