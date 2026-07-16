@@ -1,14 +1,15 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
- * Bouton de bascule clair / sombre. Les deux icônes sont toujours rendues ; c'est
- * la CSS (variante `dark:`, pilotée par la classe `dark` posée sur <html> avant
- * l'hydratation) qui affiche la bonne. Le rendu ne dépend donc d'aucun état de
- * thème → aucun écart d'hydratation. Le thème courant n'est lu qu'au clic.
+ * Bascule clair / sombre, pilotée directement par le DOM (pas de contexte ni de
+ * dépendance). Le clic bascule la classe `dark` sur <html>, met à jour
+ * `color-scheme` et mémorise le choix. Les deux icônes sont rendues et c'est la
+ * CSS (`dark:`) qui affiche la bonne → aucun état de thème au rendu, donc aucun
+ * écart d'hydratation. L'état initial est posé par le script du layout, avant
+ * peinture (pas de flash).
  */
 export function ThemeToggle({
   label,
@@ -17,14 +18,21 @@ export function ThemeToggle({
   label: string;
   className?: string;
 }) {
-  const { resolvedTheme, setTheme } = useTheme();
-
   return (
     <button
       type="button"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       aria-label={label}
       title={label}
+      onClick={() => {
+        const root = document.documentElement;
+        const isDark = root.classList.toggle("dark");
+        root.style.colorScheme = isDark ? "dark" : "light";
+        try {
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        } catch {
+          // stockage indisponible (navigation privée) : on ignore.
+        }
+      }}
       className={cn(
         "inline-flex size-9 cursor-pointer items-center justify-center rounded-md text-foreground/70 transition-colors duration-200 hover:bg-muted hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
         className,
