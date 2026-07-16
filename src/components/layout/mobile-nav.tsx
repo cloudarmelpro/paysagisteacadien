@@ -86,15 +86,24 @@ export function MobileNav({
         onClick={openMenu}
         className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
       >
+        {/* Burger noir en thème clair, fichier blanc dédié en thème sombre.
+            Les deux sont montés ; la CSS (variante `dark:`) affiche le bon —
+            rendu identique serveur/client, donc aucun écart d'hydratation. */}
         <Image
           src="/images/menu.png"
           alt=""
           width={32}
           height={32}
           priority
-          /* Icône noire sur transparent → inversée en blanc en mode sombre pour
-             rester visible sur le header foncé. */
-          className="size-8 dark:invert"
+          className="size-8 dark:hidden"
+        />
+        <Image
+          src="/images/menu-white.png"
+          alt=""
+          width={32}
+          height={32}
+          priority
+          className="hidden size-8 dark:block"
         />
       </button>
 
