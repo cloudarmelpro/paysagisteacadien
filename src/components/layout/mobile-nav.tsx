@@ -10,6 +10,7 @@ import { localizedPath, type Locale } from "@/lib/i18n";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { LanguageSwitcher } from "./language-switcher";
+import { ThemeToggle } from "./theme-toggle";
 import {
   scrollForSamePageAnchor,
   useNavActive,
@@ -32,6 +33,7 @@ export function MobileNav({
   contact,
   quote,
   labels,
+  themeLabel,
   className,
 }: {
   lang: Locale;
@@ -39,6 +41,7 @@ export function MobileNav({
   contact: NavLinkItem;
   quote: NavLinkItem;
   labels: { open: string; close: string };
+  themeLabel: string;
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -89,7 +92,9 @@ export function MobileNav({
           width={32}
           height={32}
           priority
-          className="size-8"
+          /* Icône noire sur transparent → inversée en blanc en mode sombre pour
+             rester visible sur le header foncé. */
+          className="size-8 dark:invert"
         />
       </button>
 
@@ -163,8 +168,8 @@ export function MobileNav({
               >
                 {quote.label}
               </Link>
-              <div className="flex items-center justify-between">
-                <div className="flex flex-wrap gap-x-5 gap-y-2">
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex flex-wrap gap-x-3 gap-y-2">
                   {socials.map((s) => (
                     <a
                       key={s.label}
@@ -177,7 +182,10 @@ export function MobileNav({
                     </a>
                   ))}
                 </div>
-                <LanguageSwitcher lang={lang} />
+                <div className="flex items-center gap-1">
+                  <ThemeToggle label={themeLabel} />
+                  <LanguageSwitcher lang={lang} />
+                </div>
               </div>
             </div>
           </div>

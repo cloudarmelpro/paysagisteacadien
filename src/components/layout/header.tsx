@@ -5,6 +5,7 @@ import type { Dictionary } from "@/lib/dictionaries";
 import { navLinks, contactSegment, siteConfig } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { LanguageSwitcher } from "./language-switcher";
+import { ThemeToggle } from "./theme-toggle";
 import { NavLinks } from "./nav-links";
 import { MobileNav } from "./mobile-nav";
 
@@ -31,6 +32,10 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     label: dict.nav.quote,
     href: localizedPath(lang, contactSegment),
   };
+  const themeLabel =
+    lang === "fr"
+      ? "Basculer le thème clair / sombre"
+      : "Toggle light / dark theme";
 
   return (
     <header className="sticky top-0 z-50 bg-background">
@@ -66,7 +71,8 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         </Link>
 
         {/* Actions — droite (desktop) */}
-        <div className="hidden items-center gap-5 lg:flex lg:justify-self-end">
+        <div className="hidden items-center gap-4 lg:flex lg:justify-self-end">
+          <ThemeToggle label={themeLabel} />
           <LanguageSwitcher lang={lang} />
           <Link
             href={careers.href}
@@ -86,6 +92,7 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             items={items}
             contact={careers}
             quote={quote}
+            themeLabel={themeLabel}
             labels={{
               open: lang === "fr" ? "Ouvrir le menu" : "Open menu",
               close: lang === "fr" ? "Fermer le menu" : "Close menu",

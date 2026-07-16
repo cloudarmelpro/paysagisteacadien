@@ -6,6 +6,7 @@ import { getDictionary, hasLocale } from "@/lib/dictionaries";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -43,14 +44,22 @@ export default async function RootLayout(props: LayoutProps<"/[lang]">) {
   return (
     <html
       lang={lang}
+      suppressHydrationWarning
       className={`${dmSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <SiteHeader lang={lang} dict={dict} />
-        <main id="main" className="flex flex-1 flex-col">
-          {props.children}
-        </main>
-        <SiteFooter lang={lang} dict={dict} />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SiteHeader lang={lang} dict={dict} />
+          <main id="main" className="flex flex-1 flex-col">
+            {props.children}
+          </main>
+          <SiteFooter lang={lang} dict={dict} />
+        </ThemeProvider>
       </body>
     </html>
   );
