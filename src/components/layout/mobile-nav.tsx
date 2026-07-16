@@ -86,10 +86,10 @@ export function MobileNav({
         <Image
           src="/images/menu.png"
           alt=""
-          width={24}
-          height={24}
+          width={32}
+          height={32}
           priority
-          className="size-6"
+          className="size-8"
         />
       </button>
 
