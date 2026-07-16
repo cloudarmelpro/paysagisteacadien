@@ -1,0 +1,41 @@
+// Schéma Prisma — voir https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+/// Message envoyé depuis le formulaire « Nous joindre ».
+model ContactMessage {
+  id           String   @id @default(cuid())
+  name         String
+  email        String
+  municipality String
+  address      String?
+  phone        String?
+  service      String[] @default([])
+  startDate    String?
+  referral     String[] @default([])
+  message      String?
+  locale       String   @default("fr")
+  createdAt    DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+/// Candidature spontanée envoyée depuis la page « Emplois ».
+model JobApplication {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  email     String
+  message   String?
+  locale    String   @default("fr")
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}

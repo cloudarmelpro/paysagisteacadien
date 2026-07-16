@@ -1,40 +1,34 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
-import { contactSegment, servicesSegment } from "@/config/site";
+import { contactSegment, serviceImages } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-/** Pilule verticale de la bande d'images. Décorative : `alt=""` — ces bandes
- *  de ~64px ne montrent qu'une texture, le sens est porté par l'image centrale. */
-function Pill({ src, className }: { src: string; className?: string }) {
-  return (
-    <div
-      className={cn(
-        "relative w-12 shrink-0 overflow-hidden rounded-full bg-muted sm:w-14 lg:w-16",
-        className,
-      )}
-    >
-      {/*
-        `sizes` ne peut PAS valoir 64px : avec `object-cover` dans un conteneur
-        de 440px de haut, l'image est mise à l'échelle sur la HAUTEUR — sa
-        largeur rendue atteint ~590px. Un source de 64px serait étiré ~9x (flou).
-      */}
-      <Image src={src} alt="" fill sizes="640px" className="object-cover" />
-    </div>
-  );
-}
+import { HeroGallery, type GalleryItem } from "./hero-gallery";
 
 /**
- * Hero : bloc texte puis bande d'images — deux pilules étroites de chaque côté
- * d'une grande image centrale, badge de service en surimpression.
- * L'image centrale est en `priority` (LCP de la page d'accueil).
+ * Ordre de la bande. Chaque photo illustre un service réel (et non une page-
+ * chapeau) ; les images viennent de `serviceImages`, source unique partagée
+ * avec la section services. L'image centrale (index 2) est active au chargement.
  */
+const GALLERY_SLUGS = [
+  "tourbe",
+  "services-de-tailles",
+  "entretien-de-terrain",
+  "plantation",
+  "entretien-de-rocaille",
+] as const;
+
 export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
+  const items: GalleryItem[] = GALLERY_SLUGS.map((slug) => ({
+    src: serviceImages[slug],
+    alt: dict.services.imageAlts[slug],
+    label: dict.services.items[slug],
+  }));
+
   return (
-    <section className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 lg:px-12">
+    <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
       {/* Bloc texte */}
       <div className="flex max-w-xl flex-col items-start gap-5">
         <h1 className="text-4xl tracking-tight text-balance sm:text-5xl">
@@ -54,7 +48,7 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             {dict.hero.cta}
           </Link>
           <Link
-            href={localizedPath(lang, servicesSegment)}
+            href={`${localizedPath(lang, "")}#services`}
             className={cn(
               buttonVariants({ variant: "outline", size: "lg" }),
               "h-11",
@@ -65,27 +59,9 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         </div>
       </div>
 
-      {/* Bande d'images : pilules · grande image · pilules */}
-      <div className="mt-10 flex h-[300px] items-stretch gap-2 sm:h-[360px] sm:gap-3 lg:h-[380px]">
-        <Pill src="/images/jardin-1.jpg" className="hidden sm:block" />
-        <Pill src="/images/jardin-2.jpg" />
-
-        <div className="relative flex-1 overflow-hidden rounded-3xl bg-muted">
-          <Image
-            src="/images/hero-pelouse.jpg"
-            alt={dict.hero.imageAlt}
-            fill
-            priority
-            sizes="(max-width: 640px) 80vw, 60vw"
-            className="object-cover"
-          />
-          <span className="absolute right-4 bottom-4 rounded-full bg-background/90 px-3 py-1.5 text-xs font-medium text-foreground shadow-sm backdrop-blur-sm">
-            {dict.services.items["entretien-de-terrain"]}
-          </span>
-        </div>
-
-        <Pill src="/images/jardin-3.jpg" />
-        <Pill src="/images/jardin-4.jpg" className="hidden sm:block" />
+      {/* Bande d'images cliquable */}
+      <div className="mt-10">
+        <HeroGallery items={items} initialActive={2} />
       </div>
     </section>
   );

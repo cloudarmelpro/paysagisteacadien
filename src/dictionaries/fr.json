@@ -6,6 +6,7 @@
   "nav": {
     "home": "Accueil",
     "services": "Services",
+    "faq": "FAQ",
     "projects": "Réalisations",
     "about": "À propos",
     "contact": "Nous joindre",
@@ -22,9 +23,33 @@
     "imageAlt": "Pelouse dense et fraîchement entretenue bordée d'arbres matures"
   },
   "services": {
-    "title": "Nos services",
+    "title": "Nos",
+    "titleAccent": "services",
+    "badge": "Ce que nous faisons",
+    "intro": "De l'ouverture printanière au pavé uni, nous entretenons et aménageons vos espaces extérieurs à Laval et sur la Rive-Nord.",
+    "learnMore": "En savoir plus",
     "maintenance": "Entretien",
     "development": "Aménagement",
+    "maintenanceLead": "Votre terrain suivi d'une saison à l'autre, sans que vous ayez à y penser.",
+    "developmentLead": "De la plantation au pavé, des projets clés en main adaptés à votre budget.",
+    "descriptions": {
+      "entretien-de-terrain": "Ouverture printanière, déchaumage, ensemencement, ramassage des feuilles et fermeture hivernale.",
+      "entretien-de-rocaille": "Nettoyage printanier, terre compostée, paillis de cèdre et taille des vivaces pour des massifs sains.",
+      "services-de-tailles": "La taille annuelle densifie vos haies de cèdres, garde une ligne nette et prévient le dégarnissement.",
+      "plantation": "Vivaces, arbustes, haies de cèdres et arbres, choisis selon votre sol et votre ensoleillement.",
+      "tourbe": "Une pelouse instantanée, uniforme et résistante — en création comme en rénovation.",
+      "pave-uni": "Pavés déplacés, joints usés : on restaure la surface pour une apparence soignée et durable."
+    },
+    "imageAlts": {
+      "entretien-paysager": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
+      "entretien-de-terrain": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
+      "entretien-de-rocaille": "Massif de fleurs jaunes bordé de galets blancs",
+      "services-de-tailles": "Allée engazonnée bordée d'une haie dense et taillée",
+      "amenagement-paysager": "Pergola de bois et buis taillés en contre-jour",
+      "plantation": "Pergola de bois et buis taillés en contre-jour",
+      "tourbe": "Grande pelouse tondue et arbres matures dans un espace vert",
+      "pave-uni": "Pavé uni posé en éventail circulaire, éclairé en lumière rasante"
+    },
     "items": {
       "entretien-paysager": "Entretien paysager",
       "entretien-de-terrain": "Entretien de terrain",
@@ -36,19 +61,191 @@
       "pave-uni": "Pavé uni"
     }
   },
+  "serviceDetail": {
+    "backToServices": "Tous nos services",
+    "badge": "Services",
+    "exploreLabel": "Nos services",
+    "relatedLabel": "Services connexes",
+    "ctaTitle": "Prêt à passer à l'action ?",
+    "ctaLead": "Obtenez une estimation gratuite et sans engagement, adaptée à vos besoins et à votre budget.",
+    "cta": "Demander une estimation",
+    "items": {
+      "entretien-paysager": {
+        "metaTitle": "Entretien paysager | Paysagiste Acadien",
+        "metaDescription": "Entretien de terrain, de rocaille et taille de cèdres à Laval et sur la Rive-Nord. Confiez-nous l'entretien de votre terrain.",
+        "intro": "Confiez-nous l'entretien de votre résidence ou de votre commerce et profitez pleinement de la belle saison, sans tracas ! Que ce soit pour l'entretien de votre terrain, de vos rocailles, ou encore pour la taille de vos arbustes et cèdres, nous nous occupons de tout. Laissez-nous alléger votre charge afin que vous puissiez profiter pleinement de votre été.",
+        "sections": []
+      },
+      "amenagement-paysager": {
+        "metaTitle": "Aménagement paysager | Paysagiste Acadien",
+        "metaDescription": "Plantation, pose de tourbe et restauration de pavé uni à Laval et sur la Rive-Nord. Un aménagement paysager sur mesure.",
+        "intro": "Que ce soit pour un projet clé en main, une plantation, la pose de tourbe ou la restauration de pavé, nous sommes là pour vous aider. Laissez-nous vous accompagner dans la conception et la réalisation de votre aménagement paysager. Grâce à notre expertise, nous réalisons aussi bien des installations neuves que des rénovations, en veillant à répondre parfaitement à vos attentes.",
+        "sections": []
+      },
+      "entretien-de-terrain": {
+        "metaTitle": "Entretien de terrain | Paysagiste Acadien",
+        "metaDescription": "Ouverture printanière, déchaumage, ensemencement, ramassage des feuilles et fermeture hivernale à Laval et sur la Rive-Nord.",
+        "intro": "Paysagiste Acadien offre des services d'entretien de terrain desservant Laval et la Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Ouverture de terrain",
+            "body": "Notre service de nettoyage de printemps consiste à retirer tous les débris qui n'ont pas pu être enlevés avant l'hiver. De plus, nous procédons au nettoyage de votre pelouse afin d'éliminer les roches et les débris soufflés par les tempêtes de neige. Nous nous occupons également du ramassage des feuilles mortes encore présentes sur votre propriété. Par ailleurs, nous prenons en charge le déliement de vos arbustes et le retrait des protections hivernales installées pour les protéger."
+          },
+          {
+            "heading": "Déchaumage",
+            "body": "Nous offrons à nos clients un service de déchaumage à chaque début de saison. Le déchaumage est une excellente pratique permettant d'éliminer le gazon mort à la suite de l'hiver. Un gazon trop chargé en chaume peut avoir du mal à pousser. Il est donc recommandé de l'enlever afin de favoriser une croissance saine et vigoureuse de votre pelouse."
+          },
+          {
+            "heading": "Ensemencement",
+            "body": "Nous offrons un service d'ensemencement pour effectuer des réparations légères de pelouse. De plus, nous proposons un service de surensemencement afin de densifier votre gazon au maximum. Le service d'ensemencement est disponible du 1er mai au 20 juin ainsi qu'au cours du mois de septembre. Nous ne recommandons pas d'ensemencer durant la saison chaude afin d'optimiser les résultats."
+          },
+          {
+            "heading": "Ramassage des feuilles mortes",
+            "body": "Nous offrons un service de ramassage des feuilles mortes pour notre clientèle durant l'automne. Nous collectons et transportons les feuilles au dépotoir, vous permettant ainsi de garder votre propriété propre et bien ordonnée."
+          },
+          {
+            "heading": "Fermeture de terrain",
+            "body": "Nous effectuons toujours une fermeture de base du terrain pour nos clients, qui consiste à rabaisser votre gazon afin de le préparer pour l'hiver et à réaliser un nettoyage final pour clore la saison. Nous offrons également des services d'attache des arbustes et d'installation de protections hivernales pour les arbustes et les vivaces."
+          }
+        ]
+      },
+      "entretien-de-rocaille": {
+        "metaTitle": "Entretien de rocaille | Paysagiste Acadien",
+        "metaDescription": "Nettoyage printanier, terreau composté, paillis de cèdre et taille des vivaces pour des massifs sains à Laval et sur la Rive-Nord.",
+        "intro": "Paysagiste Acadien propose des services professionnels d'entretien de rocailles dans la région de Laval et sur la Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Ouverture de rocaille",
+            "body": "Nous débutons toujours notre saison par un nettoyage complet des rocailles, afin d'éliminer toutes les feuilles mortes et les débris laissés par l'hiver. Nous procédons également à la redéfinition des bordures naturelles qui ont été endommagées durant la saison froide."
+          },
+          {
+            "heading": "Rafraîchissement de terreau composté",
+            "body": "Nous offrons un service de rafraîchissement des rocailles avec du terreau composté. L'ajout de terreau permet d'enrichir le sol, favorisant ainsi la santé et la croissance des systèmes racinaires de vos vivaces et arbustes."
+          },
+          {
+            "heading": "Rafraîchissement de paillis de cèdre",
+            "body": "Nous offrons un service de rafraîchissement des rocailles avec du paillis de cèdre, disponible en plusieurs couleurs. Le paillis de cèdre est bénéfique pour les vivaces et arbustes de la rocaille, car il aide à retenir l'humidité dans le sol. De plus, il contribue au contrôle des mauvaises herbes, limitant leur propagation de façon naturelle."
+          },
+          {
+            "heading": "Taille des vivaces et fermeture de saison",
+            "body": "À la fin de la saison, nous offrons un service de coupe des vivaces afin de les préparer pour l'hiver. Nous proposons également un service de taille des rosiers, ainsi que l'installation de protections hivernales pour assurer leur préservation durant la saison froide."
+          }
+        ]
+      },
+      "services-de-tailles": {
+        "metaTitle": "Taille de haies de cèdres | Paysagiste Acadien",
+        "metaDescription": "Taille annuelle de haies de cèdres à Laval et sur la Rive-Nord : densité, ligne nette et prévention du dégarnissement.",
+        "intro": "Paysagiste Acadien offre des services de taille de haies de cèdres, disponibles dans toute la ville de Laval ainsi que sur la Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Taille de haies de cèdres",
+            "body": "La taille des haies de cèdres est un soin essentiel à ne pas négliger. Effectuée une fois par an, elle permet aux cèdres de se densifier, de maintenir une silhouette nette et d'éviter le dégarnissement prématuré. Chez Paysagiste Acadien, nous intervenons avec les bons outils et le savoir-faire nécessaire pour garantir un résultat impeccable, peu importe la longueur ou la hauteur de votre haie."
+          }
+        ]
+      },
+      "plantation": {
+        "metaTitle": "Plantation | Paysagiste Acadien",
+        "metaDescription": "Plantation de vivaces, d'arbustes, de haies de cèdres et d'arbres à Laval et sur la Rive-Nord, selon votre sol et votre ensoleillement.",
+        "intro": "Paysagiste Acadien offre un service d'aménagement paysager dans la ville de Laval et sur la Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Plantation de vivaces et d'arbustes",
+            "body": "Notre entreprise est fière de vous offrir un service de plantation de vivaces professionnel et adapté à vos besoins. Spécialisés dans l'aménagement paysager durable, nous vous accompagnons dans la création d'un jardin harmonieux et facile d'entretien. Nous vous guidons dans le choix des vivaces en fonction de la nature de votre sol, de l'exposition au soleil et de vos préférences esthétiques. Peu exigeantes en entretien, les vivaces offrent une beauté durable tout en réduisant le besoin d'interventions fréquentes."
+          },
+          {
+            "heading": "Plantation de haies de cèdres",
+            "body": "Nous vous offrons un service de plantation de haies de cèdres de qualité, idéal pour créer une clôture naturelle, embellir votre aménagement paysager et vous garantir une intimité durable. Protégez votre propriété des regards indiscrets tout en préservant un aspect naturel et esthétique. En plus d'améliorer le confort de votre espace extérieur, les haies de cèdres réduisent l'impact du vent et apportent une touche de verdure harmonieuse à votre environnement."
+          },
+          {
+            "heading": "Plantation d'arbres",
+            "body": "Offrez à votre espace extérieur une touche de verdure et de nature grâce à notre service professionnel de plantation d'arbres. Que ce soit pour embellir votre jardin, créer de l'ombre ou favoriser la biodiversité, nous vous accompagnons dans le choix et la mise en terre des arbres adaptés à votre environnement. Nous sélectionnons des arbres robustes et sains pour assurer une croissance optimale et nous vous aidons à choisir les variétés idéales selon vos objectifs."
+          }
+        ]
+      },
+      "tourbe": {
+        "metaTitle": "Pose de tourbe | Paysagiste Acadien",
+        "metaDescription": "Pose de tourbe à Laval et sur la Rive-Nord : une pelouse instantanée, uniforme et résistante, en création comme en rénovation.",
+        "intro": "Paysagiste Acadien offre un service d'aménagement paysager dans la ville de Laval et sur la Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Pose de tourbe",
+            "body": "Offrez à votre terrain une apparence verdoyante et impeccable grâce à notre service de pose de tourbe professionnelle. Que ce soit pour créer une nouvelle pelouse ou rénover un espace existant, nous vous proposons une solution rapide et efficace pour obtenir un gazon dense et en parfaite santé. Contrairement à l'ensemencement, la tourbe offre une pelouse instantanée, uniforme et résistante. Nous vous fournissons également des conseils personnalisés pour assurer une croissance optimale et préserver la beauté de votre gazon sur le long terme."
+          }
+        ]
+      },
+      "pave-uni": {
+        "metaTitle": "Réparation de pavé uni | Paysagiste Acadien",
+        "metaDescription": "Réparation et restauration de pavé uni à Laval et sur la Rive-Nord : pavés déplacés, joints usés, surface remise à neuf.",
+        "intro": "Paysagiste Acadien offre un service d'aménagement paysager dans la ville de Laval et sur la Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Réparation et restauration de pavé uni",
+            "body": "Redonnez à votre aménagement extérieur tout son éclat d'origine grâce à notre service de restauration de pavé uni. Avec le temps, les pavés peuvent se déplacer, s'user ou voir leurs joints se détériorer. Nous offrons une solution complète pour raviver votre surface, prolonger sa durabilité et lui redonner une apparence soignée et uniforme. Faites confiance à notre expertise pour restaurer et préserver la beauté de votre pavé uni."
+          }
+        ]
+      }
+    }
+  },
   "about": {
-    "title": "À propos",
-    "body": "Paysagiste Acadien est une jeune entreprise dynamique, animée par la passion du travail bien fait. Notre mission : transformer et entretenir vos espaces extérieurs avec professionnalisme, passion et transparence.",
+    "metaTitle": "À propos | Paysagiste Acadien",
+    "metaDescription": "Une jeune entreprise dynamique, animée par la passion du travail bien fait. Aménagement et entretien paysager à Laval et sur la Rive-Nord.",
+    "badge": "À propos",
+    "title": "Animés par la passion du",
+    "titleAccent": "travail bien fait",
+    "intro": "Nous avons acquis une expertise approfondie dans les métiers liés aux espaces extérieurs, notamment l'entretien et l'aménagement paysager. Notre mission est d'offrir à nos clients un service de qualité, alliant expertise, professionnalisme et souci du détail.",
+    "imageAlt": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
+    "approachLabel": "Notre approche",
+    "approach": [
+      "Nous proposons également des services clé en main pour vous offrir une expérience sans tracas. De la conception à la réalisation, nous prenons en charge chaque étape de votre projet afin de vous garantir un aménagement harmonieux et fonctionnel. Que ce soit pour l'installation de pavé uni, la plantation de haies de cèdres, la pose de tourbe ou l'entretien saisonnier de votre terrain, nous mettons tout en œuvre pour répondre à vos attentes et vous offrir un résultat à la hauteur de vos exigences.",
+      "Nous croyons fermement que chaque projet mérite une attention particulière et un accompagnement personnalisé afin de répondre aux attentes les plus élevées. C'est avec cette vision que nous nous engageons à vous fournir un service humain, rigoureux et adapté à vos besoins."
+    ],
+    "approachClosing": "Au plaisir de collaborer avec vous !",
+    "missionLabel": "Notre mission",
+    "mission": "Paysagiste Acadien a pour mission de transformer et d'entretenir vos espaces extérieurs avec professionnalisme, passion et transparence.",
+    "missionBody": [
+      "Spécialisés dans l'aménagement paysager et l'entretien des terrains, nous nous engageons à offrir des services de haute qualité, conformes aux standards de l'industrie et aux attentes de nos clients. Notre approche repose sur l'excellence, la durabilité et une attention méticuleuse aux détails, afin de créer des aménagements harmonieux, fonctionnels et esthétiques.",
+      "Nous croyons que la transparence est essentielle dans chacune de nos interventions. C'est pourquoi nous maintenons une communication claire et honnête à chaque étape de votre projet. De l'évaluation initiale aux travaux réalisés, nous veillons à vous fournir des informations précises et des conseils adaptés à vos besoins, garantissant ainsi une collaboration basée sur la confiance."
+    ],
+    "engagementLabel": "Notre engagement",
+    "engagementLead": "La satisfaction de nos clients est au cœur de nos engagements. Nous nous engageons à offrir une écoute attentive, une communication transparente et un suivi rigoureux à chaque étape de votre projet.",
+    "engagementBody": [
+      "Nous proposons un service professionnel, courtois et personnalisé, accompagné de conseils avisés et de solutions durables pour une parfaite harmonie avec vos espaces verts.",
+      "Grâce à notre expertise et notre savoir-faire, nous sommes en mesure de réaliser des projets de toute envergure. Nous allions précision et passion pour prendre soin de vos aménagements paysagers avec le même souci du détail que si c'étaient les nôtres, tout en vous garantissant un excellent rapport qualité-prix."
+    ],
+    "valuesTitle": "Nos valeurs",
     "values": [
-      "Satisfaction du client par une écoute attentive",
-      "Communication transparente à chaque étape",
-      "Service professionnel, courtois et personnalisé",
-      "Précision et passion du travail paysager",
-      "Rapport qualité-prix"
-    ]
+      {
+        "title": "Écoute attentive",
+        "desc": "Nous comprenons vos besoins avant de proposer quoi que ce soit."
+      },
+      {
+        "title": "Communication transparente",
+        "desc": "Un suivi rigoureux et clair à chaque étape de votre projet."
+      },
+      {
+        "title": "Service personnalisé",
+        "desc": "Professionnel, courtois et adapté à votre terrain comme à vos attentes."
+      },
+      {
+        "title": "Solutions durables",
+        "desc": "Des conseils avisés et des choix qui tiennent dans le temps."
+      }
+    ],
+    "ctaTitle": "Un projet en tête ?",
+    "ctaLead": "Parlons-en. L'estimation est gratuite et sans engagement.",
+    "cta": "Demander une soumission"
   },
   "contact": {
-    "title": "Nous joindre",
+    "metaTitle": "Nous joindre | Paysagiste Acadien",
+    "metaDescription": "Une question ou un projet ? Écrivez-nous ou appelez-nous. Aménagement et entretien paysager à Laval et sur la Rive-Nord.",
+    "badge": "Nous joindre",
+    "title": "Parlons de votre",
+    "titleAccent": "projet",
+    "intro": "Une question, un projet en tête ? Écrivez-nous et nous vous répondrons rapidement.",
+    "infoTitle": "Coordonnées",
+    "phoneLabel": "Téléphone",
+    "emailLabel": "Courriel",
+    "areaLabel": "Zone desservie",
     "hoursTitle": "Heures d'ouverture",
     "hours": {
       "weekdays": "Lundi – Vendredi : 9 h – 19 h",
@@ -56,16 +253,160 @@
       "sunday": "Dimanche : fermé"
     },
     "form": {
+      "heading": "Écrivez-nous",
+      "lead": "Remplissez le formulaire, nous revenons vers vous rapidement.",
       "name": "Nom",
+      "namePlaceholder": "Votre nom",
       "email": "Courriel",
-      "city": "Municipalité",
-      "address": "Adresse",
-      "phone": "Téléphone",
-      "service": "Service souhaité",
-      "startDate": "Date de début du projet",
-      "referral": "Comment nous avez-vous connu ?",
-      "submit": "Envoyer"
+      "emailPlaceholder": "vous@exemple.com",
+      "municipality": "Municipalité",
+      "municipalityPlaceholder": "Votre municipalité",
+      "address": "Adresse (optionnel)",
+      "addressPlaceholder": "Numéro et rue",
+      "phone": "Téléphone (optionnel)",
+      "phonePlaceholder": "514 000-0000",
+      "service": "Service souhaité (optionnel)",
+      "servicePlaceholder": "Sélectionnez un service",
+      "startDate": "Date de début souhaitée (optionnel)",
+      "startDatePlaceholder": "Choisir une date",
+      "referral": "Comment nous avez-vous connu ? (optionnel)",
+      "referralPlaceholder": "Sélectionnez une option",
+      "referralOptions": {
+        "google": "Recherche Google",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "wordOfMouth": "Bouche-à-oreille",
+        "signage": "Affichage ou véhicule",
+        "other": "Autre"
+      },
+      "message": "Message (optionnel)",
+      "messagePlaceholder": "Décrivez votre besoin…",
+      "submit": "Envoyer",
+      "sending": "Envoi…",
+      "successTitle": "Message envoyé",
+      "successDesc": "Merci ! Nous vous répondrons rapidement.",
+      "errorTitle": "L'envoi a échoué",
+      "errorDesc": "Réessayez, ou appelez-nous directement.",
+      "errors": {
+        "name": "Entrez votre nom (2 caractères minimum).",
+        "nameMax": "Ce nom est trop long.",
+        "email": "Entrez une adresse courriel valide.",
+        "emailMax": "Ce courriel est trop long.",
+        "municipality": "Entrez votre municipalité (2 caractères minimum).",
+        "municipalityMax": "Ce nom de municipalité est trop long.",
+        "addressMax": "Cette adresse est trop longue.",
+        "phone": "Ce numéro de téléphone semble invalide.",
+        "phoneMax": "Ce numéro est trop long.",
+        "serviceMax": "Valeur invalide.",
+        "startDateMax": "Date invalide.",
+        "referralMax": "Valeur invalide.",
+        "messageMax": "Votre message est trop long."
+      }
     }
+  },
+  "careers": {
+    "metaTitle": "Emplois | Paysagiste Acadien",
+    "metaDescription": "Envie de rejoindre l'équipe de Paysagiste Acadien ? Envoyez-nous votre candidature — nous gardons chaque profil pour nos prochaines opportunités.",
+    "badge": "Emplois",
+    "title": "Vous souhaitez vous joindre à",
+    "titleAccent": "notre équipe ?",
+    "intro": "Envoyez-nous votre candidature : nous conservons chaque profil et vous contactons dès qu'une occasion se présente.",
+    "infoTitle": "Offres d'emploi",
+    "statusTitle": "Postes actuels",
+    "status": "Tous nos postes sont pourvus pour l'instant, mais restez à l'affût de nos prochaines opportunités !",
+    "cvLabel": "Envoyez votre CV",
+    "phoneLabel": "Téléphone",
+    "areaLabel": "Zone desservie",
+    "form": {
+      "heading": "Poser ma candidature",
+      "lead": "Laissez-nous vos coordonnées, nous vous recontacterons.",
+      "name": "Nom complet",
+      "namePlaceholder": "Votre nom complet",
+      "phone": "Téléphone",
+      "phonePlaceholder": "514 000-0000",
+      "email": "Courriel",
+      "emailPlaceholder": "vous@exemple.com",
+      "message": "Message (optionnel)",
+      "messagePlaceholder": "Présentez-vous en quelques mots…",
+      "submit": "Soumettre votre candidature",
+      "sending": "Envoi…",
+      "successTitle": "Candidature envoyée",
+      "successDesc": "Merci ! Nous vous contacterons dès qu'une occasion se présente.",
+      "errorTitle": "L'envoi a échoué",
+      "errorDesc": "Réessayez, ou écrivez-nous directement.",
+      "errors": {
+        "name": "Entrez votre nom complet (2 caractères minimum).",
+        "nameMax": "Ce nom est trop long.",
+        "phone": "Entrez un numéro de téléphone valide.",
+        "phoneMax": "Ce numéro est trop long.",
+        "email": "Entrez une adresse courriel valide.",
+        "emailMax": "Ce courriel est trop long.",
+        "messageMax": "Votre message est trop long."
+      }
+    }
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Vos questions,",
+    "titleAccent": "nos réponses",
+    "intro": "L'essentiel sur nos façons de faire, les saisons et les soumissions.",
+    "asideTitle": "Une question qui n'est pas ici ?",
+    "asideLead": "Écrivez-nous : on évalue vos besoins et l'estimation est gratuite.",
+    "asideCta": "Nous joindre",
+    "asideImageAlt": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
+    "groups": [
+      {
+        "label": "Zone et soumission",
+        "items": [
+          {
+            "q": "Quelle zone desservez-vous ?",
+            "a": "Nous intervenons à Laval et sur la Rive-Nord, pour l'entretien comme pour l'aménagement."
+          },
+          {
+            "q": "Travaillez-vous pour le résidentiel et le commercial ?",
+            "a": "Oui. Nous entretenons les terrains résidentiels comme commerciaux, avec le même suivi."
+          },
+          {
+            "q": "L'estimation est-elle gratuite ?",
+            "a": "Oui, et sans engagement. Nous évaluons vos besoins sur place, puis nous vous proposons une solution adaptée à vos attentes et à votre budget."
+          }
+        ]
+      },
+      {
+        "label": "Entretien saisonnier",
+        "items": [
+          {
+            "q": "Que comprend l'ouverture printanière ?",
+            "a": "Le retrait des débris, des feuilles mortes et des roches laissés par les intempéries de l'hiver, le déliage des arbustes et le retrait des protections hivernales."
+          },
+          {
+            "q": "Quand faut-il ensemencer ?",
+            "a": "Du 1er mai au 20 juin, puis en septembre. Nous évitons les mois chauds : les résultats y sont nettement moins bons."
+          },
+          {
+            "q": "Que comprend la fermeture hivernale ?",
+            "a": "Nous abaissons la hauteur du gazon pour le préparer à l'hiver et faisons un dernier nettoyage. Nous lions aussi les arbustes et installons les protections des arbustes et vivaces."
+          }
+        ]
+      },
+      {
+        "label": "Aménagement",
+        "items": [
+          {
+            "q": "Tourbe ou ensemencement ?",
+            "a": "La tourbe donne une pelouse instantanée, uniforme et résistante — idéale pour créer ou rénover. L'ensemencement, lui, sert plutôt à densifier une pelouse existante ou à réparer des zones."
+          },
+          {
+            "q": "À quelle fréquence tailler une haie de cèdres ?",
+            "a": "Une taille annuelle suffit. Elle densifie la haie, lui garde une ligne nette et prévient le dégarnissement prématuré."
+          },
+          {
+            "q": "À quoi sert le paillis de cèdre ?",
+            "a": "Il retient l'humidité du sol et limite naturellement la propagation des mauvaises herbes. Il existe en plusieurs couleurs."
+          }
+        ]
+      }
+    ]
   },
   "footer": {
     "rights": "Tous droits réservés.",

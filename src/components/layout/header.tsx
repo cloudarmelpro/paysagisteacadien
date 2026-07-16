@@ -14,13 +14,18 @@ import { MobileNav } from "./mobile-nav";
  * « Soumission » à droite ; menu hamburger en mobile.
  */
 export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
-  const items = navLinks.map((link) => ({
-    label: dict.nav[link.key],
-    href: localizedPath(lang, link.segment),
-  }));
-  const contact = {
-    label: dict.nav.contact,
-    href: localizedPath(lang, contactSegment),
+  const items = navLinks.map((link) => {
+    const hash = "hash" in link ? `#${link.hash}` : "";
+    return {
+      label: dict.nav[link.key],
+      href: `${localizedPath(lang, link.segment)}${hash}`,
+    };
+  });
+  // Lien secondaire du header : « Emplois ». Le CTA « Soumission » mène, lui, à
+  // la page de contact (nous-joindre).
+  const careers = {
+    label: dict.nav.careers,
+    href: localizedPath(lang, "emplois"),
   };
   const quote = {
     label: dict.nav.quote,
@@ -64,22 +69,22 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         <div className="hidden items-center gap-5 lg:flex lg:justify-self-end">
           <LanguageSwitcher lang={lang} />
           <Link
-            href={contact.href}
+            href={careers.href}
             className="cursor-pointer whitespace-nowrap text-sm text-foreground/70 transition-colors duration-200 hover:text-foreground"
           >
-            {contact.label}
+            {careers.label}
           </Link>
           <Link href={quote.href} className={buttonVariants()}>
             {quote.label}
           </Link>
         </div>
 
-        {/* Actions — mobile / tablette */}
-        <div className="flex items-center gap-3 lg:hidden">
-          <LanguageSwitcher lang={lang} />
+        {/* Actions — mobile / tablette (langue déplacée dans le menu) */}
+        <div className="flex items-center lg:hidden">
           <MobileNav
+            lang={lang}
             items={items}
-            contact={contact}
+            contact={careers}
             quote={quote}
             labels={{
               open: lang === "fr" ? "Ouvrir le menu" : "Open menu",

@@ -1,20 +1,40 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { X } from "lucide-react";
+import { siteConfig } from "@/config/site";
+import { localizedPath, type Locale } from "@/lib/i18n";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { isActivePath, type NavLinkItem } from "./nav-links";
+import { LanguageSwitcher } from "./language-switcher";
+import {
+  scrollForSamePageAnchor,
+  useNavActive,
+  type NavLinkItem,
+} from "./nav-links";
 
+/**
+ * Menu mobile plein écran. Ouvert via l'image `menu.png` (burger), il déploie un
+ * panneau opaque calqué sur la référence : marque + fermeture en haut, grands
+ * liens empilés, filet, puis liens secondaires (réseaux + langue) et le CTA
+ * Soumission. Couleurs du site (fond clair, accents verts), pas le thème sombre.
+ *
+ * Animation : le panneau reste monté pendant la fermeture (`render`) pour jouer
+ * l'animation de sortie ; il est démonté à la fin de l'animation. `prefers-
+ * reduced-motion` neutralise le mouvement via la règle globale.
+ */
 export function MobileNav({
+  lang,
   items,
   contact,
   quote,
   labels,
   className,
 }: {
+  lang: Locale;
   items: NavLinkItem[];
   contact: NavLinkItem;
   quote: NavLinkItem;
@@ -22,9 +42,17 @@ export function MobileNav({
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
+  const [render, setRender] = useState(false);
   const pathname = usePathname();
+  const isActive = useNavActive(items);
 
-  // Échap ferme le menu, et le défilement est bloqué quand il est ouvert.
+  const openMenu = () => {
+    setRender(true);
+    setOpen(true);
+  };
+  const closeMenu = () => setOpen(false);
+
+  // Échap ferme le menu, et le défilement de fond est bloqué quand il est ouvert.
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -38,60 +66,122 @@ export function MobileNav({
     };
   }, [open]);
 
+  const primaryLinks = [...items, contact];
+  const socials = [
+    { label: "Facebook", href: siteConfig.social.facebook },
+    { label: "Instagram", href: siteConfig.social.instagram },
+    { label: "LinkedIn", href: siteConfig.social.linkedin },
+  ];
+
   return (
     <div className={className}>
       <button
         type="button"
-        aria-label={open ? labels.close : labels.open}
+        aria-label={labels.open}
         aria-expanded={open}
         aria-controls="mobile-menu"
-        onClick={() => setOpen((v) => !v)}
+        onClick={openMenu}
         className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
       >
-        {open ? <X className="size-5" /> : <Menu className="size-5" />}
+        <Image
+          src="/images/menu.png"
+          alt=""
+          width={24}
+          height={24}
+          priority
+          className="size-6"
+        />
       </button>
 
-      {open && (
-        <>
-          <div
-            aria-hidden
-            onClick={() => setOpen(false)}
-            className="fixed inset-0 top-16 z-40 bg-foreground/20 backdrop-blur-sm animate-in fade-in duration-200"
-          />
-          <nav
-            id="mobile-menu"
-            aria-label={labels.open}
-            className="absolute inset-x-0 top-full z-50 flex flex-col gap-1 border-b border-border bg-background p-4 shadow-lg animate-in slide-in-from-top-2 fade-in duration-200"
-          >
-            {[...items, contact].map((item) => {
-              const active = isActivePath(pathname, item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "flex min-h-11 cursor-pointer items-center rounded-md px-3 text-base transition-colors duration-200",
-                    active
-                      ? "bg-muted font-medium text-foreground"
-                      : "text-foreground/80 hover:bg-muted hover:text-foreground",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+      {render && (
+        <div
+          id="mobile-menu"
+          onAnimationEnd={(e) => {
+            // Fin de l'animation de SORTIE → on démonte le panneau.
+            if (e.target === e.currentTarget && !open) setRender(false);
+          }}
+          className={cn(
+            "fixed inset-0 z-50 flex flex-col bg-background duration-300 ease-out",
+            open
+              ? "animate-in fade-in slide-in-from-right-8"
+              : "animate-out fade-out slide-out-to-right-8",
+          )}
+        >
+          {/* Barre supérieure : marque + fermeture */}
+          <div className="flex h-16 shrink-0 items-center justify-between px-5 sm:px-8">
             <Link
-              href={quote.href}
-              onClick={() => setOpen(false)}
-              /* h-11 : cible tactile de 44px, au-dessus du h-9 par défaut. */
-              className={cn(buttonVariants(), "mt-2 h-11 text-base")}
+              href={localizedPath(lang, "")}
+              onClick={closeMenu}
+              aria-label={siteConfig.name}
+              className="cursor-pointer text-sm font-bold tracking-widest text-foreground uppercase"
             >
-              {quote.label}
+              Paysagiste Acadien
             </Link>
-          </nav>
-        </>
+            <button
+              type="button"
+              aria-label={labels.close}
+              onClick={closeMenu}
+              className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+            >
+              <X className="size-5" />
+            </button>
+          </div>
+
+          {/* Corps : grands liens en haut, secondaire en bas */}
+          <div className="flex flex-1 flex-col justify-between overflow-y-auto px-5 pt-6 pb-10 sm:px-8">
+            <nav aria-label={labels.open} className="flex flex-col">
+              {primaryLinks.map((item) => {
+                const active = isActive(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => {
+                      scrollForSamePageAnchor(e, item.href, pathname);
+                      closeMenu();
+                    }}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "cursor-pointer py-1.5 text-3xl font-medium tracking-tight transition-colors sm:text-4xl",
+                      active
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary",
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+
+            {/* Secondaire : CTA, réseaux, langue */}
+            <div className="mt-10 flex flex-col gap-6 border-t border-border pt-6">
+              <Link
+                href={quote.href}
+                onClick={closeMenu}
+                className={cn(buttonVariants({ size: "lg" }), "h-12 w-full text-base")}
+              >
+                {quote.label}
+              </Link>
+              <div className="flex items-center justify-between">
+                <div className="flex flex-wrap gap-x-5 gap-y-2">
+                  {socials.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cursor-pointer text-sm text-foreground/70 transition-colors hover:text-foreground"
+                    >
+                      {s.label}
+                    </a>
+                  ))}
+                </div>
+                <LanguageSwitcher lang={lang} />
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

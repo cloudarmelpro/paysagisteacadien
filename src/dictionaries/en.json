@@ -6,6 +6,7 @@
   "nav": {
     "home": "Home",
     "services": "Services",
+    "faq": "FAQ",
     "projects": "Projects",
     "about": "About",
     "contact": "Contact",
@@ -22,9 +23,33 @@
     "imageAlt": "Lush, freshly maintained lawn bordered by mature trees"
   },
   "services": {
-    "title": "Our services",
+    "title": "Our",
+    "titleAccent": "services",
+    "badge": "What we do",
+    "intro": "From spring opening to interlock paving, we maintain and design your outdoor spaces across Laval and the North Shore.",
+    "learnMore": "Learn more",
     "maintenance": "Maintenance",
     "development": "Landscaping",
+    "maintenanceLead": "Your grounds cared for season after season, without you having to think about it.",
+    "developmentLead": "From planting to paving — turnkey projects built to your budget.",
+    "descriptions": {
+      "entretien-de-terrain": "Spring opening, dethatching, overseeding, leaf collection and winter closing.",
+      "entretien-de-rocaille": "Spring cleanup, composted soil, cedar mulch and perennial trimming for healthy beds.",
+      "services-de-tailles": "Annual trimming keeps your cedar hedges dense, sharply lined and free of bare spots.",
+      "plantation": "Perennials, shrubs, cedar hedges and trees, chosen for your soil and sun exposure.",
+      "tourbe": "An instant, even and hard-wearing lawn — for new lawns or renovations.",
+      "pave-uni": "Shifted pavers, worn joints: we restore the surface to a neat, lasting finish."
+    },
+    "imageAlts": {
+      "entretien-paysager": "Lush, freshly maintained lawn bordered by mature trees",
+      "entretien-de-terrain": "Lush, freshly maintained lawn bordered by mature trees",
+      "entretien-de-rocaille": "Bed of yellow flowers edged with white pebbles",
+      "services-de-tailles": "Grass path lined with a dense, trimmed hedge",
+      "amenagement-paysager": "Wooden pergola and trimmed boxwood backlit by the sun",
+      "plantation": "Wooden pergola and trimmed boxwood backlit by the sun",
+      "tourbe": "Large mown lawn and mature trees in a green space",
+      "pave-uni": "Interlock pavers laid in a circular fan pattern under raking light"
+    },
     "items": {
       "entretien-paysager": "Landscape maintenance",
       "entretien-de-terrain": "Grounds maintenance",
@@ -36,19 +61,191 @@
       "pave-uni": "Interlock paving"
     }
   },
+  "serviceDetail": {
+    "backToServices": "All our services",
+    "badge": "Services",
+    "exploreLabel": "Our services",
+    "relatedLabel": "Related services",
+    "ctaTitle": "Ready to get started?",
+    "ctaLead": "Get a free, no-obligation estimate tailored to your needs and your budget.",
+    "cta": "Request an estimate",
+    "items": {
+      "entretien-paysager": {
+        "metaTitle": "Landscape maintenance | Paysagiste Acadien",
+        "metaDescription": "Grounds maintenance, rock garden care and cedar hedge trimming in Laval and the Rive-Nord. Leave the upkeep of your property to us.",
+        "intro": "Leave the maintenance of your home or business to us and enjoy the season to the fullest, worry-free! Whether it's caring for your grounds, your rock gardens, or trimming your shrubs and cedars, we handle it all. Let us lighten your load so you can make the most of your summer.",
+        "sections": []
+      },
+      "amenagement-paysager": {
+        "metaTitle": "Landscape design | Paysagiste Acadien",
+        "metaDescription": "Planting, sod installation and interlock paving restoration in Laval and the Rive-Nord. Landscaping tailored to you.",
+        "intro": "Whether it's a turnkey project, planting, sod installation or paving restoration, we're here to help. Let us guide you through the design and execution of your landscaping project. With our expertise, we handle both brand-new installations and renovations, making sure the result matches your expectations perfectly.",
+        "sections": []
+      },
+      "entretien-de-terrain": {
+        "metaTitle": "Grounds maintenance | Paysagiste Acadien",
+        "metaDescription": "Spring opening, dethatching, seeding, leaf removal and winter closing in Laval and the Rive-Nord.",
+        "intro": "Paysagiste Acadien offers grounds maintenance services throughout Laval and the Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Spring opening",
+            "body": "Our spring cleanup service removes all the debris that couldn't be cleared before winter. We also clean your lawn to remove rocks and debris blown in by snowstorms, and take care of gathering any dead leaves still on your property. In addition, we untie your shrubs and remove the winter protections installed to shield them."
+          },
+          {
+            "heading": "Dethatching",
+            "body": "We offer our clients a dethatching service at the start of each season. Dethatching is an excellent practice for removing the dead grass left behind by winter. A lawn overloaded with thatch can struggle to grow, so removing it is recommended to encourage healthy, vigorous growth."
+          },
+          {
+            "heading": "Seeding",
+            "body": "We offer a seeding service for light lawn repairs, as well as overseeding to make your lawn as dense as possible. Seeding is available from May 1st to June 20th and during the month of September. We don't recommend seeding during the hot season, in order to optimize results."
+          },
+          {
+            "heading": "Leaf removal",
+            "body": "We offer a dead-leaf removal service for our clients in the fall. We collect and haul the leaves to the disposal site, helping you keep your property clean and tidy."
+          },
+          {
+            "heading": "Grounds closing",
+            "body": "We always perform a basic closing of the grounds for our clients, which involves cutting your lawn short to prepare it for winter and a final cleanup to end the season. We also offer shrub-tying services and the installation of winter protection for shrubs and perennials."
+          }
+        ]
+      },
+      "entretien-de-rocaille": {
+        "metaTitle": "Rock garden maintenance | Paysagiste Acadien",
+        "metaDescription": "Spring cleanup, composted soil, cedar mulch and perennial pruning for healthy beds in Laval and the Rive-Nord.",
+        "intro": "Paysagiste Acadien offers professional rock garden maintenance services in the Laval and Rive-Nord region.",
+        "sections": [
+          {
+            "heading": "Rock garden opening",
+            "body": "We always start our season with a thorough cleanup of the rock gardens, removing all the dead leaves and debris left by winter. We also redefine the natural borders that were damaged during the cold season."
+          },
+          {
+            "heading": "Composted soil top-up",
+            "body": "We offer a service to refresh rock gardens with composted soil. Adding soil enriches the ground, promoting the health and growth of the root systems of your perennials and shrubs."
+          },
+          {
+            "heading": "Cedar mulch top-up",
+            "body": "We offer a service to refresh rock gardens with cedar mulch, available in several colours. Cedar mulch benefits the perennials and shrubs of the rock garden by helping retain moisture in the soil. It also helps control weeds, naturally limiting their spread."
+          },
+          {
+            "heading": "Perennial pruning and season closing",
+            "body": "At the end of the season, we offer a perennial-cutting service to prepare them for winter. We also provide a rose-pruning service, along with the installation of winter protection to keep them safe through the cold season."
+          }
+        ]
+      },
+      "services-de-tailles": {
+        "metaTitle": "Cedar hedge trimming | Paysagiste Acadien",
+        "metaDescription": "Annual cedar hedge trimming in Laval and the Rive-Nord: density, a clean line and prevention of thinning.",
+        "intro": "Paysagiste Acadien offers cedar hedge trimming services available throughout the city of Laval and the Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Cedar hedge trimming",
+            "body": "Trimming cedar hedges is an essential piece of care that shouldn't be neglected. Done once a year, it lets cedars grow denser, keep a clean silhouette and avoid premature thinning. At Paysagiste Acadien, we work with the right tools and the know-how needed to guarantee an impeccable result, no matter the length or height of your hedge."
+          }
+        ]
+      },
+      "plantation": {
+        "metaTitle": "Planting | Paysagiste Acadien",
+        "metaDescription": "Planting of perennials, shrubs, cedar hedges and trees in Laval and the Rive-Nord, chosen for your soil and sun exposure.",
+        "intro": "Paysagiste Acadien offers landscaping services in the city of Laval and the Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Planting perennials and shrubs",
+            "body": "Our company is proud to offer a professional perennial-planting service tailored to your needs. Specialized in sustainable landscaping, we guide you in creating a harmonious, low-maintenance garden. We help you choose perennials based on your soil type, sun exposure and aesthetic preferences. Low-maintenance by nature, perennials offer lasting beauty while reducing the need for frequent care."
+          },
+          {
+            "heading": "Planting cedar hedges",
+            "body": "We offer a quality cedar hedge planting service, ideal for creating a natural fence, enhancing your landscaping and ensuring lasting privacy. Shield your property from prying eyes while keeping a natural, attractive look. Beyond improving the comfort of your outdoor space, cedar hedges reduce the impact of wind and bring a harmonious touch of greenery to your surroundings."
+          },
+          {
+            "heading": "Planting trees",
+            "body": "Give your outdoor space a touch of greenery and nature with our professional tree-planting service. Whether to beautify your garden, create shade or support biodiversity, we guide you in choosing and planting the right trees for your environment. We select robust, healthy trees to ensure optimal growth and help you choose the ideal varieties for your goals."
+          }
+        ]
+      },
+      "tourbe": {
+        "metaTitle": "Sod installation | Paysagiste Acadien",
+        "metaDescription": "Sod installation in Laval and the Rive-Nord: an instant, uniform and hard-wearing lawn, for new lawns and renovations alike.",
+        "intro": "Paysagiste Acadien offers landscaping services in the city of Laval and the Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Sod installation",
+            "body": "Give your grounds a lush, flawless look with our professional sod installation service. Whether creating a new lawn or renovating an existing space, we offer a fast, effective solution for a dense, perfectly healthy lawn. Unlike seeding, sod provides an instant, uniform and hard-wearing lawn. We also provide personalized advice to ensure optimal growth and preserve the beauty of your lawn over the long term."
+          }
+        ]
+      },
+      "pave-uni": {
+        "metaTitle": "Interlock paving repair | Paysagiste Acadien",
+        "metaDescription": "Interlock paving repair and restoration in Laval and the Rive-Nord: shifted pavers, worn joints, surface brought back to life.",
+        "intro": "Paysagiste Acadien offers landscaping services in the city of Laval and the Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Interlock paving repair and restoration",
+            "body": "Restore your outdoor space to its original shine with our interlock paving restoration service. Over time, pavers can shift, wear down or see their joints deteriorate. We offer a complete solution to revive your surface, extend its durability and give it a neat, uniform appearance. Trust our expertise to restore and preserve the beauty of your interlock paving."
+          }
+        ]
+      }
+    }
+  },
   "about": {
-    "title": "About",
-    "body": "Paysagiste Acadien is a young, dynamic company driven by a passion for work done right. Our mission: to transform and maintain your outdoor spaces with professionalism, passion and transparency.",
+    "metaTitle": "About | Paysagiste Acadien",
+    "metaDescription": "A young, dynamic company driven by a passion for work done right. Landscape design and maintenance across Laval and the North Shore.",
+    "badge": "About",
+    "title": "Driven by a passion for",
+    "titleAccent": "work done right",
+    "intro": "We have built deep expertise in the trades of outdoor spaces — landscape maintenance and design in particular. Our mission is to give our clients quality work that combines expertise, professionalism and attention to detail.",
+    "imageAlt": "Lush, freshly maintained lawn bordered by mature trees",
+    "approachLabel": "Our approach",
+    "approach": [
+      "We also offer turnkey services for a hassle-free experience. From design to completion, we handle every stage of your project to ensure a harmonious, functional result. Whether it's installing interlock paving, planting cedar hedges, laying sod or the seasonal upkeep of your grounds, we do everything we can to meet your expectations and deliver a result worthy of your standards.",
+      "We firmly believe that every project deserves special attention and personalized guidance in order to meet the highest expectations. It's with this vision that we commit to providing a service that is caring, rigorous and tailored to your needs."
+    ],
+    "approachClosing": "We look forward to working with you!",
+    "missionLabel": "Our mission",
+    "mission": "Paysagiste Acadien's mission is to transform and maintain your outdoor spaces with professionalism, passion and transparency.",
+    "missionBody": [
+      "Specialized in landscape design and grounds maintenance, we are committed to delivering high-quality work that meets industry standards and our clients' expectations. Our approach is built on excellence, durability and meticulous attention to detail, to create landscapes that are harmonious, functional and beautiful.",
+      "We believe transparency is essential in everything we do. That's why we keep communication clear and honest at every stage of your project. From the initial assessment to the finished work, we make sure to give you accurate information and advice tailored to your needs, building a collaboration based on trust."
+    ],
+    "engagementLabel": "Our commitment",
+    "engagementLead": "Client satisfaction is at the heart of what we do. We commit to attentive listening, transparent communication and rigorous follow-up at every stage of your project.",
+    "engagementBody": [
+      "We offer a professional, courteous and personalized service, backed by sound advice and lasting solutions for a perfect harmony with your green spaces.",
+      "Thanks to our expertise and know-how, we can take on projects of any scale. We combine precision and passion to care for your landscaping with the same attention to detail as if it were our own, all while ensuring excellent value for money."
+    ],
+    "valuesTitle": "Our values",
     "values": [
-      "Client satisfaction through attentive listening",
-      "Transparent communication at every stage",
-      "Professional, courteous and personalized service",
-      "Precision and passion for landscaping",
-      "Quality-to-price value"
-    ]
+      {
+        "title": "Attentive listening",
+        "desc": "We understand your needs before proposing anything."
+      },
+      {
+        "title": "Transparent communication",
+        "desc": "Rigorous, clear follow-up at every stage of your project."
+      },
+      {
+        "title": "Personalized service",
+        "desc": "Professional, courteous and tailored to your grounds and expectations."
+      },
+      {
+        "title": "Lasting solutions",
+        "desc": "Sound advice and choices that hold up over time."
+      }
+    ],
+    "ctaTitle": "Have a project in mind?",
+    "ctaLead": "Let's talk. The estimate is free and with no obligation.",
+    "cta": "Request a quote"
   },
   "contact": {
-    "title": "Contact us",
+    "metaTitle": "Contact | Paysagiste Acadien",
+    "metaDescription": "A question or a project? Write to us or give us a call. Landscape design and maintenance across Laval and the North Shore.",
+    "badge": "Contact",
+    "title": "Let's talk about your",
+    "titleAccent": "project",
+    "intro": "A question, a project in mind? Write to us and we'll get back to you quickly.",
+    "infoTitle": "Contact details",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "areaLabel": "Service area",
     "hoursTitle": "Business hours",
     "hours": {
       "weekdays": "Monday – Friday: 9 a.m. – 7 p.m.",
@@ -56,16 +253,160 @@
       "sunday": "Sunday: closed"
     },
     "form": {
+      "heading": "Write to us",
+      "lead": "Fill out the form and we'll get back to you shortly.",
       "name": "Name",
+      "namePlaceholder": "Your name",
       "email": "Email",
-      "city": "Municipality",
-      "address": "Address",
-      "phone": "Phone",
-      "service": "Service needed",
-      "startDate": "Project start date",
-      "referral": "How did you hear about us?",
-      "submit": "Send"
+      "emailPlaceholder": "you@example.com",
+      "municipality": "Municipality",
+      "municipalityPlaceholder": "Your municipality",
+      "address": "Address (optional)",
+      "addressPlaceholder": "Number and street",
+      "phone": "Phone (optional)",
+      "phonePlaceholder": "514 000-0000",
+      "service": "Service needed (optional)",
+      "servicePlaceholder": "Select a service",
+      "startDate": "Preferred start date (optional)",
+      "startDatePlaceholder": "Pick a date",
+      "referral": "How did you hear about us? (optional)",
+      "referralPlaceholder": "Select an option",
+      "referralOptions": {
+        "google": "Google search",
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "wordOfMouth": "Word of mouth",
+        "signage": "Signage or vehicle",
+        "other": "Other"
+      },
+      "message": "Message (optional)",
+      "messagePlaceholder": "Tell us what you need…",
+      "submit": "Send",
+      "sending": "Sending…",
+      "successTitle": "Message sent",
+      "successDesc": "Thank you! We'll get back to you shortly.",
+      "errorTitle": "Sending failed",
+      "errorDesc": "Please try again, or call us directly.",
+      "errors": {
+        "name": "Enter your name (2 characters minimum).",
+        "nameMax": "This name is too long.",
+        "email": "Enter a valid email address.",
+        "emailMax": "This email is too long.",
+        "municipality": "Enter your municipality (2 characters minimum).",
+        "municipalityMax": "This municipality name is too long.",
+        "addressMax": "This address is too long.",
+        "phone": "This phone number looks invalid.",
+        "phoneMax": "This number is too long.",
+        "serviceMax": "Invalid value.",
+        "startDateMax": "Invalid date.",
+        "referralMax": "Invalid value.",
+        "messageMax": "Your message is too long."
+      }
     }
+  },
+  "careers": {
+    "metaTitle": "Careers | Paysagiste Acadien",
+    "metaDescription": "Want to join the Paysagiste Acadien team? Send us your application — we keep every profile for our next opportunities.",
+    "badge": "Careers",
+    "title": "Would you like to join",
+    "titleAccent": "our team?",
+    "intro": "Send us your application: we keep every profile on file and reach out as soon as an opportunity opens up.",
+    "infoTitle": "Job openings",
+    "statusTitle": "Current positions",
+    "status": "All our positions are currently filled, but stay tuned for our next opportunities!",
+    "cvLabel": "Send your résumé",
+    "phoneLabel": "Phone",
+    "areaLabel": "Service area",
+    "form": {
+      "heading": "Apply now",
+      "lead": "Leave us your contact details and we'll get back to you.",
+      "name": "Full name",
+      "namePlaceholder": "Your full name",
+      "phone": "Phone",
+      "phonePlaceholder": "514 000-0000",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "message": "Message (optional)",
+      "messagePlaceholder": "Tell us a bit about yourself…",
+      "submit": "Submit your application",
+      "sending": "Sending…",
+      "successTitle": "Application sent",
+      "successDesc": "Thank you! We'll contact you as soon as an opportunity comes up.",
+      "errorTitle": "Something went wrong",
+      "errorDesc": "Please try again, or email us directly.",
+      "errors": {
+        "name": "Enter your full name (2 characters minimum).",
+        "nameMax": "This name is too long.",
+        "phone": "Enter a valid phone number.",
+        "phoneMax": "This number is too long.",
+        "email": "Enter a valid email address.",
+        "emailMax": "This email is too long.",
+        "messageMax": "Your message is too long."
+      }
+    }
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Your questions,",
+    "titleAccent": "answered",
+    "intro": "The essentials on how we work, the seasons and quotes.",
+    "asideTitle": "A question that isn't here?",
+    "asideLead": "Write to us: we assess your needs and the estimate is free.",
+    "asideCta": "Contact us",
+    "asideImageAlt": "Lush, freshly maintained lawn bordered by mature trees",
+    "groups": [
+      {
+        "label": "Area and quotes",
+        "items": [
+          {
+            "q": "Which area do you serve?",
+            "a": "We work across Laval and the North Shore, for both maintenance and landscaping."
+          },
+          {
+            "q": "Do you work on residential and commercial properties?",
+            "a": "Yes. We maintain residential and commercial grounds alike, with the same follow-up."
+          },
+          {
+            "q": "Is the estimate free?",
+            "a": "Yes, with no obligation. We assess your needs on site, then propose a solution suited to your expectations and budget."
+          }
+        ]
+      },
+      {
+        "label": "Seasonal maintenance",
+        "items": [
+          {
+            "q": "What does spring opening include?",
+            "a": "Removing the debris, dead leaves and rocks left by winter storms, unbinding shrubs and taking off winter protections."
+          },
+          {
+            "q": "When should seeding be done?",
+            "a": "From May 1 to June 20, then in September. We avoid the hot months: results there are markedly poorer."
+          },
+          {
+            "q": "What does winter closing include?",
+            "a": "We lower the grass height to prepare it for winter and do a final cleanup. We also bind shrubs and install protections for shrubs and perennials."
+          }
+        ]
+      },
+      {
+        "label": "Landscaping",
+        "items": [
+          {
+            "q": "Sod or seeding?",
+            "a": "Sod gives an instant, even and hard-wearing lawn — ideal to create or renovate. Seeding is better suited to densifying an existing lawn or repairing patches."
+          },
+          {
+            "q": "How often should a cedar hedge be trimmed?",
+            "a": "Once a year is enough. It keeps the hedge dense, holds a clean line and prevents premature thinning."
+          },
+          {
+            "q": "What is cedar mulch for?",
+            "a": "It retains soil moisture and naturally limits weed spread. It comes in several colours."
+          }
+        ]
+      }
+    ]
   },
   "footer": {
     "rights": "All rights reserved.",
