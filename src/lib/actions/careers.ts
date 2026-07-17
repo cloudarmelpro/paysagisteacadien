@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { i18n } from "@/lib/i18n";
+import { sendSubmissionEmail } from "@/lib/email";
 import {
   careersSchema,
   type CareersActionResult,
@@ -43,6 +44,15 @@ export async function submitApplication(
         locale: safeLocale,
       },
     });
+
+    // Notification best-effort : n'affecte pas le statut de la soumission.
+    await sendSubmissionEmail("Nouvelle candidature (emplois)", [
+      { label: "Nom", value: d.name },
+      { label: "Courriel", value: d.email },
+      { label: "Téléphone", value: d.phone },
+      { label: "Message", value: d.message?.trim() ?? "" },
+    ]);
+
     return { status: "success" };
   } catch (error) {
     console.error("Échec de l'enregistrement de la candidature :", error);

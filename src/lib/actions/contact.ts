@@ -2,6 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { i18n } from "@/lib/i18n";
+import { sendSubmissionEmail } from "@/lib/email";
 import {
   contactSchema,
   type ActionResult,
@@ -50,6 +51,20 @@ export async function submitContact(
         locale: safeLocale,
       },
     });
+
+    // Notification best-effort : n'affecte pas le statut de la soumission.
+    await sendSubmissionEmail("Nouvelle demande de soumission", [
+      { label: "Nom", value: d.name },
+      { label: "Courriel", value: d.email },
+      { label: "Municipalité", value: d.municipality },
+      { label: "Adresse", value: d.address ?? "" },
+      { label: "Téléphone", value: d.phone ?? "" },
+      { label: "Services", value: (d.service ?? []).join(", ") },
+      { label: "Début souhaité", value: d.startDate ?? "" },
+      { label: "Référence", value: (d.referral ?? []).join(", ") },
+      { label: "Message", value: d.message ?? "" },
+    ]);
+
     return { status: "success" };
   } catch (error) {
     console.error("Échec de l'enregistrement du message de contact :", error);

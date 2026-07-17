@@ -13,9 +13,15 @@ export const siteConfig = {
     phone: "514-808-6549",
     phoneRaw: "5148086549",
     whatsapp: "https://wa.me/15148086549",
-    email: "info@paysagisteacadien.com",
-    quoteEmail: "soumission@paysagisteacadien.com",
-    recruitmentEmail: "recrutement@paysagisteacadien.com",
+    /*
+     * Une seule boîte pour tout le site (contact, soumissions, recrutement). Les
+     * trois clés sont conservées pour que chaque point d'entrée reste nommé, mais
+     * pointent la même adresse. Doit rester identique au destinataire d'envoi des
+     * formulaires (`RESEND_TO` par défaut, voir src/lib/email.ts).
+     */
+    email: "paysagisteacadien@outlook.com",
+    quoteEmail: "paysagisteacadien@outlook.com",
+    recruitmentEmail: "paysagisteacadien@outlook.com",
     /*
      * Aucun texte affiché ici : seulement des constantes non traduisibles.
      * La zone desservie est une chaîne traduite et vit dans les dictionnaires
@@ -57,6 +63,7 @@ export const services = [
   { slug: "plantation", category: "development" },
   { slug: "tourbe", category: "development" },
   { slug: "pave-uni", category: "development" },
+  { slug: "optimisation-irrigation", category: "development" },
 ] as const;
 
 /**
@@ -73,6 +80,7 @@ export const serviceImages: Record<ServiceDetailSlug, string> = {
   plantation: "/images/jardin-3.jpg",
   tourbe: "/images/jardin-1.jpg",
   "pave-uni": "/images/pave-uni.jpg",
+  "optimisation-irrigation": "/images/jardin-1.jpg",
 };
 
 /**
@@ -92,7 +100,7 @@ export const serviceGroups = [
   {
     key: "development",
     segment: "amenagement-paysager",
-    services: ["plantation", "tourbe", "pave-uni"],
+    services: ["plantation", "tourbe", "pave-uni", "optimisation-irrigation"],
   },
 ] as const;
 

@@ -45,7 +45,8 @@
       "services-de-tailles": "Annual trimming keeps your cedar hedges dense, sharply lined and free of bare spots.",
       "plantation": "Perennials, shrubs, cedar hedges and trees, chosen for your soil and sun exposure.",
       "tourbe": "An instant, even and hard-wearing lawn — for new lawns or renovations.",
-      "pave-uni": "Shifted pavers, worn joints: we restore the surface to a neat, lasting finish."
+      "pave-uni": "Shifted pavers, worn joints: we restore the surface to a neat, lasting finish.",
+      "optimisation-irrigation": "We adapt your existing watering system to new plantings, without redoing it all."
     },
     "imageAlts": {
       "entretien-paysager": "Lush, freshly maintained lawn bordered by mature trees",
@@ -55,7 +56,8 @@
       "amenagement-paysager": "Wooden pergola and trimmed boxwood backlit by the sun",
       "plantation": "Wooden pergola and trimmed boxwood backlit by the sun",
       "tourbe": "Large mown lawn and mature trees in a green space",
-      "pave-uni": "Interlock pavers laid in a circular fan pattern under raking light"
+      "pave-uni": "Interlock pavers laid in a circular fan pattern under raking light",
+      "optimisation-irrigation": "Automatic sprinkler head running in a planting bed"
     },
     "items": {
       "entretien-paysager": "Landscape maintenance",
@@ -65,7 +67,8 @@
       "amenagement-paysager": "Landscape design",
       "plantation": "Planting",
       "tourbe": "Sod",
-      "pave-uni": "Interlock paving"
+      "pave-uni": "Interlock paving",
+      "optimisation-irrigation": "Irrigation optimization"
     }
   },
   "serviceDetail": {
@@ -211,6 +214,25 @@
           {
             "heading": "How a restoration unfolds",
             "body": "Repairing interlock paving isn't about setting the pavers back and hoping: it's about correcting what lies underneath. The pavers in the affected area are lifted and set aside, the bedding layer is reworked and levelled, then the pavers are laid back in their original pattern and the surface is compacted. The joints are refilled last, since they are what locks the whole thing together and keeps the pavers from shifting again. A sunken edge is dealt with along the way: without solid restraint on the sides, the surface will spread again."
+          }
+        ]
+      },
+      "optimisation-irrigation": {
+        "metaTitle": "Irrigation system optimization | Paysagiste Acadien",
+        "metaDescription": "Adapting and optimizing your existing irrigation system when adding new plantings or landscaping, in Laval and the North Shore.",
+        "intro": "When a watering system is already in place and the grounds change, redoing everything is rarely necessary. We take your existing setup and adapt it to the new layout.",
+        "sections": [
+          {
+            "heading": "Adapt what's there, rather than start over",
+            "body": "When new plantings are added or new landscaping is created — a rock garden, a flower bed — the existing irrigation system no longer matches the needs of the grounds. Instead of redoing the whole installation, we take the existing system and modify it to fit the new layout, which avoids unnecessary work and cost."
+          },
+          {
+            "heading": "Watering suited to the new plants",
+            "body": "Every plant has its own water needs. We adjust, rearrange or modify certain zones, components and settings of the system so that water distribution matches what actually grows on the grounds. The goal is efficient watering — not too much, not too little, in the right place."
+          },
+          {
+            "heading": "Correct and optimize how it runs",
+            "body": "We spot poorly watered areas, correct imbalances and optimize the overall operation of the irrigation. The result: a system that keeps up with your changing grounds and waters where it should, without waste."
           }
         ]
       }

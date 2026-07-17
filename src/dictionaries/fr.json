@@ -45,7 +45,8 @@
       "services-de-tailles": "La taille annuelle densifie vos haies de cèdres, garde une ligne nette et prévient le dégarnissement.",
       "plantation": "Vivaces, arbustes, haies de cèdres et arbres, choisis selon votre sol et votre ensoleillement.",
       "tourbe": "Une pelouse instantanée, uniforme et résistante — en création comme en rénovation.",
-      "pave-uni": "Pavés déplacés, joints usés : on restaure la surface pour une apparence soignée et durable."
+      "pave-uni": "Pavés déplacés, joints usés : on restaure la surface pour une apparence soignée et durable.",
+      "optimisation-irrigation": "On adapte votre système d'arrosage existant aux nouvelles plantations, sans tout refaire."
     },
     "imageAlts": {
       "entretien-paysager": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
@@ -55,7 +56,8 @@
       "amenagement-paysager": "Pergola de bois et buis taillés en contre-jour",
       "plantation": "Pergola de bois et buis taillés en contre-jour",
       "tourbe": "Grande pelouse tondue et arbres matures dans un espace vert",
-      "pave-uni": "Pavé uni posé en éventail circulaire, éclairé en lumière rasante"
+      "pave-uni": "Pavé uni posé en éventail circulaire, éclairé en lumière rasante",
+      "optimisation-irrigation": "Tête d'arrosage automatique en action dans une plate-bande"
     },
     "items": {
       "entretien-paysager": "Entretien paysager",
@@ -65,7 +67,8 @@
       "amenagement-paysager": "Aménagement paysager",
       "plantation": "Plantation",
       "tourbe": "Tourbe",
-      "pave-uni": "Pavé uni"
+      "pave-uni": "Pavé uni",
+      "optimisation-irrigation": "Optimisation de l'irrigation"
     }
   },
   "serviceDetail": {
@@ -211,6 +214,25 @@
           {
             "heading": "Comment se déroule une restauration",
             "body": "Réparer un pavé uni, ce n'est pas remettre les pavés en place et espérer : c'est corriger ce qu'il y a en dessous. Les pavés de la zone touchée sont relevés et mis de côté, le lit de pose est repris et nivelé, puis les pavés sont replacés selon leur motif d'origine et la surface est compactée. Les joints sont enfin regarnis, car ce sont eux qui verrouillent l'ensemble et empêchent les pavés de se remettre à bouger. Une bordure affaissée se reprend au passage : sans retenue solide sur les côtés, la surface repartira dans tous les sens."
+          }
+        ]
+      },
+      "optimisation-irrigation": {
+        "metaTitle": "Optimisation de systèmes d'irrigation | Paysagiste Acadien",
+        "metaDescription": "Adaptation et optimisation de votre système d'irrigation existant lors de nouvelles plantations ou d'un nouvel aménagement, à Laval et sur la Rive-Nord.",
+        "intro": "Quand un système d'arrosage est déjà en place et que le terrain évolue, il n'est pas toujours nécessaire de tout refaire. Nous reprenons votre installation existante et l'adaptons à la nouvelle configuration.",
+        "sections": [
+          {
+            "heading": "Adapter l'existant plutôt que tout refaire",
+            "body": "Lorsqu'on ajoute de nouvelles plantations ou qu'on crée un nouvel aménagement — une rocaille, une plate-bande — le système d'irrigation en place ne correspond plus toujours aux besoins du terrain. Plutôt que de refaire l'installation au complet, nous reprenons le système existant et le modifions pour qu'il réponde à la nouvelle disposition, ce qui évite des travaux et des coûts inutiles."
+          },
+          {
+            "heading": "Un arrosage adapté aux nouvelles plantes",
+            "body": "Chaque plante a ses propres besoins en eau. Nous ajustons, réorganisons ou modifions certaines zones, composantes et réglages du système pour que la distribution de l'eau corresponde à ce qui pousse réellement sur le terrain. L'objectif est un arrosage efficace, ni trop ni trop peu, au bon endroit."
+          },
+          {
+            "heading": "Corriger et optimiser le fonctionnement",
+            "body": "Nous repérons les zones mal arrosées, corrigeons les déséquilibres et optimisons le fonctionnement général de l'irrigation. Le résultat : un système qui suit l'évolution de votre terrain et arrose là où il faut, sans gaspillage."
           }
         ]
       }
