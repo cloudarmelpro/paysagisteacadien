@@ -10,27 +10,27 @@ Suivi de ce qui reste à faire. Dernière mise à jour : **17 juillet 2026**.
 > sur Google. Le site neuf est en `noindex` volontaire sur l'URL Vercel. Toutes les
 > optimisations SEO attendent le cutover pour exister.
 
-> 🔄 **Changement de plan (juillet 2026) : TOUT passe chez Hostinger** (plan Business,
-> Node.js) — site + domaine + email. Le site **n'ira PAS sur Vercel** au final ; il
-> sera **auto-hébergé** chez Hostinger (`output: 'standalone'` déjà activé).
+> 🔄 **Plan d'hébergement (juillet 2026) : TOUT chez Hostinger** (plan Business,
+> Node.js) — site + domaine. Le site **n'ira PAS sur Vercel** au final ; il sera
+> **auto-hébergé** chez Hostinger (`output: 'standalone'` déjà activé).
 > Le domaine `paysagisteacadien.com` est transféré de **GoDaddy vers Hostinger**
 > (~5 jours). **Ne rien faire au DNS ni au déploiement avant la fin du transfert.**
-> Ensuite, tout dans **une seule session** chez Hostinger : déploiement Node.js du site,
-> création de la boîte `info@paysagisteacadien.com`, bascule email vers SMTP Hostinger,
-> et pointage du domaine. Le DNS/hébergement est géré par le client (Cédric).
+> Ensuite, dans **une seule session** chez Hostinger : déploiement Node.js du site et
+> pointage du domaine. Le DNS/hébergement est géré par le client (Cédric).
 >
-> **Resend est abandonné** (voir §2). **Vercel n'est plus la cible** (les sections
-> ci-dessous qui parlent de « bascule vers Vercel » sont à lire comme « déploiement
-> Hostinger »).
+> **Email : Resend, en place et testé** (livre dans l'Outlook — voir §2). **Vercel
+> n'est plus la cible** : les sections parlant de « bascule vers Vercel » se lisent
+> « déploiement Hostinger ».
 
 ---
 
 ## 🔴 Bloquant — sans ça, le reste ne sert à rien
 
-### 1. Basculer le domaine vers Vercel — **client**
-Pointer `paysagisteacadien.com` sur le déploiement Vercel.
+### 1. Déployer sur Hostinger + pointer le domaine — **client + moi**
+Déployer le site (Node.js, `output: standalone`) chez Hostinger, puis pointer
+`paysagisteacadien.com` dessus — après le transfert du domaine (encadré ci-dessus).
 
-Effets automatiques, **aucun code à changer** :
+Effets automatiques une fois le domaine servi par le nouveau site, **aucun code à changer** :
 - le `noindex` se lève tout seul (il ne vise que les hôtes ≠ domaine final) ;
 - les `canonical`, le sitemap et le JSON-LD deviennent justes (ils pointent déjà sur le domaine final) ;
 - les redirections 308 des anciennes URL prennent effet.
@@ -52,24 +52,21 @@ Modèle : `.env.example`.
 
 - [ ] `DATABASE_URL` — sans elle, le site s'affiche mais **les formulaires échouent à
   l'envoi** (nous-joindre + emplois écrivent dans Neon).
-- [ ] **Email : migrer de Resend vers le SMTP Hostinger.** Décision : tout chez
-  Hostinger, donc **Resend est abandonné** (la clé testée ne sert plus). À la place :
-  1. Créer la boîte `info@paysagisteacadien.com` dans Hostinger (mailboxes gratuites du
-     plan Business).
-  2. *Moi* : remplacer `src/lib/email.ts` (Resend) par un envoi **SMTP via nodemailer**
-     (`smtp.hostinger.com`), piloté par `SMTP_HOST/PORT/USER/PASS`.
-  3. Définir ces variables dans Hostinger. Best-effort conservé : un échec d'envoi ne
-     casse jamais la soumission (elle reste en base).
-  Tant que ce n'est pas fait, les soumissions restent **enregistrées en base** (rien
-  n'est perdu), mais aucun courriel n'est envoyé.
+- [x] **Email (Resend) — EN PLACE ET TESTÉ.** ✅ Compte Resend créé sur l'Outlook
+  (`paysagisteacadien@outlook.com`) ; un envoi de test réel est bien arrivé dans cette
+  boîte. Le code (`src/lib/email.ts`) envoie chaque soumission via Resend, best-effort
+  (un échec n'empêche jamais l'enregistrement en base).
+- [ ] `RESEND_API_KEY` — la seule chose restante : **remettre la clé dans les variables
+  d'environnement de Hostinger** au déploiement (elle est déjà dans le `.env` local).
+  Sans elle en production, les soumissions restent en base mais aucun courriel ne part.
 
-> ~~Ancien plan Resend / Outlook~~ — abandonné. La clé Resend (compte dev
-> `cloudarmelpro@gmail.com`) fonctionnait mais ne livrait qu'à ce compte en mode test ;
-> remplacée par une vraie boîte au domaine, plus simple et cohérente avec « tout chez
-> Hostinger ».
+> Expéditeur actuel : `onboarding@resend.dev` (affiché « Paysagiste Acadien »). Pour un
+> « De : » à ton domaine (`no-reply@paysagisteacadien.com`), vérifier le domaine dans
+> Resend — **optionnel**, sans effet sur la réception. Le plan SMTP Hostinger est
+> abandonné : Resend marche et c'est plus simple.
 
-**Vérifier :** envoyer un vrai formulaire de test sur le site en ligne, puis confirmer
-la réception dans la boîte Outlook.
+**Vérifier après déploiement :** envoyer un vrai formulaire sur le site en ligne, puis
+confirmer la réception dans l'Outlook.
 
 ### 3. Google Business Profile — **client**
 C'est **le facteur n°1** pour « paysagiste Laval » (le map pack passe avant les résultats organiques). Aujourd'hui : aucun signal.
