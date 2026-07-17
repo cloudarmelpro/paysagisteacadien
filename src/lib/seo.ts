@@ -51,8 +51,13 @@ export function buildAreaServed(lang: Locale) {
 
 /**
  * Métadonnées Open Graph / Twitter d'une page. Les URL relatives sont résolues
- * par `metadataBase`. L'image est une photo réelle de chantier (1200×630 étant
- * l'idéal, on réutilise la photo du hero à défaut d'un visuel dédié).
+ * par `metadataBase`.
+ *
+ * L'image est un visuel de MARQUE (logo + accroche du site, 1200×630, une par
+ * locale), et non une photo : les photos actuelles sont des placeholders
+ * Unsplash — les diffuser comme vitrine de nos chantiers serait faux. Ce visuel
+ * restera juste même après leur remplacement.
+ * Généré à partir des vraies accroches du dictionnaire et des tracés du logo.
  */
 export function buildOpenGraph(
   lang: Locale,
@@ -61,7 +66,14 @@ export function buildOpenGraph(
   description: string,
 ): Metadata {
   const url = localizedPath(lang, segment);
-  const images = [{ url: "/images/hero-pelouse.jpg", alt: siteConfig.name }];
+  const images = [
+    {
+      url: `/og-${lang}.png`,
+      width: 1200,
+      height: 630,
+      alt: `${siteConfig.name} — ${siteConfig.legalName}`,
+    },
+  ];
 
   return {
     openGraph: {
