@@ -22,11 +22,15 @@ Effets automatiques, **aucun code à changer** :
 - les `canonical`, le sitemap et le JSON-LD deviennent justes (ils pointent déjà sur le domaine final) ;
 - les redirections 308 des anciennes URL prennent effet.
 
-**Vérifier après le cutover :**
+**Vérifier après le cutover** — tout est déjà en place et testé sur l'URL de
+transition ; ce bloc confirme que la bascule n'a rien cassé :
 ```bash
-curl -sI https://paysagisteacadien.com/fr | grep -i x-robots-tag   # doit être VIDE
-curl -s -o /dev/null -w "%{http_code}\n" https://paysagisteacadien.com/tourbe   # doit être 308
-curl -sL -o /dev/null -w "%{url_effective}\n" https://paysagisteacadien.com/tourbe  # → /fr/services/tourbe
+U=https://paysagisteacadien.com
+curl -sI $U/fr | grep -i x-robots-tag                          # VIDE (le noindex est levé)
+curl -sL -o /dev/null -w "%{url_effective}\n" $U/tourbe        # → /fr/services/tourbe (308)
+curl -s $U/sitemap.xml | grep -c "<loc>"                       # 26
+curl -s $U/en/services/tourbe | grep -o '<html lang="[a-z]*"'  # lang="en"
+curl -sI $U/fr | grep -icE 'content-security-policy|x-content-type-options|x-frame-options|referrer-policy|permissions-policy|strict-transport'   # 6
 ```
 
 ### 2. Variable d'environnement Vercel — **client**
@@ -83,7 +87,6 @@ Deux points à connaître :
 
 ## 🟡 Côté code — optionnel, faible impact
 
-- [ ] ~~Schéma `FAQPage`~~ — **déconseillé** : Google a retiré les résultats enrichis FAQ le 7 mai 2026. Bénéfice quasi nul.
 - [ ] Uniformiser `serviceImages` : plusieurs services partagent la même photo (`hero-pelouse.jpg` sert 2 fois). Se règlera avec les vraies photos (point 5).
 
 > **Il ne reste plus rien de significatif à faire côté code.** Tout le gain
@@ -103,38 +106,10 @@ marque reste juste même après le point 5.
 
 ---
 
-## ✅ Fait et vérifié en production
+## Règles à ne pas casser
 
-Ne pas refaire — chaque ligne a été mesurée, pas supposée.
-
-| | État |
-|---|---|
-| `robots.txt` + `sitemap.xml` (26 URL) | ✅ |
-| `noindex` sur les hôtes non canoniques | ✅ (se lève au cutover) |
-| Redirections 308 des anciennes URL (10/10) | ✅ |
-| `html lang` correct par locale, **côté serveur** | ✅ |
-| Canonical **propre à chaque page** + hreflang `fr`/`en`/`x-default` | ✅ |
-| Open Graph / Twitter (`fr_CA` / `en_CA`) | ✅ |
-| JSON-LD : LocalBusiness + BreadcrumbList + Service | ✅ |
-| En-têtes de sécurité (CSP, HSTS, nosniff…) | ✅ 6/6 |
-| **LCP mobile 9,7 s → 2,7 s** · score 62 → **96/100** | ✅ |
-| Politique de confidentialité (Loi 25) | ✅ |
-| « Laval » dans le title / H1 / description de l'accueil | ✅ |
-| 3 pages minces étoffées (64-83 mots → 250-300) | ✅ |
-| Anglais uniformisé (« North Shore », 0 fuite de français) | ✅ |
-| Mode sombre complet | ✅ |
-
-**Contrôle rapide de l'ensemble :**
-```bash
-U=https://paysagisteacadien.vercel.app   # remplacer par le domaine après cutover
-curl -s $U/sitemap.xml | grep -c "<loc>"                       # 26
-curl -s $U/en/services/tourbe | grep -o '<html lang="[a-z]*"'  # lang="en"
-curl -sI $U/fr | grep -icE 'content-security-policy|x-content-type-options|x-frame-options|referrer-policy|permissions-policy|strict-transport'   # 6
-```
-
----
-
-## Règles tenues sur ce projet — à ne pas casser
+Ce ne sont pas des tâches : ce sont des contraintes actives, à tenir sur tout
+ce qui sera ajouté au site.
 
 1. **Rien d'inventé sur l'entreprise.** Aucun prix, garantie, délai, licence RBQ, certification, marque de produit, nombre d'années ni de clients n'a été écrit sans source. Si une info manque, elle est demandée — jamais fabriquée.
 2. **Le `.env` ne part jamais dans git.** Il est ignoré et vérifié à chaque commit.
