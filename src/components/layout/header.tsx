@@ -54,12 +54,9 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         <Link
           href={localizedPath(lang, "")}
           aria-label={siteConfig.name}
-          className="flex cursor-pointer items-center gap-2.5 whitespace-nowrap transition-opacity duration-200 hover:opacity-70 lg:justify-self-center"
+          className="flex cursor-pointer items-center transition-opacity duration-200 hover:opacity-70 lg:justify-self-center"
         >
-          <Logo className="h-8" />
-          <span className="text-sm font-bold tracking-widest text-foreground uppercase">
-            Paysagiste Acadien
-          </span>
+          <Logo className="h-10" />
         </Link>
 
         {/* Actions — droite (desktop) */}
