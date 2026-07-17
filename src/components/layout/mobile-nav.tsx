@@ -10,6 +10,7 @@ import { localizedPath, type Locale } from "@/lib/i18n";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { LanguageSwitcher } from "./language-switcher";
+import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 import {
   scrollForSamePageAnchor,
@@ -127,9 +128,12 @@ export function MobileNav({
               href={localizedPath(lang, "")}
               onClick={closeMenu}
               aria-label={siteConfig.name}
-              className="cursor-pointer text-sm font-bold tracking-widest text-foreground uppercase"
+              className="flex cursor-pointer items-center gap-2.5"
             >
-              Paysagiste Acadien
+              <Logo className="size-7 text-primary" />
+              <span className="text-sm font-bold tracking-widest text-foreground uppercase">
+                Paysagiste Acadien
+              </span>
             </Link>
             <button
               type="button"

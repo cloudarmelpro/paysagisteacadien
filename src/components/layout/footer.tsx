@@ -17,6 +17,7 @@ import {
   servicesSegment,
 } from "@/config/site";
 import { LanguageSwitcher } from "./language-switcher";
+import { Logo } from "./logo";
 
 type FooterLink = { label: string; href: string };
 
@@ -28,12 +29,14 @@ const columnHeadingClass =
 function FooterColumn({
   title,
   links,
+  className,
 }: {
   title: string;
   links: FooterLink[];
+  className?: string;
 }) {
   return (
-    <div>
+    <div className={className}>
       <h3 className={columnHeadingClass}>{title}</h3>
       <ul className="mt-4 flex flex-col gap-3">
         {links.map((link) => (
@@ -104,16 +107,22 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     <footer className="border-t border-dotted border-border bg-muted/30">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12">
         {/* 2 colonnes jusqu'à 1024px (4 colonnes dès 768px étaient trop
-            étroites : ~151px, le courriel se coupait en plein mot). */}
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-5">
+            étroites : ~151px, le courriel se coupait en plein mot).
+            Dès 1024px : grille de 12 pour répartir selon le contenu réel plutôt
+            qu'en parts égales — la marque (lock-up logo + wordmark ≈ 210px) et
+            Contact (courriel long) prennent 3 colonnes, les listes de liens 2. */}
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-12">
           {/* Colonne marque */}
-          <div className="col-span-2 flex flex-col items-start gap-5 lg:col-span-1">
+          <div className="col-span-2 flex flex-col items-start gap-5 lg:col-span-3">
             <Link
               href={localizedPath(lang, "")}
               aria-label={siteConfig.name}
-              className="cursor-pointer text-sm font-bold uppercase tracking-widest text-foreground transition-opacity duration-200 hover:opacity-70"
+              className="flex cursor-pointer items-center gap-2.5 transition-opacity duration-200 hover:opacity-70"
             >
-              Paysagiste Acadien
+              <Logo className="size-7 text-primary" />
+              <span className="text-sm font-bold tracking-widest text-foreground uppercase">
+                Paysagiste Acadien
+              </span>
             </Link>
 
             <LanguageSwitcher lang={lang} />
@@ -141,11 +150,19 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </nav>
           </div>
 
-          <FooterColumn title={dict.services.maintenance} links={maintenance} />
-          <FooterColumn title={dict.services.development} links={development} />
+          <FooterColumn
+            title={dict.services.maintenance}
+            links={maintenance}
+            className="lg:col-span-2"
+          />
+          <FooterColumn
+            title={dict.services.development}
+            links={development}
+            className="lg:col-span-2"
+          />
 
           {/* Entreprise — inclut LinkedIn en lien texte (logo indisponible) */}
-          <div>
+          <div className="lg:col-span-2">
             <h3 className={columnHeadingClass}>
               {dict.footer.companyTitle}
             </h3>
@@ -177,7 +194,7 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               pour une demi-colonne à 375px et se coupait en plein mot.
               `min-w-0` est indispensable : sans lui, `min-width:auto` empêche la
               colonne de rétrécir sous la longueur du courriel → débordement. */}
-          <div className="col-span-2 min-w-0 sm:col-span-1">
+          <div className="col-span-2 min-w-0 sm:col-span-1 lg:col-span-3">
             <h3 className={columnHeadingClass}>
               {dict.footer.contactTitle}
             </h3>

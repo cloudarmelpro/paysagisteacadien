@@ -5,6 +5,7 @@ import type { Dictionary } from "@/lib/dictionaries";
 import { navLinks, contactSegment, siteConfig } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { LanguageSwitcher } from "./language-switcher";
+import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 import { NavLinks } from "./nav-links";
 import { MobileNav } from "./mobile-nav";
@@ -65,9 +66,12 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         <Link
           href={localizedPath(lang, "")}
           aria-label={siteConfig.name}
-          className="cursor-pointer whitespace-nowrap text-sm font-bold uppercase tracking-widest text-foreground transition-opacity duration-200 hover:opacity-70 lg:justify-self-center"
+          className="flex cursor-pointer items-center gap-2.5 whitespace-nowrap transition-opacity duration-200 hover:opacity-70 lg:justify-self-center"
         >
-          Paysagiste Acadien
+          <Logo className="size-7 text-primary" />
+          <span className="text-sm font-bold tracking-widest text-foreground uppercase">
+            Paysagiste Acadien
+          </span>
         </Link>
 
         {/* Actions — droite (desktop) */}
