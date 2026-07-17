@@ -14,6 +14,7 @@ import {
   siteConfig,
   services,
   footerCompanyLinks,
+  privacySegment,
   servicesSegment,
 } from "@/config/site";
 import { LanguageSwitcher } from "./language-switcher";
@@ -224,11 +225,19 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </div>
         </div>
 
-        {/* Filet pointillé + barre basse */}
-        <div className="mt-12 border-t border-dotted border-border pt-6">
+        {/* Filet pointillé + barre basse. La politique de confidentialité vit ici
+            plutôt que dans la colonne « Entreprise » : c'est une mention légale,
+            pas une page de contenu — et c'est là qu'on la cherche. */}
+        <div className="mt-12 flex flex-col gap-3 border-t border-dotted border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-foreground/60">
             © {year} {siteConfig.legalName} {dict.footer.rights}
           </p>
+          <Link
+            href={localizedPath(lang, privacySegment)}
+            className="w-fit cursor-pointer text-xs text-foreground/60 transition-colors duration-200 hover:text-foreground"
+          >
+            {dict.privacy.title} {dict.privacy.titleAccent}
+          </Link>
         </div>
       </div>
     </footer>

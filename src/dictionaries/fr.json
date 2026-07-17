@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Paysagiste Acadien | Aménagement et entretien paysager",
-    "description": "Paysagiste Acadien — services professionnels d'entretien et d'aménagement paysager. Transformez et entretenez vos espaces extérieurs avec professionnalisme, passion et transparence."
+    "title": "Paysagiste Acadien | Aménagement et entretien à Laval",
+    "description": "Aménagement et entretien paysager à Laval et sur la Rive-Nord. Paysagiste Acadien transforme et entretient vos espaces extérieurs avec passion et transparence."
   },
   "nav": {
     "home": "Accueil",
@@ -15,8 +15,8 @@
     "quote": "Soumission"
   },
   "hero": {
-    "titleLead": "Aménagement et entretien",
-    "titleAccent": "paysager",
+    "titleLead": "Aménagement et entretien paysager",
+    "titleAccent": "à Laval et sur la Rive-Nord",
     "subtitle": "Qualité, expertise et souci du détail. Nous transformons et entretenons vos espaces extérieurs avec professionnalisme, passion et transparence.",
     "cta": "Demander une soumission",
     "ctaSecondary": "Nos services",
@@ -140,13 +140,21 @@
           {
             "heading": "Taille de haies de cèdres",
             "body": "La taille des haies de cèdres est un soin essentiel à ne pas négliger. Effectuée une fois par an, elle permet aux cèdres de se densifier, de maintenir une silhouette nette et d'éviter le dégarnissement prématuré. Chez Paysagiste Acadien, nous intervenons avec les bons outils et le savoir-faire nécessaire pour garantir un résultat impeccable, peu importe la longueur ou la hauteur de votre haie."
+          },
+          {
+            "heading": "À quelle fréquence tailler une haie de cèdres ?",
+            "body": "Une taille annuelle suffit pour une haie en santé. Chaque coupe pousse le cèdre à se ramifier près du point de taille : c'est ce qui épaissit le feuillage et lui donne une ligne nette. Sauter quelques années coûte plus cher qu'on ne le pense — la haie s'allonge, s'ouvre, et le bas se dégarnit. Une haie laissée à elle-même trop longtemps ne se rattrape pas d'un seul coup de sécateur : on la ramène progressivement, sur plus d'une saison."
+          },
+          {
+            "heading": "Une taille qui respecte le bois vivant",
+            "body": "Le cèdre a une particularité qui commande toute la méthode : il ne repousse pas depuis le vieux bois brun, seulement depuis le feuillage vert. Une coupe trop sévère laisse donc un trou qui reste. La taille se limite à la pousse verte de l'année, et la haie se travaille légèrement plus large à la base qu'au sommet, pour que la lumière atteigne le bas et l'empêche de se dénuder. Le moment se choisit avec la végétation, une fois la nouvelle pousse sortie, en évitant les grandes chaleurs."
           }
         ]
       },
       "plantation": {
         "metaTitle": "Plantation | Paysagiste Acadien",
         "metaDescription": "Plantation de vivaces, d'arbustes, de haies de cèdres et d'arbres à Laval et sur la Rive-Nord, selon votre sol et votre ensoleillement.",
-        "intro": "Paysagiste Acadien offre un service d'aménagement paysager dans la ville de Laval et sur la Rive-Nord.",
+        "intro": "Paysagiste Acadien offre des services de plantation de vivaces, d'arbustes, de haies de cèdres et d'arbres à Laval et sur la Rive-Nord.",
         "sections": [
           {
             "heading": "Plantation de vivaces et d'arbustes",
@@ -165,22 +173,38 @@
       "tourbe": {
         "metaTitle": "Pose de tourbe | Paysagiste Acadien",
         "metaDescription": "Pose de tourbe à Laval et sur la Rive-Nord : une pelouse instantanée, uniforme et résistante, en création comme en rénovation.",
-        "intro": "Paysagiste Acadien offre un service d'aménagement paysager dans la ville de Laval et sur la Rive-Nord.",
+        "intro": "Paysagiste Acadien offre des services de pose de tourbe à Laval et sur la Rive-Nord, en création de pelouse comme en rénovation.",
         "sections": [
           {
             "heading": "Pose de tourbe",
             "body": "Offrez à votre terrain une apparence verdoyante et impeccable grâce à notre service de pose de tourbe professionnelle. Que ce soit pour créer une nouvelle pelouse ou rénover un espace existant, nous vous proposons une solution rapide et efficace pour obtenir un gazon dense et en parfaite santé. Contrairement à l'ensemencement, la tourbe offre une pelouse instantanée, uniforme et résistante. Nous vous fournissons également des conseils personnalisés pour assurer une croissance optimale et préserver la beauté de votre gazon sur le long terme."
+          },
+          {
+            "heading": "Tourbe ou ensemencement ?",
+            "body": "Les deux approches ne répondent pas au même besoin. La tourbe donne une pelouse instantanée, uniforme et résistante : le terrain est vert le jour même, et le tapis dense laisse peu de place aux mauvaises herbes. C'est la solution logique quand on crée une pelouse de toutes pièces ou qu'on rénove une surface trop abîmée pour être récupérée. L'ensemencement, lui, sert plutôt à densifier une pelouse existante ou à réparer des zones ciblées : il demande de la patience et un arrosage suivi avant de donner un résultat. Nous regardons l'état réel de votre terrain avant de vous orienter vers l'un ou l'autre."
+          },
+          {
+            "heading": "La préparation du sol, puis la pose",
+            "body": "Une tourbe ne rattrape pas un sol mal préparé : c'est là que tout se joue. La surface est d'abord débarrassée des débris et de l'ancien gazon, puis nivelée pour éviter les creux où l'eau stagne. Les plaques sont ensuite posées serrées, joints décalés, bien en contact avec la terre — un vide sous la plaque, et les racines ne s'ancrent pas. L'arrosage des premières semaines est déterminant : c'est lui qui permet à la tourbe de s'enraciner plutôt que de sécher en surface. La pose se fait au printemps ou à l'automne ; en pleine canicule, la reprise est nettement plus difficile."
           }
         ]
       },
       "pave-uni": {
         "metaTitle": "Réparation de pavé uni | Paysagiste Acadien",
         "metaDescription": "Réparation et restauration de pavé uni à Laval et sur la Rive-Nord : pavés déplacés, joints usés, surface remise à neuf.",
-        "intro": "Paysagiste Acadien offre un service d'aménagement paysager dans la ville de Laval et sur la Rive-Nord.",
+        "intro": "Paysagiste Acadien offre des services de réparation et de restauration de pavé uni à Laval et sur la Rive-Nord.",
         "sections": [
           {
             "heading": "Réparation et restauration de pavé uni",
             "body": "Redonnez à votre aménagement extérieur tout son éclat d'origine grâce à notre service de restauration de pavé uni. Avec le temps, les pavés peuvent se déplacer, s'user ou voir leurs joints se détériorer. Nous offrons une solution complète pour raviver votre surface, prolonger sa durabilité et lui redonner une apparence soignée et uniforme. Faites confiance à notre expertise pour restaurer et préserver la beauté de votre pavé uni."
+          },
+          {
+            "heading": "Les signes qu'une réparation s'impose",
+            "body": "Un pavé uni ne se dégrade pas d'un coup, il prévient. Une allée qui creuse ou qui gondole, des pavés qui bougent sous le pied, des joints vidés où l'herbe s'installe, une bordure qui s'écarte, une flaque qui reste après la pluie : ce sont autant de signes que la fondation ou le lit de pose travaille sous la surface. Nos hivers n'aident pas — le gel et le dégel soulèvent les pavés, et le déneigement finit d'attaquer les arêtes. Intervenir tôt limite l'ampleur — et le coût — des travaux."
+          },
+          {
+            "heading": "Comment se déroule une restauration",
+            "body": "Réparer un pavé uni, ce n'est pas remettre les pavés en place et espérer : c'est corriger ce qu'il y a en dessous. Les pavés de la zone touchée sont relevés et mis de côté, le lit de pose est repris et nivelé, puis les pavés sont replacés selon leur motif d'origine et la surface est compactée. Les joints sont enfin regarnis, car ce sont eux qui verrouillent l'ensemble et empêchent les pavés de se remettre à bouger. Une bordure affaissée se reprend au passage : sans retenue solide sur les côtés, la surface repartira dans tous les sens."
           }
         ]
       }
@@ -360,7 +384,7 @@
         "items": [
           {
             "q": "Quelle zone desservez-vous ?",
-            "a": "Nous intervenons à Laval et sur la Rive-Nord, pour l'entretien comme pour l'aménagement."
+            "a": "Nous intervenons à Laval et sur la Rive-Nord, pour l'entretien comme pour l'aménagement. Cela inclut notamment Terrebonne, Blainville, Boisbriand, Rosemère, Sainte-Thérèse, Mirabel, Mascouche, Bois-des-Filion, Lorraine et Sainte-Anne-des-Plaines. Votre municipalité n'est pas dans la liste ? Écrivez-nous, nous vous le dirons."
           },
           {
             "q": "Travaillez-vous pour le résidentiel et le commercial ?",
@@ -415,5 +439,63 @@
     "followUs": "Suivez-nous",
     "linkedin": "LinkedIn",
     "quoteEmailLabel": "Demande de soumission"
+  },
+  "privacy": {
+    "metaTitle": "Politique de confidentialité | Paysagiste Acadien",
+    "metaDescription": "Comment Paysagiste Acadien recueille, utilise et protège vos renseignements personnels, et comment exercer vos droits (Loi 25, Québec).",
+    "badge": "Confidentialité",
+    "title": "Politique de",
+    "titleAccent": "confidentialité",
+    "intro": "Paysagiste Acadien Inc. recueille le minimum de renseignements nécessaires pour répondre à vos demandes. Cette page explique lesquels, pourquoi, où ils sont conservés et comment exercer vos droits.",
+    "updatedLabel": "Dernière mise à jour",
+    "updatedAt": "17 juillet 2026",
+    "collected": {
+      "heading": "Renseignements que nous recueillons",
+      "intro": "Nous ne recueillons que ce que vous nous transmettez vous-même par nos formulaires. Aucune création de compte, aucun profilage, aucun achat de données.",
+      "items": [
+        "Formulaire « Nous joindre » : votre nom, votre courriel et votre municipalité (requis) ; votre adresse, votre téléphone, le service souhaité, la date de début désirée, la façon dont vous nous avez connus et votre message (facultatifs).",
+        "Formulaire « Emplois » : votre nom, votre téléphone et votre courriel (requis) ; votre message de présentation (facultatif).",
+        "Dans les deux cas : la langue du site utilisée et la date d'envoi, afin de vous répondre dans la bonne langue et de traiter les demandes dans l'ordre."
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Pourquoi nous les recueillons",
+        "body": "Uniquement pour communiquer avec vous : préparer et vous transmettre une estimation, planifier des travaux, répondre à une question, ou étudier une candidature. Nous n'utilisons pas ces renseignements à des fins publicitaires et nous ne les vendons, ne les louons ni ne les échangeons à personne."
+      },
+      {
+        "heading": "Votre consentement",
+        "body": "En nous transmettant un formulaire, vous consentez à ce que nous utilisions ces renseignements pour répondre à votre demande. Ce consentement est libre : les champs facultatifs peuvent rester vides, et vous pouvez le retirer à tout moment en nous écrivant, sans avoir à vous justifier."
+      },
+      {
+        "heading": "Où vos renseignements sont conservés",
+        "body": "Les demandes sont enregistrées dans une base de données hébergée par Neon, dont les serveurs utilisés pour ce site sont situés aux États-Unis. Le site lui-même est hébergé par Vercel. Vos renseignements sortent donc du Québec et peuvent être soumis aux lois du pays d'hébergement. Nous ne les communiquons à aucun autre tiers."
+      },
+      {
+        "heading": "Combien de temps nous les conservons",
+        "body": "Nous conservons les demandes le temps nécessaire au suivi commercial, puis nous les supprimons lorsqu'elles ne sont plus utiles. Vous pouvez demander la suppression de vos renseignements à tout moment : nous y donnons suite, sauf si une obligation légale nous impose de les conserver."
+      },
+      {
+        "heading": "Témoins (cookies) et suivi",
+        "body": "Ce site ne dépose aucun témoin publicitaire et n'utilise aucun outil de suivi ni de mesure d'audience tiers. Votre navigateur mémorise localement une seule préférence — le thème clair ou sombre — qui ne quitte jamais votre appareil et ne permet pas de vous identifier."
+      },
+      {
+        "heading": "Vos droits",
+        "body": "Vous avez le droit d'accéder aux renseignements que nous détenons sur vous, de les faire corriger s'ils sont inexacts, de retirer votre consentement, d'en demander la suppression, et d'en recevoir une copie dans un format technologique structuré et couramment utilisé. Nous répondons à toute demande dans un délai maximal de 30 jours."
+      },
+      {
+        "heading": "Sécurité",
+        "body": "Les échanges avec ce site sont chiffrés (HTTPS) et l'accès à la base de données est restreint. Aucun système n'est infaillible : si un incident de confidentialité présentant un risque de préjudice sérieux survenait, nous vous en informerions, ainsi que la Commission d'accès à l'information."
+      },
+      {
+        "heading": "Modifications de cette politique",
+        "body": "Nous pouvons mettre cette politique à jour si nos pratiques changent. La date de dernière mise à jour indiquée en haut de cette page fait foi."
+      }
+    ],
+    "officer": {
+      "heading": "Responsable de la protection des renseignements personnels",
+      "body": "Pour toute question sur cette politique, pour exercer vos droits ou pour formuler une plainte, écrivez ou téléphonez à :",
+      "recourse": "Si notre réponse ne vous satisfait pas, vous pouvez porter plainte auprès de la Commission d'accès à l'information du Québec (cai.gouv.qc.ca)."
+    }
   }
 }

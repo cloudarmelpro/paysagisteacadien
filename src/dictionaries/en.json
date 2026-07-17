@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Paysagiste Acadien | Landscape design & maintenance",
-    "description": "Paysagiste Acadien — professional landscape design and maintenance services. We transform and maintain your outdoor spaces with professionalism, passion and transparency."
+    "title": "Paysagiste Acadien | Landscaping & care in Laval",
+    "description": "Landscape design and maintenance in Laval and the North Shore. Paysagiste Acadien transforms and maintains your outdoor spaces with passion and transparency."
   },
   "nav": {
     "home": "Home",
@@ -15,8 +15,8 @@
     "quote": "Get a quote"
   },
   "hero": {
-    "titleLead": "Landscape design and",
-    "titleAccent": "maintenance",
+    "titleLead": "Landscape design and maintenance",
+    "titleAccent": "in Laval and the North Shore",
     "subtitle": "Quality, expertise and attention to detail. We transform and maintain your outdoor spaces with professionalism, passion and transparency.",
     "cta": "Request a quote",
     "ctaSecondary": "Our services",
@@ -140,13 +140,21 @@
           {
             "heading": "Cedar hedge trimming",
             "body": "Trimming cedar hedges is an essential piece of care that shouldn't be neglected. Done once a year, it lets cedars grow denser, keep a clean silhouette and avoid premature thinning. At Paysagiste Acadien, we work with the right tools and the know-how needed to guarantee an impeccable result, no matter the length or height of your hedge."
+          },
+          {
+            "heading": "How often should a cedar hedge be trimmed?",
+            "body": "Once a year is enough for a healthy hedge. Every cut pushes the cedar to branch out near the trimming point: that is what thickens the foliage and gives it a clean line. Skipping a few years costs more than people expect — the hedge stretches out, opens up, and the bottom thins. A hedge left to itself for too long cannot be brought back in a single pass: it is reined in gradually, over more than one season."
+          },
+          {
+            "heading": "Trimming that respects the living wood",
+            "body": "Cedar has one trait that governs the whole method: it does not grow back from old brown wood, only from green foliage. A cut that goes too deep leaves a gap that stays. Trimming is therefore kept to the year's green growth, and the hedge is shaped slightly wider at the base than at the top, so light reaches the bottom and keeps it from going bare. The timing follows the plant — once the new growth is out, and away from the heavy heat."
           }
         ]
       },
       "plantation": {
         "metaTitle": "Planting | Paysagiste Acadien",
         "metaDescription": "Planting of perennials, shrubs, cedar hedges and trees in Laval and the Rive-Nord, chosen for your soil and sun exposure.",
-        "intro": "Paysagiste Acadien offers landscaping services in the city of Laval and the Rive-Nord.",
+        "intro": "Paysagiste Acadien offers planting services — perennials, shrubs, cedar hedges and trees — in Laval and the Rive-Nord.",
         "sections": [
           {
             "heading": "Planting perennials and shrubs",
@@ -165,22 +173,38 @@
       "tourbe": {
         "metaTitle": "Sod installation | Paysagiste Acadien",
         "metaDescription": "Sod installation in Laval and the Rive-Nord: an instant, uniform and hard-wearing lawn, for new lawns and renovations alike.",
-        "intro": "Paysagiste Acadien offers landscaping services in the city of Laval and the Rive-Nord.",
+        "intro": "Paysagiste Acadien offers sod installation services in Laval and the Rive-Nord, for new lawns and renovations alike.",
         "sections": [
           {
             "heading": "Sod installation",
             "body": "Give your grounds a lush, flawless look with our professional sod installation service. Whether creating a new lawn or renovating an existing space, we offer a fast, effective solution for a dense, perfectly healthy lawn. Unlike seeding, sod provides an instant, uniform and hard-wearing lawn. We also provide personalized advice to ensure optimal growth and preserve the beauty of your lawn over the long term."
+          },
+          {
+            "heading": "Sod or seeding?",
+            "body": "The two approaches answer different needs. Sod gives an instant, even and hard-wearing lawn: the ground is green the same day, and the dense mat leaves little room for weeds. It is the logical choice when a lawn is being created from scratch or when a surface is too damaged to be salvaged. Seeding is better suited to densifying an existing lawn or repairing targeted patches: it takes patience and steady watering before it shows a result. We look at the real condition of your grounds before pointing you toward one or the other."
+          },
+          {
+            "heading": "Preparing the soil, then laying the sod",
+            "body": "Sod will not make up for poorly prepared soil — that is where everything is decided. The surface is first cleared of debris and old grass, then levelled to avoid the hollows where water pools. The rolls are laid tight, with staggered joints and in full contact with the soil: leave a gap underneath and the roots will not anchor. Watering over the first weeks is decisive; it is what lets the sod root rather than dry out on the surface. Installation is done in spring or fall — in the middle of a heat wave, rooting is markedly harder."
           }
         ]
       },
       "pave-uni": {
         "metaTitle": "Interlock paving repair | Paysagiste Acadien",
         "metaDescription": "Interlock paving repair and restoration in Laval and the Rive-Nord: shifted pavers, worn joints, surface brought back to life.",
-        "intro": "Paysagiste Acadien offers landscaping services in the city of Laval and the Rive-Nord.",
+        "intro": "Paysagiste Acadien offers interlock paving repair and restoration services in Laval and the Rive-Nord.",
         "sections": [
           {
             "heading": "Interlock paving repair and restoration",
             "body": "Restore your outdoor space to its original shine with our interlock paving restoration service. Over time, pavers can shift, wear down or see their joints deteriorate. We offer a complete solution to revive your surface, extend its durability and give it a neat, uniform appearance. Trust our expertise to restore and preserve the beauty of your interlock paving."
+          },
+          {
+            "heading": "Signs that a repair is due",
+            "body": "Interlock paving does not fail all at once — it gives warning. A driveway that dips or ripples, pavers that shift underfoot, emptied joints where weeds settle, an edge drifting outward, a puddle that lingers after the rain: all of these say the base or the bedding layer is moving beneath the surface. Our winters don't help — freeze and thaw lift the pavers, and snow clearing finishes off the edges. Stepping in early keeps the scope of the work — and its cost — contained."
+          },
+          {
+            "heading": "How a restoration unfolds",
+            "body": "Repairing interlock paving isn't about setting the pavers back and hoping: it's about correcting what lies underneath. The pavers in the affected area are lifted and set aside, the bedding layer is reworked and levelled, then the pavers are laid back in their original pattern and the surface is compacted. The joints are refilled last, since they are what locks the whole thing together and keeps the pavers from shifting again. A sunken edge is dealt with along the way: without solid restraint on the sides, the surface will spread again."
           }
         ]
       }
@@ -360,7 +384,7 @@
         "items": [
           {
             "q": "Which area do you serve?",
-            "a": "We work across Laval and the North Shore, for both maintenance and landscaping."
+            "a": "We work across Laval and the North Shore, for both maintenance and landscaping. That includes Terrebonne, Blainville, Boisbriand, Rosemère, Sainte-Thérèse, Mirabel, Mascouche, Bois-des-Filion, Lorraine and Sainte-Anne-des-Plaines, among others. Your municipality isn't on the list? Write to us and we'll let you know."
           },
           {
             "q": "Do you work on residential and commercial properties?",
@@ -415,5 +439,63 @@
     "followUs": "Follow us",
     "linkedin": "LinkedIn",
     "quoteEmailLabel": "Quote requests"
+  },
+  "privacy": {
+    "metaTitle": "Privacy policy | Paysagiste Acadien",
+    "metaDescription": "How Paysagiste Acadien collects, uses and protects your personal information, and how to exercise your rights (Law 25, Quebec).",
+    "badge": "Privacy",
+    "title": "Privacy",
+    "titleAccent": "policy",
+    "intro": "Paysagiste Acadien Inc. collects the minimum information needed to answer your requests. This page explains what we collect, why, where it is kept, and how to exercise your rights.",
+    "updatedLabel": "Last updated",
+    "updatedAt": "July 17, 2026",
+    "collected": {
+      "heading": "Information we collect",
+      "intro": "We only collect what you send us yourself through our forms. No account, no profiling, no purchased data.",
+      "items": [
+        "Contact form: your name, email and municipality (required); your address, phone, desired service, preferred start date, how you heard about us and your message (optional).",
+        "Careers form: your name, phone and email (required); your introduction message (optional).",
+        "In both cases: the site language you used and the submission date, so we can reply in the right language and handle requests in order."
+      ]
+    },
+    "sections": [
+      {
+        "heading": "Why we collect it",
+        "body": "Only to communicate with you: to prepare and send an estimate, schedule work, answer a question, or review an application. We do not use this information for advertising, and we never sell, rent or trade it to anyone."
+      },
+      {
+        "heading": "Your consent",
+        "body": "By submitting a form, you consent to us using this information to answer your request. That consent is free: optional fields can be left blank, and you may withdraw it at any time by writing to us, without having to justify yourself."
+      },
+      {
+        "heading": "Where your information is kept",
+        "body": "Requests are stored in a database hosted by Neon, whose servers used for this site are located in the United States. The site itself is hosted by Vercel. Your information therefore leaves Quebec and may be subject to the laws of the hosting country. We do not share it with any other third party."
+      },
+      {
+        "heading": "How long we keep it",
+        "body": "We keep requests for as long as needed to follow up, then delete them once they are no longer useful. You can ask us to delete your information at any time; we will comply unless a legal obligation requires us to keep it."
+      },
+      {
+        "heading": "Cookies and tracking",
+        "body": "This site sets no advertising cookies and uses no third-party analytics or tracking tools. Your browser stores a single preference locally — the light or dark theme — which never leaves your device and cannot identify you."
+      },
+      {
+        "heading": "Your rights",
+        "body": "You have the right to access the information we hold about you, to have it corrected if inaccurate, to withdraw your consent, to request its deletion, and to receive a copy in a structured, commonly used technological format. We answer any request within a maximum of 30 days."
+      },
+      {
+        "heading": "Security",
+        "body": "Exchanges with this site are encrypted (HTTPS) and access to the database is restricted. No system is infallible: should a confidentiality incident present a risk of serious injury, we would notify you and the Commission d’accès à l’information."
+      },
+      {
+        "heading": "Changes to this policy",
+        "body": "We may update this policy if our practices change. The last-updated date shown at the top of this page prevails."
+      }
+    ],
+    "officer": {
+      "heading": "Person in charge of the protection of personal information",
+      "body": "For any question about this policy, to exercise your rights or to file a complaint, write or call:",
+      "recourse": "If our answer does not satisfy you, you may file a complaint with the Commission d’accès à l’information du Québec (cai.gouv.qc.ca)."
+    }
   }
 }

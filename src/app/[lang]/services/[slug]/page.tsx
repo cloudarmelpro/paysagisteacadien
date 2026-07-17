@@ -5,6 +5,11 @@ import { i18n, type Locale } from "@/lib/i18n";
 import { resolveServiceSlug, serviceDetailSlugs, servicesSegment } from "@/config/site";
 import { buildAlternates, buildOpenGraph } from "@/lib/seo";
 import { ServiceDetail } from "@/components/sections/service-detail";
+import {
+  BreadcrumbJsonLd,
+  type BreadcrumbItem,
+} from "@/components/seo/breadcrumb-json-ld";
+import { ServiceJsonLd } from "@/components/seo/service-json-ld";
 
 export function generateStaticParams() {
   return i18n.locales.flatMap((lang) =>
@@ -32,8 +37,33 @@ export default async function ServicePage(
   props: PageProps<"/[lang]/services/[slug]">,
 ) {
   const { lang, slug } = await props.params;
-  if (!hasLocale(lang) || !resolveServiceSlug(slug)) notFound();
+  const resolved = resolveServiceSlug(slug);
+  if (!hasLocale(lang) || !resolved) notFound();
   const dict = await getDictionary(lang as Locale);
 
-  return <ServiceDetail lang={lang} dict={dict} slug={slug} />;
+  const label = (s: string) =>
+    dict.services.items[s as keyof typeof dict.services.items];
+
+  // Le fil part de l'accueil vers la page-chapeau réelle : /[lang]/services
+  // n'existe pas (404), donc aucun maillon « Services » intermédiaire.
+  const crumbs: BreadcrumbItem[] = [
+    {
+      name: label(resolved.group.segment),
+      segment: `${servicesSegment}/${resolved.group.segment}`,
+    },
+  ];
+  if (resolved.kind === "service") {
+    crumbs.push({
+      name: label(resolved.slug),
+      segment: `${servicesSegment}/${resolved.slug}`,
+    });
+  }
+
+  return (
+    <>
+      <BreadcrumbJsonLd lang={lang} dict={dict} items={crumbs} />
+      <ServiceJsonLd lang={lang} dict={dict} slug={slug} />
+      <ServiceDetail lang={lang} dict={dict} slug={slug} />
+    </>
+  );
 }

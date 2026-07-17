@@ -5,6 +5,7 @@ import type { Locale } from "@/lib/i18n";
 import { contactSegment } from "@/config/site";
 import { buildAlternates, buildOpenGraph } from "@/lib/seo";
 import { Contact } from "@/components/sections/contact";
+import { BreadcrumbJsonLd } from "@/components/seo/breadcrumb-json-ld";
 
 export async function generateMetadata(
   props: PageProps<"/[lang]/nous-joindre">,
@@ -28,5 +29,14 @@ export default async function ContactPage(
   if (!hasLocale(lang)) notFound();
   const dict = await getDictionary(lang as Locale);
 
-  return <Contact lang={lang} dict={dict} />;
+  return (
+    <>
+      <BreadcrumbJsonLd
+        lang={lang}
+        dict={dict}
+        items={[{ name: dict.contact.badge, segment: contactSegment }]}
+      />
+      <Contact lang={lang} dict={dict} />
+    </>
+  );
 }

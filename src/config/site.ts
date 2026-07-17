@@ -32,6 +32,37 @@ export const siteConfig = {
 } as const;
 
 /**
+ * Principales municipalités de la Rive-Nord de Montréal, nommées pour donner un
+ * ancrage géographique concret à « Laval et la Rive-Nord » (un bloc trop vague
+ * pour les recherches locales du type « paysagiste Terrebonne »).
+ *
+ * ⚠️ HYPOTHÈSE — À FAIRE CONFIRMER PAR LE CLIENT.
+ * Cette liste n'est PAS la zone officielle de Paysagiste Acadien : le client ne
+ * l'a jamais fournie. Elle reprend simplement les villes principales de la
+ * Rive-Nord, sous l'hypothèse que la formule « Laval et la Rive-Nord » du site
+ * actuel les couvre. Les textes qui s'appuient dessus (dictionnaires, clé
+ * `faq` → « Quelle zone desservez-vous ? ») emploient volontairement
+ * « notamment » / « including » : ils citent des exemples, ils ne promettent pas
+ * une couverture exhaustive.
+ *
+ * À faire valider : retirer les villes non desservies, ajouter les manquantes.
+ * Ne PAS générer de page par ville à partir de cette liste — sans contenu propre
+ * et vérifié pour chacune, ce seraient des doorway pages (pénalisables).
+ */
+export const serviceMunicipalities = [
+  "Terrebonne",
+  "Blainville",
+  "Boisbriand",
+  "Rosemère",
+  "Sainte-Thérèse",
+  "Mirabel",
+  "Mascouche",
+  "Bois-des-Filion",
+  "Lorraine",
+  "Sainte-Anne-des-Plaines",
+] as const;
+
+/**
  * Heures d'ouverture au format schema.org (données structurées SEO).
  * Les libellés AFFICHÉS vivent dans les dictionnaires (`contact.hours`) car ils
  * sont traduits — garder les deux cohérents. Dimanche fermé → simplement absent.
@@ -158,6 +189,10 @@ export function resolveServiceSlug(slug: string): ResolvedService | null {
 
 /** Segment de la page « Emplois » (candidatures spontanées). */
 export const careersSegment = "emplois";
+
+/** Segment de la politique de confidentialité (Loi 25). Le slug reste français
+ *  dans les deux locales, comme `nous-joindre` et `emplois`. */
+export const privacySegment = "confidentialite";
 
 /** Colonne « Entreprise » du footer (libellés dans dict.nav). On ne liste que
  *  les pages qui existent réellement : À propos et Emplois (LinkedIn est ajouté
