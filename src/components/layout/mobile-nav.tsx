@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { siteConfig } from "@/config/site";
 import { localizedPath, type Locale } from "@/lib/i18n";
 import { buttonVariants } from "@/components/ui/button";
@@ -20,9 +21,10 @@ import {
 
 /**
  * Menu mobile plein écran : marque et fermeture en haut, liens principaux, puis
- * CTA, réseaux et langue. `render` maintient le panneau monté pendant l'animation
- * de sortie ; le démontage attend sa fin. Le mouvement est neutralisé par la
- * règle globale `prefers-reduced-motion` : aucune garde locale n'est nécessaire.
+ * CTA, réseaux et langue. `AnimatePresence` gère l'entrée/sortie et démonte le
+ * panneau seulement après l'animation de fermeture. `useReducedMotion` est requis :
+ * les animations JS de Framer ne sont pas neutralisées par la règle CSS
+ * `prefers-reduced-motion` (comme dans le FAQ).
  */
 export function MobileNav({
   lang,
@@ -44,14 +46,11 @@ export function MobileNav({
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
-  const [render, setRender] = useState(false);
   const pathname = usePathname();
   const isActive = useNavActive(items);
+  const reduceMotion = useReducedMotion();
 
-  const openMenu = () => {
-    setRender(true);
-    setOpen(true);
-  };
+  const openMenu = () => setOpen(true);
   const closeMenu = () => setOpen(false);
 
   useEffect(() => {
@@ -104,20 +103,21 @@ export function MobileNav({
         />
       </button>
 
-      {render && (
-        <div
-          id="mobile-menu"
-          onAnimationEnd={(e) => {
-            // Démontage seulement à la fin de l'animation de sortie.
-            if (e.target === e.currentTarget && !open) setRender(false);
-          }}
-          className={cn(
-            "fixed inset-0 z-50 flex flex-col bg-background duration-300 ease-out",
-            open
-              ? "animate-in fade-in slide-in-from-right-8"
-              : "animate-out fade-out slide-out-to-right-8",
-          )}
-        >
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="mobile-menu"
+            id="mobile-menu"
+            initial={{ opacity: 0, x: reduceMotion ? 0 : 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: reduceMotion ? 0 : 40 }}
+            transition={
+              reduceMotion
+                ? { duration: 0 }
+                : { duration: 0.3, ease: [0.4, 0, 0.2, 1] }
+            }
+            className="fixed inset-0 z-50 flex flex-col bg-background"
+          >
           {/* Barre supérieure : marque + fermeture */}
           <div className="flex h-16 shrink-0 items-center justify-between px-5 sm:px-8">
             <Link
@@ -126,7 +126,7 @@ export function MobileNav({
               aria-label={siteConfig.name}
               className="flex cursor-pointer items-center"
             >
-              <Logo className="h-10" />
+              <Logo className="h-8" />
             </Link>
             <button
               type="button"
@@ -195,8 +195,9 @@ export function MobileNav({
               </div>
             </div>
           </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
