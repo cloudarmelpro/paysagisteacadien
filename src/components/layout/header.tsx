@@ -56,7 +56,7 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           aria-label={siteConfig.name}
           className="flex cursor-pointer items-center transition-opacity duration-200 hover:opacity-70 lg:justify-self-center"
         >
-          <Logo className="h-10" />
+          <Logo className="h-8" />
         </Link>
 
         {/* Actions — droite (desktop) */}
