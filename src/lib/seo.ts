@@ -32,6 +32,24 @@ export function buildAlternates(
 }
 
 /**
+ * Zone desservie au format schema.org, localisée.
+ *
+ * La Rive-Nord doit porter le nom que le lecteur de la page reconnaît : une page
+ * déclarée `inLanguage: en-CA` qui annonce « Rive-Nord de Montréal » est
+ * incohérente. Partagé par les schémas LocalBusiness et Service pour que les
+ * deux ne puissent pas diverger.
+ */
+export function buildAreaServed(lang: Locale) {
+  return [
+    { "@type": "City", name: "Laval" },
+    {
+      "@type": "AdministrativeArea",
+      name: lang === "fr" ? "Rive-Nord de Montréal" : "North Shore of Montreal",
+    },
+  ];
+}
+
+/**
  * Métadonnées Open Graph / Twitter d'une page. Les URL relatives sont résolues
  * par `metadataBase`. L'image est une photo réelle de chantier (1200×630 étant
  * l'idéal, on réutilise la photo du hero à défaut d'un visuel dédié).

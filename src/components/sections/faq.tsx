@@ -48,7 +48,7 @@ export function Faq({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             <div className="relative flex h-full flex-col justify-end p-5">
               <p className="text-sm font-medium text-white">{siteConfig.name}</p>
               <p className="text-xs text-white/75">
-                {siteConfig.contact.serviceArea}
+                {dict.contact.areaValue}
               </p>
             </div>
           </div>

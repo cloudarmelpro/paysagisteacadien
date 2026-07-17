@@ -69,7 +69,7 @@ export function Contact({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               <div>
                 <dt className="text-sm text-foreground/60">{c.areaLabel}</dt>
                 <dd className="font-medium text-foreground">
-                  {siteConfig.contact.serviceArea}
+                  {dict.contact.areaValue}
                 </dd>
               </div>
             </div>

@@ -326,7 +326,8 @@
         "referralMax": "Valeur invalide.",
         "messageMax": "Votre message est trop long."
       }
-    }
+    },
+    "areaValue": "Laval et la Rive-Nord"
   },
   "careers": {
     "metaTitle": "Emplois | Paysagiste Acadien",

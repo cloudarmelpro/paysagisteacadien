@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import { servicesSegment } from "@/config/site";
-import { siteUrl } from "@/lib/seo";
+import { buildAreaServed, siteUrl } from "@/lib/seo";
 
 /**
  * Données structurées Service (schema.org) pour une page /services/<slug>.
@@ -34,10 +34,7 @@ export function ServiceJsonLd({
     description: intro,
     url: `${siteUrl}${localizedPath(lang, `${servicesSegment}/${slug}`)}`,
     provider: { "@id": `${siteUrl}/#business` },
-    areaServed: [
-      { "@type": "City", name: "Laval" },
-      { "@type": "AdministrativeArea", name: "Rive-Nord de Montréal" },
-    ],
+    areaServed: buildAreaServed(lang),
   };
 
   return (

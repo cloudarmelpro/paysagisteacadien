@@ -72,20 +72,20 @@
     "items": {
       "entretien-paysager": {
         "metaTitle": "Landscape maintenance | Paysagiste Acadien",
-        "metaDescription": "Grounds maintenance, rock garden care and cedar hedge trimming in Laval and the Rive-Nord. Leave the upkeep of your property to us.",
+        "metaDescription": "Grounds maintenance, rock garden care and cedar hedge trimming in Laval and the North Shore. Leave the upkeep of your property to us.",
         "intro": "Leave the maintenance of your home or business to us and enjoy the season to the fullest, worry-free! Whether it's caring for your grounds, your rock gardens, or trimming your shrubs and cedars, we handle it all. Let us lighten your load so you can make the most of your summer.",
         "sections": []
       },
       "amenagement-paysager": {
         "metaTitle": "Landscape design | Paysagiste Acadien",
-        "metaDescription": "Planting, sod installation and interlock paving restoration in Laval and the Rive-Nord. Landscaping tailored to you.",
+        "metaDescription": "Planting, sod installation and interlock paving restoration in Laval and the North Shore. Landscaping tailored to you.",
         "intro": "Whether it's a turnkey project, planting, sod installation or paving restoration, we're here to help. Let us guide you through the design and execution of your landscaping project. With our expertise, we handle both brand-new installations and renovations, making sure the result matches your expectations perfectly.",
         "sections": []
       },
       "entretien-de-terrain": {
         "metaTitle": "Grounds maintenance | Paysagiste Acadien",
-        "metaDescription": "Spring opening, dethatching, seeding, leaf removal and winter closing in Laval and the Rive-Nord.",
-        "intro": "Paysagiste Acadien offers grounds maintenance services throughout Laval and the Rive-Nord.",
+        "metaDescription": "Spring opening, dethatching, seeding, leaf removal and winter closing in Laval and the North Shore.",
+        "intro": "Paysagiste Acadien offers grounds maintenance services throughout Laval and the North Shore.",
         "sections": [
           {
             "heading": "Spring opening",
@@ -111,8 +111,8 @@
       },
       "entretien-de-rocaille": {
         "metaTitle": "Rock garden maintenance | Paysagiste Acadien",
-        "metaDescription": "Spring cleanup, composted soil, cedar mulch and perennial pruning for healthy beds in Laval and the Rive-Nord.",
-        "intro": "Paysagiste Acadien offers professional rock garden maintenance services in the Laval and Rive-Nord region.",
+        "metaDescription": "Spring cleanup, composted soil, cedar mulch and perennial pruning for healthy beds in Laval and the North Shore.",
+        "intro": "Paysagiste Acadien offers professional rock garden maintenance services in the Laval and North Shore region.",
         "sections": [
           {
             "heading": "Rock garden opening",
@@ -134,8 +134,8 @@
       },
       "services-de-tailles": {
         "metaTitle": "Cedar hedge trimming | Paysagiste Acadien",
-        "metaDescription": "Annual cedar hedge trimming in Laval and the Rive-Nord: density, a clean line and prevention of thinning.",
-        "intro": "Paysagiste Acadien offers cedar hedge trimming services available throughout the city of Laval and the Rive-Nord.",
+        "metaDescription": "Annual cedar hedge trimming in Laval and the North Shore: density, a clean line and prevention of thinning.",
+        "intro": "Paysagiste Acadien offers cedar hedge trimming services available throughout the city of Laval and the North Shore.",
         "sections": [
           {
             "heading": "Cedar hedge trimming",
@@ -153,8 +153,8 @@
       },
       "plantation": {
         "metaTitle": "Planting | Paysagiste Acadien",
-        "metaDescription": "Planting of perennials, shrubs, cedar hedges and trees in Laval and the Rive-Nord, chosen for your soil and sun exposure.",
-        "intro": "Paysagiste Acadien offers planting services — perennials, shrubs, cedar hedges and trees — in Laval and the Rive-Nord.",
+        "metaDescription": "Planting of perennials, shrubs, cedar hedges and trees in Laval and the North Shore, chosen for your soil and sun exposure.",
+        "intro": "Paysagiste Acadien offers planting services — perennials, shrubs, cedar hedges and trees — in Laval and the North Shore.",
         "sections": [
           {
             "heading": "Planting perennials and shrubs",
@@ -172,8 +172,8 @@
       },
       "tourbe": {
         "metaTitle": "Sod installation | Paysagiste Acadien",
-        "metaDescription": "Sod installation in Laval and the Rive-Nord: an instant, uniform and hard-wearing lawn, for new lawns and renovations alike.",
-        "intro": "Paysagiste Acadien offers sod installation services in Laval and the Rive-Nord, for new lawns and renovations alike.",
+        "metaDescription": "Sod installation in Laval and the North Shore: an instant, uniform and hard-wearing lawn, for new lawns and renovations alike.",
+        "intro": "Paysagiste Acadien offers sod installation services in Laval and the North Shore, for new lawns and renovations alike.",
         "sections": [
           {
             "heading": "Sod installation",
@@ -191,8 +191,8 @@
       },
       "pave-uni": {
         "metaTitle": "Interlock paving repair | Paysagiste Acadien",
-        "metaDescription": "Interlock paving repair and restoration in Laval and the Rive-Nord: shifted pavers, worn joints, surface brought back to life.",
-        "intro": "Paysagiste Acadien offers interlock paving repair and restoration services in Laval and the Rive-Nord.",
+        "metaDescription": "Interlock paving repair and restoration in Laval and the North Shore: shifted pavers, worn joints, surface brought back to life.",
+        "intro": "Paysagiste Acadien offers interlock paving repair and restoration services in Laval and the North Shore.",
         "sections": [
           {
             "heading": "Interlock paving repair and restoration",
@@ -326,7 +326,8 @@
         "referralMax": "Invalid value.",
         "messageMax": "Your message is too long."
       }
-    }
+    },
+    "areaValue": "Laval and the North Shore"
   },
   "careers": {
     "metaTitle": "Careers | Paysagiste Acadien",

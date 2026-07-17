@@ -20,8 +20,15 @@ export const siteConfig = {
     email: "info@paysagisteacadien.com",
     quoteEmail: "soumission@paysagisteacadien.com",
     recruitmentEmail: "recrutement@paysagisteacadien.com",
-    /** Zone desservie, telle qu'annoncée sur les pages de services du site actuel. */
-    serviceArea: "Laval et la Rive-Nord",
+    /*
+     * PAS de `serviceArea` ici — volontairement.
+     * Cette valeur était figée en français (« Laval et la Rive-Nord ») et
+     * s'affichait telle quelle sur les pages ANGLAISES, sous un libellé
+     * « Service area ». Une chaîne visible et traduisible n'a pas sa place dans
+     * la config : elle vit dans les dictionnaires (`contact.areaValue`).
+     * Ne remets pas de texte affiché ici — seulement des constantes non
+     * traduisibles (téléphone, courriels, URL).
+     */
   },
 
   social: {

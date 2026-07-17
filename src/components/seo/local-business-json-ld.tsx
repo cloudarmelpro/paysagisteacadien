@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import { openingHours, services, siteConfig } from "@/config/site";
-import { siteUrl } from "@/lib/seo";
+import { buildAreaServed, siteUrl } from "@/lib/seo";
 
 /**
  * Données structurées LocalBusiness (schema.org) — le levier le plus fort pour
@@ -47,10 +47,7 @@ export function LocalBusinessJsonLd({
       addressRegion: "QC",
       addressCountry: "CA",
     },
-    areaServed: [
-      { "@type": "City", name: "Laval" },
-      { "@type": "AdministrativeArea", name: "Rive-Nord de Montréal" },
-    ],
+    areaServed: buildAreaServed(lang),
     openingHoursSpecification: openingHours.map((h) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: [...h.days],
