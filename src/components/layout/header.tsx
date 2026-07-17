@@ -56,7 +56,7 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           aria-label={siteConfig.name}
           className="flex cursor-pointer items-center gap-2.5 whitespace-nowrap transition-opacity duration-200 hover:opacity-70 lg:justify-self-center"
         >
-          <Logo className="size-7 text-primary" />
+          <Logo className="h-8" />
           <span className="text-sm font-bold tracking-widest text-foreground uppercase">
             Paysagiste Acadien
           </span>

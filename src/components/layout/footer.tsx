@@ -18,7 +18,7 @@ import {
   servicesSegment,
 } from "@/config/site";
 import { LanguageSwitcher } from "./language-switcher";
-import { Logo } from "./logo";
+import { LogoLockup } from "./logo";
 
 type FooterLink = { label: string; href: string };
 
@@ -111,12 +111,9 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             <Link
               href={localizedPath(lang, "")}
               aria-label={siteConfig.name}
-              className="flex cursor-pointer items-center gap-2.5 transition-opacity duration-200 hover:opacity-70"
+              className="flex cursor-pointer items-center transition-opacity duration-200 hover:opacity-70"
             >
-              <Logo className="size-7 text-primary" />
-              <span className="text-sm font-bold tracking-widest text-foreground uppercase">
-                Paysagiste Acadien
-              </span>
+              <LogoLockup className="h-24" />
             </Link>
 
             <LanguageSwitcher lang={lang} label={dict.a11y.switchLanguage} />

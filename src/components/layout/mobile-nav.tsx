@@ -126,7 +126,7 @@ export function MobileNav({
               aria-label={siteConfig.name}
               className="flex cursor-pointer items-center gap-2.5"
             >
-              <Logo className="size-7 text-primary" />
+              <Logo className="h-8" />
               <span className="text-sm font-bold tracking-widest text-foreground uppercase">
                 Paysagiste Acadien
               </span>

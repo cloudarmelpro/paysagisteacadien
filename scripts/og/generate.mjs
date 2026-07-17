@@ -55,15 +55,12 @@ const LOCALES = ["fr", "en"].map((code) => {
 });
 
 /**
- * Version inversée du logo (carré blanc, « P » vert) : le logo normal est un carré
- * vert, invisible sur ce fond vert.
- * Les tracés doivent rester identiques à ceux de src/app/icon.svg.
+ * « P » officiel du client, version BLANCHE (`public/logo-mark-white.png`) :
+ * la version verte disparaîtrait sur ce fond vert. Embarqué en base64 pour que
+ * la capture ne dépende d'aucune requête réseau. Ratio 609:959 (portrait).
  */
-const LOGO = `
-<svg viewBox="0 0 100 100" width="92" height="92">
-  <path fill="#FFFFFF" d="M20,0 H80 Q100,0 100,20 V80 Q100,100 80,100 H20 Q0,100 0,80 V20 Q0,0 20,0 Z"/>
-  <path fill="#396342" fill-rule="evenodd" d="M28,20 H54.4 A17.4,17.4 0 0 1 54.4,54.8 H40 V80 H28 Z M40,32 H54.4 A5.4,5.4 0 0 1 54.4,42.8 H40 Z"/>
-</svg>`;
+const MARK_B64 = readFileSync(join(ROOT, "public/logo-mark-white.png")).toString("base64");
+const LOGO = `<img src="data:image/png;base64,${MARK_B64}" width="48" height="76" alt="" />`;
 
 /**
  * DM Sans embarquée en base64 et non chargée depuis Google Fonts : Chrome capture
