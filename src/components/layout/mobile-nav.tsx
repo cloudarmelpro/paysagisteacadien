@@ -124,12 +124,9 @@ export function MobileNav({
               href={localizedPath(lang, "")}
               onClick={closeMenu}
               aria-label={siteConfig.name}
-              className="flex cursor-pointer items-center gap-2.5"
+              className="flex cursor-pointer items-center"
             >
-              <Logo className="h-8" />
-              <span className="text-sm font-bold tracking-widest text-foreground uppercase">
-                Paysagiste Acadien
-              </span>
+              <Logo className="h-10" />
             </Link>
             <button
               type="button"
