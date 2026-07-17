@@ -6,13 +6,10 @@ import { siteConfig } from "@/config/site";
 export const siteUrl = siteConfig.url;
 
 /**
- * Construit `canonical` + `hreflang` pour une page donnée.
+ * `segment` est le chemin après la locale, sans slash de tête ("" = accueil,
+ * "services/tourbe", …).
  *
- * `segment` est le chemin APRÈS la locale, sans slash de tête ("" = accueil,
- * "services/tourbe", …). Chaque page se déclare elle-même comme canonique et
- * liste ses équivalents dans les autres langues — c'est le signal principal que
- * Google utilise pour servir la bonne version linguistique.
- * `x-default` pointe vers le français, la locale par défaut du site.
+ * Doit rester le miroir des alternates émis par `src/app/sitemap.ts`.
  */
 export function buildAlternates(
   lang: Locale,
@@ -32,12 +29,9 @@ export function buildAlternates(
 }
 
 /**
- * Zone desservie au format schema.org, localisée.
- *
- * La Rive-Nord doit porter le nom que le lecteur de la page reconnaît : une page
- * déclarée `inLanguage: en-CA` qui annonce « Rive-Nord de Montréal » est
- * incohérente. Partagé par les schémas LocalBusiness et Service pour que les
- * deux ne puissent pas diverger.
+ * Zone desservie au format schema.org. Le nom de la région suit la locale de la
+ * page (`inLanguage`). Partagé par les schémas LocalBusiness et Service, qui
+ * doivent rester identiques.
  */
 export function buildAreaServed(lang: Locale) {
   return [
@@ -53,11 +47,8 @@ export function buildAreaServed(lang: Locale) {
  * Métadonnées Open Graph / Twitter d'une page. Les URL relatives sont résolues
  * par `metadataBase`.
  *
- * L'image est un visuel de MARQUE (logo + accroche du site, 1200×630, une par
- * locale), et non une photo : les photos actuelles sont des placeholders
- * Unsplash — les diffuser comme vitrine de nos chantiers serait faux. Ce visuel
- * restera juste même après leur remplacement.
- * Généré à partir des vraies accroches du dictionnaire et des tracés du logo.
+ * L'image est un visuel de marque, une par locale, et non une photo : ce choix
+ * reste valable après le remplacement des placeholders Unsplash du site.
  */
 export function buildOpenGraph(
   lang: Locale,

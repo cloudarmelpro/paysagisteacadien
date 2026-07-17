@@ -5,9 +5,8 @@ import Negotiator from "negotiator";
 import { i18n } from "@/lib/i18n";
 
 /**
- * Proxy (ex-middleware) : redirige toute requête sans préfixe de locale vers la
- * locale préférée du visiteur (Accept-Language), avec le français par défaut.
- * Voir node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/proxy.md
+ * Doc du fichier `proxy` :
+ * node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/proxy.md
  */
 function getLocale(request: NextRequest): string {
   const headers: Record<string, string> = {};
@@ -15,8 +14,8 @@ function getLocale(request: NextRequest): string {
     headers[key] = value;
   });
 
-  // Negotiator renvoie "*" quand aucune préférence n'est envoyée ; ce tag fait
-  // planter `match`, donc on le filtre et on retombe sur la locale par défaut.
+  // Negotiator renvoie "*" en l'absence de préférence, et ce tag fait planter
+  // `match` : il doit être filtré.
   const languages = new Negotiator({ headers })
     .languages()
     .filter((lang) => lang !== "*");
@@ -43,7 +42,6 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Exclut les fichiers internes, l'API, les assets statiques et les métadonnées.
   matcher: [
     "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\..*).*)",
   ],

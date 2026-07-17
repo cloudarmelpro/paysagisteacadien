@@ -8,9 +8,8 @@ import { cn } from "@/lib/utils";
 import { HeroGallery, type GalleryItem } from "./hero-gallery";
 
 /**
- * Ordre de la bande. Chaque photo illustre un service réel (et non une page-
- * chapeau) ; les images viennent de `serviceImages`, source unique partagée
- * avec la section services. L'image centrale (index 2) est active au chargement.
+ * Uniquement des services réels, pas de page-chapeau : les images viennent de
+ * `serviceImages`, source unique partagée avec la section services.
  */
 const GALLERY_SLUGS = [
   "tourbe",

@@ -1,15 +1,13 @@
 import { z } from "zod";
 
-/** Chaîne optionnelle : trim, longueur max, et chaîne vide traitée comme absente. */
+/** Chaîne optionnelle : la chaîne vide est traitée comme absente. */
 const optionalText = (max: number, maxKey: string) =>
   z.string().trim().max(max, maxKey).optional();
 
 /**
- * Schéma du formulaire « Nous joindre ». Reprend les champs du site actuel :
- * nom, courriel et municipalité sont requis ; le reste est optionnel.
- * Utilisé des deux côtés : react-hook-form valide en direct côté client, et la
- * Server Action le re-valide côté serveur (jamais confiance à l'entrée client).
- * Les messages sont des clés — traduites à l'affichage via le dictionnaire.
+ * Schéma du formulaire « Nous joindre ». Les messages sont des clés de
+ * dictionnaire, traduites à l'affichage. La Server Action doit revalider avec
+ * ce schéma : la validation react-hook-form côté client ne protège rien.
  */
 export const contactSchema = z.object({
   name: z.string().trim().min(2, "name").max(100, "nameMax"),
@@ -22,7 +20,7 @@ export const contactSchema = z.object({
     .max(30, "phoneMax")
     .refine((v) => v === "" || /^[\d\s+().-]{7,}$/.test(v), "phone")
     .optional(),
-  // Sélection multiple (cases à cocher) → tableaux de valeurs.
+  // service et referral sont des cases à cocher multiples : valeurs en tableau.
   service: z.array(z.string().max(80)).max(20).optional(),
   startDate: optionalText(20, "startDateMax"),
   referral: z.array(z.string().max(80)).max(20).optional(),

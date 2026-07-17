@@ -3,13 +3,10 @@ import type { Locale } from "./i18n";
 import { i18n } from "./i18n";
 import type frDict from "@/dictionaries/fr.json";
 
-/** Forme d'un dictionnaire, dérivée du fichier français (source de vérité). */
+/** `fr.json` fait foi : sa forme définit le type de toutes les locales. */
 export type Dictionary = typeof frDict;
 
-/**
- * Chargeur de dictionnaires. Chaque locale est importée dynamiquement afin de
- * n'envoyer aucune traduction au client (les pages sont des Server Components).
- */
+/** Import dynamique par locale : aucune traduction n'est envoyée au client. */
 const dictionaries: Record<Locale, () => Promise<Dictionary>> = {
   fr: () => import("@/dictionaries/fr.json").then((m) => m.default),
   en: () => import("@/dictionaries/en.json").then((m) => m.default),

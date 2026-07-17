@@ -1,27 +1,15 @@
+/**
+ * La couleur de marque vient du token `--primary` : ne pas coder le vert en dur ici.
+ * `prefers-reduced-motion` (globals.css) neutralise l'animation de survol.
+ */
 import { Button as ButtonPrimitive } from "@base-ui/react/button"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
 /**
- * Style aligné sur le projet myatps (shadcn « new-york ») : rayon `rounded-md`,
- * `cursor-pointer` dès la base, gabarits h-9 / h-8 / h-10, survol en /90.
- * On conserve en revanche la primitive base-ui de ce projet et notre couleur de
- * marque (le vert vient du token `--primary`, jamais codé en dur ici).
- * Note : `rounded-md` vaut 8px dans les deux projets — les formules de --radius
- * diffèrent mais convergent, donc le rendu est identique au pixel.
- *
- * Animation : reprise du bouton CTA de myatps (`components/pricing/pricing-cards.tsx`)
- * — un reflet en dégradé traverse le bouton au survol (700ms) et `active:scale-[0.98]`
- * au clic. Chez eux c'est un `<div>` enfant + un `<span className="relative">` ;
- * ici c'est un pseudo-élément `before:`, ce qui évite d'ajouter du DOM dans chaque
- * usage (nos CTA sont des `<Link>` stylés par `buttonVariants()`).
- * `transform` reste sur le compositeur et `prefers-reduced-motion` (globals.css)
- * neutralise l'effet automatiquement.
- */
-/**
- * Le reflet qui traverse le bouton au survol. La teinte (`before:via-*`) est
- * laissée à chaque variante : un reflet blanc est invisible sur un bouton clair.
+ * Reflet qui traverse le bouton au survol. La teinte (`before:via-*`) est laissée
+ * à chaque variante : un reflet blanc est invisible sur un bouton clair.
  */
 const shine =
   "before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-transparent before:to-transparent before:transition-transform before:duration-700 hover:before:translate-x-full"

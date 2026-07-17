@@ -9,9 +9,8 @@ import {
 } from "@/lib/validations/contact";
 
 /**
- * Traite l'envoi du formulaire de contact. Re-valide TOUJOURS côté serveur avec
- * le même schéma Zod — la validation client (react-hook-form) n'est qu'un confort
- * d'UX, jamais une garantie de sécurité. En cas de succès, persiste via Prisma.
+ * La validation côté serveur est la seule garantie : celle du client est
+ * contournable et ne sert qu'à l'UX.
  */
 export async function submitContact(
   input: ContactInput,

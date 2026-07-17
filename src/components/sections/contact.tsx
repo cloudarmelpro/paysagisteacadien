@@ -10,7 +10,6 @@ const badgeClass =
 export function Contact({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const c = dict.contact;
 
-  // Options du menu « Service souhaité » : les 6 services réels, libellés traduits.
   const serviceOptions = serviceGroups
     .flatMap((g) => g.services)
     .map((slug) => ({ value: slug, label: dict.services.items[slug] }));
@@ -88,7 +87,7 @@ export function Contact({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </dl>
         </div>
 
-        {/* Formulaire — sans cadre : il se fond dans la page. */}
+        {/* Formulaire */}
         <div className="lg:col-span-3">
           <div className="mb-6 flex flex-col gap-1">
             <h2 className="text-xl font-medium tracking-tight uppercase text-foreground/80">

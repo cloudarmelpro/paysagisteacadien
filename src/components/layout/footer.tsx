@@ -23,7 +23,7 @@ import { Logo } from "./logo";
 type FooterLink = { label: string; href: string };
 
 /** Titres de colonne : l'interlettrage compense la faible lisibilité des
- *  majuscules à 12px. Partagé par les 4 colonnes pour éviter la divergence. */
+ *  majuscules à 12px. */
 const columnHeadingClass =
   "text-xs font-medium uppercase tracking-wider text-foreground/60";
 
@@ -55,11 +55,7 @@ function FooterColumn({
   );
 }
 
-/**
- * Pied de page bilingue. Colonne de marque (wordmark, langue, réseaux) +
- * 4 colonnes : Entretien, Aménagement, Entreprise, Contact.
- * Contenu repris du site actuel ; filets pointillés d'après la maquette.
- */
+/** Pied de page bilingue : colonne de marque + Entretien, Aménagement, Entreprise, Contact. */
 export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const serviceLink = (slug: string): FooterLink => ({
     label: dict.services.items[slug as keyof typeof dict.services.items],
@@ -78,9 +74,8 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     href: localizedPath(lang, l.segment),
   }));
 
-  // Logos de marque exacts (Simple Icons), avec la couleur officielle fournie
-  // par le paquet (`*Hex`) plutôt qu'un hex recopié à la main. LinkedIn n'y
-  // figure pas — rendu en lien texte plutôt qu'avec un faux logo.
+  // Couleurs de marque prises dans le paquet (`*Hex`), pas recopiées.
+  // LinkedIn est absent de Simple Icons : rendu en lien texte plus bas.
   const socials = [
     {
       label: "Facebook",
@@ -107,11 +102,9 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <footer className="border-t border-dotted border-border bg-muted/30">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-12">
-        {/* 2 colonnes jusqu'à 1024px (4 colonnes dès 768px étaient trop
-            étroites : ~151px, le courriel se coupait en plein mot).
-            Dès 1024px : grille de 12 pour répartir selon le contenu réel plutôt
-            qu'en parts égales — la marque (lock-up logo + wordmark ≈ 210px) et
-            Contact (courriel long) prennent 3 colonnes, les listes de liens 2. */}
+        {/* Max 2 colonnes sous 1024px : à 4 colonnes dès 768px, le courriel se
+            coupe en plein mot. Au-delà, grille de 12 : marque et Contact en 3,
+            listes de liens en 2. */}
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-12">
           {/* Colonne marque */}
           <div className="col-span-2 flex flex-col items-start gap-5 lg:col-span-3">
@@ -136,8 +129,7 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  /* La zone cliquable fait 44px ; la pastille colorée n'en fait
-                     que 36 — le reste est du padding invisible. */
+                  /* Zone cliquable de 44px autour de la pastille de 36. */
                   className="group inline-flex size-11 cursor-pointer items-center justify-center rounded-md focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
                 >
                   <span
@@ -162,7 +154,7 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             className="lg:col-span-2"
           />
 
-          {/* Entreprise — inclut LinkedIn en lien texte (logo indisponible) */}
+          {/* Entreprise : inclut LinkedIn en lien texte, faute de logo disponible. */}
           <div className="lg:col-span-2">
             <h3 className={columnHeadingClass}>
               {dict.footer.companyTitle}
@@ -191,10 +183,9 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </ul>
           </div>
 
-          {/* Contact — pleine largeur en mobile : le courriel est trop long
-              pour une demi-colonne à 375px et se coupait en plein mot.
-              `min-w-0` est indispensable : sans lui, `min-width:auto` empêche la
-              colonne de rétrécir sous la longueur du courriel → débordement. */}
+          {/* Contact en pleine largeur sous 640px : le courriel dépasse une
+              demi-colonne à 375px. `min-w-0` est requis, sinon `min-width:auto`
+              empêche la colonne de rétrécir et le courriel déborde. */}
           <div className="col-span-2 min-w-0 sm:col-span-1 lg:col-span-3">
             <h3 className={columnHeadingClass}>
               {dict.footer.contactTitle}
@@ -225,9 +216,8 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </div>
         </div>
 
-        {/* Filet pointillé + barre basse. La politique de confidentialité vit ici
-            plutôt que dans la colonne « Entreprise » : c'est une mention légale,
-            pas une page de contenu — et c'est là qu'on la cherche. */}
+        {/* Barre basse : la politique de confidentialité reste ici, comme mention
+            légale, et non dans la colonne « Entreprise ». */}
         <div className="mt-12 flex flex-col gap-3 border-t border-dotted border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-foreground/60">
             © {year} {siteConfig.legalName} {dict.footer.rights}

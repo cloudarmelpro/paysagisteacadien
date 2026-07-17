@@ -6,14 +6,8 @@ const badgeClass =
   "w-fit rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wider text-foreground/70 uppercase";
 
 /**
- * Politique de confidentialité (Loi 25 — Québec).
- *
- * Mise en page volontairement différente des autres sections : une colonne
- * étroite et lisible plutôt que la grille éditoriale du reste du site — un texte
- * juridique se lit en continu, pas en diagonale.
- *
- * Le contenu vit dans les dictionnaires (traduit). Les coordonnées viennent de
- * `siteConfig` pour rester cohérentes avec le reste du site et le JSON-LD.
+ * Politique de confidentialité (Loi 25 — Québec). Les coordonnées proviennent de
+ * `siteConfig` et doivent rester identiques à celles du JSON-LD.
  */
 export function Privacy({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const p = dict.privacy;
@@ -32,8 +26,7 @@ export function Privacy({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         </p>
       </div>
 
-      {/* Renseignements recueillis — la liste concrète, en tête car c'est ce que
-          la personne vient vérifier en premier. */}
+      {/* Renseignements recueillis */}
       <div className="mt-14 max-w-3xl border-t border-dotted border-border pt-8">
         <h2 className="text-xl font-medium tracking-tight text-foreground">
           {p.collected.heading}
@@ -62,8 +55,7 @@ export function Privacy({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         ))}
       </div>
 
-      {/* Coordonnées du responsable — encadré, car c'est le point d'action de la
-          page : c'est par là qu'une personne exerce ses droits. */}
+      {/* Coordonnées du responsable */}
       <div className="mt-14 flex max-w-3xl flex-col gap-3 rounded-3xl bg-muted p-8">
         <h2 className="text-xl font-medium tracking-tight text-foreground">
           {p.officer.heading}

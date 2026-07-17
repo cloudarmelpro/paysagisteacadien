@@ -9,29 +9,13 @@ import {
 import { siteUrl } from "@/lib/seo";
 
 /**
- * Sitemap bilingue. Chaque page est listée une fois par locale, et déclare ses
- * équivalents via `alternates.languages` (hreflang) — Google associe ainsi les
- * versions FR/EN au lieu de les voir comme du contenu dupliqué.
+ * Les alternates hreflang émis ici doivent rester le miroir de `buildAlternates()`
+ * (`src/lib/seo.ts`) : `fr`, `en`, `x-default` vers la locale par défaut. Deux
+ * déclarations divergentes annulent le signal.
  *
- * Les `<xhtml:link>` émis ici sont le MIROIR EXACT de `buildAlternates()`
- * (`src/lib/seo.ts`), qui produit les alternates du <head> : `fr`, `en` et
- * `x-default` (→ locale par défaut). Les deux déclarations doivent rester
- * cohérentes, sinon Google constate un conflit et ignore le signal.
- *
- * Volontairement ABSENTS de ce sitemap :
- *
- * - `lastModified` : site statique, sans CMS ni date de modification réelle par
- *   page. Le renseigner reviendrait à écrire `new Date()`, c.-à-d. l'heure du
- *   BUILD — les 24 URL porteraient toutes le même horodatage, et il changerait à
- *   chaque déploiement même sans modification de contenu. C'est l'anti-pattern
- *   « all identical lastmod » : Google détecte la date bidon, perd confiance
- *   dans le champ et l'ignore pour tout le site. Pas de date > fausse date.
- *   Ne le rajouter QUE le jour où une vraie date par page existe.
- * - `changeFrequency` et `priority` : officiellement ignorés par Google depuis
- *   des années (ce ne sont que des indices déclaratifs, jamais vérifiés). Les
- *   émettre n'apporte rien et donne l'illusion d'un contrôle inexistant.
- *
- * → Ne pas « re-corriger » ces omissions : elles sont délibérées.
+ * Omissions à conserver : `lastModified` (aucune date de modification réelle par
+ * page ; une date de build identique sur toutes les URL discrédite le champ) ;
+ * `changeFrequency` et `priority` (ignorés par Google).
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   // Segments après la locale ("" = accueil).

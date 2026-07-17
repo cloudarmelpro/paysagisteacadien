@@ -10,8 +10,8 @@ import { cn } from "@/lib/utils";
 import { FaqAccordion } from "./faq-accordion";
 
 /**
- * FAQ : en-tête et colonne de gauche restent côté serveur ; seul l'accordéon
- * est client (état + animation framer-motion).
+ * En-tête et colonne de gauche restent côté serveur ; seul l'accordéon est
+ * client, pour son état et son animation.
  */
 export function Faq({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (

@@ -1,5 +1,3 @@
-/** Types partagés de l'application. */
-
 export interface Service {
   slug: string;
   title: string;

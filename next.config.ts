@@ -3,18 +3,9 @@ import type { NextConfig } from "next";
 const isDev = process.env.NODE_ENV === "development";
 
 /**
- * Politique de sécurité du contenu.
- *
- * Choix assumé : `script-src` autorise `'unsafe-inline'`. Une CSP stricte
- * imposerait des nonces par requête, ce qui forcerait le rendu dynamique et
- * ferait perdre la génération statique des 27 pages — prix trop élevé pour un
- * site vitrine sans saisie de contenu tiers. La CSP garde malgré tout une vraie
- * valeur : elle bloque les scripts d'origines externes, les objets/embeds, le
- * détournement de `<base>`, l'exfiltration de formulaire vers un autre domaine
- * et l'affichage du site dans une iframe tierce.
- *
- * En développement, Next a besoin de `'unsafe-eval'` et d'un WebSocket pour le
- * HMR — ajoutés uniquement dans ce mode.
+ * `script-src` autorise `'unsafe-inline'` : une CSP à nonces imposerait le rendu
+ * dynamique et supprimerait la génération statique des pages.
+ * `'unsafe-eval'` et le WebSocket ne servent qu'au HMR en développement.
  */
 const contentSecurityPolicy = [
   "default-src 'self'",
@@ -30,8 +21,7 @@ const contentSecurityPolicy = [
   "upgrade-insecure-requests",
 ].join("; ");
 
-/** En-têtes de sécurité. Seul HSTS était présent — et c'est Vercel qui l'ajoute
- *  par défaut, pas nous ; on le déclare donc ici aussi pour ne pas en dépendre. */
+/** HSTS est déclaré ici bien que Vercel l'ajoute par défaut, pour ne pas en dépendre. */
 const securityHeaders = [
   { key: "Content-Security-Policy", value: contentSecurityPolicy },
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -48,18 +38,11 @@ const securityHeaders = [
 ];
 
 /**
- * Redirections des URL de l'ANCIEN site (unilingue français) vers la nouvelle
- * arborescence localisée.
- *
- * Pourquoi c'est indispensable : au basculement du domaine, tout lien externe,
- * signet ou résultat déjà indexé pointant vers `/tourbe`, `/plantation`, etc.
- * tomberait en 404 — le proxy de locale les enverrait vers `/fr/tourbe`, qui
- * n'existe pas (la nouvelle arborescence est `/fr/services/<slug>`). Ces 308
- * sont ce qui préserve l'autorité déjà accumulée par le domaine.
- *
- * Elles doivent s'appliquer AVANT le proxy de locale — vérifié par test.
- * `/nous-joindre` et `/emplois` ne figurent pas ici : leur slug est inchangé,
- * le proxy les résout déjà correctement vers `/fr/...`.
+ * URL de l'ancien site (unilingue français) vers l'arborescence localisée
+ * `/fr/services/<slug>`. Sans ces 308, les liens indexés finissent en 404 et
+ * l'autorité du domaine est perdue. Elles doivent s'appliquer avant le proxy de
+ * locale, qui enverrait sinon `/tourbe` vers `/fr/tourbe` — route inexistante.
+ * `/nous-joindre` et `/emplois` en sont absents : slug inchangé, le proxy suffit.
  */
 const legacyRedirects = [
   // Pages-chapeaux de service
@@ -70,16 +53,14 @@ const legacyRedirects = [
   { from: "/services-de-tailles", to: "/fr/services/services-de-tailles" },
   { from: "/plantation", to: "/fr/services/plantation" },
   { from: "/tourbe", to: "/fr/services/tourbe" },
-  // Le blogue n'a pas d'équivalent : on renvoie vers l'accueil plutôt que de
-  // laisser un 404. À revoir si du contenu éditorial est recréé un jour.
+  // Le blogue n'a pas d'équivalent : redirigé vers l'accueil plutôt qu'un 404.
   { from: "/blogue-1", to: "/fr" },
 
   /**
-   * URL accentuées de l'ancien site. Next compare la `source` au chemin tel
-   * qu'il arrive, c'est-à-dire PERCENT-ENCODÉ — une source écrite « à-propos »
-   * ne matcherait jamais `/%C3%A0-propos` (vérifié par test : 404). On déclare
-   * donc la forme encodée, plus la forme accentuée en filet de sécurité pour
-   * les rares clients qui enverraient de l'UTF-8 brut.
+   * URL accentuées de l'ancien site. Next compare `source` au chemin
+   * percent-encodé : « à-propos » ne matche jamais `/%C3%A0-propos`. La forme
+   * encodée est donc requise ; la forme accentuée couvre les clients qui
+   * envoient de l'UTF-8 brut.
    */
   { from: "/am%C3%A9nagement-paysager-1", to: "/fr/services/amenagement-paysager" },
   { from: "/aménagement-paysager-1", to: "/fr/services/amenagement-paysager" },
@@ -105,18 +86,11 @@ const nextConfig: NextConfig = {
       { source: "/:path*", headers: securityHeaders },
       {
         /**
-         * Empêche l'indexation de tout hôte qui n'est PAS le domaine final :
-         * aujourd'hui l'URL de transition `*.vercel.app` et les déploiements de
-         * prévisualisation.
-         *
-         * Pourquoi : chaque page déclare un canonical vers paysagisteacadien.com,
-         * mais ce domaine sert encore l'ancien site (et /en y répond 404). Google
-         * ignore un canonical dont la cible n'existe pas ou diffère — sans cet
-         * en-tête, l'URL Vercel s'indexerait et concurrencerait le vrai domaine.
-         *
-         * Réglé par NÉGATION du domaine final : le jour où paysagisteacadien.com
-         * pointera ici, les pages redeviendront indexables sans toucher au code.
-         * `www.` est toléré pour ne pas désindexer par erreur.
+         * Bloque l'indexation de tout hôte autre que le domaine final
+         * (`*.vercel.app`, prévisualisations) : leur canonical pointe vers
+         * paysagisteacadien.com, qui sert encore l'ancien site, et l'URL Vercel
+         * concurrencerait le vrai domaine. Réglé par négation de l'hôte, donc
+         * les pages redeviennent indexables dès que le domaine pointe ici.
          */
         source: "/:path*",
         missing: [{ type: "host", value: "(www\\.)?paysagisteacadien\\.com" }],

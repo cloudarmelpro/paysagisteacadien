@@ -1,12 +1,10 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Marque « P » : carré arrondi plein dont la lettre est une RÉSERVE (découpée
- * via fill-rule evenodd) — le fond de la page traverse le P, il s'adapte donc
- * seul au thème. Le carré est peint en `currentColor` : appliquer `text-primary`
- * suffit pour qu'il bascule du vert clair (#396342) au vert sombre (#62BB78).
- * Décoratif : les liens qui l'entourent portent déjà le libellé accessible.
- * Source du tracé : public/LOGO.svg (conservé pour le favicon / usages externes).
+ * Marque « P » : le carré est peint en `currentColor` et la lettre est une
+ * réserve découpée par `fill-rule="evenodd"` — le fond de la page la traverse,
+ * d'où l'adaptation au thème. Décoratif : le libellé accessible vient du lien
+ * englobant. Tracé miroir de public/LOGO.svg (favicon et usages externes).
  */
 export function Logo({ className }: { className?: string }) {
   return (

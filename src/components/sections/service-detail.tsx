@@ -20,10 +20,8 @@ const badgeClass =
   "w-fit rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wider text-foreground/70 uppercase";
 
 /**
- * Page de service. Deux rendus à partir du même gabarit (pour garder un design
- * homogène) :
- *  - « chapeau » de famille (Entretien / Aménagement) → liste ses sous-services ;
- *  - service individuel → sections éditoriales détaillées.
+ * Page de service, deux rendus sur le même gabarit : chapeau de famille (liste
+ * ses sous-services) ou service individuel (sections éditoriales).
  * Le slug est supposé valide : la route appelle `notFound()` en amont.
  */
 export function ServiceDetail({
@@ -49,9 +47,8 @@ export function ServiceDetail({
   const categoryName = dict.services[group.key];
   const hubHref = localizedPath(lang, `${servicesSegment}/${group.segment}`);
 
-  // Services connexes (pages individuelles) : les autres services, priorité à
-  // ceux de la même famille, puis complétés par l'autre famille — toujours 3
-  // pour une rangée pleine identique à l'accueil.
+  // Priorité à la même famille, complétée par l'autre ; toujours 3 pour une
+  // rangée pleine identique à la grille de l'accueil.
   const relatedSlugs = Array.from(
     new Set([
       ...group.services,
@@ -134,8 +131,7 @@ export function ServiceDetail({
         </div>
       )}
 
-      {/* Services connexes — uniquement sur les pages de service individuelles
-          (les chapeaux listent déjà tous leurs sous-services). */}
+      {/* Services connexes : inutiles sur un chapeau, qui liste déjà les siens. */}
       {!isCategory && (
         <div className="mt-16 border-t border-dotted border-border pt-10 lg:mt-24 lg:pt-14">
           <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">

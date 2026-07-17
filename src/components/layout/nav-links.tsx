@@ -10,22 +10,20 @@ export type NavLinkItem = { label: string; href: string };
 /** Un lien est actif sur correspondance exacte, ou si la page est un enfant du segment. */
 export function isActivePath(pathname: string, href: string): boolean {
   const base = href.split("#")[0];
-  // Un lien-ancre (#services) est géré par le scroll-spy, pas par le chemin.
+  // Les liens-ancres (#services) relèvent du scroll-spy, pas du chemin.
   if (href.includes("#")) return false;
   if (pathname === base) return true;
-  // La racine de locale (/fr, /en) ne s'active QUE sur correspondance exacte :
-  // sinon, étant préfixe de toutes les sous-pages, elle s'allumerait partout.
+  // La racine de locale (/fr, /en) préfixe toutes les sous-pages : sans
+  // exclusion, elle s'activerait partout.
   const isLocaleRoot = base.split("/").length === 2;
   return !isLocaleRoot && pathname.startsWith(`${base}/`);
 }
 
 /**
- * Défilement doux pour les liens de la même page. Renvoie `true` si l'événement a
- * été pris en charge (défilement effectué) — dans ce cas la navigation Next est
- * annulée. Sinon `false` : on laisse le lien naviguer normalement (autre page,
- * clic modifié, etc.). L'API de défilement est appelée sans `behavior` explicite
- * pour hériter du `scroll-behavior` CSS, qui redevient instantané si l'utilisateur
- * a activé « prefers-reduced-motion ».
+ * Défilement pour les liens de la même page. Renvoie `true` si le défilement a
+ * eu lieu et que la navigation Next a été annulée, `false` si le lien doit
+ * naviguer normalement. Le `behavior` est laissé implicite pour hériter du
+ * `scroll-behavior` CSS, qui respecte « prefers-reduced-motion ».
  */
 export function scrollForSamePageAnchor(
   e: MouseEvent<HTMLAnchorElement>,
@@ -47,8 +45,7 @@ export function scrollForSamePageAnchor(
     return true;
   }
 
-  // Lien sans ancre sur la page courante (ex. « Accueil » depuis l'accueil) →
-  // on remonte tout en haut.
+  // Lien sans ancre sur la page courante (« Accueil » depuis l'accueil).
   e.preventDefault();
   window.scrollTo({ top: 0 });
   history.replaceState(null, "", base);
@@ -56,21 +53,18 @@ export function scrollForSamePageAnchor(
 }
 
 /**
- * Détermine l'état actif des liens de navigation. Sur l'accueil, les liens-ancres
- * (Services, FAQ) et « Accueil » suivent la section réellement visible
- * (scroll-spy) : « Accueil » est actif dans le hero, puis la main passe à
- * « Services », « FAQ »… à mesure qu'on défile. Ailleurs, on retombe sur la
- * correspondance de chemin classique. Renvoie une fonction `isActive(href)`.
+ * Renvoie `isActive(href)`. Sur l'accueil, les liens partageant sa base suivent
+ * la section visible (scroll-spy) ; ailleurs, correspondance de chemin.
  */
 export function useNavActive(items: NavLinkItem[]) {
   const pathname = usePathname();
 
-  // Base de l'accueil (partagée par les liens-ancres) et ids des sections suivies,
-  // dans l'ordre du document.
   const homeBase = useMemo(() => {
     const anchor = items.find((i) => i.href.includes("#"));
     return anchor ? anchor.href.split("#")[0] : null;
   }, [items]);
+  // Ces ids doivent rester dans l'ordre du document : `compute` retient la
+  // dernière section franchie.
   const sectionIds = useMemo(
     () =>
       items
@@ -84,7 +78,7 @@ export function useNavActive(items: NavLinkItem[]) {
 
   useEffect(() => {
     if (!onHome) return;
-    // Ligne de bascule : juste sous le header collant (h-16) + la marge d'ancre.
+    // Ligne de bascule sous le header collant (h-16) plus la marge d'ancre.
     const offset = 100;
     let raf = 0;
     const compute = () => {
@@ -118,10 +112,7 @@ export function useNavActive(items: NavLinkItem[]) {
   };
 }
 
-/**
- * Navigation desktop. L'état actif est souligné (via ::after, sans décalage
- * de layout) et renforcé par `aria-current` pour les lecteurs d'écran.
- */
+/** Navigation desktop : soulignement via ::after, état actif exposé par `aria-current`. */
 export function NavLinks({ items }: { items: NavLinkItem[] }) {
   const pathname = usePathname();
   const isActive = useNavActive(items);

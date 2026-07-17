@@ -5,14 +5,9 @@ import { i18n, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 /**
- * Bascule FR / EN façon interrupteur : deux libellés encadrent un rail dont la
- * pastille glisse vers la langue active. Conserve le chemin courant
- * (/fr/services → /en/services).
- *
- * C'est volontairement un vrai lien `<a>` (rechargement complet) et non une
- * navigation client : changer de langue produit un nouveau document, dans une
- * autre langue — c'est ce qui permet à <html lang> d'être juste côté serveur.
- * Bonus : ouvrable dans un nouvel onglet, et crawlable comme lien alternatif.
+ * Bascule FR / EN conservant le chemin courant (/fr/services → /en/services).
+ * Un `<a>` natif, pas de navigation client : le rechargement complet est ce qui
+ * fait rendre <html lang> côté serveur dans la nouvelle langue.
  */
 export function LanguageSwitcher({ lang }: { lang: Locale }) {
   const pathname = usePathname();

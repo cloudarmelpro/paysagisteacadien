@@ -2,12 +2,9 @@ import { PrismaClient } from "@/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 /**
- * Singleton PrismaClient. En développement, Next.js recharge les modules à
- * chaque édition : sans ce cache global, chaque rechargement ouvrirait un
- * nouveau pool de connexions et finirait par les épuiser.
- *
- * Prisma 7 exige un driver adapter : `@prisma/adapter-pg` (node-postgres) se
- * connecte à Neon en TCP via l'URL poolée. La chaîne vient de `DATABASE_URL`.
+ * Le cache global est requis en développement : sans lui, chaque rechargement
+ * de module ouvre un pool de connexions supplémentaire jusqu'à épuisement.
+ * Prisma 7 impose un driver adapter ; `DATABASE_URL` doit être l'URL poolée.
  */
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;

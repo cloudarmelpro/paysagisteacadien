@@ -10,11 +10,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { NavLinks } from "./nav-links";
 import { MobileNav } from "./mobile-nav";
 
-/**
- * En-tête bilingue : barre pleine largeur, marque centrée (wordmark en
- * majuscules espacées), navigation à gauche, sélecteur de langue + CTA
- * « Soumission » à droite ; menu hamburger en mobile.
- */
+/** En-tête bilingue : nav à gauche, marque centrée, langue + CTA à droite ; hamburger en mobile. */
 export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const items = navLinks.map((link) => {
     const hash = "hash" in link ? `#${link.hash}` : "";
@@ -23,8 +19,6 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       href: `${localizedPath(lang, link.segment)}${hash}`,
     };
   });
-  // Lien secondaire du header : « Emplois ». Le CTA « Soumission » mène, lui, à
-  // la page de contact (nous-joindre).
   const careers = {
     label: dict.nav.careers,
     href: localizedPath(lang, "emplois"),
@@ -40,7 +34,7 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
   return (
     <header className="sticky top-0 z-50 bg-background">
-      {/* Accessibilité : permet d'atteindre le contenu sans tabuler toute la nav. */}
+      {/* Lien d'évitement : atteindre le contenu sans tabuler toute la nav. */}
       <a
         href="#main"
         className="sr-only rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50"
@@ -48,11 +42,8 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         {lang === "fr" ? "Aller au contenu" : "Skip to content"}
       </a>
 
-      {/*
-        Mobile/tablette : flex (marque à gauche, hamburger à droite).
-        Desktop (lg+) : grille 3 colonnes `1fr auto 1fr` — la marque occupe sa
-        propre colonne, donc elle reste centrée SANS pouvoir chevaucher la nav.
-      */}
+      {/* Dès lg, la grille `1fr auto 1fr` donne sa propre colonne à la marque :
+          elle reste centrée sans chevaucher la nav. */}
       <div className="relative mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-4 px-5 sm:px-8 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:px-12">
         {/* Navigation — gauche (desktop) */}
         <nav
@@ -89,7 +80,7 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </Link>
         </div>
 
-        {/* Actions — mobile / tablette (langue déplacée dans le menu) */}
+        {/* Actions — mobile / tablette : la langue vit dans le menu */}
         <div className="flex items-center lg:hidden">
           <MobileNav
             lang={lang}

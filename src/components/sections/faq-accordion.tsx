@@ -8,12 +8,10 @@ import type { Dictionary } from "@/lib/dictionaries";
 type FaqGroups = Dictionary["faq"]["groups"];
 
 /**
- * Accordéon de la FAQ. On abandonne `<details>` natif au profit de framer-motion :
- * seul lui anime proprement vers `height: auto`. En contrepartie, l'accessibilité
- * que `<details>` offrait gratuitement est reconstruite à la main —
- * `aria-expanded`, `aria-controls` et une région étiquetée par sa question.
- *
- * `useReducedMotion` est obligatoire ici : la règle `prefers-reduced-motion` de
+ * Accordéon animé vers `height: auto`, ce que `<details>` natif ne permet pas ;
+ * l'accessibilité qu'il offrait est donc à maintenir à la main (`aria-expanded`,
+ * `aria-controls`, région étiquetée par sa question).
+ * `useReducedMotion` est requis : la règle `prefers-reduced-motion` de
  * globals.css ne neutralise que les transitions CSS, pas les animations JS.
  */
 export function FaqAccordion({ groups }: { groups: FaqGroups }) {

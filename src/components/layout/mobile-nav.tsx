@@ -19,14 +19,10 @@ import {
 } from "./nav-links";
 
 /**
- * Menu mobile plein écran. Ouvert via l'image `menu.png` (burger), il déploie un
- * panneau opaque calqué sur la référence : marque + fermeture en haut, grands
- * liens empilés, filet, puis liens secondaires (réseaux + langue) et le CTA
- * Soumission. Couleurs du site (fond clair, accents verts), pas le thème sombre.
- *
- * Animation : le panneau reste monté pendant la fermeture (`render`) pour jouer
- * l'animation de sortie ; il est démonté à la fin de l'animation. `prefers-
- * reduced-motion` neutralise le mouvement via la règle globale.
+ * Menu mobile plein écran : marque et fermeture en haut, liens principaux, puis
+ * CTA, réseaux et langue. `render` maintient le panneau monté pendant l'animation
+ * de sortie ; le démontage attend sa fin. Le mouvement est neutralisé par la
+ * règle globale `prefers-reduced-motion` : aucune garde locale n'est nécessaire.
  */
 export function MobileNav({
   lang,
@@ -56,7 +52,6 @@ export function MobileNav({
   };
   const closeMenu = () => setOpen(false);
 
-  // Échap ferme le menu, et le défilement de fond est bloqué quand il est ouvert.
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -87,9 +82,8 @@ export function MobileNav({
         onClick={openMenu}
         className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
       >
-        {/* Burger noir en thème clair, fichier blanc dédié en thème sombre.
-            Les deux sont montés ; la CSS (variante `dark:`) affiche le bon —
-            rendu identique serveur/client, donc aucun écart d'hydratation. */}
+        {/* Les deux fichiers restent montés et la variante `dark:` choisit :
+            le rendu serveur et client est identique, sans écart d'hydratation. */}
         <Image
           src="/images/menu.png"
           alt=""
@@ -112,7 +106,7 @@ export function MobileNav({
         <div
           id="mobile-menu"
           onAnimationEnd={(e) => {
-            // Fin de l'animation de SORTIE → on démonte le panneau.
+            // Démontage seulement à la fin de l'animation de sortie.
             if (e.target === e.currentTarget && !open) setRender(false);
           }}
           className={cn(

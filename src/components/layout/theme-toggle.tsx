@@ -4,12 +4,10 @@ import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 /**
- * Bascule clair / sombre, pilotée directement par le DOM (pas de contexte ni de
- * dépendance). Le clic bascule la classe `dark` sur <html>, met à jour
- * `color-scheme` et mémorise le choix. Les deux icônes sont rendues et c'est la
- * CSS (`dark:`) qui affiche la bonne → aucun état de thème au rendu, donc aucun
- * écart d'hydratation. L'état initial est posé par le script du layout, avant
- * peinture (pas de flash).
+ * Bascule clair / sombre pilotée par le DOM, sans contexte React. Les deux icônes
+ * sont rendues et la CSS (`dark:`) choisit : aucun état de thème au rendu, donc
+ * aucun écart d'hydratation. L'état initial vient du script du layout, exécuté
+ * avant peinture.
  */
 export function ThemeToggle({
   label,
@@ -30,7 +28,7 @@ export function ThemeToggle({
         try {
           localStorage.setItem("theme", isDark ? "dark" : "light");
         } catch {
-          // stockage indisponible (navigation privée) : on ignore.
+          // Stockage indisponible en navigation privée.
         }
       }}
       className={cn(

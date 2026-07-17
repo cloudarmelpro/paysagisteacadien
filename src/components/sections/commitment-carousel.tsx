@@ -18,10 +18,9 @@ export type CommitmentValue = { title: string; desc: string };
 const ICONS: LucideIcon[] = [Ear, MessageCircle, UserCheck, Leaf];
 
 /**
- * Carrousel horizontal de valeurs. Le défilement natif (scroll-snap) porte le
- * mouvement : le glissé tactile et le clavier marchent sans code. Les flèches et
- * l'indicateur ne font que piloter/refléter ce scroll — pas d'état de position
- * dupliqué qui pourrait désynchroniser.
+ * Carrousel horizontal. Le scroll natif (scroll-snap) porte le mouvement, d'où le
+ * glissé tactile et le clavier sans code dédié. Les flèches et l'indicateur ne
+ * font que piloter et refléter ce scroll : aucune position n'est dupliquée en état.
  */
 export function CommitmentCarousel({
   values,
@@ -62,8 +61,6 @@ export function CommitmentCarousel({
   };
 
   return (
-    // Pas de fond extérieur : les cartes reposent directement sur la page.
-    // Leur ombre (`shadow-sm`) leur donne le relief sans panneau derrière.
     <div className="mt-8">
       <div
         ref={trackRef}

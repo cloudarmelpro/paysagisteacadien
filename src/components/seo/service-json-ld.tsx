@@ -7,12 +7,10 @@ import { buildAreaServed, siteUrl } from "@/lib/seo";
 /**
  * Données structurées Service (schema.org) pour une page /services/<slug>.
  *
- * `provider` RÉFÉRENCE l'entité LocalBusiness du layout via son `@id` plutôt que
- * de la redéclarer : Google recoud alors les deux nœuds en une seule entité, là
- * où une copie créerait un doublon concurrent.
+ * `provider` référence l'entité LocalBusiness du layout par son `@id` au lieu de
+ * la redéclarer, sinon les deux nœuds forment un doublon concurrent.
  *
- * Volontairement PAS déclaré : `offers` / `price` / avis — le site ne publie
- * aucun prix, l'inventer serait faux (et sanctionné par Google).
+ * Non déclarés faute de données réelles : `offers`, `price`, avis.
  */
 export function ServiceJsonLd({
   lang,

@@ -44,8 +44,7 @@ export default async function ServicePage(
   const label = (s: string) =>
     dict.services.items[s as keyof typeof dict.services.items];
 
-  // Le fil part de l'accueil vers la page-chapeau réelle : /[lang]/services
-  // n'existe pas (404), donc aucun maillon « Services » intermédiaire.
+  // Pas de maillon « Services » intermédiaire : /[lang]/services n'existe pas.
   const crumbs: BreadcrumbItem[] = [
     {
       name: label(resolved.group.segment),

@@ -28,7 +28,6 @@ type FormDict = Dictionary["contact"]["form"];
 type Status = "idle" | "success" | "error";
 type Option = { value: string; label: string };
 
-/** Sélecteur de date (Popover + Calendar shadcn), bloquant les dates passées. */
 function DateField({
   control,
   lang,
@@ -80,8 +79,6 @@ function DateField({
   );
 }
 
-/** Groupe de cases à cocher (sélection multiple) câblé à react-hook-form.
- *  Rendu en 2 colonnes, avec un intitulé de groupe. */
 function CheckboxGroup({
   control,
   name,
@@ -301,7 +298,7 @@ export function ContactForm({
         />
       </Field>
 
-      {/* Retour d'envoi — annoncé aux lecteurs d'écran. */}
+      {/* Retour d'envoi */}
       {status === "success" && (
         <p
           role="status"

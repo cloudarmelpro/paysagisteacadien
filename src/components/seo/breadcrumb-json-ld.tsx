@@ -3,28 +3,22 @@ import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import { siteUrl } from "@/lib/seo";
 
-/** Un maillon du fil d'Ariane. `segment` = chemin APRÈS la locale, sans slash
- *  de tête (celui de l'accueil est ajouté automatiquement, voir plus bas). */
+/** Un maillon du fil d'Ariane. `segment` = chemin après la locale, sans slash de tête. */
 export type BreadcrumbItem = {
-  /** Libellé traduit — TOUJOURS lu depuis le dictionnaire par l'appelant. */
+  /** Libellé traduit, fourni par l'appelant depuis le dictionnaire. */
   name: string;
   segment: string;
 };
 
 /**
- * Données structurées BreadcrumbList (schema.org). Google affiche ce résultat
- * enrichi en permanence : le fil remplace l'URL brute sous le titre du SERP.
+ * Données structurées BreadcrumbList (schema.org).
  *
- * L'accueil est ajouté ici pour ne pas le répéter dans chaque page. Le fil part
- * ensuite DIRECTEMENT vers la page-chapeau réelle : il n'existe pas de page
- * `/[lang]/services` (elle renvoie un 404), donc aucun nœud « Services »
- * intermédiaire — un maillon pointant vers un 404 invaliderait le fil entier.
+ * L'accueil est ajouté ici, les appelants ne le passent pas. Aucun nœud
+ * « Services » intermédiaire : `/[lang]/services` n'existe pas (404) et un
+ * maillon pointant vers un 404 invalide le fil entier.
  *
- * Le DERNIER élément ne porte pas de `item` : c'est la page courante, elle n'est
- * pas un lien (recommandation Google).
- *
- * Server Component rendu par la page : le <script> n'est jamais re-rendu côté
- * client, donc pas d'avertissement d'hydratation React 19.
+ * Doit rester un Server Component : re-rendu côté client, ce <script> déclenche
+ * l'erreur React 19 « script tag in component ».
  */
 export function BreadcrumbJsonLd({
   lang,
@@ -33,7 +27,7 @@ export function BreadcrumbJsonLd({
 }: {
   lang: Locale;
   dict: Dictionary;
-  /** Le fil SANS l'accueil, de l'ancêtre le plus haut à la page courante. */
+  /** Le fil sans l'accueil, de l'ancêtre le plus haut à la page courante. */
   items: readonly BreadcrumbItem[];
 }) {
   const trail: BreadcrumbItem[] = [

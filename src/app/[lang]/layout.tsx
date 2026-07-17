@@ -22,13 +22,10 @@ const geistMono = Geist_Mono({
 });
 
 /**
- * Pose le thème (classe `dark` + color-scheme) AVANT la peinture, d'après le
- * choix mémorisé ou la préférence système — évite tout flash.
- *
- * Ce <script> n'est réconcilié côté client que si ce layout se re-rend, ce qui
- * n'arrive QUE si le segment `[lang]` change. Le sélecteur de langue provoque
- * volontairement un rechargement complet (lien `<a>`), donc ce cas n'existe pas
- * et React 19 ne signale jamais « script tag in component ».
+ * Applique le thème avant la peinture pour éviter le flash.
+ * Ce layout ne doit jamais se re-rendre côté client, sinon React signale
+ * « script tag in component » : le sélecteur de langue passe par un `<a>`
+ * (rechargement complet) et doit le rester.
  */
 const THEME_SCRIPT = `(function(){try{var r=document.documentElement;var e=localStorage.getItem('theme');var d=e==='dark'||(e!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);r.classList.toggle('dark',d);r.style.colorScheme=d?'dark':'light';}catch(e){}})();`;
 
@@ -48,9 +45,8 @@ export async function generateMetadata(
     metadataBase: new URL(siteUrl),
     title,
     description,
-    // Ces `alternates` valent pour l'ACCUEIL (qui n'a pas de generateMetadata
-    // propre). Chaque autre page DOIT redéfinir les siens, sinon elle héritera
-    // du canonical de l'accueil.
+    // Alternates de l'accueil, qui n'a pas de generateMetadata propre. Toute
+    // autre page doit redéfinir les siens, sinon elle hérite de ce canonical.
     alternates: buildAlternates(lang as Locale, ""),
     ...buildOpenGraph(lang as Locale, "", title, description),
   };

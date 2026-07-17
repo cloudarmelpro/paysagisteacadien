@@ -3,7 +3,7 @@
 import { Toaster as Sonner, type ToasterProps } from "sonner"
 import { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon } from "lucide-react"
 
-// next-themes retiré : le site est en mode clair (aucun système de thème branché).
+// Le site est en mode clair : aucun système de thème n'est branché.
 const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
@@ -44,8 +44,8 @@ const Toaster = ({ ...props }: ToasterProps) => {
   )
 }
 
-// `toast` ré-exporté ici pour que les appelants et le <Toaster> passent par le
-// MÊME module client → une seule instance du store sonner (évite les toasts qui
-// entrent dans le store sans jamais s'afficher).
+// `toast` est ré-exporté ici pour que les appelants et le <Toaster> passent par le
+// même module client, donc par une seule instance du store sonner. Importer `toast`
+// directement depuis "sonner" produit des toasts qui ne s'affichent jamais.
 export { toast } from "sonner"
 export { Toaster }

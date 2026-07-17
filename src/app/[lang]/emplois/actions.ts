@@ -9,9 +9,8 @@ import {
 } from "@/lib/validations/careers";
 
 /**
- * Traite l'envoi d'une candidature spontanée. Re-valide TOUJOURS côté serveur
- * avec le même schéma Zod — la validation client n'est qu'un confort d'UX. En cas
- * de succès, persiste via Prisma.
+ * La validation côté serveur est la seule garantie : celle du client est
+ * contournable et ne sert qu'à l'UX.
  */
 export async function submitApplication(
   input: CareersInput,

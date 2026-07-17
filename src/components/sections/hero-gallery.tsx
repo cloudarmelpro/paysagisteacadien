@@ -8,11 +8,9 @@ export type GalleryItem = { src: string; alt: string; label: string };
 
 /**
  * Galerie accordéon : l'image active occupe l'espace restant, les autres sont
- * réduites à des pilules. Un clic déploie la pilule choisie et referme l'active.
- *
- * L'animation porte sur `flex-grow` (et non `width`) : les pilules gardent une
- * base fixe et seule l'active « pousse », ce qui évite tout calcul de largeur.
- * `prefers-reduced-motion` (globals.css) neutralise la transition.
+ * réduites à des pilules. L'animation porte sur `flex-grow`, pas sur `width` :
+ * aucune largeur n'est calculée. `prefers-reduced-motion` (globals.css)
+ * neutralise la transition.
  */
 export function HeroGallery({
   items,
@@ -36,9 +34,8 @@ export function HeroGallery({
             // Les pilules extrêmes disparaissent sous 640px : à cette largeur,
             // cinq colonnes ne laisseraient rien voir de l'image active.
             className={cn(
-              // `rounded-3xl` est dans la base, pas dans les variantes : le rayon
-              // doit rester constant. S'il différait entre pilule et image
-              // déployée, il se morpherait pendant la transition.
+              // `rounded-3xl` reste hors des variantes : un rayon différent entre
+              // pilule et image déployée se morpherait pendant la transition.
               "relative shrink-0 basis-12 overflow-hidden rounded-3xl bg-muted transition-all duration-500 ease-out",
               "focus-visible:z-10 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
               "sm:basis-14 lg:basis-16",
@@ -52,15 +49,10 @@ export function HeroGallery({
               fill
               priority={i === initialActive}
               /**
-               * Largeur de l'état DÉPLOYÉ, pas de la pilule : n'importe quelle
-               * vignette peut devenir active, et `sizes` est figé au rendu — le
-               * dimensionner sur la pilule (48px) rendrait l'image floue une fois
-               * agrandie.
-               * Paliers calculés sur la largeur réelle du conteneur moins les
-               * pilules et les gouttières : ~65vw en mobile (3 vignettes),
-               * ~60vw en tablette, ~896px au-delà (max-w-7xl).
-               * L'ancien `640px` fixe faisait télécharger du 1200px pour un
-               * affichage à ~240px en mobile → LCP mesuré à 9,7 s.
+               * `sizes` est figé au rendu et doit décrire l'état déployé, pas la
+               * pilule : toute vignette peut devenir active, et un dimensionnement
+               * sur la pilule (48px) donnerait une image floue une fois agrandie.
+               * Paliers = largeur du conteneur moins les pilules et les gouttières.
                */
               sizes="(max-width: 640px) 65vw, (max-width: 1024px) 60vw, 896px"
               className="object-cover"

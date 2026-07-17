@@ -5,17 +5,14 @@ import { openingHours, services, siteConfig } from "@/config/site";
 import { buildAreaServed, siteUrl } from "@/lib/seo";
 
 /**
- * Données structurées LocalBusiness (schema.org) — le levier le plus fort pour
- * une entreprise locale : c'est ce qui alimente le panneau de connaissances et
- * les résultats enrichis (téléphone, horaires, zone desservie, services).
+ * Données structurées LocalBusiness (schema.org), rendues dans le layout `[lang]`.
+ * L'`@id` `${siteUrl}/#business` est référencé par ServiceJsonLd : le garder stable.
  *
- * Rendu dans le layout `[lang]` : il n'est réconcilié côté client que si la
- * locale change, ce qui provoque un rechargement complet — React ne re-rend donc
- * jamais ce <script> (pas d'avertissement React 19).
+ * Doit rester un Server Component : re-rendu côté client, ce <script> déclenche
+ * l'erreur React 19 « script tag in component ».
  *
- * Volontairement PAS déclaré : adresse municipale précise, fourchette de prix,
- * avis/notes — l'entreprise n'a pas de vitrine publique et inventer ces champs
- * serait faux (et sanctionné par Google).
+ * Non déclarés faute de données réelles : adresse municipale précise, fourchette
+ * de prix, avis/notes.
  */
 export function LocalBusinessJsonLd({
   lang,
@@ -40,7 +37,7 @@ export function LocalBusinessJsonLd({
     email: siteConfig.contact.email,
     inLanguage: lang === "fr" ? "fr-CA" : "en-CA",
     founder: { "@type": "Person", name: siteConfig.owner },
-    // Entreprise de services à domicile : pas de vitrine, donc localité seule.
+    // Services à domicile, pas de vitrine : localité seule, sans rue.
     address: {
       "@type": "PostalAddress",
       addressLocality: "Laval",

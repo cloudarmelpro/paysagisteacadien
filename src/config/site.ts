@@ -1,10 +1,6 @@
 /**
- * Configuration centrale du site — Paysagiste Acadien Inc.
- *
- * Source de vérité unique pour les constantes de l'entreprise (coordonnées,
- * réseaux sociaux, catalogue de services). Les libellés traduits (nav, titres,
- * descriptions) vivent dans `src/dictionaries/{fr,en}.json`.
- * Données reprises du site actuel : https://paysagisteacadien.com
+ * Constantes non traduisibles de l'entreprise (coordonnées, réseaux, catalogue
+ * de services). Les libellés traduits vivent dans `src/dictionaries/{fr,en}.json`.
  */
 
 export const siteConfig = {
@@ -21,13 +17,9 @@ export const siteConfig = {
     quoteEmail: "soumission@paysagisteacadien.com",
     recruitmentEmail: "recrutement@paysagisteacadien.com",
     /*
-     * PAS de `serviceArea` ici — volontairement.
-     * Cette valeur était figée en français (« Laval et la Rive-Nord ») et
-     * s'affichait telle quelle sur les pages ANGLAISES, sous un libellé
-     * « Service area ». Une chaîne visible et traduisible n'a pas sa place dans
-     * la config : elle vit dans les dictionnaires (`contact.areaValue`).
-     * Ne remets pas de texte affiché ici — seulement des constantes non
-     * traduisibles (téléphone, courriels, URL).
+     * Aucun texte affiché ici : seulement des constantes non traduisibles.
+     * La zone desservie est une chaîne traduite et vit dans les dictionnaires
+     * (`contact.areaValue`).
      */
   },
 
@@ -39,22 +31,13 @@ export const siteConfig = {
 } as const;
 
 /**
- * Principales municipalités de la Rive-Nord de Montréal, nommées pour donner un
- * ancrage géographique concret à « Laval et la Rive-Nord » (un bloc trop vague
- * pour les recherches locales du type « paysagiste Terrebonne »).
+ * Principales municipalités de la Rive-Nord, pour l'ancrage géographique local.
  *
- * ⚠️ HYPOTHÈSE — À FAIRE CONFIRMER PAR LE CLIENT.
- * Cette liste n'est PAS la zone officielle de Paysagiste Acadien : le client ne
- * l'a jamais fournie. Elle reprend simplement les villes principales de la
- * Rive-Nord, sous l'hypothèse que la formule « Laval et la Rive-Nord » du site
- * actuel les couvre. Les textes qui s'appuient dessus (dictionnaires, clé
- * `faq` → « Quelle zone desservez-vous ? ») emploient volontairement
- * « notamment » / « including » : ils citent des exemples, ils ne promettent pas
- * une couverture exhaustive.
- *
- * À faire valider : retirer les villes non desservies, ajouter les manquantes.
- * Ne PAS générer de page par ville à partir de cette liste — sans contenu propre
- * et vérifié pour chacune, ce seraient des doorway pages (pénalisables).
+ * Liste hypothétique, non confirmée par le client : ce n'est pas la zone
+ * officielle. Les textes qui s'y réfèrent (dictionnaires, `faq`) disent
+ * « notamment » / « including » et ne promettent pas de couverture exhaustive.
+ * Ne pas générer de page par ville à partir de cette liste : sans contenu propre
+ * et vérifié, ce seraient des doorway pages pénalisables.
  */
 export const serviceMunicipalities = [
   "Terrebonne",
@@ -70,9 +53,9 @@ export const serviceMunicipalities = [
 ] as const;
 
 /**
- * Heures d'ouverture au format schema.org (données structurées SEO).
- * Les libellés AFFICHÉS vivent dans les dictionnaires (`contact.hours`) car ils
- * sont traduits — garder les deux cohérents. Dimanche fermé → simplement absent.
+ * Heures d'ouverture au format schema.org. Doit rester cohérent avec les
+ * libellés traduits de `contact.hours` dans les dictionnaires.
+ * Un jour fermé est absent de la liste.
  */
 export const openingHours = [
   {
@@ -84,9 +67,8 @@ export const openingHours = [
 ] as const;
 
 /**
- * Catalogue des services (slugs stables = segments d'URL).
- * `category` regroupe l'affichage ; les noms/descriptions sont dans les dictionnaires
- * sous `services.items.<slug>`.
+ * Catalogue des services. Les slugs sont des segments d'URL : ils doivent rester
+ * stables. Noms et descriptions dans les dictionnaires, sous `services.items.<slug>`.
  */
 export const services = [
   { slug: "entretien-paysager", category: "maintenance" },
@@ -100,10 +82,9 @@ export const services = [
 ] as const;
 
 /**
- * Photo illustrant chaque service. Défini ici — et nulle part ailleurs — pour
- * que le hero et la section services ne puissent pas se contredire (une même
- * image étiquetée « Plantation » ici et « Rocaille » là).
- * Placeholders Unsplash, à remplacer par les photos de chantiers réelles.
+ * Photo de chaque service. Source unique : le hero et la section services
+ * doivent afficher la même image pour un service donné.
+ * Placeholders, à remplacer par les photos de chantiers réelles.
  */
 export const serviceImages: Record<ServiceSlug, string> = {
   "entretien-paysager": "/images/hero-pelouse.jpg",
@@ -117,10 +98,8 @@ export const serviceImages: Record<ServiceSlug, string> = {
 };
 
 /**
- * Structure réelle de l'offre, telle qu'organisée sur le site actuel : deux
- * pages-chapeaux (« Entretien paysager » et « Aménagement paysager »), chacune
- * couvrant trois services. `services` ci-dessus reste le catalogue à plat
- * (utilisé par le footer) ; ceci en donne la hiérarchie.
+ * Hiérarchie de l'offre : deux pages-chapeaux couvrant chacune trois services.
+ * `services` ci-dessus reste le catalogue à plat, utilisé par le footer.
  */
 export const serviceGroups = [
   {
@@ -141,9 +120,8 @@ export const serviceGroups = [
 
 /**
  * Navigation principale. `key` = clé de traduction dans `dict.nav`,
- * `segment` = segment d'URL après la locale ("" = accueil).
- * `hash` (optionnel) = ancre d'une section de l'accueil : le lien défile en
- * douceur vers cette section (ex. « Services » → section #services de l'accueil).
+ * `segment` = segment d'URL après la locale ("" = accueil),
+ * `hash` = ancre d'une section de l'accueil.
  */
 export const navLinks = [
   { key: "home", segment: "" },
@@ -153,9 +131,8 @@ export const navLinks = [
 ] as const;
 
 /**
- * Segment de la page de contact. Tous les CTA de contact/soumission y mènent
- * pour l'instant ; quand la page « soumission » (devis détaillé) existera, on
- * séparera son segment de celui-ci.
+ * Segment de la page de contact. Tous les CTA de contact et de soumission y
+ * mènent, faute de page « soumission » distincte.
  */
 export const contactSegment = "nous-joindre";
 
@@ -163,9 +140,8 @@ export const contactSegment = "nous-joindre";
 export const servicesSegment = "services";
 
 /**
- * Tous les slugs ayant une page de détail sous /[lang]/services/[slug] :
- * les 2 pages-chapeaux (segments de famille) + les 6 services individuels.
- * Sert de source à `generateStaticParams`.
+ * Slugs ayant une page sous /[lang]/services/[slug] : pages-chapeaux et services
+ * individuels. Source de `generateStaticParams`.
  */
 export const serviceDetailSlugs = [
   ...serviceGroups.map((g) => g.segment),
@@ -180,9 +156,8 @@ export type ResolvedService =
   | { kind: "service"; group: ServiceGroup; slug: string };
 
 /**
- * Résout un slug d'URL vers son type de page : une famille (« chapeau », qui
- * liste ses sous-services) ou un service individuel (page de détail), en
- * remontant à sa famille parente. `null` si le slug n'existe pas.
+ * Résout un slug d'URL vers une famille ou un service individuel accompagné de
+ * sa famille parente. `null` si le slug n'existe pas.
  */
 export function resolveServiceSlug(slug: string): ResolvedService | null {
   const category = serviceGroups.find((g) => g.segment === slug);
@@ -201,9 +176,8 @@ export const careersSegment = "emplois";
  *  dans les deux locales, comme `nous-joindre` et `emplois`. */
 export const privacySegment = "confidentialite";
 
-/** Colonne « Entreprise » du footer (libellés dans dict.nav). On ne liste que
- *  les pages qui existent réellement : À propos et Emplois (LinkedIn est ajouté
- *  à part dans le footer). Réalisations et Blogue n'ont pas de page → retirés. */
+/** Colonne « Entreprise » du footer (libellés dans dict.nav). Ne lister ici que
+ *  des pages existantes. Le lien LinkedIn est ajouté à part dans le footer. */
 export const footerCompanyLinks = [
   { key: "about", segment: "a-propos" },
   { key: "careers", segment: "emplois" },

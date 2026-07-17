@@ -28,7 +28,7 @@ export function Careers({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             {c.infoTitle}
           </h2>
 
-          {/* Statut des postes — mis en avant. */}
+          {/* Statut des postes */}
           <div className="flex items-start gap-4 rounded-xl bg-muted p-5">
             <Info className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
             <div>
@@ -82,7 +82,7 @@ export function Careers({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </dl>
         </div>
 
-        {/* Formulaire de candidature — sans cadre : il se fond dans la page. */}
+        {/* Formulaire de candidature */}
         <div className="lg:col-span-3">
           <div className="mb-6 flex flex-col gap-1">
             <h2 className="text-xl font-medium tracking-tight uppercase text-foreground/80">

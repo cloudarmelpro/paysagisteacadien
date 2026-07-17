@@ -3,12 +3,10 @@
  *
  *   node scripts/og/generate.mjs
  *
- * À relancer si l'accroche du hero change dans les dictionnaires, sinon l'image
- * partagée sur Facebook / LinkedIn / iMessage contredira le site.
+ * À relancer si l'accroche du hero change dans les dictionnaires.
  *
- * Pourquoi un visuel de marque et pas une photo : les photos actuelles sont des
- * placeholders Unsplash. Les diffuser comme vitrine de nos chantiers serait
- * faux, et l'image serait à refaire une fois les vraies photos livrées.
+ * Visuel de marque et non photo : les photos du site sont des placeholders
+ * Unsplash, elles ne représentent pas les chantiers de l'entreprise.
  */
 import { execFileSync } from "node:child_process";
 import { writeFileSync, readFileSync, mkdtempSync, statSync } from "node:fs";
@@ -46,8 +44,8 @@ if (!CHROME) {
   process.exit(1);
 }
 
-// Accroches lues dans les VRAIS dictionnaires — jamais réécrites ici, sans quoi
-// l'image et la page finiraient par diverger sans que personne le remarque.
+// Accroches lues dans les dictionnaires du site : ne pas les recopier ici, l'image
+// et la page divergeraient.
 const dict = (loc) =>
   JSON.parse(readFileSync(join(ROOT, "src/dictionaries", `${loc}.json`), "utf8"));
 
@@ -57,10 +55,9 @@ const LOCALES = ["fr", "en"].map((code) => {
 });
 
 /**
- * Logo en VERSION INVERSÉE : carré blanc, « P » vert.
- * Le logo normal est un carré vert — il disparaîtrait sur ce fond vert.
- * Tracés repris à l'identique de src/app/icon.svg : les modifier ici sans les y
- * reporter ferait diverger le favicon de l'image de partage.
+ * Version inversée du logo (carré blanc, « P » vert) : le logo normal est un carré
+ * vert, invisible sur ce fond vert.
+ * Les tracés doivent rester identiques à ceux de src/app/icon.svg.
  */
 const LOGO = `
 <svg viewBox="0 0 100 100" width="92" height="92">
@@ -69,10 +66,9 @@ const LOGO = `
 </svg>`;
 
 /**
- * DM Sans embarquée en base64 plutôt que chargée depuis Google Fonts : Chrome
- * capture sans attendre les webfonts réseau et la 1re version est sortie en
- * Arial. Un seul fichier suffit — DM Sans v17 est une police VARIABLE, les
- * graisses 500 et 700 sortent du même binaire.
+ * DM Sans embarquée en base64 et non chargée depuis Google Fonts : Chrome capture
+ * sans attendre les webfonts réseau, la police de repli sortirait sur l'image.
+ * Un seul fichier suffit, DM Sans est variable et couvre les graisses 500 et 700.
  */
 const FONT_B64 = readFileSync(join(HERE, "dmsans-variable.woff2")).toString("base64");
 

@@ -7,17 +7,14 @@ import type { Dictionary } from "@/lib/dictionaries";
 import { serviceGroups, serviceImages, servicesSegment } from "@/config/site";
 
 /**
- * Les 6 services réels — hors pages-chapeaux. Type dérivé de `serviceGroups`
- * plutôt que de `ServiceSlug` (qui couvre les 8) : seuls ces 6-là ont une
- * description, et TypeScript doit le garantir.
+ * Les 6 services réels, hors pages-chapeaux. Dérivé de `serviceGroups` et non de
+ * `ServiceSlug` (8 slugs) : seuls ces 6 ont une description.
  */
 type GroupServiceSlug = (typeof serviceGroups)[number]["services"][number];
 
 /**
- * Carte de service : photo en fond, voile dégradé pour la lisibilité, numéro et
- * filet en haut, texte en bas, bouton rond fléché en bas à droite.
- * Le bouton est un `<span>` décoratif — la carte entière est déjà le lien, et
- * imbriquer un bouton dans un lien produirait du HTML invalide.
+ * Carte de service : la carte entière est le lien. Le bouton fléché est un
+ * `<span>` décoratif, un bouton imbriqué dans un lien étant du HTML invalide.
  */
 export function ServiceCard({
   slug,
@@ -36,10 +33,9 @@ export function ServiceCard({
       className="group relative flex aspect-4/5 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl bg-muted p-6 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none sm:aspect-4/3 lg:aspect-4/5"
     >
       {/*
-        Pas de `-z-10` ici : un z-index négatif ferait passer l'image DERRIÈRE le
-        `bg-muted` du lien parent, donc invisible. L'image et le voile restent en
-        z auto (ils peignent au-dessus du fond du parent) et c'est le contenu qui
-        passe devant grâce à `relative`.
+        Pas de `-z-10` : l'image passerait derrière le `bg-muted` du lien parent,
+        donc invisible. Image et voile en z auto, le contenu passe devant via
+        `relative`.
       */}
       <Image
         src={serviceImages[slug]}
@@ -48,7 +44,7 @@ export function ServiceCard({
         sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 30vw"
         className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
       />
-      {/* Voile : sans lui, le texte blanc serait illisible sur les photos claires */}
+      {/* Voile : contraste du texte blanc sur les photos claires */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20" />
 
       {/* Numéro + filet */}
@@ -82,11 +78,6 @@ export function ServiceCard({
   );
 }
 
-/**
- * Section services : en-tête éditorial (titre à gauche, intro à droite), puis
- * les deux familles du site — Entretien et Aménagement — chacune avec son
- * chapeau et ses trois cartes photo. La numérotation repart à 01 par famille.
- */
 export function Services({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <section

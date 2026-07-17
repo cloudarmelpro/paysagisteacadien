@@ -1,10 +1,9 @@
 import { z } from "zod";
 
 /**
- * Schéma du formulaire « Emplois » (candidature spontanée). Reprend les trois
- * champs du site actuel : nom complet, téléphone et courriel — tous requis.
- * Validé côté client (react-hook-form) ET re-validé côté serveur par la Server
- * Action. Les messages sont des clés, traduites à l'affichage via le dictionnaire.
+ * Schéma du formulaire « Emplois ». Les messages sont des clés de dictionnaire,
+ * traduites à l'affichage. La Server Action doit revalider avec ce schéma :
+ * la validation react-hook-form côté client ne protège rien.
  */
 export const careersSchema = z.object({
   name: z.string().trim().min(2, "name").max(100, "nameMax"),

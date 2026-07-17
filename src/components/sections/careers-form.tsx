@@ -105,7 +105,7 @@ export function CareersForm({ lang, dict }: { lang: Locale; dict: FormDict }) {
         />
       </Field>
 
-      {/* Retour d'envoi — annoncé aux lecteurs d'écran. */}
+      {/* Retour d'envoi */}
       {status === "success" && (
         <p
           role="status"
