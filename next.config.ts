@@ -73,6 +73,15 @@ const legacyRedirects = [
 const nextConfig: NextConfig = {
   reactCompiler: true,
 
+  /**
+   * Auto-hébergement (Hostinger, plan Business avec Node.js) : `standalone`
+   * produit un serveur Node minimal dans `.next/standalone` avec ses seules
+   * dépendances tracées. On lance `node .next/standalone/server.js`.
+   * Rappel déploiement : copier `.next/static` et `public/` DANS le dossier
+   * standalone (Next ne les y met pas), et fournir les variables d'environnement.
+   */
+  output: "standalone",
+
   async redirects() {
     return legacyRedirects.map(({ from, to }) => ({
       source: from,
