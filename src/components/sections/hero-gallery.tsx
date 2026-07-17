@@ -51,7 +51,18 @@ export function HeroGallery({
               alt={item.alt}
               fill
               priority={i === initialActive}
-              sizes="640px"
+              /**
+               * Largeur de l'état DÉPLOYÉ, pas de la pilule : n'importe quelle
+               * vignette peut devenir active, et `sizes` est figé au rendu — le
+               * dimensionner sur la pilule (48px) rendrait l'image floue une fois
+               * agrandie.
+               * Paliers calculés sur la largeur réelle du conteneur moins les
+               * pilules et les gouttières : ~65vw en mobile (3 vignettes),
+               * ~60vw en tablette, ~896px au-delà (max-w-7xl).
+               * L'ancien `640px` fixe faisait télécharger du 1200px pour un
+               * affichage à ~240px en mobile → LCP mesuré à 9,7 s.
+               */
+              sizes="(max-width: 640px) 65vw, (max-width: 1024px) 60vw, 896px"
               className="object-cover"
             />
             <span

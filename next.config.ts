@@ -47,8 +47,58 @@ const securityHeaders = [
   },
 ];
 
+/**
+ * Redirections des URL de l'ANCIEN site (unilingue français) vers la nouvelle
+ * arborescence localisée.
+ *
+ * Pourquoi c'est indispensable : au basculement du domaine, tout lien externe,
+ * signet ou résultat déjà indexé pointant vers `/tourbe`, `/plantation`, etc.
+ * tomberait en 404 — le proxy de locale les enverrait vers `/fr/tourbe`, qui
+ * n'existe pas (la nouvelle arborescence est `/fr/services/<slug>`). Ces 308
+ * sont ce qui préserve l'autorité déjà accumulée par le domaine.
+ *
+ * Elles doivent s'appliquer AVANT le proxy de locale — vérifié par test.
+ * `/nous-joindre` et `/emplois` ne figurent pas ici : leur slug est inchangé,
+ * le proxy les résout déjà correctement vers `/fr/...`.
+ */
+const legacyRedirects = [
+  // Pages-chapeaux de service
+  { from: "/entretien-paysager-1", to: "/fr/services/entretien-paysager" },
+  // Services individuels
+  { from: "/entretien-de-terrain", to: "/fr/services/entretien-de-terrain" },
+  { from: "/entretien-de-rocaille", to: "/fr/services/entretien-de-rocaille" },
+  { from: "/services-de-tailles", to: "/fr/services/services-de-tailles" },
+  { from: "/plantation", to: "/fr/services/plantation" },
+  { from: "/tourbe", to: "/fr/services/tourbe" },
+  // Le blogue n'a pas d'équivalent : on renvoie vers l'accueil plutôt que de
+  // laisser un 404. À revoir si du contenu éditorial est recréé un jour.
+  { from: "/blogue-1", to: "/fr" },
+
+  /**
+   * URL accentuées de l'ancien site. Next compare la `source` au chemin tel
+   * qu'il arrive, c'est-à-dire PERCENT-ENCODÉ — une source écrite « à-propos »
+   * ne matcherait jamais `/%C3%A0-propos` (vérifié par test : 404). On déclare
+   * donc la forme encodée, plus la forme accentuée en filet de sécurité pour
+   * les rares clients qui enverraient de l'UTF-8 brut.
+   */
+  { from: "/am%C3%A9nagement-paysager-1", to: "/fr/services/amenagement-paysager" },
+  { from: "/aménagement-paysager-1", to: "/fr/services/amenagement-paysager" },
+  { from: "/pav%C3%A9-unis-1", to: "/fr/services/pave-uni" },
+  { from: "/pavé-unis-1", to: "/fr/services/pave-uni" },
+  { from: "/%C3%A0-propos", to: "/fr/a-propos" },
+  { from: "/à-propos", to: "/fr/a-propos" },
+] as const;
+
 const nextConfig: NextConfig = {
   reactCompiler: true,
+
+  async redirects() {
+    return legacyRedirects.map(({ from, to }) => ({
+      source: from,
+      destination: to,
+      permanent: true, // 308 — équivalent au 301 pour Google
+    }));
+  },
 
   async headers() {
     return [
