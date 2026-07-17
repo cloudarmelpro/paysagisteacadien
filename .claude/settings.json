@@ -1,8 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "enabledMcpjsonServers": ["playwright"],
   "permissions": {
-    "defaultMode": "acceptEdits",
     "allow": [
       "Read",
       "Glob",
@@ -41,6 +39,13 @@
       "Bash(git push --force *)",
       "Read(./.env)",
       "Read(./.env.*)"
-    ]
+    ],
+    "defaultMode": "acceptEdits"
+  },
+  "enabledMcpjsonServers": [
+    "playwright"
+  ],
+  "enabledPlugins": {
+    "claude-seo@agricidaniel-claude-seo": true
   }
 }
