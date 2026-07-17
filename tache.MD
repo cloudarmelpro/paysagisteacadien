@@ -10,12 +10,18 @@ Suivi de ce qui reste à faire. Dernière mise à jour : **17 juillet 2026**.
 > sur Google. Le site neuf est en `noindex` volontaire sur l'URL Vercel. Toutes les
 > optimisations SEO attendent le cutover pour exister.
 
-> 🔄 **Transfert de domaine en cours (juillet 2026)** : `paysagisteacadien.com` est
-> transféré de **GoDaddy vers Hostinger** (~5 jours). **Ne pas toucher au DNS avant
-> la fin du transfert** — les enregistrements ne suivent pas forcément et seraient à
-> refaire. Une fois le domaine posé chez Hostinger, tout le travail DNS se fait là,
-> **en une seule session** : (a) la bascule Vercel ci-dessous ET (b) la vérification
-> du domaine Resend (§2). Le DNS est chez le client (Cédric).
+> 🔄 **Changement de plan (juillet 2026) : TOUT passe chez Hostinger** (plan Business,
+> Node.js) — site + domaine + email. Le site **n'ira PAS sur Vercel** au final ; il
+> sera **auto-hébergé** chez Hostinger (`output: 'standalone'` déjà activé).
+> Le domaine `paysagisteacadien.com` est transféré de **GoDaddy vers Hostinger**
+> (~5 jours). **Ne rien faire au DNS ni au déploiement avant la fin du transfert.**
+> Ensuite, tout dans **une seule session** chez Hostinger : déploiement Node.js du site,
+> création de la boîte `info@paysagisteacadien.com`, bascule email vers SMTP Hostinger,
+> et pointage du domaine. Le DNS/hébergement est géré par le client (Cédric).
+>
+> **Resend est abandonné** (voir §2). **Vercel n'est plus la cible** (les sections
+> ci-dessous qui parlent de « bascule vers Vercel » sont à lire comme « déploiement
+> Hostinger »).
 
 ---
 
@@ -40,29 +46,27 @@ curl -s $U/en/services/tourbe | grep -o '<html lang="[a-z]*"'  # lang="en"
 curl -sI $U/fr | grep -icE 'content-security-policy|x-content-type-options|x-frame-options|referrer-policy|permissions-policy|strict-transport'   # 6
 ```
 
-### 2. Variables d'environnement Vercel — **client**
-Toutes dans **Settings → Environment Variables**, pour **Production** *et* **Preview**.
-Jamais par un commit — ce sont des secrets. Modèle et explications : `.env.example`.
+### 2. Variables d'environnement + email — **au déploiement Hostinger**
+Les secrets se définissent dans la config Node.js de Hostinger (jamais dans un commit).
+Modèle : `.env.example`.
 
 - [ ] `DATABASE_URL` — sans elle, le site s'affiche mais **les formulaires échouent à
   l'envoi** (nous-joindre + emplois écrivent dans Neon).
-- [x] `RESEND_API_KEY` — clé créée et **testée fonctionnelle** (Resend l'accepte,
-  l'envoi part). À définir dans Vercel comme les autres.
-- [ ] **Vérifier un domaine dans Resend pour livrer à l'Outlook.** ⚠️ Point bloquant
-  restant. **À faire chez Hostinger après le transfert de domaine** (voir l'encadré en
-  haut), en même temps que la bascule Vercel — on ne touche au DNS qu'une fois.
-  En mode test (expéditeur `onboarding@resend.dev`), Resend ne livre QU'À l'adresse du
-  compte Resend (**cloudarmelpro@gmail.com**, le compte du développeur) — pas à
-  `paysagisteacadien@outlook.com`. Pour router vers l'Outlook :
-  1. resend.com → **Domains** → ajouter `paysagisteacadien.com` (pas besoin d'une boîte
-     courriel sur ce domaine, seulement l'envoi) → poser les enregistrements DNS chez
-     **Hostinger**. ⚠️ Si un SPF (`v=spf1…`) existe déjà, fusionner, ne pas en créer un 2e.
-  2. Définir `RESEND_FROM` sur une adresse de ce domaine, p.ex.
-     `Paysagiste Acadien <no-reply@paysagisteacadien.com>`.
+- [ ] **Email : migrer de Resend vers le SMTP Hostinger.** Décision : tout chez
+  Hostinger, donc **Resend est abandonné** (la clé testée ne sert plus). À la place :
+  1. Créer la boîte `info@paysagisteacadien.com` dans Hostinger (mailboxes gratuites du
+     plan Business).
+  2. *Moi* : remplacer `src/lib/email.ts` (Resend) par un envoi **SMTP via nodemailer**
+     (`smtp.hostinger.com`), piloté par `SMTP_HOST/PORT/USER/PASS`.
+  3. Définir ces variables dans Hostinger. Best-effort conservé : un échec d'envoi ne
+     casse jamais la soumission (elle reste en base).
   Tant que ce n'est pas fait, les soumissions restent **enregistrées en base** (rien
-  n'est perdu), mais aucun courriel n'arrive dans l'Outlook.
-- [ ] `RESEND_FROM` / `RESEND_TO` — dans Vercel. `RESEND_TO` vaut déjà
-  `paysagisteacadien@outlook.com` ; `RESEND_FROM` à ajuster après la vérification (ci-dessus).
+  n'est perdu), mais aucun courriel n'est envoyé.
+
+> ~~Ancien plan Resend / Outlook~~ — abandonné. La clé Resend (compte dev
+> `cloudarmelpro@gmail.com`) fonctionnait mais ne livrait qu'à ce compte en mode test ;
+> remplacée par une vraie boîte au domaine, plus simple et cohérente avec « tout chez
+> Hostinger ».
 
 **Vérifier :** envoyer un vrai formulaire de test sur le site en ligne, puis confirmer
 la réception dans la boîte Outlook.
