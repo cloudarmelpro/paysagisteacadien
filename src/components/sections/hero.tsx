@@ -28,18 +28,24 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
   return (
     <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
-      {/* Bloc texte */}
+      {/* Bloc texte — entrée échelonnée (CSS, pour ne pas retarder le LCP) */}
       <div className="flex max-w-xl flex-col items-start gap-5">
-        <h1 className="text-4xl tracking-tight text-balance sm:text-5xl">
+        <h1 className="hero-rise text-4xl tracking-tight text-balance sm:text-5xl">
           {dict.hero.titleLead}{" "}
           <span className="text-primary">{dict.hero.titleAccent}</span>
         </h1>
 
-        <p className="max-w-md text-base leading-relaxed text-foreground/70">
+        <p
+          className="hero-rise max-w-md text-base leading-relaxed text-foreground/70"
+          style={{ animationDelay: "0.1s" }}
+        >
           {dict.hero.subtitle}
         </p>
 
-        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+        <div
+          className="hero-rise flex w-full flex-col gap-3 sm:w-auto sm:flex-row"
+          style={{ animationDelay: "0.2s" }}
+        >
           <Link
             href={localizedPath(lang, contactSegment)}
             className={cn(buttonVariants({ size: "lg" }), "h-11")}

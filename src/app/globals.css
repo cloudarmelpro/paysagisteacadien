@@ -159,6 +159,26 @@
     transform: none;
   }
 
+  /*
+   * Entrée du hero : animation CSS pure (pas de JS), donc elle joue dès la 1re
+   * peinture sans attendre l'hydratation — contrairement à `Reveal`, ce qui
+   * protège le LCP du contenu au-dessus de la ligne de flottaison. `both`
+   * garde l'état de fin (visible) après l'animation et pendant le délai.
+   */
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .hero-rise {
+    animation: hero-rise 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+
   /* Accessibilité : neutralise animations et défilements animés. */
   @media (prefers-reduced-motion: reduce) {
     *,
