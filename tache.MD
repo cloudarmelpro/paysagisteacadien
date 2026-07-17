@@ -39,15 +39,20 @@ Jamais par un commit — ce sont des secrets. Modèle et explications : `.env.ex
 
 - [ ] `DATABASE_URL` — sans elle, le site s'affiche mais **les formulaires échouent à
   l'envoi** (nous-joindre + emplois écrivent dans Neon).
-- [ ] `RESEND_API_KEY` — sans elle, les soumissions restent **enregistrées en base**
-  mais **aucun courriel n'arrive** dans la boîte Outlook. La créer active la réception,
-  sans redéploiement.
-  1. Créer un compte sur resend.com → **API Keys** → copier la clé.
-  2. Pour recevoir sur une adresse `@outlook.com` en production, **vérifier un domaine**
-     dans Resend (sinon l'envoi ne part qu'avec `onboarding@resend.dev`, limité à
-     l'adresse du compte). Définir alors `RESEND_FROM` sur une adresse de ce domaine.
-- [ ] `RESEND_FROM` / `RESEND_TO` — optionnelles (valeurs par défaut raisonnables) ;
-  `RESEND_TO` vaut déjà `paysagisteacadien@outlook.com`.
+- [x] `RESEND_API_KEY` — clé créée et **testée fonctionnelle** (Resend l'accepte,
+  l'envoi part). À définir dans Vercel comme les autres.
+- [ ] **Vérifier un domaine dans Resend pour livrer à l'Outlook.** ⚠️ Point bloquant
+  restant. En mode test (expéditeur `onboarding@resend.dev`), Resend ne livre QU'À
+  l'adresse du compte Resend — pas à `paysagisteacadien@outlook.com`. Pour router vers
+  l'Outlook :
+  1. resend.com → **Domains** → ajouter `paysagisteacadien.com` (pas besoin d'une boîte
+     courriel sur ce domaine, seulement l'envoi) → poser les enregistrements DNS fournis.
+  2. Définir `RESEND_FROM` sur une adresse de ce domaine, p.ex.
+     `Paysagiste Acadien <no-reply@paysagisteacadien.com>`.
+  Tant que ce n'est pas fait, les soumissions restent **enregistrées en base** (rien
+  n'est perdu), mais aucun courriel n'arrive dans l'Outlook.
+- [ ] `RESEND_FROM` / `RESEND_TO` — dans Vercel. `RESEND_TO` vaut déjà
+  `paysagisteacadien@outlook.com` ; `RESEND_FROM` à ajuster après la vérification (ci-dessus).
 
 **Vérifier :** envoyer un vrai formulaire de test sur le site en ligne, puis confirmer
 la réception dans la boîte Outlook.
