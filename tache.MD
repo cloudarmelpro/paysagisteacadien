@@ -70,11 +70,18 @@ Triple gain d'un coup :
 - [ ] → *puis moi* : les intégrer et remesurer le LCP
 
 ### 6. Confirmer la zone desservie — **client** ⚠️
-`src/config/site.ts` → `serviceMunicipalities` est une **HYPOTHÈSE de ma part**, pas la zone officielle :
+Cette liste est une **HYPOTHÈSE de ma part**, pas la zone officielle :
 
 > Terrebonne, Blainville, Boisbriand, Rosemère, Sainte-Thérèse, Mirabel, Mascouche, Bois-des-Filion, Lorraine, Sainte-Anne-des-Plaines
 
-Les textes disent « notamment » (jamais une promesse de couverture), mais **à valider avant le cutover** : retirer les villes non desservies, ajouter les manquantes.
+Elle est **affichée aux visiteurs** dans la réponse FAQ « Quel territoire desservez-vous ? »
+(clé `faq` de `src/dictionaries/fr.json` et `en.json` — les deux sont à corriger ensemble).
+
+Les textes disent « notamment », jamais une promesse de couverture, mais **à valider avant le
+cutover** : retirer les villes non desservies, ajouter les manquantes.
+
+> Ne pas créer une page par ville pour le SEO : ce sont des *doorway pages*, explicitement
+> sanctionnées par Google, et le contenu serait quasi identique d'une ville à l'autre.
 
 ### 7. Faire relire la politique de confidentialité — **client**
 `/fr/confidentialite` — rédigée sérieusement et fidèle à ce que le code fait réellement, **mais je ne suis pas juriste**.

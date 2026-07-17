@@ -31,6 +31,7 @@ export function MobileNav({
   quote,
   labels,
   themeLabel,
+  languageLabel,
   className,
 }: {
   lang: Locale;
@@ -39,6 +40,7 @@ export function MobileNav({
   quote: NavLinkItem;
   labels: { open: string; close: string };
   themeLabel: string;
+  languageLabel: string;
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
@@ -191,7 +193,7 @@ export function MobileNav({
                 </div>
                 <div className="flex items-center gap-1">
                   <ThemeToggle label={themeLabel} />
-                  <LanguageSwitcher lang={lang} />
+                  <LanguageSwitcher lang={lang} label={languageLabel} />
                 </div>
               </div>
             </div>

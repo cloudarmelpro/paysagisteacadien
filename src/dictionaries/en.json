@@ -3,15 +3,22 @@
     "title": "Paysagiste Acadien | Landscaping & care in Laval",
     "description": "Landscape design and maintenance in Laval and the North Shore. Paysagiste Acadien transforms and maintains your outdoor spaces with passion and transparency."
   },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "primaryNav": "Primary",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleTheme": "Toggle light / dark theme",
+    "switchLanguage": "Passer au français",
+    "prevValue": "Previous",
+    "nextValue": "Next"
+  },
   "nav": {
     "home": "Home",
     "services": "Services",
     "faq": "FAQ",
-    "projects": "Projects",
     "about": "About",
-    "contact": "Contact",
     "careers": "Careers",
-    "blog": "Blog",
     "quote": "Get a quote"
   },
   "hero": {
@@ -62,7 +69,6 @@
     }
   },
   "serviceDetail": {
-    "backToServices": "All our services",
     "badge": "Services",
     "exploreLabel": "Our services",
     "relatedLabel": "Related services",
@@ -290,11 +296,9 @@
       "phone": "Phone (optional)",
       "phonePlaceholder": "514 000-0000",
       "service": "Service needed (optional)",
-      "servicePlaceholder": "Select a service",
       "startDate": "Preferred start date (optional)",
       "startDatePlaceholder": "Pick a date",
       "referral": "How did you hear about us? (optional)",
-      "referralPlaceholder": "Select an option",
       "referralOptions": {
         "google": "Google search",
         "facebook": "Facebook",
@@ -321,9 +325,7 @@
         "addressMax": "This address is too long.",
         "phone": "This phone number looks invalid.",
         "phoneMax": "This number is too long.",
-        "serviceMax": "Invalid value.",
         "startDateMax": "Invalid date.",
-        "referralMax": "Invalid value.",
         "messageMax": "Your message is too long."
       }
     },
@@ -438,8 +440,7 @@
     "companyTitle": "Company",
     "contactTitle": "Contact",
     "followUs": "Follow us",
-    "linkedin": "LinkedIn",
-    "quoteEmailLabel": "Quote requests"
+    "linkedin": "LinkedIn"
   },
   "privacy": {
     "metaTitle": "Privacy policy | Paysagiste Acadien",

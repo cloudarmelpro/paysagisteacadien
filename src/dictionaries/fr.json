@@ -3,15 +3,22 @@
     "title": "Paysagiste Acadien | Aménagement et entretien à Laval",
     "description": "Aménagement et entretien paysager à Laval et sur la Rive-Nord. Paysagiste Acadien transforme et entretient vos espaces extérieurs avec passion et transparence."
   },
+  "a11y": {
+    "skipToContent": "Aller au contenu",
+    "primaryNav": "Navigation principale",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "toggleTheme": "Basculer le thème clair / sombre",
+    "switchLanguage": "Switch to English",
+    "prevValue": "Valeur précédente",
+    "nextValue": "Valeur suivante"
+  },
   "nav": {
     "home": "Accueil",
     "services": "Services",
     "faq": "FAQ",
-    "projects": "Réalisations",
     "about": "À propos",
-    "contact": "Nous joindre",
     "careers": "Emplois",
-    "blog": "Blogue",
     "quote": "Soumission"
   },
   "hero": {
@@ -62,7 +69,6 @@
     }
   },
   "serviceDetail": {
-    "backToServices": "Tous nos services",
     "badge": "Services",
     "exploreLabel": "Nos services",
     "relatedLabel": "Services connexes",
@@ -290,11 +296,9 @@
       "phone": "Téléphone (optionnel)",
       "phonePlaceholder": "514 000-0000",
       "service": "Service souhaité (optionnel)",
-      "servicePlaceholder": "Sélectionnez un service",
       "startDate": "Date de début souhaitée (optionnel)",
       "startDatePlaceholder": "Choisir une date",
       "referral": "Comment nous avez-vous connu ? (optionnel)",
-      "referralPlaceholder": "Sélectionnez une option",
       "referralOptions": {
         "google": "Recherche Google",
         "facebook": "Facebook",
@@ -321,9 +325,7 @@
         "addressMax": "Cette adresse est trop longue.",
         "phone": "Ce numéro de téléphone semble invalide.",
         "phoneMax": "Ce numéro est trop long.",
-        "serviceMax": "Valeur invalide.",
         "startDateMax": "Date invalide.",
-        "referralMax": "Valeur invalide.",
         "messageMax": "Votre message est trop long."
       }
     },
@@ -438,8 +440,7 @@
     "companyTitle": "Entreprise",
     "contactTitle": "Contact",
     "followUs": "Suivez-nous",
-    "linkedin": "LinkedIn",
-    "quoteEmailLabel": "Demande de soumission"
+    "linkedin": "LinkedIn"
   },
   "privacy": {
     "metaTitle": "Politique de confidentialité | Paysagiste Acadien",

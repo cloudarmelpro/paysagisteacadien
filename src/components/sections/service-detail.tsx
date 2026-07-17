@@ -10,7 +10,6 @@ import {
   serviceGroups,
   serviceImages,
   servicesSegment,
-  type ServiceSlug,
 } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -44,6 +43,7 @@ export function ServiceDetail({
 
   const { group } = resolved;
   const isCategory = resolved.kind === "category";
+  const imageSlug = isCategory ? group.segment : resolved.slug;
   const categoryName = dict.services[group.key];
   const hubHref = localizedPath(lang, `${servicesSegment}/${group.segment}`);
 
@@ -83,7 +83,7 @@ export function ServiceDetail({
       {/* Grande image */}
       <div className="relative mt-10 aspect-video overflow-hidden rounded-3xl bg-muted lg:mt-14">
         <Image
-          src={serviceImages[slug as ServiceSlug]}
+          src={serviceImages[imageSlug]}
           alt={imageAlt}
           fill
           priority

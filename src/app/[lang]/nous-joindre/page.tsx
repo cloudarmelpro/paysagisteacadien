@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "@/lib/dictionaries";
-import type { Locale } from "@/lib/i18n";
 import { contactSegment } from "@/config/site";
 import { buildAlternates, buildOpenGraph } from "@/lib/seo";
 import { Contact } from "@/components/sections/contact";
@@ -12,13 +11,13 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { lang } = await props.params;
   if (!hasLocale(lang)) return {};
-  const dict = await getDictionary(lang as Locale);
+  const dict = await getDictionary(lang);
   const { metaTitle, metaDescription } = dict.contact;
   return {
     title: metaTitle,
     description: metaDescription,
-    alternates: buildAlternates(lang as Locale, contactSegment),
-    ...buildOpenGraph(lang as Locale, contactSegment, metaTitle, metaDescription),
+    alternates: buildAlternates(lang, contactSegment),
+    ...buildOpenGraph(lang, contactSegment, metaTitle, metaDescription),
   };
 }
 
@@ -27,7 +26,7 @@ export default async function ContactPage(
 ) {
   const { lang } = await props.params;
   if (!hasLocale(lang)) notFound();
-  const dict = await getDictionary(lang as Locale);
+  const dict = await getDictionary(lang);
 
   return (
     <>

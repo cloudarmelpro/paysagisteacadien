@@ -29,6 +29,15 @@ export function buildAlternates(
 }
 
 /**
+ * Tout composant JSON-LD doit passer par ici : `JSON.stringify` seul laisse un `<`
+ * fermer la balise script depuis une donnée dynamique (XSS). Échappement `<`
+ * recommandé par node_modules/next/dist/docs/01-app/02-guides/json-ld.md.
+ */
+export function jsonLdScript(jsonLd: object): string {
+  return JSON.stringify(jsonLd).replace(/</g, "\\u003c");
+}
+
+/**
  * Zone desservie au format schema.org. Le nom de la région suit la locale de la
  * page (`inLanguage`). Partagé par les schémas LocalBusiness et Service, qui
  * doivent rester identiques.

@@ -27,10 +27,7 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     label: dict.nav.quote,
     href: localizedPath(lang, contactSegment),
   };
-  const themeLabel =
-    lang === "fr"
-      ? "Basculer le thème clair / sombre"
-      : "Toggle light / dark theme";
+  const a11y = dict.a11y;
 
   return (
     <header className="sticky top-0 z-50 bg-background">
@@ -39,7 +36,7 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         href="#main"
         className="sr-only rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50"
       >
-        {lang === "fr" ? "Aller au contenu" : "Skip to content"}
+        {a11y.skipToContent}
       </a>
 
       {/* Dès lg, la grille `1fr auto 1fr` donne sa propre colonne à la marque :
@@ -48,7 +45,7 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         {/* Navigation — gauche (desktop) */}
         <nav
           className="hidden items-center gap-5 lg:flex"
-          aria-label={lang === "fr" ? "Navigation principale" : "Primary"}
+          aria-label={a11y.primaryNav}
         >
           <NavLinks items={items} />
         </nav>
@@ -67,8 +64,8 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
         {/* Actions — droite (desktop) */}
         <div className="hidden items-center gap-4 lg:flex lg:justify-self-end">
-          <ThemeToggle label={themeLabel} />
-          <LanguageSwitcher lang={lang} />
+          <ThemeToggle label={a11y.toggleTheme} />
+          <LanguageSwitcher lang={lang} label={a11y.switchLanguage} />
           <Link
             href={careers.href}
             className="cursor-pointer whitespace-nowrap text-sm text-foreground/70 transition-colors duration-200 hover:text-foreground"
@@ -87,11 +84,9 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             items={items}
             contact={careers}
             quote={quote}
-            themeLabel={themeLabel}
-            labels={{
-              open: lang === "fr" ? "Ouvrir le menu" : "Open menu",
-              close: lang === "fr" ? "Fermer le menu" : "Close menu",
-            }}
+            themeLabel={a11y.toggleTheme}
+            languageLabel={a11y.switchLanguage}
+            labels={{ open: a11y.openMenu, close: a11y.closeMenu }}
           />
         </div>
       </div>

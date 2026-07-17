@@ -1,7 +1,7 @@
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
-import { siteUrl } from "@/lib/seo";
+import { jsonLdScript, siteUrl } from "@/lib/seo";
 
 /** Un maillon du fil d'Ariane. `segment` = chemin après la locale, sans slash de tête. */
 export type BreadcrumbItem = {
@@ -52,7 +52,7 @@ export function BreadcrumbJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
     />
   );
 }

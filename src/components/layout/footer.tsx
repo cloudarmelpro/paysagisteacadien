@@ -119,7 +119,7 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </span>
             </Link>
 
-            <LanguageSwitcher lang={lang} />
+            <LanguageSwitcher lang={lang} label={dict.a11y.switchLanguage} />
 
             <nav aria-label={dict.footer.followUs} className="-ml-1 flex">
               {socials.map(({ label, href, Icon, color }) => (

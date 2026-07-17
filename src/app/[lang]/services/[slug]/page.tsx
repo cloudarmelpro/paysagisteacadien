@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "@/lib/dictionaries";
-import { i18n, type Locale } from "@/lib/i18n";
+import { i18n } from "@/lib/i18n";
 import { resolveServiceSlug, serviceDetailSlugs, servicesSegment } from "@/config/site";
 import { buildAlternates, buildOpenGraph } from "@/lib/seo";
 import { ServiceDetail } from "@/components/sections/service-detail";
@@ -22,14 +22,14 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { lang, slug } = await props.params;
   if (!hasLocale(lang) || !resolveServiceSlug(slug)) return {};
-  const dict = await getDictionary(lang as Locale);
+  const dict = await getDictionary(lang);
   const item = dict.serviceDetail.items[slug as keyof typeof dict.serviceDetail.items];
   const segment = `${servicesSegment}/${slug}`;
   return {
     title: item.metaTitle,
     description: item.metaDescription,
-    alternates: buildAlternates(lang as Locale, segment),
-    ...buildOpenGraph(lang as Locale, segment, item.metaTitle, item.metaDescription),
+    alternates: buildAlternates(lang, segment),
+    ...buildOpenGraph(lang, segment, item.metaTitle, item.metaDescription),
   };
 }
 
@@ -39,7 +39,7 @@ export default async function ServicePage(
   const { lang, slug } = await props.params;
   const resolved = resolveServiceSlug(slug);
   if (!hasLocale(lang) || !resolved) notFound();
-  const dict = await getDictionary(lang as Locale);
+  const dict = await getDictionary(lang);
 
   const label = (s: string) =>
     dict.services.items[s as keyof typeof dict.services.items];

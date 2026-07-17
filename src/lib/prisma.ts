@@ -11,9 +11,15 @@ const globalForPrisma = globalThis as unknown as {
 };
 
 function createClient() {
-  const adapter = new PrismaPg({
-    connectionString: process.env.DATABASE_URL,
-  });
+  const connectionString = process.env.DATABASE_URL;
+  // Sans cette garde, pg retombe silencieusement sur localhost:5432 : la panne
+  // n'apparaîtrait qu'au premier envoi de formulaire, côté visiteur.
+  if (!connectionString) {
+    throw new Error(
+      "DATABASE_URL est absent. Définir l'URL poolée Neon dans l'environnement (voir .env.example).",
+    );
+  }
+  const adapter = new PrismaPg({ connectionString });
   return new PrismaClient({ adapter });
 }
 

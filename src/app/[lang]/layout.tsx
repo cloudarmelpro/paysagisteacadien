@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { notFound } from "next/navigation";
-import { i18n, type Locale } from "@/lib/i18n";
+import { i18n } from "@/lib/i18n";
 import { getDictionary, hasLocale } from "@/lib/dictionaries";
 import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
@@ -38,7 +38,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { lang } = await props.params;
   if (!hasLocale(lang)) return {};
-  const dict = await getDictionary(lang as Locale);
+  const dict = await getDictionary(lang);
   const { title, description } = dict.metadata;
   return {
     // Base absolue héritée par toutes les pages (canonical, hreflang, OG).
@@ -47,8 +47,8 @@ export async function generateMetadata(
     description,
     // Alternates de l'accueil, qui n'a pas de generateMetadata propre. Toute
     // autre page doit redéfinir les siens, sinon elle hérite de ce canonical.
-    alternates: buildAlternates(lang as Locale, ""),
-    ...buildOpenGraph(lang as Locale, "", title, description),
+    alternates: buildAlternates(lang, ""),
+    ...buildOpenGraph(lang, "", title, description),
   };
 }
 

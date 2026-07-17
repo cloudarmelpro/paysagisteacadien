@@ -31,28 +31,6 @@ export const siteConfig = {
 } as const;
 
 /**
- * Principales municipalités de la Rive-Nord, pour l'ancrage géographique local.
- *
- * Liste hypothétique, non confirmée par le client : ce n'est pas la zone
- * officielle. Les textes qui s'y réfèrent (dictionnaires, `faq`) disent
- * « notamment » / « including » et ne promettent pas de couverture exhaustive.
- * Ne pas générer de page par ville à partir de cette liste : sans contenu propre
- * et vérifié, ce seraient des doorway pages pénalisables.
- */
-export const serviceMunicipalities = [
-  "Terrebonne",
-  "Blainville",
-  "Boisbriand",
-  "Rosemère",
-  "Sainte-Thérèse",
-  "Mirabel",
-  "Mascouche",
-  "Bois-des-Filion",
-  "Lorraine",
-  "Sainte-Anne-des-Plaines",
-] as const;
-
-/**
  * Heures d'ouverture au format schema.org. Doit rester cohérent avec les
  * libellés traduits de `contact.hours` dans les dictionnaires.
  * Un jour fermé est absent de la liste.
@@ -86,7 +64,7 @@ export const services = [
  * doivent afficher la même image pour un service donné.
  * Placeholders, à remplacer par les photos de chantiers réelles.
  */
-export const serviceImages: Record<ServiceSlug, string> = {
+export const serviceImages: Record<ServiceDetailSlug, string> = {
   "entretien-paysager": "/images/hero-pelouse.jpg",
   "entretien-de-terrain": "/images/hero-pelouse.jpg",
   "entretien-de-rocaille": "/images/jardin-4.jpg",
@@ -142,18 +120,27 @@ export const servicesSegment = "services";
 /**
  * Slugs ayant une page sous /[lang]/services/[slug] : pages-chapeaux et services
  * individuels. Source de `generateStaticParams`.
+ *
+ * N'y ajouter que des slugs ayant un contenu propre et vérifié dans les
+ * dictionnaires. Décliner un service par ville produirait des doorway pages
+ * pénalisables.
  */
 export const serviceDetailSlugs = [
   ...serviceGroups.map((g) => g.segment),
   ...serviceGroups.flatMap((g) => g.services),
 ] as const;
 
+export type ServiceDetailSlug = (typeof serviceDetailSlugs)[number];
+
 type ServiceGroup = (typeof serviceGroups)[number];
 
-/** Résultat de résolution d'un slug de page service. */
+/**
+ * Résultat de résolution d'un slug de page service. Les slugs y sont des types
+ * littéraux, pas `string` : ils indexent `serviceImages` sans cast.
+ */
 export type ResolvedService =
   | { kind: "category"; group: ServiceGroup }
-  | { kind: "service"; group: ServiceGroup; slug: string };
+  | { kind: "service"; group: ServiceGroup; slug: ServiceGroup["services"][number] };
 
 /**
  * Résout un slug d'URL vers une famille ou un service individuel accompagné de
@@ -162,11 +149,11 @@ export type ResolvedService =
 export function resolveServiceSlug(slug: string): ResolvedService | null {
   const category = serviceGroups.find((g) => g.segment === slug);
   if (category) return { kind: "category", group: category };
-  const group = serviceGroups.find((g) =>
-    (g.services as readonly string[]).includes(slug),
-  );
-  if (!group) return null;
-  return { kind: "service", group, slug };
+  for (const group of serviceGroups) {
+    const found = group.services.find((s) => s === slug);
+    if (found) return { kind: "service", group, slug: found };
+  }
+  return null;
 }
 
 /** Segment de la page « Emplois » (candidatures spontanées). */

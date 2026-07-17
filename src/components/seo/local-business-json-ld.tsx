@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import { openingHours, services, siteConfig } from "@/config/site";
-import { buildAreaServed, siteUrl } from "@/lib/seo";
+import { buildAreaServed, jsonLdScript, siteUrl } from "@/lib/seo";
 
 /**
  * Données structurées LocalBusiness (schema.org), rendues dans le layout `[lang]`.
@@ -73,7 +73,7 @@ export function LocalBusinessJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
     />
   );
 }

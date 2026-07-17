@@ -2,7 +2,7 @@ import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import { servicesSegment } from "@/config/site";
-import { buildAreaServed, siteUrl } from "@/lib/seo";
+import { buildAreaServed, jsonLdScript, siteUrl } from "@/lib/seo";
 
 /**
  * Données structurées Service (schema.org) pour une page /services/<slug>.
@@ -38,7 +38,7 @@ export function ServiceJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
     />
   );
 }

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { i18n, localizedPath, type Locale } from "@/lib/i18n";
+import { i18n, localizedPath } from "@/lib/i18n";
 import {
   contactSegment,
   privacySegment,
@@ -30,13 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return segments.flatMap((segment) =>
     i18n.locales.map((lang) => ({
-      url: `${siteUrl}${localizedPath(lang as Locale, segment)}`,
+      url: `${siteUrl}${localizedPath(lang, segment)}`,
       alternates: {
         languages: {
           ...Object.fromEntries(
             i18n.locales.map((loc) => [
               loc,
-              `${siteUrl}${localizedPath(loc as Locale, segment)}`,
+              `${siteUrl}${localizedPath(loc, segment)}`,
             ]),
           ),
           "x-default": `${siteUrl}${localizedPath(i18n.defaultLocale, segment)}`,

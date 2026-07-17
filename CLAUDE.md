@@ -31,8 +31,11 @@ src/
 ├─ dictionaries/{fr,en}.json   # TOUTES les chaînes traduites
 ├─ lib/i18n.ts          # locales = [fr, en], defaultLocale = fr
 ├─ lib/dictionaries.ts  # getDictionary(locale) + hasLocale + type Dictionary
-├─ components/          # ui/ (shadcn) · layout/ · sections/ · shared/
-├─ hooks/  types/  lib/
+├─ lib/actions/         # Server Actions ("use server") — PAS dans app/ : un composant
+│                       # de components/ qui importe app/ inverse les couches
+├─ lib/seo.ts           # canonical/hreflang, Open Graph, jsonLdScript (échappe `<`)
+├─ components/          # ui/ (shadcn) · layout/ · sections/ · seo/ · shared/
+├─ hooks/  lib/
 ```
 
 ## Conventions
@@ -45,6 +48,12 @@ src/
 - Alias `@/*` → `src/*`. Réutiliser `siteConfig`/`services` (pas de duplication).
 - Nouvelles pages : sous `src/app/[lang]/…` ; slugs de services dans `config/site.ts`.
 - Middleware s'appelle **`proxy.ts`** dans cette version (ne pas créer `middleware.ts`).
+- **Pas de barrel file** (`index.ts` qui ré-exporte un dossier) : importer directement
+  le fichier. La doc Next l'énonce dans `02-guides/local-development.md` — un barrel
+  force le compilateur à analyser tout le dossier pour un seul import.
+- **Commentaires** : uniquement une contrainte que le code ne montre pas (piège, omission
+  délibérée, invariant entre fichiers). 1–3 lignes. Ni historique, ni provenance, ni
+  paraphrase du code, ni justification adressée au relecteur.
 
 ## Design (à venir)
 

@@ -8,8 +8,18 @@ import { cn } from "@/lib/utils";
  * Bascule FR / EN conservant le chemin courant (/fr/services → /en/services).
  * Un `<a>` natif, pas de navigation client : le rechargement complet est ce qui
  * fait rendre <html lang> côté serveur dans la nouvelle langue.
+ *
+ * `label` est rédigé dans la langue de DESTINATION, pas celle de la page : c'est
+ * ce qui le rend lisible par le visiteur qu'il cible. D'où `lang` sur le lien,
+ * sans quoi un lecteur d'écran prononcerait ce libellé avec la voix de la page.
  */
-export function LanguageSwitcher({ lang }: { lang: Locale }) {
+export function LanguageSwitcher({
+  lang,
+  label,
+}: {
+  lang: Locale;
+  label: string;
+}) {
   const pathname = usePathname();
 
   const [first, second] = i18n.locales as readonly Locale[]; // ["fr", "en"]
@@ -22,12 +32,11 @@ export function LanguageSwitcher({ lang }: { lang: Locale }) {
     return segments.join("/") || `/${target}`;
   }
 
-  const label = lang === "fr" ? "Switch to English" : "Passer au français";
-
   return (
     <a
       href={pathForLocale(other)}
       hrefLang={other}
+      lang={other}
       aria-label={label}
       title={label}
       className="group flex cursor-pointer items-center gap-2 rounded-full focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"

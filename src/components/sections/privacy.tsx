@@ -9,7 +9,7 @@ const badgeClass =
  * Politique de confidentialité (Loi 25 — Québec). Les coordonnées proviennent de
  * `siteConfig` et doivent rester identiques à celles du JSON-LD.
  */
-export function Privacy({ lang, dict }: { lang: Locale; dict: Dictionary }) {
+export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
   const p = dict.privacy;
 
   return (
@@ -79,7 +79,7 @@ export function Privacy({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </a>
         </div>
         <p className="mt-3 text-sm leading-relaxed text-foreground/60">
-          {lang === "fr" ? p.officer.recourse : p.officer.recourse}
+          {p.officer.recourse}
         </p>
       </div>
     </div>
