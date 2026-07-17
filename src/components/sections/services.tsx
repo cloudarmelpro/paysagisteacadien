@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import { serviceGroups, serviceImages, servicesSegment } from "@/config/site";
+import { Reveal } from "@/components/shared/reveal";
 
 /**
  * Les 6 services réels, hors pages-chapeaux. Dérivé de `serviceGroups` et non de
@@ -85,7 +86,7 @@ export function Services({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       className="mx-auto w-full max-w-7xl scroll-mt-20 px-5 py-16 sm:px-8 lg:px-12 lg:py-24"
     >
       {/* En-tête : badge + titre à gauche, intro à droite */}
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+      <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
         <div className="flex flex-col items-start gap-4">
           <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wider text-foreground/70 uppercase">
             {dict.services.badge}
@@ -98,7 +99,7 @@ export function Services({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         <p className="max-w-md text-base leading-relaxed text-foreground/70 lg:text-right">
           {dict.services.intro}
         </p>
-      </div>
+      </Reveal>
 
       {/* Les deux familles */}
       <div className="mt-12 flex flex-col gap-14 lg:mt-16 lg:gap-20">
@@ -119,21 +120,23 @@ export function Services({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 className="group inline-flex shrink-0 cursor-pointer items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-foreground"
               >
                 {dict.services.learnMore}
-                <div className="size-4 transition-transform duration-200 group-hover:translate-x-0.5">
-                  →
-                </div>
+                <ArrowRight
+                  className="size-4 transition-transform duration-200 group-hover:translate-x-0.5"
+                  aria-hidden
+                />
               </Link>
             </div>
 
             <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {group.services.map((slug, i) => (
-                <ServiceCard
-                  key={slug}
-                  slug={slug}
-                  index={i}
-                  href={localizedPath(lang, `${servicesSegment}/${slug}`)}
-                  dict={dict}
-                />
+                <Reveal key={slug} delay={i * 80}>
+                  <ServiceCard
+                    slug={slug}
+                    index={i}
+                    href={localizedPath(lang, `${servicesSegment}/${slug}`)}
+                    dict={dict}
+                  />
+                </Reveal>
               ))}
             </div>
           </div>

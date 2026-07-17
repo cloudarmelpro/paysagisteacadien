@@ -11,13 +11,12 @@ export default async function HomePage(props: PageProps<"/[lang]">) {
   const dict = await getDictionary(lang);
 
   // Le Hero n'est pas révélé : il est au-dessus de la ligne de flottaison et
-  // porte le LCP.
+  // porte le LCP. Services anime son en-tête et ses cartes en interne, donc
+  // pas d'enveloppe ici (elle imbriquerait deux révélations).
   return (
     <>
       <Hero lang={lang} dict={dict} />
-      <Reveal>
-        <Services lang={lang} dict={dict} />
-      </Reveal>
+      <Services lang={lang} dict={dict} />
       <Reveal>
         <Faq lang={lang} dict={dict} />
       </Reveal>

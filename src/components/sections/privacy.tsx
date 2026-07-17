@@ -1,6 +1,7 @@
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import { siteConfig } from "@/config/site";
+import { Reveal } from "@/components/shared/reveal";
 
 const badgeClass =
   "w-fit rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wider text-foreground/70 uppercase";
@@ -15,7 +16,7 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
       {/* En-tête */}
-      <div className="flex max-w-3xl flex-col items-start gap-5">
+      <Reveal className="flex max-w-3xl flex-col items-start gap-5">
         <span className={badgeClass}>{p.badge}</span>
         <h1 className="text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl">
           {p.title} <span className="text-primary">{p.titleAccent}</span>
@@ -24,10 +25,10 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
         <p className="text-sm text-foreground/60">
           {p.updatedLabel} : {p.updatedAt}
         </p>
-      </div>
+      </Reveal>
 
       {/* Renseignements recueillis */}
-      <div className="mt-14 max-w-3xl border-t border-dotted border-border pt-8">
+      <Reveal from="up" delay={80} className="mt-14 max-w-3xl border-t border-dotted border-border pt-8">
         <h2 className="text-xl font-medium tracking-tight text-foreground">
           {p.collected.heading}
         </h2>
@@ -39,24 +40,26 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
             <li key={item}>{item}</li>
           ))}
         </ul>
-      </div>
+      </Reveal>
 
       {/* Sections juridiques */}
       <div className="mt-12 flex max-w-3xl flex-col gap-10">
-        {p.sections.map((section) => (
-          <section key={section.heading} className="flex flex-col gap-3">
-            <h2 className="text-xl font-medium tracking-tight text-foreground">
-              {section.heading}
-            </h2>
-            <p className="text-base leading-relaxed text-foreground/70">
-              {section.body}
-            </p>
-          </section>
+        {p.sections.map((section, i) => (
+          <Reveal key={section.heading} delay={(i % 3) * 80}>
+            <section className="flex flex-col gap-3">
+              <h2 className="text-xl font-medium tracking-tight text-foreground">
+                {section.heading}
+              </h2>
+              <p className="text-base leading-relaxed text-foreground/70">
+                {section.body}
+              </p>
+            </section>
+          </Reveal>
         ))}
       </div>
 
       {/* Coordonnées du responsable */}
-      <div className="mt-14 flex max-w-3xl flex-col gap-3 rounded-3xl bg-muted p-8">
+      <Reveal from="up" delay={160} className="mt-14 flex max-w-3xl flex-col gap-3 rounded-3xl bg-muted p-8">
         <h2 className="text-xl font-medium tracking-tight text-foreground">
           {p.officer.heading}
         </h2>
@@ -81,7 +84,7 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
         <p className="mt-3 text-sm leading-relaxed text-foreground/60">
           {p.officer.recourse}
         </p>
-      </div>
+      </Reveal>
     </div>
   );
 }
