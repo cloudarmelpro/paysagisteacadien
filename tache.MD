@@ -101,9 +101,23 @@ Deux points à connaître :
 
 ## 🟡 Côté code — optionnel, faible impact
 
-- [ ] **Image OG dédiée** (1200×630, logo + accroche). Aujourd'hui l'OG réutilise `hero-pelouse.jpg` : ça fonctionne, mais un visuel pensé pour le partage serait mieux. ~30 min.
 - [ ] ~~Schéma `FAQPage`~~ — **déconseillé** : Google a retiré les résultats enrichis FAQ le 7 mai 2026. Bénéfice quasi nul.
 - [ ] Uniformiser `serviceImages` : plusieurs services partagent la même photo (`hero-pelouse.jpg` sert 2 fois). Se règlera avec les vraies photos (point 5).
+
+> **Il ne reste plus rien de significatif à faire côté code.** Tout le gain
+> restant est dans la colonne « client » ci-dessus.
+
+### Régénérer les images de partage (si l'accroche change)
+```bash
+node scripts/og/generate.mjs   # réécrit public/og-fr.png + og-en.png
+```
+Les textes sont **lus dans les dictionnaires** (`hero.titleLead` /
+`hero.titleAccent`) et le logo repris de `src/app/icon.svg` : si l'accroche du
+hero change, relancer la commande, sinon l'image partagée contredira le site.
+
+Volontairement **pas une photo** : les photos actuelles sont des placeholders
+Unsplash ; les diffuser comme vitrine de nos chantiers serait faux. Le visuel de
+marque reste juste même après le point 5.
 
 ---
 
