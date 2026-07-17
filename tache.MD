@@ -65,32 +65,14 @@ Triple gain d'un coup :
 - [ ] Fournir des photos de vrais chantiers (idéalement avant/après)
 - [ ] → *puis moi* : les intégrer et remesurer le LCP
 
-### 6. Bio de Cédric — **client puis moi**
-Cédric n'existe **que dans le JSON-LD**, jamais à l'écran. C'était le principal manque E-E-A-T de l'audit.
-La section a été construite puis retirée faute de faits — **tout est récupérable** :
-```bash
-git checkout 5accea7 -- public/images/cedric.jpeg   # la photo
-git show 5accea7                                     # la section + les clés de dico
-```
-
-Il me faut, même en style télégraphique :
-- [ ] Année de fondation
-- [ ] Ce qu'il faisait avant
-- [ ] Pourquoi il a lancé l'entreprise / ce qui le motive
-- [ ] *(optionnel)* années de métier, licence RBQ, association — **uniquement si c'est vrai**
-
-> Note photo : le portrait fourni est en complet **avec lunettes de soleil** — les yeux
-> cachés affaiblissent le lien de confiance. Une photo **sur un chantier, visage visible**
-> serait nettement plus forte.
-
-### 7. Confirmer la zone desservie — **client** ⚠️
+### 6. Confirmer la zone desservie — **client** ⚠️
 `src/config/site.ts` → `serviceMunicipalities` est une **HYPOTHÈSE de ma part**, pas la zone officielle :
 
 > Terrebonne, Blainville, Boisbriand, Rosemère, Sainte-Thérèse, Mirabel, Mascouche, Bois-des-Filion, Lorraine, Sainte-Anne-des-Plaines
 
 Les textes disent « notamment » (jamais une promesse de couverture), mais **à valider avant le cutover** : retirer les villes non desservies, ajouter les manquantes.
 
-### 8. Faire relire la politique de confidentialité — **client**
+### 7. Faire relire la politique de confidentialité — **client**
 `/fr/confidentialite` — rédigée sérieusement et fidèle à ce que le code fait réellement, **mais je ne suis pas juriste**.
 
 Deux points à connaître :
