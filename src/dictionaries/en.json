@@ -224,6 +224,16 @@
       "We firmly believe that every project deserves special attention and personalized guidance in order to meet the highest expectations. It's with this vision that we commit to providing a service that is caring, rigorous and tailored to your needs."
     ],
     "approachClosing": "We look forward to working with you!",
+    "founder": {
+      "label": "The founder",
+      "role": "Founder",
+      "photoAlt": "Portrait of Cédric Babin, founder of Paysagiste Acadien",
+      "linkedin": "View LinkedIn profile",
+      "bio": [
+        "[TEXT TO REPLACE] Cédric Babin founded Paysagiste Acadien. Describe his background here: what he did before, the year he started the company, and what drives him in this trade.",
+        "[TEXT TO REPLACE] Add a verifiable trust signal here: years in the trade, RBQ licence, professional association. Only write what is true."
+      ]
+    },
     "missionLabel": "Our mission",
     "mission": "Paysagiste Acadien's mission is to transform and maintain your outdoor spaces with professionalism, passion and transparency.",
     "missionBody": [

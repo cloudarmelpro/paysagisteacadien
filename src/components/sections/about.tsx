@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
-import { contactSegment, serviceImages } from "@/config/site";
+import { contactSegment, serviceImages, siteConfig } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CommitmentCarousel } from "./commitment-carousel";
@@ -58,6 +58,54 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <p className="text-lg font-medium text-primary lg:text-xl">
             {about.approachClosing}
           </p>
+        </div>
+      </div>
+
+      {/* Le fondateur — portrait à gauche, bio à droite.
+          Placé après « Notre approche » : le lecteur découvre d'abord l'entreprise,
+          puis l'humain derrière. C'est le seul endroit du site où Cédric existe
+          autrement que dans le JSON-LD.
+          La photo est en 4:5 (ratio natif du fichier), sans recadrage destructeur. */}
+      <div className="mt-16 grid gap-8 border-t border-dotted border-border pt-8 lg:mt-24 lg:grid-cols-5 lg:gap-12">
+        <div className="relative aspect-4/5 overflow-hidden rounded-3xl bg-muted lg:col-span-2">
+          <Image
+            src="/images/cedric.jpeg"
+            alt={about.founder.photoAlt}
+            fill
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            className="object-cover"
+          />
+        </div>
+
+        <div className="flex flex-col justify-center gap-4 lg:col-span-3">
+          <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
+            {about.founder.label}
+          </h2>
+          <div className="flex flex-col gap-1">
+            <p className="text-2xl font-medium tracking-tight text-foreground lg:text-3xl">
+              {siteConfig.owner}
+            </p>
+            <p className="text-sm font-medium text-primary">
+              {about.founder.role}
+            </p>
+          </div>
+          {about.founder.bio.map((paragraph) => (
+            <p
+              key={paragraph.slice(0, 24)}
+              className="text-base leading-relaxed text-foreground/70 lg:text-lg"
+            >
+              {paragraph}
+            </p>
+          ))}
+          <a
+            href={siteConfig.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-1 inline-flex w-fit cursor-pointer items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-foreground"
+          >
+            {about.founder.linkedin}
+            <ArrowUpRight className="size-4 transition-transform duration-200 group-hover:-translate-y-0.5" />
+          </a>
         </div>
       </div>
 
