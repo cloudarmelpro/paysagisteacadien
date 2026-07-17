@@ -6,6 +6,7 @@ import { i18n } from "@/lib/i18n";
 import { getDictionary, hasLocale } from "@/lib/dictionaries";
 import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
+import { CookieConsent } from "@/components/layout/cookie-consent";
 import { LocalBusinessJsonLd } from "@/components/seo/local-business-json-ld";
 import { buildAlternates, buildOpenGraph, siteUrl } from "@/lib/seo";
 
@@ -27,7 +28,10 @@ const geistMono = Geist_Mono({
  * « script tag in component » : le sélecteur de langue passe par un `<a>`
  * (rechargement complet) et doit le rester.
  */
-const THEME_SCRIPT = `(function(){try{var r=document.documentElement;var e=localStorage.getItem('theme');var d=e==='dark'||(e!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);r.classList.toggle('dark',d);r.style.colorScheme=d?'dark':'light';}catch(e){}})();`;
+// `js` marque que le JS s'exécute : la révélation au défilement ne masque le
+// contenu que sous cette classe, donc sans JS (ou pour un robot) tout reste
+// visible. Posée ici, avant le premier rendu, pour éviter tout scintillement.
+const THEME_SCRIPT = `(function(){try{var r=document.documentElement;r.classList.add('js');var e=localStorage.getItem('theme');var d=e==='dark'||(e!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);r.classList.toggle('dark',d);r.style.colorScheme=d?'dark':'light';}catch(e){}})();`;
 
 export async function generateStaticParams() {
   return i18n.locales.map((lang) => ({ lang }));
@@ -72,6 +76,7 @@ export default async function RootLayout(props: LayoutProps<"/[lang]">) {
           {props.children}
         </main>
         <SiteFooter lang={lang} dict={dict} />
+        <CookieConsent lang={lang} labels={dict.cookies} />
       </body>
     </html>
   );

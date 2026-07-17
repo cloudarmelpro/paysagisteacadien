@@ -13,6 +13,7 @@ import {
 } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/shared/reveal";
 import { ServiceCard } from "./services";
 
 const badgeClass =
@@ -115,7 +116,7 @@ export function ServiceDetail({
         <div className="mt-16 flex flex-col gap-10 lg:mt-24 lg:gap-14">
           {(item.sections as { heading: string; body: string }[]).map(
             (section) => (
-              <div
+              <Reveal
                 key={section.heading}
                 className="grid gap-4 border-t border-dotted border-border pt-8 lg:grid-cols-3 lg:gap-12"
               >
@@ -125,7 +126,7 @@ export function ServiceDetail({
                 <p className="text-base leading-relaxed text-foreground/70 lg:col-span-2 lg:text-lg">
                   {section.body}
                 </p>
-              </div>
+              </Reveal>
             ),
           )}
         </div>

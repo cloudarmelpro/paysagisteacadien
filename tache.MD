@@ -33,13 +33,24 @@ curl -s $U/en/services/tourbe | grep -o '<html lang="[a-z]*"'  # lang="en"
 curl -sI $U/fr | grep -icE 'content-security-policy|x-content-type-options|x-frame-options|referrer-policy|permissions-policy|strict-transport'   # 6
 ```
 
-### 2. Variable d'environnement Vercel — **client**
-- [ ] `DATABASE_URL` définie dans **Settings → Environment Variables**, pour **Production** *et* **Preview**.
+### 2. Variables d'environnement Vercel — **client**
+Toutes dans **Settings → Environment Variables**, pour **Production** *et* **Preview**.
+Jamais par un commit — ce sont des secrets. Modèle et explications : `.env.example`.
 
-Sans elle, le site build et s'affiche, mais **les formulaires échouent à l'envoi** (nous-joindre + emplois écrivent dans Neon).
-À faire depuis le tableau de bord Vercel — jamais par un commit, c'est un secret.
+- [ ] `DATABASE_URL` — sans elle, le site s'affiche mais **les formulaires échouent à
+  l'envoi** (nous-joindre + emplois écrivent dans Neon).
+- [ ] `RESEND_API_KEY` — sans elle, les soumissions restent **enregistrées en base**
+  mais **aucun courriel n'arrive** dans la boîte Outlook. La créer active la réception,
+  sans redéploiement.
+  1. Créer un compte sur resend.com → **API Keys** → copier la clé.
+  2. Pour recevoir sur une adresse `@outlook.com` en production, **vérifier un domaine**
+     dans Resend (sinon l'envoi ne part qu'avec `onboarding@resend.dev`, limité à
+     l'adresse du compte). Définir alors `RESEND_FROM` sur une adresse de ce domaine.
+- [ ] `RESEND_FROM` / `RESEND_TO` — optionnelles (valeurs par défaut raisonnables) ;
+  `RESEND_TO` vaut déjà `paysagisteacadien@outlook.com`.
 
-**Vérifier :** envoyer un vrai formulaire de test sur le site en ligne.
+**Vérifier :** envoyer un vrai formulaire de test sur le site en ligne, puis confirmer
+la réception dans la boîte Outlook.
 
 ### 3. Google Business Profile — **client**
 C'est **le facteur n°1** pour « paysagiste Laval » (le map pack passe avant les résultats organiques). Aujourd'hui : aucun signal.

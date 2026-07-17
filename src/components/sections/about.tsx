@@ -7,6 +7,7 @@ import type { Dictionary } from "@/lib/dictionaries";
 import { contactSegment, serviceImages } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/shared/reveal";
 import { CommitmentCarousel } from "./commitment-carousel";
 
 const badgeClass =
@@ -18,7 +19,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
       {/* En-tête */}
-      <div className="flex max-w-3xl flex-col items-start gap-5">
+      <Reveal className="flex max-w-3xl flex-col items-start gap-5">
         <span className={badgeClass}>{about.badge}</span>
         <h1 className="text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl">
           {about.title}{" "}
@@ -27,7 +28,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         <p className="max-w-2xl text-lg leading-relaxed text-foreground/70">
           {about.intro}
         </p>
-      </div>
+      </Reveal>
 
       {/* Grande image */}
       <div className="relative mt-10 aspect-video overflow-hidden rounded-3xl bg-muted lg:mt-14">
@@ -42,7 +43,10 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       </div>
 
       {/* Notre approche : label à gauche, paragraphes à droite */}
-      <div className="mt-16 grid gap-6 border-t border-dotted border-border pt-8 lg:mt-24 lg:grid-cols-3 lg:gap-12">
+      <Reveal
+        from="left"
+        className="mt-16 grid gap-6 border-t border-dotted border-border pt-8 lg:mt-24 lg:grid-cols-3 lg:gap-12"
+      >
         <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
           {about.approachLabel}
         </h2>
@@ -59,10 +63,14 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             {about.approachClosing}
           </p>
         </div>
-      </div>
+      </Reveal>
 
       {/* Mission : label à gauche, texte à droite */}
-      <div className="mt-16 grid gap-6 border-t border-dotted border-border pt-8 lg:mt-24 lg:grid-cols-3 lg:gap-12">
+      <Reveal
+        from="right"
+        delay={80}
+        className="mt-16 grid gap-6 border-t border-dotted border-border pt-8 lg:mt-24 lg:grid-cols-3 lg:gap-12"
+      >
         <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
           {about.missionLabel}
         </h2>
@@ -79,10 +87,13 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </p>
           ))}
         </div>
-      </div>
+      </Reveal>
 
       {/* Engagement : lead + cartes de valeurs */}
-      <div className="mt-16 border-t border-dotted border-border pt-8 lg:mt-24">
+      <Reveal
+        from="left"
+        className="mt-16 border-t border-dotted border-border pt-8 lg:mt-24"
+      >
         <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
           <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
             {about.engagementLabel}
@@ -114,10 +125,10 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             region: about.engagementLabel,
           }}
         />
-      </div>
+      </Reveal>
 
       {/* CTA */}
-      <div className="mt-16 flex flex-col items-start gap-5 rounded-3xl bg-muted p-8 sm:flex-row sm:items-center sm:justify-between lg:mt-24 lg:p-12">
+      <Reveal className="mt-16 flex flex-col items-start gap-5 rounded-3xl bg-muted p-8 sm:flex-row sm:items-center sm:justify-between lg:mt-24 lg:p-12">
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-medium tracking-tight text-balance">
             {about.ctaTitle}
@@ -131,7 +142,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           {about.cta}
           <ArrowUpRight className="size-4" />
         </Link>
-      </div>
+      </Reveal>
     </div>
   );
 }

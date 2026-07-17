@@ -3,6 +3,13 @@
     "title": "Paysagiste Acadien | Aménagement et entretien à Laval",
     "description": "Aménagement et entretien paysager à Laval et sur la Rive-Nord. Paysagiste Acadien transforme et entretient vos espaces extérieurs avec passion et transparence."
   },
+  "cookies": {
+    "message": "Ce site n'utilise que des témoins essentiels — votre préférence de thème, conservée sur votre appareil. Aucun cookie publicitaire, aucun outil de suivi ni d'analyse.",
+    "accept": "Accepter",
+    "refuse": "Refuser",
+    "policy": "En savoir plus",
+    "ariaLabel": "Avis de confidentialité"
+  },
   "a11y": {
     "skipToContent": "Aller au contenu",
     "primaryNav": "Navigation principale",
