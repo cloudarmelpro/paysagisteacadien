@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "@/lib/dictionaries";
 import type { Locale } from "@/lib/i18n";
+import { buildAlternates, buildOpenGraph } from "@/lib/seo";
 import { Careers } from "@/components/sections/careers";
 
 export async function generateMetadata(
@@ -10,9 +11,12 @@ export async function generateMetadata(
   const { lang } = await props.params;
   if (!hasLocale(lang)) return {};
   const dict = await getDictionary(lang as Locale);
+  const { metaTitle, metaDescription } = dict.careers;
   return {
-    title: dict.careers.metaTitle,
-    description: dict.careers.metaDescription,
+    title: metaTitle,
+    description: metaDescription,
+    alternates: buildAlternates(lang as Locale, "emplois"),
+    ...buildOpenGraph(lang as Locale, "emplois", metaTitle, metaDescription),
   };
 }
 

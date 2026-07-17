@@ -1,17 +1,21 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { i18n, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
 /**
  * Bascule FR / EN façon interrupteur : deux libellés encadrent un rail dont la
- * pastille glisse vers la langue active. Un clic bascule vers l'autre langue en
- * conservant le chemin courant (/fr/services → /en/services).
+ * pastille glisse vers la langue active. Conserve le chemin courant
+ * (/fr/services → /en/services).
+ *
+ * C'est volontairement un vrai lien `<a>` (rechargement complet) et non une
+ * navigation client : changer de langue produit un nouveau document, dans une
+ * autre langue — c'est ce qui permet à <html lang> d'être juste côté serveur.
+ * Bonus : ouvrable dans un nouvel onglet, et crawlable comme lien alternatif.
  */
 export function LanguageSwitcher({ lang }: { lang: Locale }) {
   const pathname = usePathname();
-  const router = useRouter();
 
   const [first, second] = i18n.locales as readonly Locale[]; // ["fr", "en"]
   const isSecond = lang === second;
@@ -23,15 +27,12 @@ export function LanguageSwitcher({ lang }: { lang: Locale }) {
     return segments.join("/") || `/${target}`;
   }
 
-  const label =
-    lang === "fr"
-      ? "Switch to English"
-      : "Passer au français";
+  const label = lang === "fr" ? "Switch to English" : "Passer au français";
 
   return (
-    <button
-      type="button"
-      onClick={() => router.push(pathForLocale(other))}
+    <a
+      href={pathForLocale(other)}
+      hrefLang={other}
       aria-label={label}
       title={label}
       className="group flex cursor-pointer items-center gap-2 rounded-full focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
@@ -65,6 +66,6 @@ export function LanguageSwitcher({ lang }: { lang: Locale }) {
       >
         {second}
       </span>
-    </button>
+    </a>
   );
 }

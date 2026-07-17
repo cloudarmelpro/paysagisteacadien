@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary, hasLocale } from "@/lib/dictionaries";
 import { i18n, type Locale } from "@/lib/i18n";
-import { resolveServiceSlug, serviceDetailSlugs } from "@/config/site";
+import { resolveServiceSlug, serviceDetailSlugs, servicesSegment } from "@/config/site";
+import { buildAlternates, buildOpenGraph } from "@/lib/seo";
 import { ServiceDetail } from "@/components/sections/service-detail";
 
 export function generateStaticParams() {
@@ -18,9 +19,12 @@ export async function generateMetadata(
   if (!hasLocale(lang) || !resolveServiceSlug(slug)) return {};
   const dict = await getDictionary(lang as Locale);
   const item = dict.serviceDetail.items[slug as keyof typeof dict.serviceDetail.items];
+  const segment = `${servicesSegment}/${slug}`;
   return {
     title: item.metaTitle,
     description: item.metaDescription,
+    alternates: buildAlternates(lang as Locale, segment),
+    ...buildOpenGraph(lang as Locale, segment, item.metaTitle, item.metaDescription),
   };
 }
 

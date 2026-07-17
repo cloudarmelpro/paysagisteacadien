@@ -32,6 +32,20 @@ export const siteConfig = {
 } as const;
 
 /**
+ * Heures d'ouverture au format schema.org (données structurées SEO).
+ * Les libellés AFFICHÉS vivent dans les dictionnaires (`contact.hours`) car ils
+ * sont traduits — garder les deux cohérents. Dimanche fermé → simplement absent.
+ */
+export const openingHours = [
+  {
+    days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "19:00",
+  },
+  { days: ["Saturday"], opens: "09:00", closes: "15:00" },
+] as const;
+
+/**
  * Catalogue des services (slugs stables = segments d'URL).
  * `category` regroupe l'affichage ; les noms/descriptions sont dans les dictionnaires
  * sous `services.items.<slug>`.
