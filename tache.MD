@@ -10,6 +10,13 @@ Suivi de ce qui reste à faire. Dernière mise à jour : **17 juillet 2026**.
 > sur Google. Le site neuf est en `noindex` volontaire sur l'URL Vercel. Toutes les
 > optimisations SEO attendent le cutover pour exister.
 
+> 🔄 **Transfert de domaine en cours (juillet 2026)** : `paysagisteacadien.com` est
+> transféré de **GoDaddy vers Hostinger** (~5 jours). **Ne pas toucher au DNS avant
+> la fin du transfert** — les enregistrements ne suivent pas forcément et seraient à
+> refaire. Une fois le domaine posé chez Hostinger, tout le travail DNS se fait là,
+> **en une seule session** : (a) la bascule Vercel ci-dessous ET (b) la vérification
+> du domaine Resend (§2). Le DNS est chez le client (Cédric).
+
 ---
 
 ## 🔴 Bloquant — sans ça, le reste ne sert à rien
@@ -42,11 +49,14 @@ Jamais par un commit — ce sont des secrets. Modèle et explications : `.env.ex
 - [x] `RESEND_API_KEY` — clé créée et **testée fonctionnelle** (Resend l'accepte,
   l'envoi part). À définir dans Vercel comme les autres.
 - [ ] **Vérifier un domaine dans Resend pour livrer à l'Outlook.** ⚠️ Point bloquant
-  restant. En mode test (expéditeur `onboarding@resend.dev`), Resend ne livre QU'À
-  l'adresse du compte Resend — pas à `paysagisteacadien@outlook.com`. Pour router vers
-  l'Outlook :
+  restant. **À faire chez Hostinger après le transfert de domaine** (voir l'encadré en
+  haut), en même temps que la bascule Vercel — on ne touche au DNS qu'une fois.
+  En mode test (expéditeur `onboarding@resend.dev`), Resend ne livre QU'À l'adresse du
+  compte Resend (**cloudarmelpro@gmail.com**, le compte du développeur) — pas à
+  `paysagisteacadien@outlook.com`. Pour router vers l'Outlook :
   1. resend.com → **Domains** → ajouter `paysagisteacadien.com` (pas besoin d'une boîte
-     courriel sur ce domaine, seulement l'envoi) → poser les enregistrements DNS fournis.
+     courriel sur ce domaine, seulement l'envoi) → poser les enregistrements DNS chez
+     **Hostinger**. ⚠️ Si un SPF (`v=spf1…`) existe déjà, fusionner, ne pas en créer un 2e.
   2. Définir `RESEND_FROM` sur une adresse de ce domaine, p.ex.
      `Paysagiste Acadien <no-reply@paysagisteacadien.com>`.
   Tant que ce n'est pas fait, les soumissions restent **enregistrées en base** (rien
