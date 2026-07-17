@@ -60,8 +60,8 @@ type CookieConsentLabels = {
 
 /**
  * Bannière de consentement (Loi 25). Visible seulement tant qu'aucun choix n'est
- * enregistré. Les deux boutons ont volontairement le MÊME poids visuel : la Loi
- * 25 interdit de rendre le refus moins accessible que l'acceptation.
+ * enregistré. Les deux boutons gardent la même taille et la même position : le
+ * refus reste aussi accessible que l'acceptation, comme la Loi 25 l'exige.
  */
 export function CookieConsent({
   lang,
@@ -105,7 +105,6 @@ export function CookieConsent({
             {labels.refuse}
           </Button>
           <Button
-            variant="outline"
             onClick={() => setConsent("granted")}
             className="flex-1 sm:flex-none"
           >
