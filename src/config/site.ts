@@ -57,13 +57,14 @@ export const openingHours = [
 export const services = [
   { slug: "entretien-paysager", category: "maintenance" },
   { slug: "entretien-de-terrain", category: "maintenance" },
-  { slug: "entretien-de-rocaille", category: "maintenance" },
+  { slug: "entretien-de-plate-bande", category: "maintenance" },
   { slug: "services-de-tailles", category: "maintenance" },
+  { slug: "ensemencement", category: "maintenance" },
   { slug: "amenagement-paysager", category: "development" },
   { slug: "plantation", category: "development" },
   { slug: "tourbe", category: "development" },
   { slug: "pave-uni", category: "development" },
-  { slug: "optimisation-irrigation", category: "development" },
+  { slug: "irrigation", category: "development" },
 ] as const;
 
 /**
@@ -74,13 +75,14 @@ export const services = [
 export const serviceImages: Record<ServiceDetailSlug, string> = {
   "entretien-paysager": "/images/hero-pelouse.jpg",
   "entretien-de-terrain": "/images/hero-pelouse.jpg",
-  "entretien-de-rocaille": "/images/jardin-4.jpg",
+  "entretien-de-plate-bande": "/images/jardin-4.jpg",
   "services-de-tailles": "/images/jardin-2.jpg",
+  ensemencement: "/images/hero-pelouse.jpg",
   "amenagement-paysager": "/images/jardin-3.jpg",
   plantation: "/images/jardin-3.jpg",
   tourbe: "/images/jardin-1.jpg",
   "pave-uni": "/images/pave-uni.jpg",
-  "optimisation-irrigation": "/images/jardin-1.jpg",
+  irrigation: "/images/jardin-1.jpg",
 };
 
 /**
@@ -93,14 +95,15 @@ export const serviceGroups = [
     segment: "entretien-paysager",
     services: [
       "entretien-de-terrain",
-      "entretien-de-rocaille",
+      "entretien-de-plate-bande",
       "services-de-tailles",
+      "ensemencement",
     ],
   },
   {
     key: "development",
     segment: "amenagement-paysager",
-    services: ["plantation", "tourbe", "pave-uni", "optimisation-irrigation"],
+    services: ["plantation", "tourbe", "pave-uni", "irrigation"],
   },
 ] as const;
 

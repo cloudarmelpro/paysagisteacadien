@@ -26,13 +26,13 @@
     "faq": "FAQ",
     "about": "À propos",
     "careers": "Emplois",
-    "quote": "Soumission"
+    "quote": "Estimation"
   },
   "hero": {
     "titleLead": "Aménagement et entretien paysager",
     "titleAccent": "à Laval et sur la Rive-Nord",
     "subtitle": "Qualité, expertise et souci du détail. Nous transformons et entretenons vos espaces extérieurs avec professionnalisme, passion et transparence.",
-    "cta": "Demander une soumission",
+    "cta": "Demander une estimation",
     "ctaSecondary": "Nos services",
     "imageAlt": "Pelouse dense et fraîchement entretenue bordée d'arbres matures"
   },
@@ -48,34 +48,37 @@
     "developmentLead": "De la plantation au pavé, des projets clés en main adaptés à votre budget.",
     "descriptions": {
       "entretien-de-terrain": "Ouverture printanière, déchaumage, ensemencement, ramassage des feuilles et fermeture hivernale.",
-      "entretien-de-rocaille": "Nettoyage printanier, terre compostée, paillis de cèdre et taille des vivaces pour des massifs sains.",
+      "entretien-de-plate-bande": "Nettoyage printanier, désherbage, paillis et taille des vivaces pour des plates-bandes nettes et saines.",
       "services-de-tailles": "La taille annuelle densifie vos haies de cèdres, garde une ligne nette et prévient le dégarnissement.",
+      "ensemencement": "Réparer et densifier votre pelouse par semis, au printemps et à l'automne.",
       "plantation": "Vivaces, arbustes, haies de cèdres et arbres, choisis selon votre sol et votre ensoleillement.",
       "tourbe": "Une pelouse instantanée, uniforme et résistante — en création comme en rénovation.",
       "pave-uni": "Pavés déplacés, joints usés : on restaure la surface pour une apparence soignée et durable.",
-      "optimisation-irrigation": "On adapte votre système d'arrosage existant aux nouvelles plantations, sans tout refaire."
+      "irrigation": "On adapte votre système d'arrosage existant aux nouvelles plantations, sans tout refaire."
     },
     "imageAlts": {
       "entretien-paysager": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
       "entretien-de-terrain": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
-      "entretien-de-rocaille": "Massif de fleurs jaunes bordé de galets blancs",
+      "entretien-de-plate-bande": "Massif de fleurs jaunes bordé de galets blancs",
       "services-de-tailles": "Allée engazonnée bordée d'une haie dense et taillée",
+      "ensemencement": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
       "amenagement-paysager": "Pergola de bois et buis taillés en contre-jour",
       "plantation": "Pergola de bois et buis taillés en contre-jour",
       "tourbe": "Grande pelouse tondue et arbres matures dans un espace vert",
       "pave-uni": "Pavé uni posé en éventail circulaire, éclairé en lumière rasante",
-      "optimisation-irrigation": "Tête d'arrosage automatique en action dans une plate-bande"
+      "irrigation": "Tête d'arrosage automatique en action dans une plate-bande"
     },
     "items": {
       "entretien-paysager": "Entretien paysager",
       "entretien-de-terrain": "Entretien de terrain",
-      "entretien-de-rocaille": "Entretien de rocaille",
-      "services-de-tailles": "Services de tailles",
+      "entretien-de-plate-bande": "Entretien de plate-bande",
+      "services-de-tailles": "Service de taille",
+      "ensemencement": "Ensemencement",
       "amenagement-paysager": "Aménagement paysager",
       "plantation": "Plantation",
       "tourbe": "Tourbe",
       "pave-uni": "Pavé uni",
-      "optimisation-irrigation": "Optimisation de l'irrigation"
+      "irrigation": "Irrigation"
     }
   },
   "serviceDetail": {
@@ -88,8 +91,8 @@
     "items": {
       "entretien-paysager": {
         "metaTitle": "Entretien paysager | Paysagiste Acadien",
-        "metaDescription": "Entretien de terrain, de rocaille et taille de cèdres à Laval et sur la Rive-Nord. Confiez-nous l'entretien de votre terrain.",
-        "intro": "Confiez-nous l'entretien de votre résidence ou de votre commerce et profitez pleinement de la belle saison, sans tracas ! Que ce soit pour l'entretien de votre terrain, de vos rocailles, ou encore pour la taille de vos arbustes et cèdres, nous nous occupons de tout. Laissez-nous alléger votre charge afin que vous puissiez profiter pleinement de votre été.",
+        "metaDescription": "Entretien de terrain, de plate-bande et taille de cèdres à Laval et sur la Rive-Nord. Confiez-nous l'entretien de votre terrain.",
+        "intro": "Confiez-nous l'entretien de votre résidence ou de votre commerce et profitez pleinement de la belle saison, sans tracas ! Que ce soit pour l'entretien de votre terrain, de vos plates-bandes, ou encore pour la taille de vos arbustes et cèdres, nous nous occupons de tout. Laissez-nous alléger votre charge afin que vous puissiez profiter pleinement de votre été.",
         "sections": []
       },
       "amenagement-paysager": {
@@ -125,26 +128,22 @@
           }
         ]
       },
-      "entretien-de-rocaille": {
-        "metaTitle": "Entretien de rocaille | Paysagiste Acadien",
-        "metaDescription": "Nettoyage printanier, terreau composté, paillis de cèdre et taille des vivaces pour des massifs sains à Laval et sur la Rive-Nord.",
-        "intro": "Paysagiste Acadien propose des services professionnels d'entretien de rocailles dans la région de Laval et sur la Rive-Nord.",
+      "entretien-de-plate-bande": {
+        "metaTitle": "Entretien de plate-bande | Paysagiste Acadien",
+        "metaDescription": "Nettoyage printanier, désherbage, paillis et division des vivaces pour des plates-bandes saines à Laval et sur la Rive-Nord.",
+        "intro": "Paysagiste Acadien offre des services d'entretien de plates-bandes à Laval et sur la Rive-Nord.",
         "sections": [
           {
-            "heading": "Ouverture de rocaille",
-            "body": "Nous débutons toujours notre saison par un nettoyage complet des rocailles, afin d'éliminer toutes les feuilles mortes et les débris laissés par l'hiver. Nous procédons également à la redéfinition des bordures naturelles qui ont été endommagées durant la saison froide."
+            "heading": "Nettoyage printanier",
+            "body": "En début de saison, nous nettoyons vos plates-bandes en retirant les feuilles mortes et les débris laissés par l'hiver, et nous redéfinissons les bordures abîmées par le gel."
           },
           {
-            "heading": "Rafraîchissement de terreau composté",
-            "body": "Nous offrons un service de rafraîchissement des rocailles avec du terreau composté. L'ajout de terreau permet d'enrichir le sol, favorisant ainsi la santé et la croissance des systèmes racinaires de vos vivaces et arbustes."
+            "heading": "Désherbage et paillis",
+            "body": "Nous désherbons vos massifs et rafraîchissons le paillis pour limiter la repousse des mauvaises herbes, retenir l'humidité du sol et garder une apparence nette tout au long de la saison."
           },
           {
-            "heading": "Rafraîchissement de paillis de cèdre",
-            "body": "Nous offrons un service de rafraîchissement des rocailles avec du paillis de cèdre, disponible en plusieurs couleurs. Le paillis de cèdre est bénéfique pour les vivaces et arbustes de la rocaille, car il aide à retenir l'humidité dans le sol. De plus, il contribue au contrôle des mauvaises herbes, limitant leur propagation de façon naturelle."
-          },
-          {
-            "heading": "Taille des vivaces et fermeture de saison",
-            "body": "À la fin de la saison, nous offrons un service de coupe des vivaces afin de les préparer pour l'hiver. Nous proposons également un service de taille des rosiers, ainsi que l'installation de protections hivernales pour assurer leur préservation durant la saison froide."
+            "heading": "Taille et division des vivaces",
+            "body": "Nous taillons les vivaces et divisons celles devenues trop denses afin de maintenir des massifs sains, aérés et bien structurés d'une saison à l'autre."
           }
         ]
       },
@@ -164,6 +163,21 @@
           {
             "heading": "Une taille qui respecte le bois vivant",
             "body": "Le cèdre a une particularité qui commande toute la méthode : il ne repousse pas depuis le vieux bois brun, seulement depuis le feuillage vert. Une coupe trop sévère laisse donc un trou qui reste. La taille se limite à la pousse verte de l'année, et la haie se travaille légèrement plus large à la base qu'au sommet, pour que la lumière atteigne le bas et l'empêche de se dénuder. Le moment se choisit avec la végétation, une fois la nouvelle pousse sortie, en évitant les grandes chaleurs."
+          }
+        ]
+      },
+      "ensemencement": {
+        "metaTitle": "Ensemencement | Paysagiste Acadien",
+        "metaDescription": "Ensemencement et surensemencement pour réparer et densifier votre pelouse à Laval et sur la Rive-Nord.",
+        "intro": "Paysagiste Acadien offre des services d'ensemencement et de surensemencement à Laval et sur la Rive-Nord.",
+        "sections": [
+          {
+            "heading": "Réparer et densifier la pelouse",
+            "body": "Nous offrons un service d'ensemencement pour effectuer des réparations légères de pelouse. De plus, nous proposons un service de surensemencement afin de densifier votre gazon au maximum."
+          },
+          {
+            "heading": "La bonne période pour ensemencer",
+            "body": "Le service d'ensemencement est disponible du 1er mai au 20 juin ainsi qu'au cours du mois de septembre. Nous ne recommandons pas d'ensemencer durant la saison chaude afin d'optimiser les résultats."
           }
         ]
       },
@@ -224,8 +238,8 @@
           }
         ]
       },
-      "optimisation-irrigation": {
-        "metaTitle": "Optimisation de systèmes d'irrigation | Paysagiste Acadien",
+      "irrigation": {
+        "metaTitle": "Irrigation | Paysagiste Acadien",
         "metaDescription": "Adaptation et optimisation de votre système d'irrigation existant lors de nouvelles plantations ou d'un nouvel aménagement, à Laval et sur la Rive-Nord.",
         "intro": "Quand un système d'arrosage est déjà en place et que le terrain évolue, il n'est pas toujours nécessaire de tout refaire. Nous reprenons votre installation existante et l'adaptons à la nouvelle configuration.",
         "sections": [

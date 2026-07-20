@@ -49,7 +49,8 @@ const legacyRedirects = [
   { from: "/entretien-paysager-1", to: "/fr/services/entretien-paysager" },
   // Services individuels
   { from: "/entretien-de-terrain", to: "/fr/services/entretien-de-terrain" },
-  { from: "/entretien-de-rocaille", to: "/fr/services/entretien-de-rocaille" },
+  // La rocaille est remplacée par la plate-bande : l'ancienne URL indexée y mène.
+  { from: "/entretien-de-rocaille", to: "/fr/services/entretien-de-plate-bande" },
   { from: "/services-de-tailles", to: "/fr/services/services-de-tailles" },
   { from: "/plantation", to: "/fr/services/plantation" },
   { from: "/tourbe", to: "/fr/services/tourbe" },

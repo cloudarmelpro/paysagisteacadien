@@ -2,22 +2,16 @@ import Link from "next/link";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
-import { contactSegment, serviceImages } from "@/config/site";
+import { contactSegment, serviceGroups, serviceImages } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { HeroGallery, type GalleryItem } from "./hero-gallery";
 
 /**
- * Uniquement des services réels, pas de page-chapeau : les images viennent de
- * `serviceImages`, source unique partagée avec la section services.
+ * Les 8 services individuels dans l'ordre du catalogue (source unique
+ * `serviceGroups`, sans les pages-chapeaux). Images depuis `serviceImages`.
  */
-const GALLERY_SLUGS = [
-  "tourbe",
-  "services-de-tailles",
-  "entretien-de-terrain",
-  "plantation",
-  "entretien-de-rocaille",
-] as const;
+const GALLERY_SLUGS = serviceGroups.flatMap((g) => g.services);
 
 export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const items: GalleryItem[] = GALLERY_SLUGS.map((slug) => ({

@@ -26,13 +26,13 @@
     "faq": "FAQ",
     "about": "About",
     "careers": "Careers",
-    "quote": "Get a quote"
+    "quote": "Get an estimate"
   },
   "hero": {
     "titleLead": "Landscape design and maintenance",
     "titleAccent": "in Laval and the North Shore",
     "subtitle": "Quality, expertise and attention to detail. We transform and maintain your outdoor spaces with professionalism, passion and transparency.",
-    "cta": "Request a quote",
+    "cta": "Request an estimate",
     "ctaSecondary": "Our services",
     "imageAlt": "Lush, freshly maintained lawn bordered by mature trees"
   },
@@ -48,34 +48,37 @@
     "developmentLead": "From planting to paving — turnkey projects built to your budget.",
     "descriptions": {
       "entretien-de-terrain": "Spring opening, dethatching, overseeding, leaf collection and winter closing.",
-      "entretien-de-rocaille": "Spring cleanup, composted soil, cedar mulch and perennial trimming for healthy beds.",
+      "entretien-de-plate-bande": "Spring cleanup, weeding, mulch and perennial trimming for neat, healthy flower beds.",
       "services-de-tailles": "Annual trimming keeps your cedar hedges dense, sharply lined and free of bare spots.",
+      "ensemencement": "Repair and thicken your lawn with seeding, in spring and fall.",
       "plantation": "Perennials, shrubs, cedar hedges and trees, chosen for your soil and sun exposure.",
       "tourbe": "An instant, even and hard-wearing lawn — for new lawns or renovations.",
       "pave-uni": "Shifted pavers, worn joints: we restore the surface to a neat, lasting finish.",
-      "optimisation-irrigation": "We adapt your existing watering system to new plantings, without redoing it all."
+      "irrigation": "We adapt your existing watering system to new plantings, without redoing it all."
     },
     "imageAlts": {
       "entretien-paysager": "Lush, freshly maintained lawn bordered by mature trees",
       "entretien-de-terrain": "Lush, freshly maintained lawn bordered by mature trees",
-      "entretien-de-rocaille": "Bed of yellow flowers edged with white pebbles",
+      "entretien-de-plate-bande": "Bed of yellow flowers edged with white pebbles",
       "services-de-tailles": "Grass path lined with a dense, trimmed hedge",
+      "ensemencement": "Lush, freshly maintained lawn bordered by mature trees",
       "amenagement-paysager": "Wooden pergola and trimmed boxwood backlit by the sun",
       "plantation": "Wooden pergola and trimmed boxwood backlit by the sun",
       "tourbe": "Large mown lawn and mature trees in a green space",
       "pave-uni": "Interlock pavers laid in a circular fan pattern under raking light",
-      "optimisation-irrigation": "Automatic sprinkler head running in a planting bed"
+      "irrigation": "Automatic sprinkler head running in a planting bed"
     },
     "items": {
       "entretien-paysager": "Landscape maintenance",
       "entretien-de-terrain": "Grounds maintenance",
-      "entretien-de-rocaille": "Rock garden maintenance",
+      "entretien-de-plate-bande": "Flower-bed maintenance",
       "services-de-tailles": "Pruning & trimming",
+      "ensemencement": "Seeding",
       "amenagement-paysager": "Landscape design",
       "plantation": "Planting",
       "tourbe": "Sod",
       "pave-uni": "Interlock paving",
-      "optimisation-irrigation": "Irrigation optimization"
+      "irrigation": "Irrigation"
     }
   },
   "serviceDetail": {
@@ -88,8 +91,8 @@
     "items": {
       "entretien-paysager": {
         "metaTitle": "Landscape maintenance | Paysagiste Acadien",
-        "metaDescription": "Grounds maintenance, rock garden care and cedar hedge trimming in Laval and the North Shore. Leave the upkeep of your property to us.",
-        "intro": "Leave the maintenance of your home or business to us and enjoy the season to the fullest, worry-free! Whether it's caring for your grounds, your rock gardens, or trimming your shrubs and cedars, we handle it all. Let us lighten your load so you can make the most of your summer.",
+        "metaDescription": "Grounds maintenance, flower-bed care and cedar hedge trimming in Laval and the North Shore. Leave the upkeep of your property to us.",
+        "intro": "Leave the maintenance of your home or business to us and enjoy the season to the fullest, worry-free! Whether it's caring for your grounds, your flower beds, or trimming your shrubs and cedars, we handle it all. Let us lighten your load so you can make the most of your summer.",
         "sections": []
       },
       "amenagement-paysager": {
@@ -125,26 +128,22 @@
           }
         ]
       },
-      "entretien-de-rocaille": {
-        "metaTitle": "Rock garden maintenance | Paysagiste Acadien",
-        "metaDescription": "Spring cleanup, composted soil, cedar mulch and perennial pruning for healthy beds in Laval and the North Shore.",
-        "intro": "Paysagiste Acadien offers professional rock garden maintenance services in the Laval and North Shore region.",
+      "entretien-de-plate-bande": {
+        "metaTitle": "Flower-bed maintenance | Paysagiste Acadien",
+        "metaDescription": "Spring cleanup, weeding, mulch and perennial division for healthy flower beds in Laval and the North Shore.",
+        "intro": "Paysagiste Acadien offers flower-bed maintenance services in Laval and the North Shore.",
         "sections": [
           {
-            "heading": "Rock garden opening",
-            "body": "We always start our season with a thorough cleanup of the rock gardens, removing all the dead leaves and debris left by winter. We also redefine the natural borders that were damaged during the cold season."
+            "heading": "Spring cleanup",
+            "body": "At the start of the season, we clean your flower beds by removing the dead leaves and debris left by winter, and we redefine the borders damaged by frost."
           },
           {
-            "heading": "Composted soil top-up",
-            "body": "We offer a service to refresh rock gardens with composted soil. Adding soil enriches the ground, promoting the health and growth of the root systems of your perennials and shrubs."
+            "heading": "Weeding and mulch",
+            "body": "We weed your beds and refresh the mulch to limit weed regrowth, retain moisture in the soil and keep a neat look throughout the season."
           },
           {
-            "heading": "Cedar mulch top-up",
-            "body": "We offer a service to refresh rock gardens with cedar mulch, available in several colours. Cedar mulch benefits the perennials and shrubs of the rock garden by helping retain moisture in the soil. It also helps control weeds, naturally limiting their spread."
-          },
-          {
-            "heading": "Perennial pruning and season closing",
-            "body": "At the end of the season, we offer a perennial-cutting service to prepare them for winter. We also provide a rose-pruning service, along with the installation of winter protection to keep them safe through the cold season."
+            "heading": "Trimming and dividing perennials",
+            "body": "We trim perennials and divide those that have grown too dense to keep your beds healthy, open and well structured from one season to the next."
           }
         ]
       },
@@ -164,6 +163,21 @@
           {
             "heading": "Trimming that respects the living wood",
             "body": "Cedar has one trait that governs the whole method: it does not grow back from old brown wood, only from green foliage. A cut that goes too deep leaves a gap that stays. Trimming is therefore kept to the year's green growth, and the hedge is shaped slightly wider at the base than at the top, so light reaches the bottom and keeps it from going bare. The timing follows the plant — once the new growth is out, and away from the heavy heat."
+          }
+        ]
+      },
+      "ensemencement": {
+        "metaTitle": "Seeding | Paysagiste Acadien",
+        "metaDescription": "Seeding and overseeding to repair and thicken your lawn in Laval and the North Shore.",
+        "intro": "Paysagiste Acadien offers seeding and overseeding services in Laval and the North Shore.",
+        "sections": [
+          {
+            "heading": "Repairing and thickening the lawn",
+            "body": "We offer a seeding service for light lawn repairs, as well as overseeding to make your lawn as dense as possible."
+          },
+          {
+            "heading": "The right time to seed",
+            "body": "Seeding is available from May 1st to June 20th and during the month of September. We don't recommend seeding during the hot season, in order to optimize results."
           }
         ]
       },
@@ -224,8 +238,8 @@
           }
         ]
       },
-      "optimisation-irrigation": {
-        "metaTitle": "Irrigation system optimization | Paysagiste Acadien",
+      "irrigation": {
+        "metaTitle": "Irrigation | Paysagiste Acadien",
         "metaDescription": "Adapting and optimizing your existing irrigation system when adding new plantings or landscaping, in Laval and the North Shore.",
         "intro": "When a watering system is already in place and the grounds change, redoing everything is rarely necessary. We take your existing setup and adapt it to the new layout.",
         "sections": [
