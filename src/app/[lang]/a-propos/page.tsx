@@ -30,7 +30,7 @@ export default async function AboutPage(props: PageProps<"/[lang]/a-propos">) {
       <BreadcrumbJsonLd
         lang={lang}
         dict={dict}
-        items={[{ name: dict.about.badge, segment: "a-propos" }]}
+        items={[{ name: dict.nav.about, segment: "a-propos" }]}
       />
       <About lang={lang} dict={dict} />
     </>
