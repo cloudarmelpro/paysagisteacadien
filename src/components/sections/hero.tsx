@@ -52,7 +52,7 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/70 via-black/35 to-transparent"
         />
 
-        <div className="relative mx-auto w-full max-w-7xl px-5 pt-36 pb-32 sm:px-8 lg:px-12 lg:pt-44 lg:pb-40">
+        <div className="relative mx-auto w-full max-w-7xl px-5 pt-36 pb-14 sm:px-8 lg:px-12 lg:pt-44 lg:pb-20">
           {/* Bloc texte — entrée échelonnée (CSS, pour ne pas retarder le LCP) */}
           <div className="flex max-w-xl flex-col items-start gap-5">
             <h1 className="hero-rise text-4xl tracking-tight text-balance text-white sm:text-5xl">
@@ -97,13 +97,13 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </Link>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* La galerie chevauche le bas de la vidéo : les vignettes flottent sur
-          le photogramme assombri, puis reposent sur le fond de page. */}
-      <div className="relative z-10 mx-auto -mt-16 w-full max-w-7xl px-5 sm:-mt-20 sm:px-8 lg:px-12">
-        <HeroGallery items={items} initialActive={2} />
+          {/* La galerie vit DANS la bande vidéo : les vignettes flottent sur le
+              photogramme assombri — plus de fond blanc sous le carrousel. */}
+          <div className="mt-10 lg:mt-14">
+            <HeroGallery items={items} initialActive={2} />
+          </div>
+        </div>
       </div>
     </section>
   );
