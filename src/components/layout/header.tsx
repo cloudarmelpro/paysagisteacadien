@@ -54,6 +54,15 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       data-site-header=""
       className="group/header sticky top-0 z-50 bg-background transition-colors duration-300 data-[transparent]:bg-transparent motion-reduce:transition-none"
     >
+      {/* Voile dégradé propre à l'en-tête, affiché tant qu'il est transparent :
+          garantit le contraste du texte blanc quel que soit le photogramme et à
+          toute position de défilement. Le voile du hero ne couvre que son haut
+          et disparaît dès qu'on défile ; celui-ci reste collé sous l'en-tête. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/60 via-black/25 to-transparent opacity-0 transition-opacity duration-300 group-data-[transparent]/header:opacity-100 motion-reduce:transition-none"
+      />
+
       {/* Lien d'évitement : atteindre le contenu sans tabuler toute la nav. */}
       <a
         href="#main"
