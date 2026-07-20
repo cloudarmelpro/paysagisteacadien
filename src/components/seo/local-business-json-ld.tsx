@@ -31,7 +31,7 @@ export function LocalBusinessJsonLd({
     legalName: siteConfig.legalName,
     description: dict.metadata.description,
     url: home,
-    image: `${siteUrl}/images/hero-pelouse.jpg`,
+    image: `${siteUrl}/images/plantation.jpg`,
     logo: `${siteUrl}/logo-512.png`,
     telephone: `+1-${siteConfig.contact.phone}`,
     email: siteConfig.contact.email,

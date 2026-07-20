@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
-import { contactSegment, serviceImages, siteConfig } from "@/config/site";
+import { contactSegment, siteConfig } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/shared/reveal";
@@ -40,7 +40,7 @@ export function Faq({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <Reveal from="left" className="flex h-full flex-col gap-5">
             <div className="relative aspect-4/5 overflow-hidden rounded-3xl bg-muted sm:aspect-3/2 lg:aspect-4/5">
               <Image
-                src={serviceImages["entretien-de-terrain"]}
+                src="/images/faq.jpg"
                 alt={dict.faq.asideImageAlt}
                 fill
                 sizes="(max-width: 1024px) 90vw, 30vw"

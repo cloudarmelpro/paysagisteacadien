@@ -73,16 +73,17 @@ export const services = [
  * Placeholders, à remplacer par les photos de chantiers réelles.
  */
 export const serviceImages: Record<ServiceDetailSlug, string> = {
-  "entretien-paysager": "/images/hero-pelouse.jpg",
-  "entretien-de-terrain": "/images/hero-pelouse.jpg",
-  "entretien-de-plate-bande": "/images/jardin-4.jpg",
-  "services-de-tailles": "/images/jardin-2.jpg",
-  ensemencement: "/images/hero-pelouse.jpg",
-  "amenagement-paysager": "/images/jardin-3.jpg",
-  plantation: "/images/jardin-3.jpg",
-  tourbe: "/images/jardin-1.jpg",
+  // Chapeaux : réutilisent une photo de leur famille (pas de visuel dédié fourni).
+  "entretien-paysager": "/images/entretien-terrain.jpg",
+  "entretien-de-terrain": "/images/entretien-terrain.jpg",
+  "entretien-de-plate-bande": "/images/entretien-plate-bande.jpg",
+  "services-de-tailles": "/images/taille-haie.jpg",
+  ensemencement: "/images/ensemencement.jpg",
+  "amenagement-paysager": "/images/plantation.jpg",
+  plantation: "/images/plantation.jpg",
+  tourbe: "/images/tourbe.jpg",
   "pave-uni": "/images/pave-uni.jpg",
-  irrigation: "/images/jardin-1.jpg",
+  irrigation: "/images/irrigation.jpg",
 };
 
 /**
