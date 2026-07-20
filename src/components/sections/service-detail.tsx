@@ -16,9 +16,10 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/shared/reveal";
 import { ServiceCard } from "./services";
 
-// Badge posé sur l'image du hero : translucide clair, lisible sur la photo.
+// Badge posé sur l'image du hero : pilule claire et douce (style des badges du
+// site), toujours claire — l'image est sombre quel que soit le thème.
 const badgeOnImage =
-  "w-fit rounded-full bg-white/15 px-3 py-1 text-xs font-medium tracking-wider text-white uppercase ring-1 ring-white/25 backdrop-blur-sm";
+  "w-fit rounded-full bg-white/90 px-3.5 py-1 text-xs font-medium tracking-wider text-neutral-700 uppercase backdrop-blur-sm";
 
 /**
  * Page de service, deux rendus sur le même gabarit : chapeau de famille (liste
@@ -97,7 +98,7 @@ export function ServiceDetail({
                   href={hubHref}
                   className={cn(
                     badgeOnImage,
-                    "cursor-pointer transition-colors hover:bg-white/25 focus-visible:ring-3 focus-visible:ring-white/50 focus-visible:outline-none",
+                    "cursor-pointer transition-colors hover:bg-white focus-visible:ring-3 focus-visible:ring-white/60 focus-visible:outline-none",
                   )}
                 >
                   {categoryName}
