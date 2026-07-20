@@ -141,11 +141,15 @@ export function ServiceDetail({
         /* Service : sections éditoriales (libellé à gauche, texte à droite) */
         <div className="mt-16 flex flex-col gap-10 lg:mt-24 lg:gap-14">
           {(item.sections as { heading: string; body: string }[]).map(
-            (section) => (
+            (section, i) => (
               <Reveal
                 key={section.heading}
                 stagger
-                className="rule-draw grid gap-4 border-t border-dotted border-border pt-8 lg:grid-cols-3 lg:gap-12"
+                className={cn(
+                  "grid gap-4 pt-8 lg:grid-cols-3 lg:gap-12",
+                  // Pas de filet au-dessus de la 1re section (comme la page À propos).
+                  i > 0 && "rule-draw border-t border-dotted border-border",
+                )}
               >
                 <h2 className="text-sm font-medium tracking-wide text-foreground uppercase lg:text-base">
                   {section.heading}
