@@ -10,6 +10,9 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/shared/reveal";
 import { CommitmentCarousel } from "./commitment-carousel";
 
+const badgeClass =
+  "w-fit rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wider text-foreground/70 uppercase";
+
 export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const about = dict.about;
 
@@ -17,6 +20,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
       {/* En-tête */}
       <Reveal stagger className="flex max-w-3xl flex-col items-start gap-5">
+        <span className={badgeClass}>{about.badge}</span>
         <h1 className="text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl">
           {about.title}{" "}
           <span className="text-primary">{about.titleAccent}</span>
@@ -42,7 +46,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       <Reveal
         from="left"
         stagger
-        className="rule-draw mt-16 grid gap-6 border-t border-dotted border-border pt-8 lg:mt-24 lg:grid-cols-3 lg:gap-12"
+        className="mt-16 grid gap-6 pt-8 lg:mt-24 lg:grid-cols-3 lg:gap-12"
       >
         <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
           {about.approachLabel}
