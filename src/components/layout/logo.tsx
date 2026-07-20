@@ -9,7 +9,16 @@ const imgProps = { "aria-hidden": true, priority: true } as const;
  * fond sombre — choix en CSS (`dark:`), sans état, donc pas d'écart d'hydratation.
  * Décoratif : le libellé vient du lien englobant. `className` fixe la HAUTEUR.
  */
-export function Logo({ className }: { className?: string }) {
+export function Logo({
+  className,
+  adaptive = false,
+}: {
+  className?: string;
+  /** Barre d'en-tête seulement : force la version blanche quand l'en-tête est
+      transparent (`data-transparent`). Ne pas poser dans le panneau mobile,
+      qui garde son fond solide. */
+  adaptive?: boolean;
+}) {
   return (
     <>
       <Image
@@ -18,7 +27,11 @@ export function Logo({ className }: { className?: string }) {
         width={609}
         height={959}
         {...imgProps}
-        className={cn("w-auto dark:hidden", className)}
+        className={cn(
+          "w-auto dark:hidden",
+          adaptive && "group-data-[transparent]/header:hidden",
+          className,
+        )}
       />
       <Image
         src="/logo-mark-white.png"
@@ -26,7 +39,11 @@ export function Logo({ className }: { className?: string }) {
         width={609}
         height={959}
         {...imgProps}
-        className={cn("hidden w-auto dark:block", className)}
+        className={cn(
+          "hidden w-auto dark:block",
+          adaptive && "group-data-[transparent]/header:block",
+          className,
+        )}
       />
     </>
   );

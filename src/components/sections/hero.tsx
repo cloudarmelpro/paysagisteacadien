@@ -22,10 +22,16 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   }));
 
   return (
-    <section className="pb-16 lg:pb-24">
+    // `-mt-16` glisse la vidéo derrière l'en-tête sticky (h-16) ; le padding
+    // haut du bloc texte est majoré d'autant plus bas.
+    <section className="-mt-16 pb-16 lg:pb-24">
       {/* Bande vidéo pleine largeur ; le texte est composé sur un scrim sombre
-          identique en clair et en sombre — pas de variante de thème ici. */}
-      <div className="relative isolate overflow-hidden bg-[oklch(0.24_0.02_152)]">
+          identique en clair et en sombre — pas de variante de thème ici.
+          `data-hero` : sentinelle mesurée par layout/header-adaptive.tsx. */}
+      <div
+        data-hero
+        className="relative isolate overflow-hidden bg-[oklch(0.24_0.02_152)]"
+      >
         <HeroVideo src="/videos/hero.mp4" poster="/videos/hero-poster.jpg" />
 
         {/* Scrim latéral : ≥ 60 % de noir sous la colonne de texte pour tenir
@@ -38,8 +44,15 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           aria-hidden
           className="absolute inset-x-0 bottom-0 h-44 bg-linear-to-t from-black/60 to-transparent"
         />
+        {/* Scrim haut, pleine largeur : garantit ≥ 4.5:1 au contenu blanc de
+            l'en-tête transparent, y compris côté droit où le scrim latéral
+            s'éclaircit. */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/70 via-black/35 to-transparent"
+        />
 
-        <div className="relative mx-auto w-full max-w-7xl px-5 pt-20 pb-32 sm:px-8 lg:px-12 lg:pt-28 lg:pb-40">
+        <div className="relative mx-auto w-full max-w-7xl px-5 pt-36 pb-32 sm:px-8 lg:px-12 lg:pt-44 lg:pb-40">
           {/* Bloc texte — entrée échelonnée (CSS, pour ne pas retarder le LCP) */}
           <div className="flex max-w-xl flex-col items-start gap-5">
             <h1 className="hero-rise text-4xl tracking-tight text-balance text-white sm:text-5xl">

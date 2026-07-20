@@ -81,17 +81,20 @@ export function MobileNav({
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={openMenu}
-        className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+        // `!` : conflits hover/focus entre deux chaînes de variantes quand
+        // l'en-tête est transparent, l'ordre de la feuille n'est pas garanti.
+        className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none group-data-[transparent]/header:hover:bg-white/10! group-data-[transparent]/header:focus-visible:ring-white/60!"
       >
         {/* Les deux fichiers restent montés et la variante `dark:` choisit :
-            le rendu serveur et client est identique, sans écart d'hydratation. */}
+            le rendu serveur et client est identique, sans écart d'hydratation.
+            L'en-tête transparent (`data-transparent`) force la version blanche. */}
         <Image
           src="/images/menu.png"
           alt=""
           width={32}
           height={32}
           priority
-          className="size-8 dark:hidden"
+          className="size-8 dark:hidden group-data-[transparent]/header:hidden"
         />
         <Image
           src="/images/menu-white.png"
@@ -99,7 +102,7 @@ export function MobileNav({
           width={32}
           height={32}
           priority
-          className="hidden size-8 dark:block"
+          className="hidden size-8 dark:block group-data-[transparent]/header:block"
         />
       </button>
 

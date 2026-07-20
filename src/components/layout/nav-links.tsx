@@ -134,6 +134,13 @@ export function NavLinks({ items }: { items: NavLinkItem[] }) {
               active
                 ? "font-medium text-foreground after:scale-x-100"
                 : "text-foreground/70",
+              // En-tête transparent sur la vidéo : blanc + soulignement dans la
+              // teinte d'accent du hero. `!` : deux chaînes de variantes en
+              // conflit, l'ordre de la feuille n'est pas garanti.
+              "group-data-[transparent]/header:hover:text-white! group-data-[transparent]/header:after:bg-[oklch(0.86_0.12_150)]!",
+              active
+                ? "group-data-[transparent]/header:text-white"
+                : "group-data-[transparent]/header:text-white/80",
             )}
           >
             {item.label}

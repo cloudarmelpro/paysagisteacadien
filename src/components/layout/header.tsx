@@ -9,6 +9,12 @@ import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 import { NavLinks } from "./nav-links";
 import { MobileNav } from "./mobile-nav";
+import { HeaderAdaptive } from "./header-adaptive";
+
+/* Contenu clair sur la vidéo. Les `!` tranchent les conflits hover/focus entre
+   deux chaînes de variantes (ordre non garanti dans la feuille générée). */
+const onVideo =
+  "group-data-[transparent]/header:text-white/85 group-data-[transparent]/header:hover:text-white! group-data-[transparent]/header:hover:bg-white/10! group-data-[transparent]/header:focus-visible:ring-white/60!";
 
 /** En-tête bilingue : nav à gauche, marque centrée, langue + CTA à droite ; hamburger en mobile. */
 export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
@@ -28,9 +34,19 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     href: localizedPath(lang, contactSegment),
   };
   const a11y = dict.a11y;
+  const home = localizedPath(lang, "");
+
+  // Exécuté avant peinture : sur l'accueil non défilé, l'en-tête démarre déjà
+  // transparent — sans lui, le fond solide flasherait sur la vidéo jusqu'à
+  // l'hydratation. `HeaderAdaptive` prend ensuite le relais (scroll, navigation).
+  const adaptiveScript = `(function(){try{var p=location.pathname;if((p==='${home}'||p==='${home}/')&&scrollY<64){document.currentScript.closest('header').setAttribute('data-transparent','')}}catch(e){}})();`;
 
   return (
-    <header className="sticky top-0 z-50 bg-background">
+    <header
+      suppressHydrationWarning
+      data-site-header=""
+      className="group/header sticky top-0 z-50 bg-background transition-colors duration-300 data-[transparent]:bg-transparent motion-reduce:transition-none"
+    >
       {/* Lien d'évitement : atteindre le contenu sans tabuler toute la nav. */}
       <a
         href="#main"
@@ -56,16 +72,16 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           aria-label={siteConfig.name}
           className="flex cursor-pointer items-center transition-opacity duration-200 hover:opacity-70 lg:justify-self-center"
         >
-          <Logo className="h-8" />
+          <Logo className="h-8" adaptive />
         </Link>
 
         {/* Actions — droite (desktop) */}
         <div className="hidden items-center gap-4 lg:flex lg:justify-self-end">
-          <ThemeToggle label={a11y.toggleTheme} />
-          <LanguageSwitcher lang={lang} label={a11y.switchLanguage} />
+          <ThemeToggle label={a11y.toggleTheme} className={onVideo} />
+          <LanguageSwitcher lang={lang} label={a11y.switchLanguage} adaptive />
           <Link
             href={careers.href}
-            className="cursor-pointer whitespace-nowrap text-sm text-foreground/70 transition-colors duration-200 hover:text-foreground"
+            className="cursor-pointer whitespace-nowrap text-sm text-foreground/70 transition-colors duration-200 hover:text-foreground group-data-[transparent]/header:text-white/85 group-data-[transparent]/header:hover:text-white!"
           >
             {careers.label}
           </Link>
@@ -87,6 +103,9 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           />
         </div>
       </div>
+
+      <script dangerouslySetInnerHTML={{ __html: adaptiveScript }} />
+      <HeaderAdaptive />
     </header>
   );
 }
