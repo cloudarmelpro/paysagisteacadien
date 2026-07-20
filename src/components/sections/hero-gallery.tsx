@@ -67,7 +67,7 @@ export function HeroGallery({
         const isActive = i === active;
         return (
           <button
-            key={item.src}
+            key={item.label}
             type="button"
             onClick={() => setActive(i)}
             aria-pressed={isActive}
