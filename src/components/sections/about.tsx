@@ -42,6 +42,24 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         />
       </div>
 
+      {/* Repères concrets — pause visuelle après l'image. Les 1px de gouttière
+          laissent voir `bg-border` : fines lignes entre les cellules. */}
+      <Reveal
+        stagger
+        className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-border lg:mt-10 lg:grid-cols-4"
+      >
+        {about.stats.map((stat) => (
+          <div key={stat.label} className="flex flex-col gap-1.5 bg-background p-6 lg:p-8">
+            <span className="text-xl font-medium tracking-tight text-balance text-foreground lg:text-2xl">
+              {stat.value}
+            </span>
+            <span className="text-xs font-medium tracking-wider text-foreground/55 uppercase">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </Reveal>
+
       {/* Notre approche : label à gauche, paragraphes à droite */}
       <Reveal
         from="left"
@@ -89,6 +107,21 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </p>
           ))}
         </div>
+      </Reveal>
+
+      {/* Deuxième visuel : coupe le mur de texte et montre le volet aménagement
+          (pavé uni), en contraste avec la pelouse du haut. */}
+      <Reveal
+        from="scale"
+        className="relative mt-16 aspect-video overflow-hidden rounded-3xl bg-muted lg:mt-24 lg:aspect-[21/9]"
+      >
+        <Image
+          src={serviceImages["pave-uni"]}
+          alt={about.missionImageAlt}
+          fill
+          sizes="(max-width: 1280px) 100vw, 1216px"
+          className="object-cover"
+        />
       </Reveal>
 
       {/* Engagement : lead + cartes de valeurs */}

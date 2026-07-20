@@ -2,6 +2,7 @@ import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import { siteConfig } from "@/config/site";
 import { Reveal } from "@/components/shared/reveal";
+import { PrivacyToc } from "./privacy-toc";
 
 const badgeClass =
   "w-fit rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wider text-foreground/70 uppercase";
@@ -38,26 +39,7 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
       {/* Sommaire à DROITE ≥ lg (mais premier dans le DOM → en haut sur mobile,
           repoussé à droite par `order`) + contenu à gauche. */}
       <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-[minmax(0,44rem)_15rem] lg:gap-16">
-        <nav
-          aria-label={p.tocLabel}
-          className="lg:order-2 lg:sticky lg:top-24 lg:self-start"
-        >
-          <p className="text-xs font-medium tracking-wider text-foreground/50 uppercase">
-            {p.tocLabel}
-          </p>
-          <ul className="mt-4 flex flex-col border-l border-border">
-            {toc.map((item) => (
-              <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  className="-ml-px block cursor-pointer border-l border-transparent py-1.5 pl-4 text-sm leading-snug text-foreground/70 transition-colors hover:border-primary hover:text-foreground"
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <PrivacyToc items={toc} label={p.tocLabel} />
 
         <div className="flex flex-col gap-12 lg:order-1">
           {/* Renseignements recueillis */}

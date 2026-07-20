@@ -267,6 +267,13 @@
     "titleAccent": "work done right",
     "intro": "We have built deep expertise in the trades of outdoor spaces — landscape maintenance and design in particular. Our mission is to give our clients quality work that combines expertise, professionalism and attention to detail.",
     "imageAlt": "Lush, freshly maintained lawn bordered by mature trees",
+    "stats": [
+      { "value": "Laval & North Shore", "label": "Service area" },
+      { "value": "8 services", "label": "Maintenance & design" },
+      { "value": "FR / EN", "label": "Bilingual service" },
+      { "value": "Free estimate", "label": "No obligation" }
+    ],
+    "missionImageAlt": "Interlock paving project completed by Paysagiste Acadien",
     "approachLabel": "Our approach",
     "approach": [
       "We also offer turnkey services for a hassle-free experience. From design to completion, we handle every stage of your project to ensure a harmonious, functional result. Whether it's installing interlock paving, planting cedar hedges, laying sod or the seasonal upkeep of your grounds, we do everything we can to meet your expectations and deliver a result worthy of your standards.",

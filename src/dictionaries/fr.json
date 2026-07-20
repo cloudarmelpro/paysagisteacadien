@@ -267,6 +267,13 @@
     "titleAccent": "travail bien fait",
     "intro": "Nous avons acquis une expertise approfondie dans les métiers liés aux espaces extérieurs, notamment l'entretien et l'aménagement paysager. Notre mission est d'offrir à nos clients un service de qualité, alliant expertise, professionnalisme et souci du détail.",
     "imageAlt": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
+    "stats": [
+      { "value": "Laval & Rive-Nord", "label": "Zone desservie" },
+      { "value": "8 services", "label": "Entretien & aménagement" },
+      { "value": "FR / EN", "label": "Service bilingue" },
+      { "value": "Estimation gratuite", "label": "Sans engagement" }
+    ],
+    "missionImageAlt": "Aménagement en pavé uni réalisé par Paysagiste Acadien",
     "approachLabel": "Notre approche",
     "approach": [
       "Nous proposons également des services clé en main pour vous offrir une expérience sans tracas. De la conception à la réalisation, nous prenons en charge chaque étape de votre projet afin de vous garantir un aménagement harmonieux et fonctionnel. Que ce soit pour l'installation de pavé uni, la plantation de haies de cèdres, la pose de tourbe ou l'entretien saisonnier de votre terrain, nous mettons tout en œuvre pour répondre à vos attentes et vous offrir un résultat à la hauteur de vos exigences.",
