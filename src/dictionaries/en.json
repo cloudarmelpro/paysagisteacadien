@@ -352,7 +352,7 @@
       },
       "message": "Message (optional)",
       "messagePlaceholder": "Tell us what you need…",
-      "submit": "Send",
+      "submit": "Submit",
       "sending": "Sending…",
       "successTitle": "Message sent",
       "successDesc": "Thank you! We'll get back to you shortly.",
