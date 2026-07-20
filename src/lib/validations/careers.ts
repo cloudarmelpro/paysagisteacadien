@@ -15,6 +15,9 @@ export const careersSchema = z.object({
     .refine((v) => /^[\d\s+().-]{7,}$/.test(v), "phone"),
   email: z.email("email").max(200, "emailMax"),
   message: z.string().trim().max(2000, "messageMax").optional(),
+  // Honeypot anti-bot : champ caché qui doit rester vide. Contrôlé dans la
+  // Server Action (un envoi non vide y est ignoré).
+  website: z.string().optional(),
 });
 
 export type CareersInput = z.infer<typeof careersSchema>;

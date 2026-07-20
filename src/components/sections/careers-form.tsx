@@ -29,7 +29,7 @@ export function CareersForm({ lang, dict }: { lang: Locale; dict: FormDict }) {
     formState: { errors },
   } = useForm<CareersInput>({
     resolver: zodResolver(careersSchema),
-    defaultValues: { name: "", phone: "", email: "", message: "" },
+    defaultValues: { name: "", phone: "", email: "", message: "", website: "" },
   });
 
   const err = (key?: string) =>
@@ -57,6 +57,23 @@ export function CareersForm({ lang, dict }: { lang: Locale; dict: FormDict }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4">
+      {/* Honeypot anti-bot : hors flux, masqué aux humains et aux lecteurs
+          d'écran, hors tabulation. Un envoi où il est rempli est ignoré côté
+          serveur. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden"
+      >
+        <label htmlFor="careers-website">Laissez ce champ vide</label>
+        <input
+          id="careers-website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("website")}
+        />
+      </div>
+
       <Field id="careers-name" label={dict.name} error={err(errors.name?.message)}>
         <Input
           id="careers-name"

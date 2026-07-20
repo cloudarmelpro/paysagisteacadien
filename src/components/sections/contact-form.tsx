@@ -164,6 +164,7 @@ export function ContactForm({
       startDate: "",
       referral: [],
       message: "",
+      website: "",
     },
   });
 
@@ -196,6 +197,23 @@ export function ContactForm({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4">
+      {/* Honeypot anti-bot : hors flux, masqué aux humains et aux lecteurs
+          d'écran, hors tabulation. Un envoi où il est rempli est ignoré côté
+          serveur. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-[9999px] h-0 w-0 overflow-hidden"
+      >
+        <label htmlFor="contact-website">Laissez ce champ vide</label>
+        <input
+          id="contact-website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("website")}
+        />
+      </div>
+
       <Field id="contact-name" label={dict.name} error={err(errors.name?.message)}>
         <Input
           id="contact-name"

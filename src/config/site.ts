@@ -109,6 +109,20 @@ export const serviceGroups = [
 ] as const;
 
 /**
+ * Valeurs (non traduites) des cases « Comment nous avez-vous connu ». Source de
+ * vérité de la liste blanche validée côté serveur ; doivent rester alignées avec
+ * les clés de `contact.form.referralOptions` dans les dictionnaires (libellés).
+ */
+export const referralValues = [
+  "google",
+  "facebook",
+  "instagram",
+  "wordOfMouth",
+  "signage",
+  "other",
+] as const;
+
+/**
  * Navigation principale. `key` = clé de traduction dans `dict.nav`,
  * `segment` = segment d'URL après la locale ("" = accueil),
  * `hash` = ancre d'une section de l'accueil.

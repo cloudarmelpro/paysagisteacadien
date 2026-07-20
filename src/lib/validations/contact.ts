@@ -1,8 +1,22 @@
 import { z } from "zod";
+import { referralValues, serviceGroups } from "@/config/site";
 
 /** Chaîne optionnelle : la chaîne vide est traitée comme absente. */
 const optionalText = (max: number, maxKey: string) =>
   z.string().trim().max(max, maxKey).optional();
+
+/**
+ * Case à cocher multiple contrainte à une liste blanche : rejette toute valeur
+ * hors catalogue. Sans ça, ces champs (que l'entreprise lit comme « choisis par
+ * la machine ») accepteraient du texte arbitraire — vecteur d'hameçonnage.
+ */
+const checkboxSet = (values: readonly string[], key: string) =>
+  z
+    .array(z.string().refine((v) => values.includes(v), key))
+    .max(values.length)
+    .optional();
+
+const serviceValues = serviceGroups.flatMap((g) => g.services);
 
 /**
  * Schéma du formulaire « Nous joindre ». Les messages sont des clés de
@@ -21,10 +35,13 @@ export const contactSchema = z.object({
     .refine((v) => v === "" || /^[\d\s+().-]{7,}$/.test(v), "phone")
     .optional(),
   // service et referral sont des cases à cocher multiples : valeurs en tableau.
-  service: z.array(z.string().max(80)).max(20).optional(),
+  service: checkboxSet(serviceValues, "service"),
   startDate: optionalText(20, "startDateMax"),
-  referral: z.array(z.string().max(80)).max(20).optional(),
+  referral: checkboxSet(referralValues, "referral"),
   message: optionalText(2000, "messageMax"),
+  // Honeypot anti-bot : champ caché qui doit rester vide. Contrôlé dans la
+  // Server Action (un envoi non vide y est ignoré).
+  website: z.string().optional(),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

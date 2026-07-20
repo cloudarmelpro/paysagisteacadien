@@ -1,13 +1,19 @@
 "use server";
 
+import { headers } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { i18n } from "@/lib/i18n";
 import { sendSubmissionEmail } from "@/lib/email";
+import { rateLimit } from "@/lib/rate-limit";
 import {
   careersSchema,
   type CareersActionResult,
   type CareersInput,
 } from "@/lib/validations/careers";
+
+/** 5 envois par IP et par heure : large pour un humain, étroit pour un bot. */
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 60 * 60 * 1000;
 
 /**
  * La validation côté serveur est la seule garantie : celle du client est
@@ -17,6 +23,19 @@ export async function submitApplication(
   input: CareersInput,
   locale: string,
 ): Promise<CareersActionResult> {
+  // Honeypot : seul un bot remplit ce champ caché. On feint le succès sans rien
+  // enregistrer ni notifier, pour ne pas le renseigner sur le rejet.
+  if (typeof input.website === "string" && input.website.trim() !== "") {
+    return { status: "success" };
+  }
+
+  // Pas de WAF devant l'app en self-hosting : le throttle par IP est ici.
+  const ip =
+    (await headers()).get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (!rateLimit(`careers:${ip}`, RATE_LIMIT, RATE_WINDOW_MS)) {
+    return { status: "error" };
+  }
+
   const parsed = careersSchema.safeParse(input);
   if (!parsed.success) {
     const fieldErrors: Partial<Record<keyof CareersInput, string>> = {};
