@@ -42,7 +42,7 @@ export function FaqAccordion({ groups }: { groups: FaqGroups }) {
               return (
                 <div
                   key={item.q}
-                  className="overflow-hidden rounded-2xl bg-muted/60 transition-colors duration-200 data-[open=true]:bg-muted"
+                  className="overflow-hidden rounded-2xl bg-muted/60 transition-colors duration-200 hover:bg-muted/85 data-[open=true]:bg-muted"
                   data-open={isOpen}
                 >
                   <button
@@ -84,9 +84,19 @@ export function FaqAccordion({ groups }: { groups: FaqGroups }) {
                         }
                         className="overflow-hidden"
                       >
-                        <p className="px-4 pb-4 pl-12 text-sm leading-relaxed text-foreground/70">
+                        <motion.p
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 4 }}
+                          transition={
+                            reduceMotion
+                              ? { duration: 0 }
+                              : { duration: 0.3, delay: 0.06, ease: [0.22, 1, 0.36, 1] }
+                          }
+                          className="px-4 pb-4 pl-12 text-sm leading-relaxed text-foreground/70"
+                        >
                           {item.a}
-                        </p>
+                        </motion.p>
                       </motion.div>
                     )}
                   </AnimatePresence>

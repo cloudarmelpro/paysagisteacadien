@@ -14,7 +14,7 @@ export function Careers({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <section className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
       {/* En-tête */}
-      <Reveal className="flex max-w-2xl flex-col items-start gap-5">
+      <Reveal stagger className="flex max-w-2xl flex-col items-start gap-5">
         <span className={badgeClass}>{c.badge}</span>
         <h1 className="text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl">
           {c.title} <span className="text-primary">{c.titleAccent}</span>
@@ -24,13 +24,15 @@ export function Careers({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
       <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-5 lg:gap-16">
         {/* Offres d'emploi + coordonnées */}
-        <Reveal from="left" delay={80} className="flex flex-col gap-8 lg:col-span-2">
-          <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
-            {c.infoTitle}
-          </h2>
+        <div className="flex flex-col gap-8 lg:col-span-2">
+          <Reveal from="left" delay={80}>
+            <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
+              {c.infoTitle}
+            </h2>
+          </Reveal>
 
           {/* Statut des postes */}
-          <div className="flex items-start gap-4 rounded-xl bg-muted p-5">
+          <Reveal from="scale" delay={120} className="flex items-start gap-4 rounded-xl bg-muted p-5">
             <Info className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
             <div>
               <p className="text-sm font-medium text-foreground">{c.statusTitle}</p>
@@ -38,9 +40,9 @@ export function Careers({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 {c.status}
               </p>
             </div>
-          </div>
+          </Reveal>
 
-          <dl className="flex flex-col gap-6">
+          <Reveal as="dl" stagger delay={180} className="flex flex-col gap-6">
             <div className="flex items-start gap-4">
               <Mail className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
               <div>
@@ -80,8 +82,8 @@ export function Careers({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 </dd>
               </div>
             </div>
-          </dl>
-        </Reveal>
+          </Reveal>
+        </div>
 
         {/* Formulaire de candidature */}
         <Reveal from="right" delay={160} className="lg:col-span-3">

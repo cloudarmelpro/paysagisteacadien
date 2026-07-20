@@ -26,7 +26,7 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       {/* Bande vidéo pleine largeur ; le texte est composé sur un scrim sombre
           identique en clair et en sombre — pas de variante de thème ici. */}
       <div className="relative isolate overflow-hidden bg-[oklch(0.24_0.02_152)]">
-        <HeroVideo src="/videos/hero.mp4" poster="/images/hero-pelouse.jpg" />
+        <HeroVideo src="/videos/hero.mp4" poster="/videos/hero-poster.jpg" />
 
         {/* Scrim latéral : ≥ 60 % de noir sous la colonne de texte pour tenir
             un contraste ≥ 4.5:1 quel que soit le photogramme. */}

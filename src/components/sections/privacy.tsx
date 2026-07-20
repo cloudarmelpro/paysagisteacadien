@@ -16,7 +16,7 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
       {/* En-tête */}
-      <Reveal className="flex max-w-3xl flex-col items-start gap-5">
+      <Reveal stagger className="flex max-w-3xl flex-col items-start gap-5">
         <span className={badgeClass}>{p.badge}</span>
         <h1 className="text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl">
           {p.title} <span className="text-primary">{p.titleAccent}</span>
@@ -28,7 +28,7 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
       </Reveal>
 
       {/* Renseignements recueillis */}
-      <Reveal from="up" delay={80} className="mt-14 max-w-3xl border-t border-dotted border-border pt-8">
+      <Reveal from="up" delay={80} className="rule-draw mt-14 max-w-3xl border-t border-dotted border-border pt-8">
         <h2 className="text-xl font-medium tracking-tight text-foreground">
           {p.collected.heading}
         </h2>
@@ -59,7 +59,7 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
       </div>
 
       {/* Coordonnées du responsable */}
-      <Reveal from="up" delay={160} className="mt-14 flex max-w-3xl flex-col gap-3 rounded-3xl bg-muted p-8">
+      <Reveal from="scale" className="mt-14 flex max-w-3xl flex-col gap-3 rounded-3xl bg-muted p-8">
         <h2 className="text-xl font-medium tracking-tight text-foreground">
           {p.officer.heading}
         </h2>

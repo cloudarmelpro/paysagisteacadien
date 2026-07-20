@@ -19,7 +19,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   return (
     <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
       {/* En-tête */}
-      <Reveal className="flex max-w-3xl flex-col items-start gap-5">
+      <Reveal stagger className="flex max-w-3xl flex-col items-start gap-5">
         <span className={badgeClass}>{about.badge}</span>
         <h1 className="text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl">
           {about.title}{" "}
@@ -45,7 +45,8 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       {/* Notre approche : label à gauche, paragraphes à droite */}
       <Reveal
         from="left"
-        className="mt-16 grid gap-6 border-t border-dotted border-border pt-8 lg:mt-24 lg:grid-cols-3 lg:gap-12"
+        stagger
+        className="rule-draw mt-16 grid gap-6 border-t border-dotted border-border pt-8 lg:mt-24 lg:grid-cols-3 lg:gap-12"
       >
         <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
           {about.approachLabel}
@@ -68,8 +69,9 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       {/* Mission : label à gauche, texte à droite */}
       <Reveal
         from="right"
+        stagger
         delay={80}
-        className="mt-16 grid gap-6 border-t border-dotted border-border pt-8 lg:mt-24 lg:grid-cols-3 lg:gap-12"
+        className="rule-draw mt-16 grid gap-6 border-t border-dotted border-border pt-8 lg:mt-24 lg:grid-cols-3 lg:gap-12"
       >
         <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
           {about.missionLabel}
@@ -92,7 +94,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       {/* Engagement : lead + cartes de valeurs */}
       <Reveal
         from="left"
-        className="mt-16 border-t border-dotted border-border pt-8 lg:mt-24"
+        className="rule-draw mt-16 border-t border-dotted border-border pt-8 lg:mt-24"
       >
         <div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
           <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
@@ -128,7 +130,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       </Reveal>
 
       {/* CTA */}
-      <Reveal className="mt-16 flex flex-col items-start gap-5 rounded-3xl bg-muted p-8 sm:flex-row sm:items-center sm:justify-between lg:mt-24 lg:p-12">
+      <Reveal from="scale" className="mt-16 flex flex-col items-start gap-5 rounded-3xl bg-muted p-8 sm:flex-row sm:items-center sm:justify-between lg:mt-24 lg:p-12">
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-medium tracking-tight text-balance">
             {about.ctaTitle}

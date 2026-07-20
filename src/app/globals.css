@@ -50,6 +50,8 @@
 
 :root {
   color-scheme: light;
+  /* Courbe d'entrée commune aux révélations : décélération longue, sans rebond. */
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -141,8 +143,9 @@
   .js [data-reveal] {
     opacity: 0;
     transition:
-      opacity 0.6s ease,
-      transform 0.6s ease;
+      opacity 0.7s var(--ease-reveal),
+      transform 0.7s var(--ease-reveal),
+      filter 0.7s var(--ease-reveal);
     will-change: opacity, transform;
   }
   .js [data-reveal="up"] {
@@ -154,9 +157,80 @@
   .js [data-reveal="right"] {
     transform: translateX(1.75rem);
   }
+  .js [data-reveal="scale"] {
+    transform: translateY(0.75rem) scale(0.97);
+    filter: blur(6px);
+  }
   .js [data-reveal][data-shown] {
     opacity: 1;
     transform: none;
+    filter: none;
+  }
+
+  /*
+   * Cascade (`stagger` du composant Reveal) : le bloc reste en place, ses
+   * enfants directs entrent en escalier. `--reveal-delay` porte le `delay` du
+   * composant ; au-delà du 6e enfant le délai plafonne pour ne pas traîner.
+   */
+  .js [data-reveal][data-stagger] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .js [data-reveal][data-stagger] > * {
+    opacity: 0;
+    transform: translateY(1.1rem);
+    filter: blur(5px);
+    transition:
+      opacity 0.65s var(--ease-reveal),
+      transform 0.65s var(--ease-reveal),
+      filter 0.65s var(--ease-reveal);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .js [data-reveal][data-stagger] > :nth-child(2) {
+    transition-delay: calc(var(--reveal-delay, 0ms) + 90ms);
+  }
+  .js [data-reveal][data-stagger] > :nth-child(3) {
+    transition-delay: calc(var(--reveal-delay, 0ms) + 180ms);
+  }
+  .js [data-reveal][data-stagger] > :nth-child(4) {
+    transition-delay: calc(var(--reveal-delay, 0ms) + 270ms);
+  }
+  .js [data-reveal][data-stagger] > :nth-child(5) {
+    transition-delay: calc(var(--reveal-delay, 0ms) + 360ms);
+  }
+  .js [data-reveal][data-stagger] > :nth-child(n + 6) {
+    transition-delay: calc(var(--reveal-delay, 0ms) + 430ms);
+  }
+  .js [data-reveal][data-stagger][data-shown] > * {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  /*
+   * Signature : sur un Reveal portant `rule-draw`, le filet pointillé
+   * (`border-t border-dotted`) se trace de gauche à droite avant la cascade du
+   * contenu. Le vrai border reste (transparent) pour ne rien décaler ; sans JS,
+   * il garde sa couleur et rien n'est masqué.
+   */
+  .js [data-reveal].rule-draw {
+    position: relative;
+    border-top-color: transparent;
+  }
+  .js [data-reveal].rule-draw::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: 0;
+    left: 0;
+    border-top: 1px dotted var(--border);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 1.1s var(--ease-reveal);
+  }
+  .js [data-reveal].rule-draw[data-shown]::before {
+    transform: scaleX(1);
   }
 
   /*
@@ -190,8 +264,13 @@
       scroll-behavior: auto !important;
     }
     /* Le contenu reste visible même si la révélation n'a pas encore basculé. */
-    .js [data-reveal] {
+    .js [data-reveal],
+    .js [data-reveal][data-stagger] > * {
       opacity: 1;
+      transform: none;
+      filter: none;
+    }
+    .js [data-reveal].rule-draw::before {
       transform: none;
     }
   }

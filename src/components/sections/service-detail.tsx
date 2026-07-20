@@ -101,13 +101,14 @@ export function ServiceDetail({
           </h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {group.services.map((s, i) => (
-              <ServiceCard
-                key={s}
-                slug={s}
-                index={i}
-                href={localizedPath(lang, `${servicesSegment}/${s}`)}
-                dict={dict}
-              />
+              <Reveal key={s} delay={i * 80}>
+                <ServiceCard
+                  slug={s}
+                  index={i}
+                  href={localizedPath(lang, `${servicesSegment}/${s}`)}
+                  dict={dict}
+                />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -118,7 +119,8 @@ export function ServiceDetail({
             (section) => (
               <Reveal
                 key={section.heading}
-                className="grid gap-4 border-t border-dotted border-border pt-8 lg:grid-cols-3 lg:gap-12"
+                stagger
+                className="rule-draw grid gap-4 border-t border-dotted border-border pt-8 lg:grid-cols-3 lg:gap-12"
               >
                 <h2 className="text-sm font-medium tracking-wide text-foreground uppercase lg:text-base">
                   {section.heading}
@@ -134,7 +136,7 @@ export function ServiceDetail({
 
       {/* Services connexes : inutiles sur un chapeau, qui liste déjà les siens. */}
       {!isCategory && (
-        <div className="mt-16 border-t border-dotted border-border pt-10 lg:mt-24 lg:pt-14">
+        <Reveal className="rule-draw mt-16 border-t border-dotted border-border pt-10 lg:mt-24 lg:pt-14">
           <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
             {sd.relatedLabel}
           </h2>
@@ -149,11 +151,11 @@ export function ServiceDetail({
               />
             ))}
           </div>
-        </div>
+        </Reveal>
       )}
 
       {/* CTA */}
-      <div className="mt-16 flex flex-col items-start gap-5 rounded-3xl bg-muted p-8 sm:flex-row sm:items-center sm:justify-between lg:mt-24 lg:p-12">
+      <Reveal from="scale" className="mt-16 flex flex-col items-start gap-5 rounded-3xl bg-muted p-8 sm:flex-row sm:items-center sm:justify-between lg:mt-24 lg:p-12">
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-medium tracking-tight text-balance">
             {sd.ctaTitle}
@@ -167,7 +169,7 @@ export function ServiceDetail({
           {sd.cta}
           <ArrowUpRight className="size-4" />
         </Link>
-      </div>
+      </Reveal>
     </div>
   );
 }
