@@ -2,10 +2,9 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { i18n } from "@/lib/i18n";
 
 // Hauteur de la barre (h-16) : l'en-tête reste transparent tant que la bande
-// vidéo dépasse cette ligne.
+// hero dépasse cette ligne.
 const HEADER_HEIGHT = 64;
 
 /**
@@ -13,7 +12,8 @@ const HEADER_HEIGHT = 64;
  * philosophie que le thème : pas d'état React, donc pas d'écart d'hydratation).
  * L'état initial vient du script inline de l'en-tête, exécuté avant peinture ;
  * ici on le maintient au défilement, au redimensionnement et à la navigation.
- * `[data-hero]` est posé par le hero de l'accueil (sections/hero.tsx).
+ * Déclencheur : la présence d'une bande `[data-hero]` (accueil = vidéo, page de
+ * service = image plein écran) — la page décide, pas le pathname.
  */
 export function HeaderAdaptive() {
   const pathname = usePathname();
@@ -24,13 +24,7 @@ export function HeaderAdaptive() {
     );
     if (!header) return;
 
-    const onHome = i18n.locales.some(
-      (l) => pathname === `/${l}` || pathname === `/${l}/`,
-    );
-    const hero = onHome
-      ? document.querySelector<HTMLElement>("[data-hero]")
-      : null;
-
+    const hero = document.querySelector<HTMLElement>("[data-hero]");
     if (!hero) {
       header.removeAttribute("data-transparent");
       return;

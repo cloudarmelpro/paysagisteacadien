@@ -16,8 +16,9 @@ import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/shared/reveal";
 import { ServiceCard } from "./services";
 
-const badgeClass =
-  "w-fit rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wider text-foreground/70 uppercase";
+// Badge posé sur l'image du hero : translucide clair, lisible sur la photo.
+const badgeOnImage =
+  "w-fit rounded-full bg-white/15 px-3 py-1 text-xs font-medium tracking-wider text-white uppercase ring-1 ring-white/25 backdrop-blur-sm";
 
 /**
  * Page de service, deux rendus sur le même gabarit : chapeau de famille (liste
@@ -60,38 +61,61 @@ export function ServiceDetail({
     .slice(0, 3);
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
-      {/* En-tête */}
-      <div className="mt-6 flex max-w-3xl flex-col items-start gap-5">
-        {isCategory ? (
-          <span className={badgeClass}>{sd.badge}</span>
-        ) : (
-          <Link
-            href={hubHref}
-            className={cn(badgeClass, "cursor-pointer transition-colors hover:bg-muted/70 hover:text-foreground")}
-          >
-            {categoryName}
-          </Link>
-        )}
-        <h1 className="text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl">
-          {title}
-        </h1>
-        <p className="max-w-2xl text-lg leading-relaxed text-foreground/70">
-          {item.intro}
-        </p>
-      </div>
+    <div>
+      {/* Bande image plein écran, remontée derrière l'en-tête transparent
+          (comme le hero de l'accueil). `data-hero` : sentinelle header-adaptive. */}
+      <section className="-mt-16">
+        <div data-hero className="relative isolate overflow-hidden bg-muted">
+          <Image
+            src={serviceImages[imageSlug]}
+            alt={imageAlt}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          {/* Voiles : contraste du titre blanc + lisibilité de l'en-tête. */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-linear-to-r from-black/80 via-40% via-black/55 to-black/25"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/70 via-black/35 to-transparent"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-black/45 to-transparent"
+          />
 
-      {/* Grande image */}
-      <div className="relative mt-10 aspect-video overflow-hidden rounded-3xl bg-muted lg:mt-14">
-        <Image
-          src={serviceImages[imageSlug]}
-          alt={imageAlt}
-          fill
-          priority
-          sizes="(max-width: 1280px) 100vw, 1216px"
-          className="object-cover"
-        />
-      </div>
+          <div className="relative mx-auto w-full max-w-7xl px-5 pt-36 pb-20 sm:px-8 lg:px-12 lg:pt-44 lg:pb-28">
+            <div className="flex max-w-3xl flex-col items-start gap-5">
+              {isCategory ? (
+                <span className={badgeOnImage}>{sd.badge}</span>
+              ) : (
+                <Link
+                  href={hubHref}
+                  className={cn(
+                    badgeOnImage,
+                    "cursor-pointer transition-colors hover:bg-white/25 focus-visible:ring-3 focus-visible:ring-white/50 focus-visible:outline-none",
+                  )}
+                >
+                  {categoryName}
+                </Link>
+              )}
+              <h1 className="text-4xl tracking-tight text-balance text-white sm:text-5xl lg:text-6xl">
+                {title}
+              </h1>
+              <p className="max-w-2xl text-lg leading-relaxed text-white/90">
+                {item.intro}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Reste du détail — conteneur habituel */}
+      <div className="mx-auto w-full max-w-7xl px-5 pb-16 sm:px-8 lg:px-12 lg:pb-24">
 
       {isCategory ? (
         /* Chapeau : cartes des sous-services de la famille */
@@ -170,6 +194,7 @@ export function ServiceDetail({
           <ArrowUpRight className="size-4" />
         </Link>
       </Reveal>
+      </div>
     </div>
   );
 }
