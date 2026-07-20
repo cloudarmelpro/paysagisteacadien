@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -20,9 +20,49 @@ export function HeroGallery({
   initialActive?: number;
 }) {
   const [active, setActive] = useState(initialActive);
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  // `true` au départ : pas d'auto-défilement tant que la préférence de
+  // mouvement n'a pas été lue côté client.
+  const [reduced, setReduced] = useState(true);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const sync = () => setReduced(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  const paused = hovered || focused || reduced;
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setActive((current) => {
+        // Sous 640px les vignettes extrêmes sont cachées (`hidden sm:block`) :
+        // l'auto-défilement ne doit jamais activer un index invisible.
+        const edgesHidden = !window.matchMedia("(min-width: 640px)").matches;
+        const first = edgesHidden ? 1 : 0;
+        const last = edgesHidden ? items.length - 2 : items.length - 1;
+        return current >= last ? first : current + 1;
+      });
+    }, 3000);
+    return () => clearInterval(id);
+  }, [paused, items.length]);
 
   return (
-    <div className="flex h-[300px] items-stretch gap-2 sm:h-[360px] sm:gap-3 lg:h-[380px]">
+    <div
+      className="flex h-[300px] items-stretch gap-2 sm:h-[360px] sm:gap-3 lg:h-[380px]"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocused(true)}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+          setFocused(false);
+        }
+      }}
+    >
       {items.map((item, i) => {
         const isActive = i === active;
         return (
