@@ -109,21 +109,6 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         </div>
       </Reveal>
 
-      {/* Deuxième visuel : coupe le mur de texte et montre le volet aménagement
-          (pavé uni), en contraste avec la pelouse du haut. */}
-      <Reveal
-        from="scale"
-        className="relative mt-16 aspect-video overflow-hidden rounded-3xl bg-muted lg:mt-24 lg:aspect-[21/9]"
-      >
-        <Image
-          src={serviceImages["pave-uni"]}
-          alt={about.missionImageAlt}
-          fill
-          sizes="(max-width: 1280px) 100vw, 1216px"
-          className="object-cover"
-        />
-      </Reveal>
-
       {/* Engagement : lead + cartes de valeurs */}
       <Reveal
         from="left"
