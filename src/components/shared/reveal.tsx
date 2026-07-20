@@ -15,6 +15,8 @@ type RevealProps = {
   stagger?: boolean;
   /** Balise rendue — pour les contextes où un div serait invalide (ex. `dl`). */
   as?: "div" | "dl" | "ul";
+  /** Ancre de la section (cible d'un lien de sommaire). */
+  id?: string;
 };
 
 /**
@@ -32,6 +34,7 @@ export function Reveal({
   delay = 0,
   stagger = false,
   as: Tag = "div",
+  id,
 }: RevealProps) {
   const ref = useRef<HTMLElement>(null);
   const [shown, setShown] = useState(false);
@@ -68,6 +71,7 @@ export function Reveal({
   return (
     <Tag
       ref={ref as React.Ref<never>}
+      id={id}
       data-reveal={from}
       data-stagger={stagger || undefined}
       data-shown={shown || undefined}

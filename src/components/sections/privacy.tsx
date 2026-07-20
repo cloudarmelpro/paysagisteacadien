@@ -9,9 +9,17 @@ const badgeClass =
 /**
  * Politique de confidentialité (Loi 25 — Québec). Les coordonnées proviennent de
  * `siteConfig` et doivent rester identiques à celles du JSON-LD.
+ * Sommaire latéral collant : ses ancres doivent rester alignées avec les `id`
+ * des sections (`collected`, `section-<i>`, `officer`).
  */
 export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
   const p = dict.privacy;
+
+  const toc = [
+    { id: "collected", label: p.collected.heading },
+    ...p.sections.map((s, i) => ({ id: `section-${i}`, label: s.heading })),
+    { id: "officer", label: p.officer.heading },
+  ];
 
   return (
     <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
@@ -27,64 +35,99 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
         </p>
       </Reveal>
 
-      {/* Renseignements recueillis */}
-      <Reveal from="up" delay={80} className="rule-draw mt-14 max-w-3xl border-t border-dotted border-border pt-8">
-        <h2 className="text-xl font-medium tracking-tight text-foreground">
-          {p.collected.heading}
-        </h2>
-        <p className="mt-3 text-base leading-relaxed text-foreground/70">
-          {p.collected.intro}
-        </p>
-        <ul className="mt-4 flex list-disc flex-col gap-2 pl-5 text-base leading-relaxed text-foreground/70">
-          {p.collected.items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </Reveal>
+      {/* Sommaire (colonne latérale collante ≥ lg) + contenu */}
+      <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-[15rem_minmax(0,44rem)] lg:gap-16">
+        <nav
+          aria-label={p.tocLabel}
+          className="lg:sticky lg:top-24 lg:self-start"
+        >
+          <p className="text-xs font-medium tracking-wider text-foreground/50 uppercase">
+            {p.tocLabel}
+          </p>
+          <ul className="mt-4 flex flex-col border-l border-border">
+            {toc.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  className="-ml-px block cursor-pointer border-l border-transparent py-1.5 pl-4 text-sm leading-snug text-foreground/70 transition-colors hover:border-primary hover:text-foreground"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-      {/* Sections juridiques */}
-      <div className="mt-12 flex max-w-3xl flex-col gap-10">
-        {p.sections.map((section, i) => (
-          <Reveal key={section.heading} delay={(i % 3) * 80}>
-            <section className="flex flex-col gap-3">
-              <h2 className="text-xl font-medium tracking-tight text-foreground">
-                {section.heading}
-              </h2>
-              <p className="text-base leading-relaxed text-foreground/70">
-                {section.body}
-              </p>
-            </section>
+        <div className="flex flex-col gap-12">
+          {/* Renseignements recueillis */}
+          <Reveal id="collected" className="scroll-mt-24">
+            <h2 className="text-xl font-medium tracking-tight text-foreground">
+              {p.collected.heading}
+            </h2>
+            <p className="mt-3 text-base leading-relaxed text-foreground/70">
+              {p.collected.intro}
+            </p>
+            <ul className="mt-4 flex list-disc flex-col gap-2 pl-5 text-base leading-relaxed text-foreground/70">
+              {p.collected.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </Reveal>
-        ))}
-      </div>
 
-      {/* Coordonnées du responsable */}
-      <Reveal from="scale" className="mt-14 flex max-w-3xl flex-col gap-3 rounded-3xl bg-muted p-8">
-        <h2 className="text-xl font-medium tracking-tight text-foreground">
-          {p.officer.heading}
-        </h2>
-        <p className="text-base leading-relaxed text-foreground/70">
-          {p.officer.body}
-        </p>
-        <div className="mt-1 flex flex-col gap-1 text-base">
-          <span className="font-medium text-foreground">{siteConfig.owner}</span>
-          <a
-            href={`mailto:${siteConfig.contact.email}`}
-            className="w-fit cursor-pointer break-all text-primary transition-colors hover:text-foreground"
+          {/* Sections juridiques */}
+          {p.sections.map((section, i) => (
+            <Reveal
+              key={section.heading}
+              id={`section-${i}`}
+              delay={(i % 3) * 80}
+              className="scroll-mt-24"
+            >
+              <section className="flex flex-col gap-3">
+                <h2 className="text-xl font-medium tracking-tight text-foreground">
+                  {section.heading}
+                </h2>
+                <p className="text-base leading-relaxed text-foreground/70">
+                  {section.body}
+                </p>
+              </section>
+            </Reveal>
+          ))}
+
+          {/* Coordonnées du responsable */}
+          <Reveal
+            id="officer"
+            from="scale"
+            className="scroll-mt-24 flex flex-col gap-3 rounded-3xl bg-muted p-8"
           >
-            {siteConfig.contact.email}
-          </a>
-          <a
-            href={`tel:${siteConfig.contact.phoneRaw}`}
-            className="w-fit cursor-pointer text-primary transition-colors hover:text-foreground"
-          >
-            {siteConfig.contact.phone}
-          </a>
+            <h2 className="text-xl font-medium tracking-tight text-foreground">
+              {p.officer.heading}
+            </h2>
+            <p className="text-base leading-relaxed text-foreground/70">
+              {p.officer.body}
+            </p>
+            <div className="mt-1 flex flex-col gap-1 text-base">
+              <span className="font-medium text-foreground">
+                {siteConfig.owner}
+              </span>
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                className="w-fit cursor-pointer break-all text-primary transition-colors hover:text-foreground"
+              >
+                {siteConfig.contact.email}
+              </a>
+              <a
+                href={`tel:${siteConfig.contact.phoneRaw}`}
+                className="w-fit cursor-pointer text-primary transition-colors hover:text-foreground"
+              >
+                {siteConfig.contact.phone}
+              </a>
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-foreground/60">
+              {p.officer.recourse}
+            </p>
+          </Reveal>
         </div>
-        <p className="mt-3 text-sm leading-relaxed text-foreground/60">
-          {p.officer.recourse}
-        </p>
-      </Reveal>
+      </div>
     </div>
   );
 }
