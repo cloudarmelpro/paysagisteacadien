@@ -35,11 +35,12 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
         </p>
       </Reveal>
 
-      {/* Sommaire (colonne latérale collante ≥ lg) + contenu */}
-      <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-[15rem_minmax(0,44rem)] lg:gap-16">
+      {/* Sommaire à DROITE ≥ lg (mais premier dans le DOM → en haut sur mobile,
+          repoussé à droite par `order`) + contenu à gauche. */}
+      <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-[minmax(0,44rem)_15rem] lg:gap-16">
         <nav
           aria-label={p.tocLabel}
-          className="lg:sticky lg:top-24 lg:self-start"
+          className="lg:order-2 lg:sticky lg:top-24 lg:self-start"
         >
           <p className="text-xs font-medium tracking-wider text-foreground/50 uppercase">
             {p.tocLabel}
@@ -58,7 +59,7 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
           </ul>
         </nav>
 
-        <div className="flex flex-col gap-12">
+        <div className="flex flex-col gap-12 lg:order-1">
           {/* Renseignements recueillis */}
           <Reveal id="collected" className="scroll-mt-24">
             <h2 className="text-xl font-medium tracking-tight text-foreground">
