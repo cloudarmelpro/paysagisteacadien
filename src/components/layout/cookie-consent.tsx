@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import Link from "next/link";
+import { Cookie } from "lucide-react";
 import { localizedPath, type Locale } from "@/lib/i18n";
 import { privacySegment } from "@/config/site";
 import { Button } from "@/components/ui/button";
@@ -66,6 +67,7 @@ export function resetConsent(): void {
 }
 
 type CookieConsentLabels = {
+  title: string;
   message: string;
   accept: string;
   refuse: string;
@@ -103,33 +105,46 @@ export function CookieConsent({
   if (choice !== null) return null;
 
   return (
+    // Ancré en bas à droite dès `sm` ; pleine largeur en mobile, où une carte
+    // étroite laisserait les deux boutons trop serrés.
     <div
       role="region"
       aria-label={labels.ariaLabel}
-      className="fixed inset-x-0 bottom-0 z-50 p-4 sm:p-6"
+      className="fixed inset-x-0 bottom-0 z-50 p-4 sm:inset-x-auto sm:right-0 sm:p-6"
     >
-      <div className="mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-border bg-background/95 p-5 shadow-lg backdrop-blur sm:flex-row sm:items-center sm:gap-6 sm:p-6">
-        <p className="text-sm leading-relaxed text-foreground/80">
-          {labels.message}{" "}
-          <Link
-            href={localizedPath(lang, privacySegment)}
-            className="font-medium text-primary underline underline-offset-4"
+      <div className="hero-rise flex w-full max-w-md flex-col gap-4 rounded-2xl border border-border bg-background/95 p-5 shadow-lg backdrop-blur">
+        <div className="flex items-start gap-3">
+          <span
+            aria-hidden
+            className="flex size-9 shrink-0 items-center justify-center rounded-full bg-muted text-foreground/70"
           >
-            {labels.policy}
-          </Link>
-        </p>
-        <div className="flex shrink-0 gap-3">
+            <Cookie className="size-4" />
+          </span>
+          <div className="flex flex-col gap-1.5">
+            <p className="text-sm font-medium text-foreground">{labels.title}</p>
+            <p className="text-sm leading-relaxed text-foreground/70">
+              {labels.message}{" "}
+              <Link
+                href={localizedPath(lang, privacySegment)}
+                className="font-medium text-primary underline underline-offset-4"
+              >
+                {labels.policy}
+              </Link>
+            </p>
+          </div>
+        </div>
+        <div className="flex gap-2">
           <Button
             variant="outline"
             onClick={() => setConsent("denied")}
-            className="flex-1 sm:flex-none"
+            className="flex-1"
           >
             {labels.refuse}
           </Button>
           <Button
             variant="outline"
             onClick={() => setConsent("granted")}
-            className="flex-1 sm:flex-none"
+            className="flex-1"
           >
             {labels.accept}
           </Button>
