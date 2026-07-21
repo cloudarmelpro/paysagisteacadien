@@ -74,20 +74,16 @@ type CookieConsentLabels = {
 };
 
 /**
- * Bannière de consentement (Loi 25). **Volontairement non montée** : le site ne
- * dépose aucun témoin non essentiel, et la Loi 25 n'exige un consentement que
- * pour ceux-là. Afficher une demande de consentement sans objet reviendrait à
- * déclarer un usage inexact, et contredirait la politique de confidentialité.
- *
- * À remonter dans `app/[lang]/layout.tsx` le jour où un outil non essentiel
- * (analytique, pixel) est ajouté — et seulement en respectant ces trois points :
- *  1. l'outil ne se charge QUE si `localStorage[CONSENT_KEY] === "granted"` ;
- *  2. `dict.cookies.message` décrit exactement les outils réellement déposés ;
- *  3. un contrôle « Gérer mes témoins » (via `resetConsent`) permet de revenir
- *     sur son choix.
+ * Bannière de consentement (Loi 25). Visible tant qu'aucun choix n'est
+ * enregistré ; « Gérer mes témoins » (pied de page) la rouvre via `resetConsent`.
  *
  * Les deux boutons partagent taille, position ET variante : le refus doit avoir
  * le même poids visuel que l'acceptation, pas seulement la même accessibilité.
+ *
+ * INVARIANT : aucun témoin non essentiel n'existe encore. Le jour où un outil
+ * analytique est branché, il ne doit se charger QUE si `CONSENT_KEY === "granted"`
+ * (la CSP `script-src 'self'` de next.config.ts devra aussi l'autoriser), et
+ * `dict.cookies.message` doit continuer de décrire les outils réellement déposés.
  */
 export function CookieConsent({
   lang,

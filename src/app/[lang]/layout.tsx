@@ -6,6 +6,7 @@ import { i18n } from "@/lib/i18n";
 import { getDictionary, hasLocale } from "@/lib/dictionaries";
 import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
+import { CookieConsent } from "@/components/layout/cookie-consent";
 import { LocalBusinessJsonLd } from "@/components/seo/local-business-json-ld";
 import { buildAlternates, buildOpenGraph, siteUrl } from "@/lib/seo";
 
@@ -75,6 +76,7 @@ export default async function RootLayout(props: LayoutProps<"/[lang]">) {
           {props.children}
         </main>
         <SiteFooter lang={lang} dict={dict} />
+        <CookieConsent lang={lang} labels={dict.cookies} />
       </body>
     </html>
   );

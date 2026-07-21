@@ -19,6 +19,7 @@ import {
 } from "@/config/site";
 import { LanguageSwitcher } from "./language-switcher";
 import { LogoLockup } from "./logo";
+import { ManageCookies } from "./manage-cookies";
 
 type FooterLink = { label: string; href: string };
 
@@ -219,12 +220,15 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <p className="text-xs text-foreground/60">
             © {year} {siteConfig.legalName} {dict.footer.rights}
           </p>
-          <Link
-            href={localizedPath(lang, privacySegment)}
-            className="w-fit cursor-pointer text-xs text-foreground/60 transition-colors duration-200 hover:text-foreground"
-          >
-            {dict.privacy.title} {dict.privacy.titleAccent}
-          </Link>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+            <ManageCookies label={dict.cookies.manage} />
+            <Link
+              href={localizedPath(lang, privacySegment)}
+              className="w-fit cursor-pointer text-xs text-foreground/60 transition-colors duration-200 hover:text-foreground"
+            >
+              {dict.privacy.title} {dict.privacy.titleAccent}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

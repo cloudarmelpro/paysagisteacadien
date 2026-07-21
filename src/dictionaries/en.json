@@ -8,7 +8,8 @@
     "accept": "Accept",
     "refuse": "Decline",
     "policy": "Privacy policy",
-    "ariaLabel": "Privacy notice"
+    "ariaLabel": "Privacy notice",
+    "manage": "Manage cookies"
   },
   "a11y": {
     "skipToContent": "Skip to content",

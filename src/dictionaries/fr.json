@@ -8,7 +8,8 @@
     "accept": "Accepter",
     "refuse": "Refuser",
     "policy": "Politique de confidentialité",
-    "ariaLabel": "Avis de confidentialité"
+    "ariaLabel": "Avis de confidentialité",
+    "manage": "Gérer mes témoins"
   },
   "a11y": {
     "skipToContent": "Aller au contenu",
