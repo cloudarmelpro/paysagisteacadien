@@ -60,16 +60,16 @@
       "irrigation": "We adapt your existing watering system to new plantings, without redoing it all."
     },
     "imageAlts": {
-      "entretien-paysager": "Lush, freshly maintained lawn bordered by mature trees",
-      "entretien-de-terrain": "Lush, freshly maintained lawn bordered by mature trees",
-      "entretien-de-plate-bande": "Bed of yellow flowers edged with white pebbles",
-      "services-de-tailles": "Grass path lined with a dense, trimmed hedge",
-      "ensemencement": "Lush, freshly maintained lawn bordered by mature trees",
-      "amenagement-paysager": "Wooden pergola and trimmed boxwood backlit by the sun",
-      "plantation": "Wooden pergola and trimmed boxwood backlit by the sun",
-      "tourbe": "Large mown lawn and mature trees in a green space",
-      "pave-uni": "Interlock pavers laid in a circular fan pattern under raking light",
-      "irrigation": "Automatic sprinkler head running in a planting bed"
+      "entretien-paysager": "Freshly mown backyard lawn with visible mowing stripes, edged with white hydrangeas and a wooden fence",
+      "entretien-de-terrain": "Freshly mown backyard lawn with visible mowing stripes, edged with white hydrangeas and a wooden fence",
+      "entretien-de-plate-bande": "Flower bed of yellow marigolds, purple salvia and clipped boxwood balls, cleanly edged against the lawn",
+      "services-de-tailles": "Trimming a cedar hedge with a petrol hedge trimmer, gloved hands on the grip",
+      "ensemencement": "Hand holding a fistful of grass seed above a green lawn",
+      "amenagement-paysager": "Newly planted bed of palms, perennials and colourful annuals in front of a yellow garden shed",
+      "plantation": "Newly planted bed of palms, perennials and colourful annuals in front of a yellow garden shed",
+      "tourbe": "Laying rolls of sod over prepared soil, one roll partly unrolled",
+      "pave-uni": "Setting a grey concrete paver onto a bed of levelled sand, gloved hands",
+      "irrigation": "Pop-up sprinklers running on a lawn edged with cedars and a gravel border"
     },
     "items": {
       "entretien-paysager": "Landscape maintenance",
@@ -431,7 +431,7 @@
     "asideTitle": "A question that isn't here?",
     "asideLead": "Write to us: we assess your needs and the estimate is free.",
     "asideCta": "Contact us",
-    "asideImageAlt": "Lush, freshly maintained lawn bordered by mature trees",
+    "asideImageAlt": "Smiling portrait of a young woman in a white shirt, in a park",
     "groups": [
       {
         "label": "Area and quotes",

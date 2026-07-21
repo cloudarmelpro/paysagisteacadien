@@ -60,16 +60,16 @@
       "irrigation": "On adapte votre système d'arrosage existant aux nouvelles plantations, sans tout refaire."
     },
     "imageAlts": {
-      "entretien-paysager": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
-      "entretien-de-terrain": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
-      "entretien-de-plate-bande": "Massif de fleurs jaunes bordé de galets blancs",
-      "services-de-tailles": "Allée engazonnée bordée d'une haie dense et taillée",
-      "ensemencement": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
-      "amenagement-paysager": "Pergola de bois et buis taillés en contre-jour",
-      "plantation": "Pergola de bois et buis taillés en contre-jour",
-      "tourbe": "Grande pelouse tondue et arbres matures dans un espace vert",
-      "pave-uni": "Pavé uni posé en éventail circulaire, éclairé en lumière rasante",
-      "irrigation": "Tête d'arrosage automatique en action dans une plate-bande"
+      "entretien-paysager": "Pelouse de cour arrière fraîchement tondue, rayures de tonte visibles, bordée d'hortensias blancs et d'une clôture de bois",
+      "entretien-de-terrain": "Pelouse de cour arrière fraîchement tondue, rayures de tonte visibles, bordée d'hortensias blancs et d'une clôture de bois",
+      "entretien-de-plate-bande": "Plate-bande d'œillets d'Inde jaunes, de sauge violette et de boules de buis taillées, bordure nette contre la pelouse",
+      "services-de-tailles": "Taille d'une haie de cèdres au taille-haie thermique, mains gantées sur la poignée",
+      "ensemencement": "Main tenant une poignée de semences à gazon au-dessus d'une pelouse verte",
+      "amenagement-paysager": "Massif nouvellement planté de palmiers, de vivaces et d'annuelles colorées devant un cabanon jaune",
+      "plantation": "Massif nouvellement planté de palmiers, de vivaces et d'annuelles colorées devant un cabanon jaune",
+      "tourbe": "Pose de rouleaux de tourbe sur un sol préparé, un rouleau en cours de déroulement",
+      "pave-uni": "Pose d'un pavé de béton gris sur un lit de sable nivelé, mains gantées",
+      "irrigation": "Gicleurs escamotables en action sur une pelouse bordée de cèdres et d'une bande de galets"
     },
     "items": {
       "entretien-paysager": "Entretien paysager",
@@ -431,7 +431,7 @@
     "asideTitle": "Une question qui n'est pas ici ?",
     "asideLead": "Écrivez-nous : on évalue vos besoins et l'estimation est gratuite.",
     "asideCta": "Nous joindre",
-    "asideImageAlt": "Pelouse dense et fraîchement entretenue bordée d'arbres matures",
+    "asideImageAlt": "Portrait souriant d'une jeune femme en chemise blanche, dans un parc",
     "groups": [
       {
         "label": "Zone et soumission",
