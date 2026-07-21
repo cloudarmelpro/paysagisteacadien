@@ -77,7 +77,7 @@ export function HeroGallery({
               // `rounded-3xl` reste hors des variantes : un rayon différent entre
               // pilule et image déployée se morpherait pendant la transition.
               "relative shrink-0 basis-12 overflow-hidden rounded-3xl bg-muted transition-all duration-500 ease-out",
-              "focus-visible:z-10 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+              "focus-visible:z-10 focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none",
               "sm:basis-14 lg:basis-16",
               isActive ? "grow" : "grow-0 cursor-pointer opacity-90 hover:opacity-100",
               i === 0 || i === items.length - 1 ? "hidden sm:block" : "",

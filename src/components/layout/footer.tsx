@@ -128,7 +128,7 @@ export function SiteFooter({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   rel="noopener noreferrer"
                   aria-label={label}
                   /* Zone cliquable de 44px autour de la pastille de 36. */
-                  className="group inline-flex size-11 cursor-pointer items-center justify-center rounded-md focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+                  className="group inline-flex size-11 cursor-pointer items-center justify-center rounded-md focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none"
                 >
                   <span
                     className="inline-flex size-9 items-center justify-center rounded-md text-white transition-opacity duration-200 group-hover:opacity-80"

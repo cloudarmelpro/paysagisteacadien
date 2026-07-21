@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 /** Style commun des contrôles, partagé par les formulaires « nous-joindre » et
  *  « emplois » : toute modification affecte les deux. */
 export const controlClass =
-  "h-12 w-full rounded-lg border border-input bg-transparent px-4 text-base transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20";
+  "h-12 w-full rounded-lg border border-input bg-transparent px-4 text-base transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/80 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20";
 
 export function FieldLabel({
   htmlFor,

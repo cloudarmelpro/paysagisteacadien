@@ -34,7 +34,7 @@ export function PrivacyToc({ items, label }: { items: TocItem[]; label: string }
 
   return (
     <nav aria-label={label} className="lg:order-2 lg:sticky lg:top-24 lg:self-start">
-      <p className="text-xs font-medium tracking-wider text-foreground/50 uppercase">
+      <p className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
         {label}
       </p>
       <ul className="mt-4 flex flex-col border-l border-border">

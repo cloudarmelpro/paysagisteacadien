@@ -32,7 +32,7 @@ export function ThemeToggle({
         }
       }}
       className={cn(
-        "inline-flex size-9 cursor-pointer items-center justify-center rounded-md text-foreground/70 transition-colors duration-200 hover:bg-muted hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+        "inline-flex size-9 cursor-pointer items-center justify-center rounded-md text-foreground/70 transition-colors duration-200 hover:bg-muted hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none",
         className,
       )}
     >

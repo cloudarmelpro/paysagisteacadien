@@ -83,7 +83,7 @@ export function MobileNav({
         onClick={openMenu}
         // `!` : conflits hover/focus entre deux chaînes de variantes quand
         // l'en-tête est transparent, l'ordre de la feuille n'est pas garanti.
-        className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none group-data-[transparent]/header:hover:bg-white/10! group-data-[transparent]/header:focus-visible:ring-white/60!"
+        className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none group-data-[transparent]/header:hover:bg-white/10! group-data-[transparent]/header:focus-visible:ring-white/60!"
       >
         {/* Les deux fichiers restent montés et la variante `dark:` choisit :
             le rendu serveur et client est identique, sans écart d'hydratation.
@@ -135,7 +135,7 @@ export function MobileNav({
               type="button"
               aria-label={labels.close}
               onClick={closeMenu}
-              className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+              className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none"
             >
               <X className="size-5" />
             </button>

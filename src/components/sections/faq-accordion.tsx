@@ -51,9 +51,9 @@ export function FaqAccordion({ groups }: { groups: FaqGroups }) {
                     aria-expanded={isOpen}
                     aria-controls={panelId}
                     onClick={() => setOpenId(isOpen ? "" : id)}
-                    className="flex w-full cursor-pointer items-center gap-4 p-4 text-left focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+                    className="flex w-full cursor-pointer items-center gap-4 p-4 text-left focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none"
                   >
-                    <span className="text-xs font-medium text-foreground/45 tabular-nums">
+                    <span className="text-xs font-medium text-foreground/60 tabular-nums">
                       {String(offsets[gi] + i + 1).padStart(2, "0")}
                     </span>
                     <h4 className="flex-1 text-sm font-medium text-foreground">

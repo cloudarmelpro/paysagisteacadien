@@ -39,7 +39,7 @@ export function ServiceCard({
     <Link
       href={href}
       className={cn(
-        "group @container relative flex aspect-4/5 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl bg-muted p-6 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none sm:aspect-4/3 lg:aspect-4/5 @lg:p-8",
+        "group @container relative flex aspect-4/5 cursor-pointer flex-col justify-between overflow-hidden rounded-3xl bg-muted p-6 focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none sm:aspect-4/3 lg:aspect-4/5 @lg:p-8",
         className,
       )}
     >
@@ -55,22 +55,26 @@ export function ServiceCard({
         sizes={sizes}
         className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
       />
-      {/* Voile : contraste du texte blanc sur les photos claires */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20" />
+      {/* Voile : contraste du texte blanc sur les photos claires. Le haut est
+          renforcé — sur les photos les plus lumineuses, le numéro y tombait
+          sous le seuil. */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/60 to-black/45" />
 
       {/* Numéro + filet */}
       <div className="relative">
-        <span className="text-xs font-medium text-white/70 @lg:text-sm">
+        <span className="text-xs font-medium text-white @lg:text-sm">
           {String(index + 1).padStart(2, "0")}.
         </span>
       </div>
 
       {/* Texte */}
       <div className="relative flex flex-col gap-2 pr-12 @lg:pr-16">
-        <h4 className="text-lg font-medium text-white @lg:text-2xl @lg:tracking-tight">
+        {/* h3 : cette carte se place sous un h2 sur les pages de service ; en
+            h4 elle sautait un niveau. */}
+        <h3 className="text-lg font-medium text-white @lg:text-2xl @lg:tracking-tight">
           {dict.services.items[slug]}
-        </h4>
-        <p className="text-sm leading-relaxed text-white/80 @lg:max-w-md @lg:text-base">
+        </h3>
+        <p className="text-sm leading-relaxed text-white/90 @lg:max-w-md @lg:text-base">
           {dict.services.descriptions[slug]}
         </p>
         <span className="mt-1 w-fit text-xs font-medium text-white underline decoration-white/50 underline-offset-4 transition-colors duration-200 group-hover:decoration-white @lg:text-sm">
@@ -127,7 +131,7 @@ export function Services({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </div>
               <Link
                 href={localizedPath(lang, `${servicesSegment}/${group.segment}`)}
-                className="group -my-2 inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-md py-2 text-sm font-medium text-primary transition-colors hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+                className="group -my-2 inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-md py-2 text-sm font-medium text-primary transition-colors hover:text-foreground focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none"
               >
                 {dict.services.learnMore}
                 <ArrowRight

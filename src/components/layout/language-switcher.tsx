@@ -44,7 +44,7 @@ export function LanguageSwitcher({
       aria-label={label}
       title={label}
       className={cn(
-        "group flex cursor-pointer items-center gap-2 rounded-full focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+        "group flex cursor-pointer items-center gap-2 rounded-full focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none",
         adaptive &&
           "group-data-[transparent]/header:focus-visible:ring-white/60!",
       )}

@@ -12,6 +12,13 @@
     "ariaLabel": "Avis de confidentialité",
     "manage": "Gérer mes témoins"
   },
+  "notFound": {
+    "badge": "Erreur 404",
+    "title": "Page introuvable",
+    "lead": "Cette page n'existe pas ou a été déplacée. Revenez à l'accueil ou écrivez-nous, nous vous répondrons rapidement.",
+    "cta": "Retour à l'accueil",
+    "ctaSecondary": "Nous joindre"
+  },
   "a11y": {
     "skipToContent": "Aller au contenu",
     "primaryNav": "Navigation principale",

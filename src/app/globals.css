@@ -68,7 +68,9 @@
   --accent-foreground: oklch(0.35 0.09 150);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  /* Bordure de champ : ≥ 3:1 sur le fond (WCAG 1.4.11). Plus clair, elle était
+     mesurée à 1.26:1 — pratiquement invisible. */
+  --input: oklch(0.62 0 0);
   --ring: oklch(0.46 0.072 150);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -107,7 +109,7 @@
   --accent-foreground: oklch(0.9 0.05 150);
   --destructive: oklch(0.7 0.19 22.2);
   --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 16%);
+  --input: oklch(1 0 0 / 35%);
   --ring: oklch(0.72 0.13 150);
   --chart-1: oklch(0.72 0.13 150);
   --chart-2: oklch(0.62 0.1 150);
@@ -126,13 +128,23 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/80;
   }
   body {
     @apply bg-background text-foreground;
+    /*
+     * `clip` et non `hidden` : `hidden` sur body créerait un conteneur de
+     * défilement et casserait `position: sticky` (en-tête, sommaire).
+     * Nécessaire parce qu'un `Reveal from="right"` non encore révélé décale
+     * son bloc de 1.75rem et élargit la zone défilable sous 640 px.
+     */
+    overflow-x: clip;
   }
   html {
     @apply font-sans scroll-smooth;
+    /* Doit être posé ici aussi : c'est `html` qui porte le défilement, `body`
+       seul ne suffit pas à empêcher le débordement. */
+    overflow-x: clip;
   }
 
   /*

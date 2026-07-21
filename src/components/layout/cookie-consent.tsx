@@ -110,7 +110,11 @@ export function CookieConsent({
     <div
       role="region"
       aria-label={labels.ariaLabel}
-      className="fixed inset-x-0 bottom-0 z-50 p-4 sm:inset-x-auto sm:right-0 sm:p-6"
+      // z-40, sous l'en-tête (z-50) : le menu mobile plein écran vit DANS
+      // l'en-tête, dont le `sticky z-50` crée un contexte d'empilement. Monter
+      // le z-index du menu n'y changerait rien — c'est cette carte qui doit
+      // passer dessous, sinon elle masque le bas du menu ouvert.
+      className="fixed inset-x-0 bottom-0 z-40 p-4 sm:inset-x-auto sm:right-0 sm:p-6"
     >
       {/* Sans bordure : l'ombre seule détache la carte du fond. Décalage vertical
           nul et double rayon — les ombres Tailwind (`shadow-xl`) tombent vers le

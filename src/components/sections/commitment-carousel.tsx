@@ -68,7 +68,7 @@ export function CommitmentCarousel({
         role="region"
         aria-label={labels.region}
         tabIndex={0}
-        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none [&::-webkit-scrollbar]:hidden"
       >
         {values.map((value, i) => {
           const Icon = ICONS[i] ?? Leaf;
@@ -100,7 +100,7 @@ export function CommitmentCarousel({
             onClick={() => scrollByCards(-1)}
             disabled={atStart}
             aria-label={labels.prev}
-            className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full border border-border bg-background text-foreground transition-[color,background-color,transform] duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none disabled:cursor-default disabled:opacity-40 motion-safe:active:scale-95"
+            className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full border border-border bg-background text-foreground transition-[color,background-color,transform] duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none disabled:cursor-default disabled:opacity-40 motion-safe:active:scale-95"
           >
             <ArrowLeft className="size-4" />
           </button>
@@ -109,7 +109,7 @@ export function CommitmentCarousel({
             onClick={() => scrollByCards(1)}
             disabled={atEnd}
             aria-label={labels.next}
-            className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full border border-border bg-background text-foreground transition-[color,background-color,transform] duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none disabled:cursor-default disabled:opacity-40 motion-safe:active:scale-95"
+            className="inline-flex size-10 cursor-pointer items-center justify-center rounded-full border border-border bg-background text-foreground transition-[color,background-color,transform] duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none disabled:cursor-default disabled:opacity-40 motion-safe:active:scale-95"
           >
             <ArrowRight className="size-4" />
           </button>

@@ -12,6 +12,13 @@
     "ariaLabel": "Privacy notice",
     "manage": "Manage cookies"
   },
+  "notFound": {
+    "badge": "Error 404",
+    "title": "Page not found",
+    "lead": "This page doesn't exist or has moved. Head back home, or write to us and we'll get back to you quickly.",
+    "cta": "Back to home",
+    "ctaSecondary": "Contact us"
+  },
   "a11y": {
     "skipToContent": "Skip to content",
     "primaryNav": "Primary",

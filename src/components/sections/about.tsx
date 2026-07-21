@@ -57,7 +57,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <div key={stat.label} className="flex flex-col gap-2">
             {/* Le libellé d'abord : les valeurs n'ont pas la même longueur, et
                 sous la valeur il retomberait à des hauteurs différentes. */}
-            <span className="text-xs font-medium tracking-wider text-foreground/55 uppercase">
+            <span className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
               {stat.label}
             </span>
             <span className="text-2xl font-medium tracking-tight text-balance text-foreground">

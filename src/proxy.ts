@@ -18,7 +18,10 @@ export function proxy(request: NextRequest) {
   // le français soit la langue par défaut servie. L'anglais reste accessible par
   // le sélecteur (chaque page a son équivalent /en et son hreflang).
   request.nextUrl.pathname = `/${i18n.defaultLocale}${pathname}`;
-  return NextResponse.redirect(request.nextUrl);
+  // 308 et non 307 : la redirection est déterministe (jamais négociée avec le
+  // navigateur), et le domaine nu porte l'autorité de l'ancien site — un
+  // permanent consolide ce signal vers /fr.
+  return NextResponse.redirect(request.nextUrl, 308);
 }
 
 export const config = {

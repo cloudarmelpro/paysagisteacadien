@@ -30,8 +30,11 @@ export async function submitApplication(
   }
 
   // Pas de WAF devant l'app en self-hosting : le throttle par IP est ici.
-  const ip =
-    (await headers()).get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  // DERNIÈRE entrée de la chaîne : c'est celle qu'écrit le proxy de confiance.
+  // La première vient du client et se falsifie — un bot qui fait tourner de
+  // fausses valeurs obtiendrait un quota neuf à chaque requête.
+  const forwarded = (await headers()).get("x-forwarded-for");
+  const ip = forwarded?.split(",").at(-1)?.trim() || "unknown";
   if (!rateLimit(`careers:${ip}`, RATE_LIMIT, RATE_WINDOW_MS)) {
     return { status: "error" };
   }
