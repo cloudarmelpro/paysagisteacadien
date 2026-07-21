@@ -4,6 +4,7 @@ import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import {
   aboutSegment,
+  careersSegment,
   navLinks,
   contactSegment,
   privacySegment,
@@ -57,6 +58,8 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     `${home}/`,
     localizedPath(lang, aboutSegment),
     localizedPath(lang, privacySegment),
+    localizedPath(lang, careersSegment),
+    localizedPath(lang, contactSegment),
   ];
   const adaptiveScript = `(function(){try{var p=location.pathname;var hs=${JSON.stringify(heroPaths)};if(scrollY<64&&(hs.indexOf(p)>=0||p.indexOf(${JSON.stringify(servicesPrefix)})===0)){document.currentScript.closest('header').setAttribute('data-transparent','')}}catch(err){}})();`;
 
