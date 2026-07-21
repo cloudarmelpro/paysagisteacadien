@@ -24,7 +24,7 @@ export function Careers({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           className="relative isolate overflow-hidden bg-[oklch(0.24_0.02_152)]"
         >
           <Image
-            src={serviceImages["pave-uni"]}
+            src={serviceImages.irrigation}
             alt=""
             fill
             priority
