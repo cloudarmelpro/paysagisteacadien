@@ -4,7 +4,7 @@
     "description": "Landscape design and maintenance in Laval and the North Shore. Paysagiste Acadien transforms and maintains your outdoor spaces with passion and transparency."
   },
   "cookies": {
-    "message": "We use cookies to enhance your browsing experience and remember your preferences. By clicking \"Accept\", you consent to our use of cookies.",
+    "message": "We would like to use audience-measurement cookies to understand how the site is used. They are only stored with your consent, which you can withdraw at any time.",
     "accept": "Accept",
     "refuse": "Decline",
     "policy": "Privacy policy",
@@ -268,8 +268,8 @@
     "intro": "We have built deep expertise in the trades of outdoor spaces — landscape maintenance and design in particular. Our mission is to give our clients quality work that combines expertise, professionalism and attention to detail.",
     "imageAlt": "Lush, freshly maintained lawn bordered by mature trees",
     "stats": [
+      { "value": "200+ projects", "label": "Completed to date" },
       { "value": "Laval & North Shore", "label": "Service area" },
-      { "value": "8 services", "label": "Maintenance & design" },
       { "value": "FR / EN", "label": "Bilingual service" },
       { "value": "Free estimate", "label": "No obligation" }
     ],

@@ -50,6 +50,21 @@ function setConsent(value: Consent): void {
   for (const l of listeners) l();
 }
 
+/**
+ * Efface le choix enregistré : la bannière réapparaît immédiatement (les
+ * listeners sont notifiés). Destiné à un contrôle « Gérer mes témoins » à
+ * brancher dans le pied de page — la Loi 25 exige de pouvoir revenir sur son
+ * consentement, ce qu'un choix stocké définitivement ne permet pas.
+ */
+export function resetConsent(): void {
+  try {
+    localStorage.removeItem(CONSENT_KEY);
+  } catch {
+    // Stockage indisponible : rien à réinitialiser.
+  }
+  for (const l of listeners) l();
+}
+
 type CookieConsentLabels = {
   message: string;
   accept: string;
@@ -59,9 +74,20 @@ type CookieConsentLabels = {
 };
 
 /**
- * Bannière de consentement (Loi 25). Visible seulement tant qu'aucun choix n'est
- * enregistré. Les deux boutons gardent la même taille et la même position : le
- * refus reste aussi accessible que l'acceptation, comme la Loi 25 l'exige.
+ * Bannière de consentement (Loi 25). **Volontairement non montée** : le site ne
+ * dépose aucun témoin non essentiel, et la Loi 25 n'exige un consentement que
+ * pour ceux-là. Afficher une demande de consentement sans objet reviendrait à
+ * déclarer un usage inexact, et contredirait la politique de confidentialité.
+ *
+ * À remonter dans `app/[lang]/layout.tsx` le jour où un outil non essentiel
+ * (analytique, pixel) est ajouté — et seulement en respectant ces trois points :
+ *  1. l'outil ne se charge QUE si `localStorage[CONSENT_KEY] === "granted"` ;
+ *  2. `dict.cookies.message` décrit exactement les outils réellement déposés ;
+ *  3. un contrôle « Gérer mes témoins » (via `resetConsent`) permet de revenir
+ *     sur son choix.
+ *
+ * Les deux boutons partagent taille, position ET variante : le refus doit avoir
+ * le même poids visuel que l'acceptation, pas seulement la même accessibilité.
  */
 export function CookieConsent({
   lang,
@@ -105,6 +131,7 @@ export function CookieConsent({
             {labels.refuse}
           </Button>
           <Button
+            variant="outline"
             onClick={() => setConsent("granted")}
             className="flex-1 sm:flex-none"
           >
