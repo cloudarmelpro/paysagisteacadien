@@ -47,19 +47,21 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       </section>
 
       <div className="mx-auto w-full max-w-7xl px-5 pb-16 sm:px-8 lg:px-12 lg:pb-24">
-      {/* Repères concrets — les 1px de gouttière laissent voir `bg-border` :
-          fines lignes entre les cellules. */}
+      {/* Repères concrets, sans cadre ni filet : le clip `rounded` de l'ancienne
+          carte laissait voir le fond des gouttières aux angles. */}
       <Reveal
         stagger
-        className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-border lg:mt-16 lg:grid-cols-4"
+        className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 py-4 lg:mt-16 lg:grid-cols-4 lg:gap-x-12 lg:py-6"
       >
         {about.stats.map((stat) => (
-          <div key={stat.label} className="flex flex-col gap-1.5 bg-background p-6 lg:p-8">
-            <span className="text-xl font-medium tracking-tight text-balance text-foreground lg:text-2xl">
-              {stat.value}
-            </span>
+          <div key={stat.label} className="flex flex-col gap-2">
+            {/* Le libellé d'abord : les valeurs n'ont pas la même longueur, et
+                sous la valeur il retomberait à des hauteurs différentes. */}
             <span className="text-xs font-medium tracking-wider text-foreground/55 uppercase">
               {stat.label}
+            </span>
+            <span className="text-2xl font-medium tracking-tight text-balance text-foreground">
+              {stat.value}
             </span>
           </div>
         ))}
