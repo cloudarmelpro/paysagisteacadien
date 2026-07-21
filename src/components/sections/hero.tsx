@@ -64,10 +64,14 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </span>
             </h1>
 
+            {/* La preuve chiffrée porte un poids typographique propre : en corps
+                courant elle se noierait dans la phrase. Blanc plein + medium
+                plutôt qu'une couleur d'accent, déjà prise par le titre. */}
             <p
               className="hero-rise max-w-md text-base leading-relaxed text-white/90"
               style={{ animationDelay: "0.1s" }}
             >
+              <span className="font-medium text-white">{dict.hero.proof}</span>{" "}
               {dict.hero.subtitle}
             </p>
 
