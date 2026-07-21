@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { DM_Sans, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "../globals.css";
 import { notFound } from "next/navigation";
 import { i18n } from "@/lib/i18n";
 import { getDictionary, hasLocale } from "@/lib/dictionaries";
 import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
+import { ThemeRestore } from "@/components/layout/theme-restore";
 import { CookieConsent } from "@/components/layout/cookie-consent";
 import { LocalBusinessJsonLd } from "@/components/seo/local-business-json-ld";
 import { buildAlternates, buildOpenGraph, siteUrl } from "@/lib/seo";
@@ -69,7 +71,21 @@ export default async function RootLayout(props: LayoutProps<"/[lang]">) {
       className={`${dmSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        {/*
+          `next/script` plutôt qu'une balise `<script>` brute : sur les réponses
+          404, la balise brute n'était pas émise — le code ne partait que dans
+          les données React, qui ne l'exécutent jamais côté client. Résultat :
+          thème sombre ignoré et classe `js` absente sur ces pages.
+          `beforeInteractive` est injecté dans le HTML initial par le serveur,
+          quel que soit le chemin de rendu. L'`id` est requis pour un script
+          inline.
+        */}
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }}
+        />
+        <ThemeRestore />
         <LocalBusinessJsonLd lang={lang} dict={dict} />
         <SiteHeader lang={lang} dict={dict} />
         <main id="main" className="flex flex-1 flex-col">

@@ -191,6 +191,21 @@ Points relevés par l'audit, sans impact réel avant la mise en ligne :
       aux prochaines montées de version. Ne **pas** lancer `npm audit fix --force`
       (il propose de redescendre à next@9).
 
+### Avertissement console connu, en développement seulement
+Sur les pages 404, la console de `npm run dev` affiche :
+> *Encountered a script tag while rendering React component…*
+
+**Sans conséquence, et à ne pas « corriger ».** Sur ce chemin, React rend le
+layout côté client ; les deux `<script>` bruts restants — le script adaptatif de
+l'en-tête (`header.tsx`) et le JSON-LD — s'y retrouvent sans être exécutés. Or
+sur une 404, aucun des deux n'a d'effet : le script adaptatif ne s'active que sur
+les pages à bande, et des données structurées sur une page `noindex` ne servent à
+rien. Convertir le JSON-LD en `next/script` **casserait** sa lecture par les
+moteurs. L'avertissement est retiré au build : la console de production est vide.
+
+> Le vrai bug de ce chemin — le thème sombre ignoré sur les 404, parce que React
+> réécrivait `className` sur `<html>` — est corrigé (`ThemeRestore`).
+
 ### Régénérer les images de partage (si l'accroche change)
 ```bash
 node scripts/og/generate.mjs   # réécrit public/og-fr.png + og-en.png
