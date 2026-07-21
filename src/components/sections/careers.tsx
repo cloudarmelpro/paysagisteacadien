@@ -24,20 +24,27 @@ export function Careers({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           className="relative isolate overflow-hidden bg-[oklch(0.24_0.02_152)]"
         >
           <Image
-            src={serviceImages.tourbe}
+            src={serviceImages["pave-uni"]}
             alt=""
             fill
             priority
             sizes="100vw"
-            className="object-cover opacity-35 grayscale"
+            className="object-cover opacity-50 grayscale"
+          />
+          {/* Duotone : `mix-blend-color` prend la teinte du vert de marque et la
+              luminosité de la photo — celle-ci garde ses ombres et ses reliefs
+              au lieu d'être simplement grisée. */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-[oklch(0.42_0.10_150)] mix-blend-color"
           />
           <div
             aria-hidden
-            className="absolute inset-0 bg-linear-to-r from-black/70 via-40% via-black/45 to-black/20"
+            className="absolute inset-0 bg-linear-to-r from-black/60 via-40% via-black/35 to-black/15"
           />
           <div
             aria-hidden
-            className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/60 via-black/30 to-transparent"
+            className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/55 via-black/25 to-transparent"
           />
 
           <div className="relative mx-auto w-full max-w-7xl px-5 pt-36 pb-16 sm:px-8 lg:px-12 lg:pt-44 lg:pb-20">
