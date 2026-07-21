@@ -1,52 +1,57 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
-import { contactSegment, serviceImages } from "@/config/site";
+import { contactSegment } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/shared/reveal";
 import { CommitmentCarousel } from "./commitment-carousel";
 
-const badgeClass =
-  "w-fit rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wider text-foreground/70 uppercase";
+// Badge posé sur l'image : pilule claire, toujours en clair — l'image est
+// assombrie par les voiles quel que soit le thème.
+const badgeOnImage =
+  "w-fit rounded-full bg-white/90 px-3.5 py-1 text-xs font-medium tracking-wider text-neutral-700 uppercase backdrop-blur-sm";
 
 export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const about = dict.about;
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
-      {/* En-tête */}
-      <Reveal stagger className="flex max-w-3xl flex-col items-start gap-5">
-        <span className={badgeClass}>{about.badge}</span>
-        <h1 className="text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl">
-          {about.title}{" "}
-          <span className="text-primary">{about.titleAccent}</span>
-        </h1>
-        <p className="max-w-2xl text-lg leading-relaxed text-foreground/70">
-          {about.intro}
-        </p>
-      </Reveal>
+    <div>
+      {/* Bande pleine largeur en aplat, remontée derrière l'en-tête transparent
+          — même traitement que la page confidentialité.
+          `data-hero` : sentinelle de header-adaptive. */}
+      <section className="-mt-16">
+        <div
+          data-hero
+          className="relative isolate overflow-hidden bg-[oklch(0.24_0.02_152)]"
+        >
+          <div className="relative mx-auto w-full max-w-7xl px-5 pt-36 pb-16 sm:px-8 lg:px-12 lg:pt-44 lg:pb-20">
+            <div className="flex max-w-3xl flex-col items-start gap-5">
+              <span className={badgeOnImage}>{about.badge}</span>
+              <h1 className="text-4xl tracking-tight text-balance text-white sm:text-5xl lg:text-6xl">
+                {about.title}{" "}
+                {/* `--primary` est trop sombre sur le voile : même teinte de
+                    marque, éclaircie, comme le hero de l'accueil. */}
+                <span className="text-[oklch(0.86_0.12_150)]">
+                  {about.titleAccent}
+                </span>
+              </h1>
+              <p className="max-w-2xl text-lg leading-relaxed text-white/85">
+                {about.intro}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Grande image */}
-      <div className="relative mt-10 aspect-video overflow-hidden rounded-3xl bg-muted lg:mt-14">
-        <Image
-          src={serviceImages["entretien-de-terrain"]}
-          alt={about.imageAlt}
-          fill
-          priority
-          sizes="(max-width: 1280px) 100vw, 1216px"
-          className="object-cover"
-        />
-      </div>
-
-      {/* Repères concrets — pause visuelle après l'image. Les 1px de gouttière
-          laissent voir `bg-border` : fines lignes entre les cellules. */}
+      <div className="mx-auto w-full max-w-7xl px-5 pb-16 sm:px-8 lg:px-12 lg:pb-24">
+      {/* Repères concrets — les 1px de gouttière laissent voir `bg-border` :
+          fines lignes entre les cellules. */}
       <Reveal
         stagger
-        className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-border lg:mt-10 lg:grid-cols-4"
+        className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-3xl bg-border lg:mt-16 lg:grid-cols-4"
       >
         {about.stats.map((stat) => (
           <div key={stat.label} className="flex flex-col gap-1.5 bg-background p-6 lg:p-8">
@@ -163,6 +168,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <ArrowUpRight className="size-4" />
         </Link>
       </Reveal>
+      </div>
     </div>
   );
 }

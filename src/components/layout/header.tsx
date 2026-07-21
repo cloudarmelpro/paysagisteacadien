@@ -3,8 +3,10 @@ import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import {
+  aboutSegment,
   navLinks,
   contactSegment,
+  privacySegment,
   servicesSegment,
   siteConfig,
 } from "@/config/site";
@@ -45,8 +47,18 @@ export function SiteHeader({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   // page de service), l'en-tête démarre déjà transparent — sans lui, le fond
   // solide flasherait sur l'image/vidéo jusqu'à l'hydratation. `HeaderAdaptive`
   // prend ensuite le relais (scroll, navigation) via la sentinelle `[data-hero]`.
+  // Le script ne peut pas détecter `[data-hero]` : il s'exécute avant que la
+  // bande soit analysée. La liste des pages à bande est donc tenue à la main —
+  // y ajouter toute nouvelle page qui en ouvre une, sinon l'en-tête solide
+  // flashe avant l'hydratation.
   const servicesPrefix = `${localizedPath(lang, servicesSegment)}/`;
-  const adaptiveScript = `(function(){try{var p=location.pathname;if(scrollY<64&&(p==='${home}'||p==='${home}/'||p.indexOf('${servicesPrefix}')===0)){document.currentScript.closest('header').setAttribute('data-transparent','')}}catch(e){}})();`;
+  const heroPaths = [
+    home,
+    `${home}/`,
+    localizedPath(lang, aboutSegment),
+    localizedPath(lang, privacySegment),
+  ];
+  const adaptiveScript = `(function(){try{var p=location.pathname;var hs=${JSON.stringify(heroPaths)};if(scrollY<64&&(hs.indexOf(p)>=0||p.indexOf(${JSON.stringify(servicesPrefix)})===0)){document.currentScript.closest('header').setAttribute('data-transparent','')}}catch(err){}})();`;
 
   return (
     <header

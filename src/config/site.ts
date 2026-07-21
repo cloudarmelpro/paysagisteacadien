@@ -143,6 +143,9 @@ export const contactSegment = "nous-joindre";
 /** Segment parent des pages de service : /[lang]/services/[slug]. */
 export const servicesSegment = "services";
 
+/** Segment de la page « À propos ». Doit rester aligné avec `navLinks`. */
+export const aboutSegment = "a-propos";
+
 /**
  * Slugs ayant une page sous /[lang]/services/[slug] : pages-chapeaux et services
  * individuels. Source de `generateStaticParams`.

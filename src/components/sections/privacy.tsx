@@ -4,8 +4,10 @@ import { siteConfig } from "@/config/site";
 import { Reveal } from "@/components/shared/reveal";
 import { PrivacyToc } from "./privacy-toc";
 
-const badgeClass =
-  "w-fit rounded-full bg-muted px-3 py-1 text-xs font-medium tracking-wider text-foreground/70 uppercase";
+// Même pilule claire que les pages à bande photo : la bande est sombre dans les
+// deux thèmes, le badge reste donc clair.
+const badgeOnBand =
+  "w-fit rounded-full bg-white/90 px-3.5 py-1 text-xs font-medium tracking-wider text-neutral-700 uppercase backdrop-blur-sm";
 
 /**
  * Politique de confidentialité (Loi 25 — Québec). Les coordonnées proviennent de
@@ -23,19 +25,34 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
-      {/* En-tête */}
-      <Reveal stagger className="flex max-w-3xl flex-col items-start gap-5">
-        <span className={badgeClass}>{p.badge}</span>
-        <h1 className="text-4xl tracking-tight text-balance sm:text-5xl lg:text-6xl">
-          {p.title} <span className="text-primary">{p.titleAccent}</span>
-        </h1>
-        <p className="text-lg leading-relaxed text-foreground/70">{p.intro}</p>
-        <p className="text-sm text-foreground/60">
-          {p.updatedLabel} : {p.updatedAt}
-        </p>
-      </Reveal>
+    <div>
+      {/* Même bande pleine largeur que les pages de service, mais en aplat :
+          une photo commerciale derrière un document juridique en affaiblirait
+          le sérieux. `data-hero` : sentinelle de header-adaptive. */}
+      <section className="-mt-16">
+        <div
+          data-hero
+          className="relative isolate overflow-hidden bg-[oklch(0.24_0.02_152)]"
+        >
+          <div className="relative mx-auto w-full max-w-7xl px-5 pt-36 pb-16 sm:px-8 lg:px-12 lg:pt-44 lg:pb-20">
+            <div className="flex max-w-3xl flex-col items-start gap-5">
+              <span className={badgeOnBand}>{p.badge}</span>
+              <h1 className="text-4xl tracking-tight text-balance text-white sm:text-5xl lg:text-6xl">
+                {p.title}{" "}
+                <span className="text-[oklch(0.86_0.12_150)]">
+                  {p.titleAccent}
+                </span>
+              </h1>
+              <p className="text-lg leading-relaxed text-white/85">{p.intro}</p>
+              <p className="text-sm text-white/65">
+                {p.updatedLabel} : {p.updatedAt}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <div className="mx-auto w-full max-w-7xl px-5 pb-16 sm:px-8 lg:px-12 lg:pb-24">
       {/* Sommaire à DROITE ≥ lg (mais premier dans le DOM → en haut sur mobile,
           repoussé à droite par `order`) + contenu à gauche. */}
       <div className="mt-12 grid gap-10 lg:mt-16 lg:grid-cols-[minmax(0,44rem)_15rem] lg:gap-16">
@@ -110,6 +127,7 @@ export function Privacy({ dict }: { lang: Locale; dict: Dictionary }) {
             </p>
           </Reveal>
         </div>
+      </div>
       </div>
     </div>
   );
