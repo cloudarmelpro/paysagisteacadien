@@ -1,7 +1,8 @@
+import Image from "next/image";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
-import { serviceGroups, siteConfig } from "@/config/site";
+import { serviceGroups, serviceImages, siteConfig } from "@/config/site";
 import { Reveal } from "@/components/shared/reveal";
 import { ContactForm } from "./contact-form";
 
@@ -18,14 +19,31 @@ export function Contact({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
   return (
     <div>
-      {/* Bande en aplat, comme À propos et confidentialité : sur une page dont
-          le formulaire porte toute l'action, une photo disperserait l'attention.
+      {/* Photo désaturée sous l'aplat : elle donne de la matière sans la couleur
+          vive des pages de service, qui concurrencerait le titre.
           `data-hero` : sentinelle de header-adaptive. */}
       <section className="-mt-16">
         <div
           data-hero
           className="relative isolate overflow-hidden bg-[oklch(0.24_0.02_152)]"
         >
+          <Image
+            src={serviceImages["entretien-de-terrain"]}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover opacity-35 grayscale"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-linear-to-r from-black/70 via-40% via-black/45 to-black/20"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-black/60 via-black/30 to-transparent"
+          />
+
           <div className="relative mx-auto w-full max-w-7xl px-5 pt-36 pb-16 sm:px-8 lg:px-12 lg:pt-44 lg:pb-20">
             <div className="flex max-w-3xl flex-col items-start gap-5">
               <span className={badgeOnBand}>{c.badge}</span>
