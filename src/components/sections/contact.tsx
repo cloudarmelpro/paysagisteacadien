@@ -108,14 +108,8 @@ export function Contact({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </Reveal>
         </div>
 
-        {/* Formulaire — dans une carte : posé à nu sur le fond, il se lisait
-            comme une suite de champs, sans primer sur la colonne de
-            coordonnées alors qu'il porte l'action principale. */}
-        <Reveal
-          from="right"
-          delay={160}
-          className="rounded-3xl bg-muted/50 p-6 sm:p-8 lg:col-span-3 lg:p-10"
-        >
+        {/* Formulaire */}
+        <Reveal from="right" delay={160} className="lg:col-span-3">
           <div className="mb-6 flex flex-col gap-1">
             <h2 className="text-xl font-medium tracking-tight uppercase text-foreground/80">
               {c.form.heading}
