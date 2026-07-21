@@ -112,42 +112,49 @@ export function CookieConsent({
       aria-label={labels.ariaLabel}
       className="fixed inset-x-0 bottom-0 z-50 p-4 sm:inset-x-auto sm:right-0 sm:p-6"
     >
-      <div className="hero-rise flex w-full max-w-md flex-col gap-4 rounded-2xl border border-border bg-background/95 p-5 shadow-lg backdrop-blur">
-        <div className="flex items-start gap-3">
+      {/* Sans bordure : l'ombre seule détache la carte du fond. Décalage vertical
+          nul et double rayon — les ombres Tailwind (`shadow-xl`) tombent vers le
+          bas et laisseraient les côtés et le haut à nu. */}
+      <div className="hero-rise w-full max-w-sm rounded-2xl bg-background/95 p-4 shadow-[0_0_20px_rgb(0_0_0/0.16),0_0_56px_rgb(0_0_0/0.10)] backdrop-blur">
+        <div className="flex items-start gap-2.5">
           <span
             aria-hidden
-            className="flex size-9 shrink-0 items-center justify-center rounded-full bg-muted text-foreground/70"
+            className="flex size-7 shrink-0 items-center justify-center rounded-full bg-muted text-foreground/70"
           >
-            <Cookie className="size-4" />
+            <Cookie className="size-3.5" />
           </span>
-          <div className="flex flex-col gap-1.5">
+          {/* Les boutons vivent dans la colonne de texte : ils s'alignent sur le
+              titre, pas sous l'icône. Largeur laissée au contenu — les deux
+              gardent variante et taille identiques, seul compte l'égalité de
+              poids visuel, pas une largeur au pixel près. */}
+          <div className="flex flex-col items-start gap-1">
             <p className="text-sm font-medium text-foreground">{labels.title}</p>
-            <p className="text-sm leading-relaxed text-foreground/70">
+            <p className="text-xs leading-relaxed text-foreground/70">
               {labels.message}{" "}
               <Link
                 href={localizedPath(lang, privacySegment)}
-                className="font-medium text-primary underline underline-offset-4"
+                className="font-medium text-primary underline underline-offset-2"
               >
                 {labels.policy}
               </Link>
             </p>
+            <div className="mt-2 flex gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setConsent("denied")}
+              >
+                {labels.refuse}
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setConsent("granted")}
+              >
+                {labels.accept}
+              </Button>
+            </div>
           </div>
-        </div>
-        <div className="flex gap-2">
-          <Button
-            variant="outline"
-            onClick={() => setConsent("denied")}
-            className="flex-1"
-          >
-            {labels.refuse}
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => setConsent("granted")}
-            className="flex-1"
-          >
-            {labels.accept}
-          </Button>
         </div>
       </div>
     </div>
