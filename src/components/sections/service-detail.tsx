@@ -124,7 +124,9 @@ export function ServiceDetail({
           <h2 className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
             {sd.exploreLabel}
           </h2>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {/* 2×2 : chaque famille a exactement 4 services — une grille pleine,
+              plus lisible qu'un 3+1 bancal. */}
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
             {group.services.map((s, i) => (
               <Reveal key={s} delay={i * 80}>
                 <ServiceCard

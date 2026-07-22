@@ -1,9 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
-import { contactSegment } from "@/config/site";
+import type { ServiceDetailSlug } from "@/config/site";
+import { contactSegment, serviceImages } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/shared/reveal";
@@ -13,6 +15,38 @@ import { CommitmentCarousel } from "./commitment-carousel";
 // assombrie par les voiles quel que soit le thème.
 const badgeOnImage =
   "w-fit rounded-full bg-white/90 px-3.5 py-1 text-xs font-medium tracking-wider text-neutral-700 uppercase backdrop-blur-sm";
+
+/**
+ * Photo sous chaque section. **Placeholders** repris du catalogue en attendant
+ * les photos dédiées de Cédric — il indiquera laquelle va où ; il suffit alors
+ * de changer le slug ci-dessous. L'alt réutilise la description déjà traduite
+ * de chaque photo, donc rien à ajouter aux dictionnaires.
+ */
+const sectionPhotos = {
+  approach: "services-de-tailles",
+  mission: "pave-uni",
+  engagement: "tourbe",
+} as const satisfies Record<string, ServiceDetailSlug>;
+
+function SectionPhoto({
+  slug,
+  dict,
+}: {
+  slug: ServiceDetailSlug;
+  dict: Dictionary;
+}) {
+  return (
+    <div className="relative mt-4 aspect-video overflow-hidden rounded-2xl bg-muted">
+      <Image
+        src={serviceImages[slug]}
+        alt={dict.services.imageAlts[slug]}
+        fill
+        sizes="(max-width: 1024px) 100vw, 640px"
+        className="object-cover"
+      />
+    </div>
+  );
+}
 
 export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const about = dict.about;
@@ -88,6 +122,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <p className="text-lg font-medium text-primary lg:text-xl">
             {about.approachClosing}
           </p>
+          <SectionPhoto slug={sectionPhotos.approach} dict={dict} />
         </div>
       </Reveal>
 
@@ -113,6 +148,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               {paragraph}
             </p>
           ))}
+          <SectionPhoto slug={sectionPhotos.mission} dict={dict} />
         </div>
       </Reveal>
 
@@ -137,6 +173,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 {paragraph}
               </p>
             ))}
+            <SectionPhoto slug={sectionPhotos.engagement} dict={dict} />
           </div>
         </div>
 
