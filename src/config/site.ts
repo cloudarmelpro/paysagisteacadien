@@ -37,6 +37,15 @@ export const siteConfig = {
 } as const;
 
 /**
+ * Identifiant de mesure GA4. Constante d'entreprise publique (comme le
+ * téléphone) : un ID GA apparaît de toute façon dans le code de toute page qui
+ * l'utilise — ce n'est pas un secret. Surchargée par `NEXT_PUBLIC_GA_MEASUREMENT_ID`
+ * si définie au build (utile pour une propriété distincte en préproduction).
+ * Le chargement reste conditionné au consentement — voir components/analytics.
+ */
+export const gaMeasurementId = "G-NL4DBWMX5N";
+
+/**
  * Heures d'ouverture au format schema.org. Doit rester cohérent avec les
  * libellés traduits de `contact.hours` dans les dictionnaires.
  * Un jour fermé est absent de la liste.

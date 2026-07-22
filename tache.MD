@@ -155,31 +155,19 @@ l'autorité étant la **CAI** (cai.gouv.qc.ca).
 
 ---
 
-## 🟡 Google Analytics — câblé, il ne manque que l'ID
+## 🟢 Google Analytics — en place ✅
 
-Le bandeau témoins est **conforme sur les 3 points de la CAI** (texte exact,
-boutons à poids visuel égal, lien « Gérer mes témoins »). **GA4 est entièrement
-branché** (`src/components/analytics/google-analytics.tsx`) : il ne se charge
-**qu'après « Accepter »**, la CSP autorise déjà les hôtes Google, et il est
-inerte tant que l'identifiant n'est pas fourni.
+- [x] **GA4 branché et conditionné au consentement.** L'ID de mesure de Cédric
+      (`G-NL4DBWMX5N`) est dans `src/config/site.ts` (`gaMeasurementId`) ; le
+      bandeau reste conforme aux 3 points de la CAI. Vérifié en test réseau :
+      **0 requête Google avant « Accepter »**, GA chargé après, « Refuser » ne
+      déclenche rien.
+- Surcharge possible par `NEXT_PUBLIC_GA_MEASUREMENT_ID` au build (propriété GA
+      distincte en préproduction) — **optionnel**, l'ID par défaut suffit.
 
-Il ne reste qu'**une chose** :
-
-- [ ] **Définir `NEXT_PUBLIC_GA_MEASUREMENT_ID`** avec l'ID de mesure de Cédric
-      (format `G-XXXXXXXXXX`, depuis sa propriété GA4).
-      ⚠️ C'est une variable **`NEXT_PUBLIC_`** : elle est injectée au **build**,
-      pas au runtime. Il faut donc qu'elle soit présente **quand `npm run build`
-      s'exécute** (pas seulement dans le panneau Hostinger, à moins de builder
-      sur le serveur). L'ID GA est public par nature — pas un secret.
-- [ ] Ligne à ajouter au `.env.example` (je n'ai pas les droits sur ce fichier) :
-      `NEXT_PUBLIC_GA_MEASUREMENT_ID="G-XXXXXXXXXX"`
-
-Sans cette variable, GA ne se charge jamais — aucun effet, aucune erreur. Le
-bandeau reste honnête (il annonce l'intention, au conditionnel).
-
-**Vérifier après activation :** accepter le bandeau, puis confirmer dans les
-DevTools (onglet Réseau) que `googletagmanager.com` n'est appelé **qu'après** le
-clic « Accepter », jamais avant ; et que « Refuser » ne déclenche rien.
+**Vérifier une fois le vrai domaine en ligne :** dans GA4 (Rapports → Temps réel),
+confirmer que les visites remontent après avoir accepté le bandeau sur
+`paysagisteacadien.com`.
 
 ---
 
