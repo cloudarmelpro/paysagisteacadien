@@ -48,17 +48,29 @@ export function CommitmentCarousel({
               // Le second jeu n'existe que pour la boucle : masqué aux lecteurs
               // d'écran pour ne pas lire deux fois chaque valeur.
               aria-hidden={original ? undefined : true}
-              className="group flex w-[280px] shrink-0 flex-col rounded-2xl bg-muted p-6 sm:w-[340px]"
+              // Même coque que la carte de service : fond sombre, numéro en haut,
+              // contenu en bas, pastille ronde en bas à droite. Fond vert plein
+              // au lieu d'une photo — une valeur n'a pas de visuel de chantier.
+              className="group relative flex aspect-4/5 w-[260px] shrink-0 flex-col justify-between overflow-hidden rounded-3xl bg-[oklch(0.24_0.02_152)] p-6 sm:w-[300px] sm:p-7"
             >
-              <h3 className="text-lg font-medium text-foreground">
-                {value.title}
-              </h3>
-              <span className="mt-4 mb-4 block h-px w-8 origin-left bg-primary transition-transform duration-500 motion-safe:group-hover:scale-x-150" />
-              <p className="flex-1 text-sm leading-relaxed text-foreground/70">
-                {value.desc}
-              </p>
-              <span className="mt-6 inline-flex size-10 items-center justify-center rounded-full bg-background text-primary">
-                <Icon className="size-4" aria-hidden />
+              <span className="text-xs font-medium text-white/50">
+                {String((i % values.length) + 1).padStart(2, "0")}.
+              </span>
+              <div className="flex flex-col gap-2 pr-14">
+                <h3 className="text-lg font-medium text-white sm:text-xl">
+                  {value.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-white/70">
+                  {value.desc}
+                </p>
+              </div>
+              {/* Pastille de l'icône, là où le service porte son bouton fléché :
+                  même repère, mais sans lien (une valeur n'est pas cliquable). */}
+              <span
+                aria-hidden
+                className="absolute right-6 bottom-6 inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-[oklch(0.86_0.12_150)] transition-transform duration-200 motion-safe:group-hover:-translate-y-0.5"
+              >
+                <Icon className="size-5" />
               </span>
             </li>
           );
