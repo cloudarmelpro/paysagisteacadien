@@ -509,7 +509,7 @@
     "titleAccent": "confidentialité",
     "intro": "Paysagiste Acadien Inc. recueille le minimum de renseignements nécessaires pour répondre à vos demandes. Cette page explique lesquels, pourquoi, où ils sont conservés et comment exercer vos droits.",
     "updatedLabel": "Dernière mise à jour",
-    "updatedAt": "17 juillet 2026",
+    "updatedAt": "22 juillet 2026",
     "collected": {
       "heading": "Renseignements que nous recueillons",
       "intro": "Nous ne recueillons que ce que vous nous transmettez vous-même par nos formulaires. Aucune création de compte, aucun profilage, aucun achat de données.",
@@ -538,7 +538,7 @@
       },
       {
         "heading": "Témoins (cookies) et suivi",
-        "body": "Ce site ne dépose aucun témoin publicitaire et n'utilise aucun outil de suivi ni de mesure d'audience tiers. Votre navigateur mémorise localement une seule préférence — le thème clair ou sombre — qui ne quitte jamais votre appareil et ne permet pas de vous identifier."
+        "body": "Avec votre consentement, ce site utilise Google Analytics (GA4), un outil de mesure d'audience fourni par Google, afin de comprendre comment le site est utilisé — pages consultées, fréquentation générale — et de l'améliorer. Ces témoins ne sont déposés qu'après votre accord donné dans la bannière ; vous pouvez le refuser, ou le retirer à tout moment par le lien « Gérer mes témoins » au bas de chaque page. Les données correspondantes sont traitées par Google et peuvent être hébergées à l'extérieur du Québec, notamment aux États-Unis. Ce site ne dépose aucun témoin publicitaire. Indépendamment de ce choix, votre navigateur mémorise localement une seule préférence — le thème clair ou sombre — qui ne quitte jamais votre appareil et ne permet pas de vous identifier."
       },
       {
         "heading": "Vos droits",

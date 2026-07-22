@@ -26,16 +26,21 @@ Suivi de ce qui reste à faire. Dernière mise à jour : **21 juillet 2026**.
 ## 🔴 Bloquant — le jour de la bascule
 
 ### 1. Corriger la politique de confidentialité — **AVANT de servir le domaine** ⚠️
-`src/dictionaries/fr.json` et `en.json`, clé `privacy` (~ligne 526) : le texte
-déclare **« Le site lui-même est hébergé par Vercel »**. Faux dès la bascule.
+`src/dictionaries/fr.json` et `en.json`, clé `privacy`.
 
-- [ ] Remplacer Vercel par **Hostinger**
+- [x] **Google Analytics déclaré** ✅ (section « Témoins ») : finalité, Google
+      comme tiers, données hors Québec, consentement requis et retirable. Date de
+      mise à jour portée au 22 juillet 2026.
+- [ ] Section « Où vos renseignements sont conservés » : remplacer
+      **« hébergé par Vercel »** par **Hostinger**. Faux dès la bascule.
 - [ ] **Vérifier la région du serveur Hostinger choisie** (US / EU / Asie) et
       l'écrire correctement — la Loi 25 impose que la divulgation corresponde à
       la réalité. La partie **Neon (É.-U.)** reste vraie, la base ne bouge pas.
-- [ ] Mettre à jour la date `privacy.updatedAt`
+- [ ] Reporter la date `privacy.updatedAt` au jour de cette correction.
 
-> C'est un document à portée légale : il doit être exact le jour où il devient public.
+> Document à portée légale. La déclaration GA est désormais **exacte**, mais
+> **faire relire l'ensemble par un juriste** avant mise en ligne — déclarer un
+> traitant tiers et un transfert hors Québec est juridiquement sensible. Autorité : CAI.
 
 ### 2. Déployer sur Hostinger + pointer le domaine — **client + moi**
 
