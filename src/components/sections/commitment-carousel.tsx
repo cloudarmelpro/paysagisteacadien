@@ -48,19 +48,19 @@ export function CommitmentCarousel({
               // Le second jeu n'existe que pour la boucle : masqué aux lecteurs
               // d'écran pour ne pas lire deux fois chaque valeur.
               aria-hidden={original ? undefined : true}
-              // Même coque que la carte de service : fond sombre, numéro en haut,
-              // contenu en bas, pastille ronde en bas à droite. Fond vert plein
-              // au lieu d'une photo — une valeur n'a pas de visuel de chantier.
-              className="group relative flex aspect-4/5 w-[260px] shrink-0 flex-col justify-between overflow-hidden rounded-3xl bg-[oklch(0.24_0.02_152)] p-6 sm:w-[300px] sm:p-7"
+              // Même coque que la carte de service (numéro en haut, contenu en
+              // bas, pastille ronde en bas à droite) mais fond gris `bg-muted` —
+              // s'adapte au thème, contrairement au sombre plein.
+              className="group relative flex aspect-4/5 w-[260px] shrink-0 flex-col justify-between overflow-hidden rounded-3xl bg-muted p-6 sm:w-[300px] sm:p-7"
             >
-              <span className="text-xs font-medium text-white/50">
+              <span className="text-xs font-medium text-foreground/50">
                 {String((i % values.length) + 1).padStart(2, "0")}.
               </span>
               <div className="flex flex-col gap-2 pr-14">
-                <h3 className="text-lg font-medium text-white sm:text-xl">
+                <h3 className="text-lg font-medium text-foreground sm:text-xl">
                   {value.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-white/70">
+                <p className="text-sm leading-relaxed text-foreground/70">
                   {value.desc}
                 </p>
               </div>
@@ -68,7 +68,7 @@ export function CommitmentCarousel({
                   même repère, mais sans lien (une valeur n'est pas cliquable). */}
               <span
                 aria-hidden
-                className="absolute right-6 bottom-6 inline-flex size-11 items-center justify-center rounded-full bg-white/10 text-[oklch(0.86_0.12_150)] transition-transform duration-200 motion-safe:group-hover:-translate-y-0.5"
+                className="absolute right-6 bottom-6 inline-flex size-11 items-center justify-center rounded-full bg-background text-primary transition-transform duration-200 motion-safe:group-hover:-translate-y-0.5"
               >
                 <Icon className="size-5" />
               </span>
