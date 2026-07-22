@@ -183,11 +183,7 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
         <CommitmentCarousel
           values={about.values}
-          labels={{
-            prev: dict.a11y.prevValue,
-            next: dict.a11y.nextValue,
-            region: about.engagementLabel,
-          }}
+          labels={{ region: about.engagementLabel }}
         />
       </Reveal>
 

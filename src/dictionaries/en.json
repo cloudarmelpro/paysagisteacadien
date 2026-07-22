@@ -25,9 +25,7 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "toggleTheme": "Toggle light / dark theme",
-    "switchLanguage": "Passer au français",
-    "prevValue": "Previous",
-    "nextValue": "Next"
+    "switchLanguage": "Passer au français"
   },
   "nav": {
     "home": "Home",

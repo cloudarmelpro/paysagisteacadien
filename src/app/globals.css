@@ -265,6 +265,35 @@
     animation: hero-rise 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
   }
 
+  /* Bandeau des valeurs : glissement continu de gauche à droite. La piste est
+     doublée dans le composant ; l'animation la translate d'exactement un jeu
+     (-50%), d'où la boucle sans couture. Pause au survol/focus. */
+  @keyframes marquee {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  .marquee {
+    overflow: hidden;
+  }
+  .marquee-track {
+    animation: marquee 48s linear infinite;
+  }
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+  /* Préférence de mouvement réduite : la règle globale plus bas fige déjà
+     l'animation ; on rétablit seulement le défilement manuel. */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      overflow-x: auto;
+    }
+  }
+
   /* Accessibilité : neutralise animations et défilements animés. */
   @media (prefers-reduced-motion: reduce) {
     *,
