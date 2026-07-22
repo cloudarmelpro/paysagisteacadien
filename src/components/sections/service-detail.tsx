@@ -129,11 +129,15 @@ export function ServiceDetail({
           <div className="mt-6 grid gap-5 sm:grid-cols-2">
             {group.services.map((s, i) => (
               <Reveal key={s} delay={i * 80}>
+                {/* Format paysage comme la grille de l'accueil : en 2 colonnes,
+                    le `aspect-4/5` par défaut rendait les cartes trop hautes. */}
                 <ServiceCard
                   slug={s}
                   index={i}
                   href={localizedPath(lang, `${servicesSegment}/${s}`)}
                   dict={dict}
+                  className="lg:aspect-3/2"
+                  sizes="(max-width: 640px) 90vw, (max-width: 1280px) 48vw, 592px"
                 />
               </Reveal>
             ))}
