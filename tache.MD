@@ -169,6 +169,10 @@ l'autorité étant la **CAI** (cai.gouv.qc.ca).
       déclenche rien.
 - Surcharge possible par `NEXT_PUBLIC_GA_MEASUREMENT_ID` au build (propriété GA
       distincte en préproduction) — **optionnel**, l'ID par défaut suffit.
+- [x] **Consent Mode** : l'init GA refuse explicitement le publicitaire
+      (`ad_storage/ad_user_data/ad_personalization: denied`, `analytics_storage:
+      granted`) — cohérent avec « aucun témoin publicitaire » de la politique.
+      Recommandé aussi : **désactiver Google Signals** dans l'admin GA4.
 
 **Vérifier une fois le vrai domaine en ligne :** dans GA4 (Rapports → Temps réel),
 confirmer que les visites remontent après avoir accepté le bandeau sur
@@ -194,6 +198,14 @@ Points relevés par l'audit, sans impact réel avant la mise en ligne :
       `@prisma/dev` dans la CLI) — **aucun chemin d'exploitation**, se règleront
       aux prochaines montées de version. Ne **pas** lancer `npm audit fix --force`
       (il propose de redescendre à next@9).
+
+### Artefact local : cache d'images bloqué (OneDrive)
+En dev/prod **local**, une variante d'image optimisée peut se figer (requête
+`/_next/image?...` qui ne répond jamais) parce que le projet vit sous **OneDrive**,
+qui verrouille/déshydrate des fichiers de `.next/cache/images`. Symptôme observé
+une fois : la carte « Irrigation » sans photo. **Sans effet sur Hostinger** (autre
+système de fichiers). Contournement local : `rm -rf .next/cache/images` puis
+redémarrer, ou sortir le projet d'un dossier synchronisé OneDrive.
 
 ### Avertissement console connu, en développement seulement
 Sur les pages 404, la console de `npm run dev` affiche :

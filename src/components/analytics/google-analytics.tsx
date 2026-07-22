@@ -31,7 +31,13 @@ export function GoogleAnalytics() {
         strategy="afterInteractive"
       />
       <Script id="ga-init" strategy="afterInteractive">
-        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${measurementId}');`}
+        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}` +
+          // Consent Mode : mesure d'audience oui, publicité non — cohérent avec
+          // « aucun témoin publicitaire » de la politique. Sans ça, une propriété
+          // GA4 avec Google Signals tenterait un ping publicitaire (bloqué par la
+          // CSP aujourd'hui, mais on le refuse aussi à la source).
+          `gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'granted'});` +
+          `gtag('js',new Date());gtag('config','${measurementId}');`}
       </Script>
     </>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -49,14 +49,21 @@ export function MobileNav({
   const pathname = usePathname();
   const isActive = useNavActive(items);
   const reduceMotion = useReducedMotion();
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   const openMenu = () => setOpen(true);
   const closeMenu = () => setOpen(false);
+  // Fermeture par Échap ou ✕ : rendre le focus au hamburger, sinon il retombe
+  // sur `<body>`. Pas sur clic de lien — la navigation gère alors le focus.
+  const closeAndReturnFocus = () => {
+    setOpen(false);
+    requestAnimationFrame(() => triggerRef.current?.focus());
+  };
 
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") closeAndReturnFocus();
     };
     document.addEventListener("keydown", onKeyDown);
     document.body.style.overflow = "hidden";
@@ -76,6 +83,7 @@ export function MobileNav({
   return (
     <div className={className}>
       <button
+        ref={triggerRef}
         type="button"
         aria-label={labels.open}
         aria-expanded={open}
@@ -134,7 +142,7 @@ export function MobileNav({
             <button
               type="button"
               aria-label={labels.close}
-              onClick={closeMenu}
+              onClick={closeAndReturnFocus}
               className="inline-flex size-11 cursor-pointer items-center justify-center rounded-md text-foreground transition-colors duration-200 hover:bg-muted focus-visible:ring-3 focus-visible:ring-ring/80 focus-visible:outline-none"
             >
               <X className="size-5" />

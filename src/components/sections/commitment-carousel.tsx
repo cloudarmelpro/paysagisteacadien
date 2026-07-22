@@ -53,13 +53,22 @@ export function CommitmentCarousel({
               // s'adapte au thème, contrairement au sombre plein.
               className="group relative flex aspect-4/5 w-[260px] shrink-0 flex-col justify-between overflow-hidden rounded-3xl bg-muted p-6 sm:w-[300px] sm:p-7"
             >
-              <span className="text-xs font-medium text-foreground/50">
+              <span className="text-xs font-medium text-foreground/70">
                 {String((i % values.length) + 1).padStart(2, "0")}.
               </span>
               <div className="flex flex-col gap-2 pr-14">
-                <h3 className="text-lg font-medium text-foreground sm:text-xl">
-                  {value.title}
-                </h3>
+                {/* Le titre reste un `h3` sur le jeu original, mais un `p` sur la
+                    copie de boucle : `aria-hidden` masque le doublon aux lecteurs
+                    d'écran, pas à l'analyse de titres de Google. */}
+                {original ? (
+                  <h3 className="text-lg font-medium text-foreground sm:text-xl">
+                    {value.title}
+                  </h3>
+                ) : (
+                  <p className="text-lg font-medium text-foreground sm:text-xl">
+                    {value.title}
+                  </p>
+                )}
                 <p className="text-sm leading-relaxed text-foreground/70">
                   {value.desc}
                 </p>
