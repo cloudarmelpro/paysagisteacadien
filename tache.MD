@@ -49,13 +49,40 @@ Suivi de ce qui reste à faire. Dernière mise à jour : **21 juillet 2026**.
 2. Racine de l'app = `.next/standalone/`
 3. Copier `.next/static/` → `.next/standalone/.next/static/`
 4. Copier `public/` → `.next/standalone/public/`
-5. **🔒 SUPPRIMER `.next/standalone/.env` de l'archive envoyée** — le build y
-   recopie le `.env` local, donc **la vraie clé Resend et le mot de passe Neon**.
-   Jamais commité (vérifié sur tout l'historique), mais présent dans le bundle.
-   Si une archive contenant ce fichier a déjà circulé : **changer la clé Resend
-   et le mot de passe Neon.**
+5. **🔒 SUPPRIMER le fichier `.next/standalone/.env` avant d'uploader** —
+   `rm .next/standalone/.env` (voir l'encadré ci-dessous, à lire).
 6. Démarrage : `node server.js` depuis le dossier standalone.
    **Pas** `npm start` / `next start` — ils ne s'appliquent pas au standalone.
+
+> ### 🔒 Pourquoi supprimer `.next/standalone/.env` — à lire
+>
+> **Il existe DEUX fichiers `.env`, à ne pas confondre :**
+>
+> 1. **`.env` à la racine du projet** — tes secrets locaux (mot de passe Neon,
+>    clé Resend). **Ignoré par git, jamais poussé** (vérifié sur tout
+>    l'historique). Aucun problème avec lui.
+> 2. **`.next/standalone/.env`** — une **COPIE** que Next crée tout seul pendant
+>    `npm run build` (à cause de `output: 'standalone'`). Elle contient **les
+>    mêmes vrais secrets**.
+>
+> **Le risque :** pour déployer, on uploade le dossier `standalone`. Si cette
+> copie est dedans, on **expédie le mot de passe de la base et la clé Resend à
+> l'intérieur de l'archive** — qui transite sur le réseau et se retrouve stockée
+> sur le serveur. *Analogie : on change les serrures à l'arrivée (le panneau
+> Hostinger), mais on a laissé un double des clés collé dans le carton expédié.*
+>
+> **La bonne façon :**
+> - Les secrets vivent dans le **panneau de variables d'environnement de
+>   Hostinger** (lus au démarrage — voir §3), **jamais** dans un fichier uploadé.
+> - Juste avant de zipper/uploader : **`rm .next/standalone/.env`**.
+> - **Bonus :** un `.env` oublié dans le bundle peut aussi **écraser en silence**
+>   les variables du panneau (ex. utiliser une ancienne URL de base) — le retirer
+>   évite ce piège.
+>
+> **Ce n'est PAS une fuite git** (git est propre) : c'est une hygiène de
+> déploiement — *ne pas expédier de secrets dans le dossier uploadé*.
+> Si une archive contenant ce fichier a déjà circulé quelque part : **changer la
+> clé Resend et le mot de passe Neon** par précaution.
 
 Effets automatiques une fois le domaine servi, **aucun code à changer** :
 le `noindex` se lève seul, les `canonical`/sitemap/JSON-LD deviennent justes,
