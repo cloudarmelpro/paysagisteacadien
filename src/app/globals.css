@@ -278,6 +278,23 @@
   }
   .marquee {
     overflow: hidden;
+    /* Fondu aux deux bords : les cartes apparaissent/disparaissent en douceur au
+       lieu d'un bord net. `-webkit-` pour Safari, qui n'accepte pas `mask-image`
+       sans préfixe. */
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 3rem,
+      #000 calc(100% - 3rem),
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 3rem,
+      #000 calc(100% - 3rem),
+      transparent
+    );
   }
   .marquee-track {
     animation: marquee 48s linear infinite;
