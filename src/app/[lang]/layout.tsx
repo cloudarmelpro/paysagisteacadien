@@ -9,6 +9,7 @@ import { SiteHeader } from "@/components/layout/header";
 import { SiteFooter } from "@/components/layout/footer";
 import { ThemeRestore } from "@/components/layout/theme-restore";
 import { CookieConsent } from "@/components/layout/cookie-consent";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { LocalBusinessJsonLd } from "@/components/seo/local-business-json-ld";
 import { buildAlternates, buildOpenGraph, siteUrl } from "@/lib/seo";
 
@@ -93,6 +94,9 @@ export default async function RootLayout(props: LayoutProps<"/[lang]">) {
         </main>
         <SiteFooter lang={lang} dict={dict} />
         <CookieConsent lang={lang} labels={dict.cookies} />
+        {/* GA4 : ne se charge qu'après « Accepter » et seulement si
+            `NEXT_PUBLIC_GA_MEASUREMENT_ID` est défini au build. */}
+        <GoogleAnalytics />
       </body>
     </html>
   );

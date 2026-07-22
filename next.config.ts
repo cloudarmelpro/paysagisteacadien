@@ -6,18 +6,27 @@ const isDev = process.env.NODE_ENV === "development";
  * `script-src` autorise `'unsafe-inline'` : une CSP à nonces imposerait le rendu
  * dynamique et supprimerait la génération statique des pages.
  * `'unsafe-eval'` et le WebSocket ne servent qu'au HMR en développement.
+ *
+ * Hôtes Google Analytics : la CSP est statique, elle ne peut pas dépendre du
+ * consentement — ils sont donc toujours autorisés, mais ne sont contactés que si
+ * GA se charge, c.-à-d. après « Accepter » (voir components/analytics).
  */
+const gaScript = "https://www.googletagmanager.com";
+const gaConnect =
+  "https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com";
+const gaImg = "https://www.googletagmanager.com https://*.google-analytics.com";
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
   "frame-ancestors 'self'",
   "form-action 'self'",
-  "img-src 'self' data: blob:",
+  `img-src 'self' data: blob: ${gaImg}`,
   "style-src 'self' 'unsafe-inline'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' ${gaScript}${isDev ? " 'unsafe-eval'" : ""}`,
   "font-src 'self' data:",
-  `connect-src 'self'${isDev ? " ws: wss:" : ""}`,
+  `connect-src 'self' ${gaConnect}${isDev ? " ws: wss:" : ""}`,
   "upgrade-insecure-requests",
 ].join("; ");
 

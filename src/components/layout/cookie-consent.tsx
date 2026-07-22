@@ -66,6 +66,18 @@ export function resetConsent(): void {
   for (const l of listeners) l();
 }
 
+/**
+ * État du consentement, réactif : `"granted"`, `"denied"`, ou `null` tant
+ * qu'aucun choix n'est fait. Partage le store de la bannière — un outil non
+ * essentiel s'y abonne pour ne se charger que sur `"granted"` et se recharger si
+ * le visiteur accepte plus tard. Snapshot serveur `null` : rien ne se charge au
+ * rendu serveur.
+ */
+export function useConsent(): "granted" | "denied" | null {
+  const v = useSyncExternalStore(subscribe, getSnapshot, () => null);
+  return v === "granted" || v === "denied" ? v : null;
+}
+
 type CookieConsentLabels = {
   title: string;
   message: string;
@@ -82,10 +94,11 @@ type CookieConsentLabels = {
  * Les deux boutons partagent taille, position ET variante : le refus doit avoir
  * le même poids visuel que l'acceptation, pas seulement la même accessibilité.
  *
- * INVARIANT : aucun témoin non essentiel n'existe encore. Le jour où un outil
- * analytique est branché, il ne doit se charger QUE si `CONSENT_KEY === "granted"`
- * (la CSP `script-src 'self'` de next.config.ts devra aussi l'autoriser), et
- * `dict.cookies.message` doit continuer de décrire les outils réellement déposés.
+ * INVARIANT : le seul outil non essentiel est Google Analytics
+ * (`components/analytics/google-analytics.tsx`), qui s'abonne à `useConsent` et
+ * ne se charge que sur `"granted"`. Tout futur outil doit suivre le même
+ * gating, et `dict.cookies.message` doit continuer de décrire exactement ce qui
+ * est réellement déposé.
  */
 export function CookieConsent({
   lang,

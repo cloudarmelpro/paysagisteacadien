@@ -155,20 +155,31 @@ l'autorité étant la **CAI** (cai.gouv.qc.ca).
 
 ---
 
-## 🟡 Quand l'analytics arrivera
+## 🟡 Google Analytics — câblé, il ne manque que l'ID
 
-Le bandeau témoins est en place et **conforme sur les 3 points de la CAI**
-(texte exact, boutons à poids visuel égal, lien « Gérer mes témoins » pour
-revenir sur son choix). Mais **aucun témoin n'est déposé aujourd'hui** — le
-consentement ne gouverne donc rien pour l'instant.
+Le bandeau témoins est **conforme sur les 3 points de la CAI** (texte exact,
+boutons à poids visuel égal, lien « Gérer mes témoins »). **GA4 est entièrement
+branché** (`src/components/analytics/google-analytics.tsx`) : il ne se charge
+**qu'après « Accepter »**, la CSP autorise déjà les hôtes Google, et il est
+inerte tant que l'identifiant n'est pas fourni.
 
-Le jour où Google Analytics est branché, **trois obligations** (notées en
-invariant dans `src/components/layout/cookie-consent.tsx`) :
+Il ne reste qu'**une chose** :
 
-- [ ] L'outil ne se charge **QUE** si `localStorage["cookie-consent"] === "granted"`
-- [ ] **Ouvrir la CSP** dans `next.config.ts` — `script-src 'self'` bloquerait GA
-      purement et simplement aujourd'hui
-- [ ] Vérifier que `dict.cookies.message` décrit toujours exactement les outils réellement déposés
+- [ ] **Définir `NEXT_PUBLIC_GA_MEASUREMENT_ID`** avec l'ID de mesure de Cédric
+      (format `G-XXXXXXXXXX`, depuis sa propriété GA4).
+      ⚠️ C'est une variable **`NEXT_PUBLIC_`** : elle est injectée au **build**,
+      pas au runtime. Il faut donc qu'elle soit présente **quand `npm run build`
+      s'exécute** (pas seulement dans le panneau Hostinger, à moins de builder
+      sur le serveur). L'ID GA est public par nature — pas un secret.
+- [ ] Ligne à ajouter au `.env.example` (je n'ai pas les droits sur ce fichier) :
+      `NEXT_PUBLIC_GA_MEASUREMENT_ID="G-XXXXXXXXXX"`
+
+Sans cette variable, GA ne se charge jamais — aucun effet, aucune erreur. Le
+bandeau reste honnête (il annonce l'intention, au conditionnel).
+
+**Vérifier après activation :** accepter le bandeau, puis confirmer dans les
+DevTools (onglet Réseau) que `googletagmanager.com` n'est appelé **qu'après** le
+clic « Accepter », jamais avant ; et que « Refuser » ne déclenche rien.
 
 ---
 
