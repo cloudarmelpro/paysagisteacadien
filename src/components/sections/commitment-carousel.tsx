@@ -21,6 +21,11 @@ const ICONS: LucideIcon[] = [Ear, MessageCircle, UserCheck, Leaf];
  * Carrousel horizontal. Le scroll natif (scroll-snap) porte le mouvement, d'où le
  * glissé tactile et le clavier sans code dédié. Les flèches et l'indicateur ne
  * font que piloter et refléter ce scroll : aucune position n'est dupliquée en état.
+ *
+ * Défilement automatique, mis en pause dès la moindre interaction (survol, focus
+ * clavier, toucher) et tant que le bloc n'est pas visible. `prefers-reduced-motion`
+ * le désactive entièrement : les cartes portent du texte à lire, il ne doit
+ * jamais glisser pendant la lecture.
  */
 export function CommitmentCarousel({
   values,
@@ -33,7 +38,14 @@ export function CommitmentCarousel({
   const [active, setActive] = useState(0);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  // `hovered` : pause transitoire (survol/focus), reprend quand on s'éloigne.
+  // `touched` : arrêt définitif — sur mobile, un toucher = l'utilisateur prend
+  // la main, on ne lui reprend pas le contrôle.
+  const [hovered, setHovered] = useState(false);
+  const [touched, setTouched] = useState(false);
+  const [onScreen, setOnScreen] = useState(false);
   const reduceMotion = useReducedMotion();
+  const paused = hovered || touched || !onScreen || Boolean(reduceMotion);
 
   const sync = useCallback(() => {
     const track = trackRef.current;
@@ -49,6 +61,38 @@ export function CommitmentCarousel({
     sync();
   }, [sync]);
 
+  // Ne défile que visible : sinon il avancerait hors écran et le visiteur
+  // arriverait sur une position quelconque.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setOnScreen(entry.isIntersecting),
+      { threshold: 0.4 },
+    );
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, []);
+
+  // Avance d'une carte à intervalle, revient au début en bout de piste. Le
+  // rythme est lent (lecture de texte) et toute interaction fige `interacted`.
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      const track = trackRef.current;
+      if (!track) return;
+      const card = track.firstElementChild as HTMLElement | null;
+      const step = card ? card.offsetWidth + 16 : track.clientWidth;
+      const reachedEnd =
+        track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+      track.scrollTo({
+        left: reachedEnd ? 0 : track.scrollLeft + step,
+        behavior: "smooth",
+      });
+    }, 4500);
+    return () => clearInterval(id);
+  }, [paused]);
+
   const scrollByCards = (dir: 1 | -1) => {
     const track = trackRef.current;
     if (!track) return;
@@ -61,7 +105,18 @@ export function CommitmentCarousel({
   };
 
   return (
-    <div className="mt-8">
+    <div
+      className="mt-8"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setHovered(true)}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+          setHovered(false);
+        }
+      }}
+      onTouchStart={() => setTouched(true)}
+    >
       <div
         ref={trackRef}
         onScroll={sync}
