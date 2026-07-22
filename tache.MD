@@ -172,7 +172,7 @@ l'autorité étant la **CAI** (cai.gouv.qc.ca).
 - [x] **Consent Mode** : l'init GA refuse explicitement le publicitaire
       (`ad_storage/ad_user_data/ad_personalization: denied`, `analytics_storage:
       granted`) — cohérent avec « aucun témoin publicitaire » de la politique.
-      Recommandé aussi : **désactiver Google Signals** dans l'admin GA4.
+- [x] **Google Signals désactivé** dans l'admin GA4 (23 juillet 2026).
 
 **Vérifier une fois le vrai domaine en ligne :** dans GA4 (Rapports → Temps réel),
 confirmer que les visites remontent après avoir accepté le bandeau sur
