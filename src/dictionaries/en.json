@@ -274,6 +274,11 @@
     "title": "Driven by a passion for",
     "titleAccent": "work done right",
     "intro": "We have built deep expertise in the trades of outdoor spaces — landscape maintenance and design in particular. Our mission is to give our clients quality work that combines expertise, professionalism and attention to detail.",
+    "sectionPhotoAlts": {
+      "approach": "Large stone home with an in-ground pool, paved terrace and trimmed cedar hedges",
+      "mission": "Aerial view of a person mowing a large curved lawn edged with planted beds and a gravel path",
+      "engagement": "Family of four holding hands as they walk through a meadow in the late-day light"
+    },
     "stats": [
       { "value": "200+ projects", "label": "Completed to date" },
       { "value": "Laval & North Shore", "label": "Service area" },

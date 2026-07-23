@@ -4,42 +4,31 @@ import { ArrowUpRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
-import type { ServiceDetailSlug } from "@/config/site";
-import { contactSegment, serviceImages } from "@/config/site";
+import { contactSegment } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/shared/reveal";
 import { CommitmentCarousel } from "./commitment-carousel";
+import { StatsStrip } from "./stats-strip";
 
 // Badge posé sur l'image : pilule claire, toujours en clair — l'image est
 // assombrie par les voiles quel que soit le thème.
 const badgeOnImage =
   "w-fit rounded-full bg-white/90 px-3.5 py-1 text-xs font-medium tracking-wider text-neutral-700 uppercase backdrop-blur-sm";
 
-/**
- * Photo sous chaque section. **Placeholders** repris du catalogue en attendant
- * les photos dédiées de Cédric — il indiquera laquelle va où ; il suffit alors
- * de changer le slug ci-dessous. L'alt réutilise la description déjà traduite
- * de chaque photo, donc rien à ajouter aux dictionnaires.
- */
+/** Photo dédiée de chaque section, fournie par le client. */
 const sectionPhotos = {
-  approach: "services-de-tailles",
-  mission: "pave-uni",
-  engagement: "tourbe",
-} as const satisfies Record<string, ServiceDetailSlug>;
+  approach: "/images/about-approche.jpg",
+  mission: "/images/about-mission.jpg",
+  engagement: "/images/about-engagement.jpg",
+} as const;
 
-function SectionPhoto({
-  slug,
-  dict,
-}: {
-  slug: ServiceDetailSlug;
-  dict: Dictionary;
-}) {
+function SectionPhoto({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="relative mt-4 aspect-video overflow-hidden rounded-2xl bg-muted">
       <Image
-        src={serviceImages[slug]}
-        alt={dict.services.imageAlts[slug]}
+        src={src}
+        alt={alt}
         fill
         sizes="(max-width: 1024px) 100vw, 640px"
         className="object-cover"
@@ -81,25 +70,8 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       </section>
 
       <div className="mx-auto w-full max-w-7xl px-5 pb-16 sm:px-8 lg:px-12 lg:pb-24">
-      {/* Repères concrets, sans cadre ni filet : le clip `rounded` de l'ancienne
-          carte laissait voir le fond des gouttières aux angles. */}
-      <Reveal
-        stagger
-        className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 py-4 lg:mt-16 lg:grid-cols-4 lg:gap-x-12 lg:py-6"
-      >
-        {about.stats.map((stat) => (
-          <div key={stat.label} className="flex flex-col gap-2">
-            {/* Le libellé d'abord : les valeurs n'ont pas la même longueur, et
-                sous la valeur il retomberait à des hauteurs différentes. */}
-            <span className="text-xs font-medium tracking-wider text-foreground/60 uppercase">
-              {stat.label}
-            </span>
-            <span className="text-2xl font-medium tracking-tight text-balance text-foreground">
-              {stat.value}
-            </span>
-          </div>
-        ))}
-      </Reveal>
+      {/* Repères concrets — même bande que l'accueil (composant partagé). */}
+      <StatsStrip stats={about.stats} className="mt-12 py-4 lg:mt-16 lg:py-6" />
 
       {/* Notre approche : label à gauche, paragraphes à droite */}
       <Reveal
@@ -122,7 +94,10 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           <p className="text-lg font-medium text-primary lg:text-xl">
             {about.approachClosing}
           </p>
-          <SectionPhoto slug={sectionPhotos.approach} dict={dict} />
+          <SectionPhoto
+            src={sectionPhotos.approach}
+            alt={about.sectionPhotoAlts.approach}
+          />
         </div>
       </Reveal>
 
@@ -148,7 +123,10 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               {paragraph}
             </p>
           ))}
-          <SectionPhoto slug={sectionPhotos.mission} dict={dict} />
+          <SectionPhoto
+            src={sectionPhotos.mission}
+            alt={about.sectionPhotoAlts.mission}
+          />
         </div>
       </Reveal>
 
@@ -173,7 +151,10 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 {paragraph}
               </p>
             ))}
-            <SectionPhoto slug={sectionPhotos.engagement} dict={dict} />
+            <SectionPhoto
+              src={sectionPhotos.engagement}
+              alt={about.sectionPhotoAlts.engagement}
+            />
           </div>
         </div>
 

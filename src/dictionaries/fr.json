@@ -274,6 +274,11 @@
     "title": "Animés par la passion du",
     "titleAccent": "travail bien fait",
     "intro": "Nous avons acquis une expertise approfondie dans les métiers liés aux espaces extérieurs, notamment l'entretien et l'aménagement paysager. Notre mission est d'offrir à nos clients un service de qualité, alliant expertise, professionnalisme et souci du détail.",
+    "sectionPhotoAlts": {
+      "approach": "Grande résidence en pierre avec piscine creusée, terrasse dallée et haies de cèdres taillées",
+      "mission": "Vue aérienne d'une personne tondant une grande pelouse courbe bordée de massifs et d'une allée de gravier",
+      "engagement": "Famille de quatre personnes se tenant par la main dans un pré, en fin de journée"
+    },
     "stats": [
       { "value": "200+ projets", "label": "Réalisés à ce jour" },
       { "value": "Laval & Rive-Nord", "label": "Zone desservie" },
